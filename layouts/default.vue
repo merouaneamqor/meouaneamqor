@@ -1,8 +1,6 @@
 <template>
   <div>
-    <header>
-      Hle 
-    </header>
+<Navbar />
     <slot />
     <footer>
       <!-- Footer Content -->
