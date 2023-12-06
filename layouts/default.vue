@@ -8,15 +8,17 @@
 <script>
 export default {
   jsonld() {
-    return {
+    return        {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Merouane AMQOR",
-  "image":"https://avatars.githubusercontent.com/u/37594453?v=4",
+  "image": "https://avatars.githubusercontent.com/u/37594453?v=4",
   "jobTitle": "Ruby on Rails Developer | Certified ScrumMaster®",
-  "roleName": "Full-stack Ruby on Rails Developer",
   "email": "marouane.amqor@gmail.com",
   "telephone": "+212701086726",
+  "url": "http://linkedin.com/in/merouane-amqor",
+  "sameAs": "http://linkedin.com/in/merouane-amqor",
+  "knowsLanguage": ["French", "English", "Arabic"],
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Casablanca, Morocco"
@@ -29,10 +31,6 @@ export default {
     "@type": "Organization",
     "name": "Scrum Alliance"
   },
-  "url": "http://linkedin.com/in/merouane-amqor",
-  "sameAs": [
-    "http://linkedin.com/in/merouane-amqor"
-  ],
   "worksFor": [
     {
       "@type": "Organization",
@@ -66,16 +64,6 @@ export default {
       "description": "Front-end / Back-end Developer"
     }
   ],
-  "skill": [
-    "Ruby on Rails development",
-    "Agile methodologies",
-    "Team leadership",
-    "Back-end deployment",
-    "Rapid prototyping",
-    "Solution design",
-    "Market research",
-    "Benchmarking"
-  ],
   "hasCredential": [
     {
       "@type": "EducationalOccupationalCredential",
@@ -83,11 +71,9 @@ export default {
       "recognizedBy": {
         "@type": "Organization",
         "name": "Scrum Alliance"
-      },
-      "validUntil": "2025-04-19"
+      }
     }
-  ],
-  "knowsLanguage": ["French", "English", "Arabic"]
+  ]
 }
 
   },
