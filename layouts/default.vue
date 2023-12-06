@@ -1,10 +1,8 @@
 <template>
   <div>
-<Navbar />
+    <Navbar />
     <slot />
-    <footer>
-      <!-- Footer Content -->
-    </footer>
+    <Footer/>
   </div>
 </template>
 <script>
@@ -14,7 +12,9 @@ export default {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Merouane AMQOR",
+  "image":"https://avatars.githubusercontent.com/u/37594453?v=4",
   "jobTitle": "Ruby on Rails Developer | Certified ScrumMaster®",
+  "roleName": "Full-stack Ruby on Rails Developer",
   "email": "marouane.amqor@gmail.com",
   "telephone": "+212701086726",
   "address": {
