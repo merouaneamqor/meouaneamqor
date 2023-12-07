@@ -36,7 +36,9 @@ export default {
         "image": "https://avatars.githubusercontent.com/u/37594453?v=4",
         "sameAs": [
           "https://linkedin.com/in/merouane-amqor",
-          "https://instagram.com/merouaneamqor"
+          "https://instagram.com/merouaneamqor",
+          "https://rubygems.org/profiles/merouaneamqor",
+          "https://github.com/merouaneamqor",
         ],
         "interactionStatistic": [
           {
