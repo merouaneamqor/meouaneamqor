@@ -26,7 +26,7 @@ export default {
         "@type": "Person",
         "name": "Merouane AMQOR",
         "jobTitle": "Ruby on Rails Developer | Certified ScrumMaster®",
-        "url": "http://merouaneamqor.com",
+        "url": "https://merouaneamqor.com",
         "email": "marouane.amqor@gmail.com",
         "telephone": "+212701086726",
         "address": {
