@@ -6,6 +6,7 @@
                 <p class="mb-4 text-gray-600">
                     As a seasoned <strong>Ruby on Rails developer</strong>, I specialize in crafting scalable and efficient web applications. My expertise extends to <strong>Agile methodologies</strong>, ensuring streamlined and adaptive project management.
                 </p>
+                
                 <div class="flex flex-wrap gap-2">
                     <!-- Repeat for each skill -->
                     <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-md text-sm">Ruby on Rails</span>
