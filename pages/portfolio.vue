@@ -5,7 +5,6 @@
         
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div v-for="project in projects" :key="project.id" class="shadow-lg rounded-lg overflow-hidden">
-            <img src="`project.imageName`" :alt="project.name" class="w-full h-64 object-cover object-center">
             <div class="p-4">
               <h3 class="text-xl font-semibold text-gray-800">{{ project.name }}</h3>
               <p class="text-gray-600">{{ project.description }}</p>
