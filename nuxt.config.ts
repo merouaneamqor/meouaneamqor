@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
-    '@nuxtjs/tailwindcss','nuxt-jsonld'
+    '@nuxtjs/tailwindcss','nuxt-jsonld','@zadigetvoltaire/nuxt-gtm'
   ],
   app: {
     head: {
@@ -17,8 +17,12 @@ export default defineNuxtConfig({
         // Additional global meta tags can be added here
       ],
       link: [
-        // Add global links like favicon here
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
       ]
     }
+  },
+  gtm: {
+    id: 'GTM-PNCBHTD5', 
+
   }
 })

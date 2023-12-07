@@ -24,7 +24,6 @@ useHead({
 useSeoMeta({
   ogTitle: 'Home - Merouane Amqor',
   ogDescription: 'Discover the portfolio and expertise of Merouane Amqor in web development.',
-  ogImage: 'https://avatars.githubusercontent.com/u/37594453?v=4',
-  // Other SEO tags
-});
+  ogImage: 'https://avatars.githubusercontent.com/u/37594453?v=4'
+  });
 </script>
