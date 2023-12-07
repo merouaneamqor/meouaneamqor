@@ -13,7 +13,7 @@
           <h2 class="text-xl font-bold mb-2">Quick Links</h2>
           <ul class="list-none mb-0">
             <li><a href="/" class="text-white hover:text-blue-300">Home</a></li>
-            <li><a href="#!" class="text-white hover:text-blue-300">Portfolio</a></li>
+            <li><a href="/portfolio" class="text-white hover:text-blue-300">Portfolio</a></li>
             <li><a href="/contact" class="text-white hover:text-blue-300">Contact</a></li>
             <li><a href="#!" class="text-white hover:text-blue-300">About</a></li>
           </ul>
