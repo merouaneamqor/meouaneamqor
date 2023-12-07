@@ -66,6 +66,10 @@ export default {
       links: [
         { href: 'https://github.com/merouaneamqor', text: 'GitHub' },
         { href: 'https://linkedin.com/in/merouane-amqor', text: 'LinkedIn' },
+        { href: '/portfolio', text: 'Portfolio' },
+        { href: '/about', text: 'About' },
+        { href: '/contact', text: 'Contact' },
+
         // Add more links as needed
       ]
     };
