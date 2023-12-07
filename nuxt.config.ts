@@ -22,7 +22,7 @@ export default defineNuxtConfig({
     }
   },
   gtm: {
-    id: 'GTM-PNCBHTD5', 
+    id: 'GTM-PNCBHTD5',
 
   }
 })
