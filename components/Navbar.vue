@@ -4,7 +4,7 @@
       <div class="flex justify-between items-center border-b-2 border-gray-800 py-6 md:justify-start md:space-x-10">
         <!-- Logo Section -->
         <div class="flex justify-start lg:w-0 lg:flex-1 text-white">
-          <a href="#">
+          <a href="/">
             <h1>AMQOR Merouane</h1>
           </a>
         </div>
