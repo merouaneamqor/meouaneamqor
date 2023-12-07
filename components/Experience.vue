@@ -2,7 +2,7 @@
   <section class="container mx-auto p-8">
       <div class=" mx-auto">
           <div class="bg-white border border-gray-200 shadow-sm rounded-lg p-6">
-              <h2 class="text-2xl font-bold text-gray-800 mb-6">Experience Highlights</h2>
+              <h2 class="text-xl font-bold text-gray-800 mb-6">Experience Highlights</h2>
               <div>
                   <div v-for="(experience, index) in experiences" :key="index" class="mb-6 last:mb-0">
                       <h3 class="text-lg font-semibold text-gray-700 mb-1">{{ experience.role }}</h3>
