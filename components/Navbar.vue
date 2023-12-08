@@ -21,7 +21,7 @@
 
         <!-- Desktop Navigation -->
         <nav class="hidden md:flex space-x-10">
-          <a v-for="link in links" :key="link.href" :href="link.href" class="text-base font-medium text-gray-100 hover:text-gray-200">{{ link.text }}</a>
+          <a v-for="link in links" :key="link.href" :href="link.href" :target="link.target"  class="text-base font-medium text-gray-100 hover:text-gray-200">{{ link.text }}</a>
         </nav>
 
       </div>
@@ -49,8 +49,7 @@
           </div>
           <!-- Mobile Navigation Links -->
           <nav class="mt-6">
-            <a v-for="link in links" :key="link.href" :href="link.href" class="block p-3 rounded-md hover:bg-gray-50">{{ link.text }}</a>
-
+            <a v-for="link in links" :key="link.href" :href="link.href" :target="link.target"  class="block p-3 rounded-md hover:bg-gray-50">{{ link.text }}</a>
           </nav>
         </div>
       </div>
@@ -64,8 +63,8 @@ export default {
     return {
       isMenuOpen: false,
       links: [
-        { href: 'https://github.com/merouaneamqor', text: 'GitHub' },
-        { href: 'https://linkedin.com/in/merouane-amqor', text: 'LinkedIn' },
+        { href: 'https://github.com/merouaneamqor', text: 'GitHub', target: '_blank' },
+        { href: 'https://linkedin.com/in/merouane-amqor', text: 'LinkedIn', target: '_blank' },
         { href: '/portfolio', text: 'Portfolio' },
         { href: '/about', text: 'About' },
         { href: '/contact', text: 'Contact' },
