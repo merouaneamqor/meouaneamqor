@@ -37,7 +37,8 @@ jsonld() {
     "@type": "Organization",
     "name": "DabaDoc"
   },
-  "url": "http://linkedin.com/in/merouane-amqor",
+  "url": "https://merouaneamqor.com/",
+  "image": "https://merouaneamqor.com/merouane_amqor.jpg",
   "email": "marouane.amqor@gmail.com",
   "telephone": "+212701086726",
   "address": {

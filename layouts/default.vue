@@ -33,7 +33,7 @@ export default {
           "@type": "PostalAddress",
           "addressLocality": "Casablanca, Morocco"
         },
-        "image": "https://avatars.githubusercontent.com/u/37594453?v=4",
+        "image": "https://merouaneamqor.com/merouane_amqor.jpg",
         "sameAs": [
           "https://linkedin.com/in/merouane-amqor",
           "https://instagram.com/merouaneamqor",
