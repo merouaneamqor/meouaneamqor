@@ -7,14 +7,13 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: {
-        lang: 'en' // Replace 'en' with the appropriate language code
+        lang: 'en'
       },
-      title: 'Merouane Amqor - Ruby on Rails Developer & Certified ScrumMaster®',
+      title: 'Merouane Amqor - Full-Stack Developer & Certified ScrumMaster®',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { hid: 'description', name: 'description', content: 'Merouane Amqor, an experienced Ruby on Rails Developer and Certified ScrumMaster® based in Casablanca, Morocco, specializing in innovative web development solutions.' },
-        // Additional global meta tags can be added here
+        { hid: 'description', name: 'description', content: 'Merouane Amqor, an experienced Full-Stack Developer and Certified ScrumMaster® based in Casablanca, Morocco, specializing in innovative web development solutions.' },
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -23,6 +22,5 @@ export default defineNuxtConfig({
   },
   gtm: {
     id: 'GTM-PNCBHTD5',
-
   }
 })

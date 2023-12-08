@@ -32,7 +32,7 @@ jsonld() {
   "@context": "http://schema.org",
   "@type": "Person",
   "name": "Merouane AMQOR",
-  "jobTitle": "Ruby on Rails Developer | Certified ScrumMaster®",
+  "jobTitle": "Full-Stack Developer | Certified ScrumMaster®",
   "worksFor": {
     "@type": "Organization",
     "name": "DabaDoc"

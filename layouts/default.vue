@@ -25,7 +25,7 @@ export default {
       "mainEntity": {
         "@type": "Person",
         "name": "Merouane AMQOR",
-        "jobTitle": "Ruby on Rails Developer | Certified ScrumMaster®",
+        "jobTitle": "Full-Stack Developer | Certified ScrumMaster®",
         "url": "https://merouaneamqor.com",
         "email": "marouane.amqor@gmail.com",
         "telephone": "+212701086726",
