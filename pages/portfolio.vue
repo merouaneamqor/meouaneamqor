@@ -31,16 +31,16 @@ export default {
         },
         {
           id: 2,
-          name: 'Meram / Texam - Co-founder',
+          name: 'Meram / Texam',
           duration: '2018 - 2019',
-          description: 'Initiated and designed an e-commerce web application using Software engineer, providing a JSON API for mobile applications.',
+          description: 'Spearheaded the creation and design of an innovative e-commerce web application as a Software Engineer. Developed a robust JSON API tailored for seamless integration with mobile applications.',
           link: '#'
         },
         {
           id: 3,
           name: 'Riad Raha - Information System Developer',
           duration: '1 month, 2021',
-          description: 'Developed a real estate sales management information system, enhancing business operations.',
+          description: 'Crafted a sophisticated real estate sales management information system, significantly optimizing and streamlining business operations.',
           link: '#'
         },
         // Add more projects...
