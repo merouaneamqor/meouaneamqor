@@ -5,7 +5,7 @@
         <!-- About Section -->
         <div class="w-full lg:w-1/4 px-6 mb-5">
           <h2 class="text-xl font-bold mb-2">Merouane Amqor</h2>
-          <p class="mb-4">Dedicated Ruby on Rails Developer and Certified ScrumMaster® based in Casablanca, Morocco.</p>
+          <p class="mb-4">Committed Software Engineer and Certified ScrumMaster® based in Casablanca, Morocco.</p>
         </div>
 
         <!-- Navigation Section -->

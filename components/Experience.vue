@@ -25,7 +25,7 @@ export default {
       experiences: [
         {
           role: 'Full-stack Developer at DabaDoc',
-          description: 'Led a team of developers, focusing on Ruby on Rails to deliver impactful features. Worked closely with the marketing team to enhance brand awareness and user engagement through robust back-end systems.',
+          description: 'Guided a team of developers, concentrating on emerging technologies to create influential features. Collaborated intimately with the marketing team, bolstering brand recognition and user engagement via the deployment of robust back-end systems.',
           startDate: `2022`,
           endDate: `${currentYear}`
         },

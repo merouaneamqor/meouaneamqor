@@ -26,14 +26,14 @@ export default {
           id: 1,
           name: 'DabaDoc - Full-stack Developer',
           duration: 'Sep 2018 - Apr 2022',
-          description: 'Led a team in using Ruby on Rails for impactful features, collaborated with marketing to enhance brand awareness, and deployed robust back-end systems.',
+          description: 'Guided a team in leveraging cutting-edge technologies to develop impactful features, collaborated closely with marketing teams to boost brand visibility, and implemented strong, reliable back-end systems to enhance overall functionality.',
           link: 'https://dabadoc.com'
         },
         {
           id: 2,
           name: 'Meram / Texam - Co-founder',
           duration: '2018 - 2019',
-          description: 'Initiated and designed an e-commerce web application using Ruby on Rails, providing a JSON API for mobile applications.',
+          description: 'Initiated and designed an e-commerce web application using Software engineer, providing a JSON API for mobile applications.',
           link: '#'
         },
         {

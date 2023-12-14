@@ -52,7 +52,7 @@ export default {
             "userInteractionCount": 0
           }
         ],
-        "description": "Experienced Software Engineer with a strong focus on Ruby on Rails. Skilled in a variety of platforms and languages, with a particular proficiency in back-end development. Strong leadership skills and experienced in leading teams."
+        "description": "An experienced Software Engineer with a keen emphasis on emerging technologies, proficient across diverse platforms and programming languages, particularly excelling in back-end development. Possessing robust leadership abilities, he have a proven track record of effectively guiding teams to success."
       }
     }
   }
