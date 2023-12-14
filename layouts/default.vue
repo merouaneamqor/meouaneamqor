@@ -25,7 +25,7 @@ export default {
       "mainEntity": {
         "@type": "Person",
         "name": "Merouane AMQOR",
-        "jobTitle": "Full-Stack Developer | Certified ScrumMaster®",
+        "jobTitle": "Software Engineer | Certified ScrumMaster®",
         "url": "https://merouaneamqor.com",
         "email": "marouane.amqor@gmail.com",
         "telephone": "+212701086726",
@@ -52,7 +52,7 @@ export default {
             "userInteractionCount": 0
           }
         ],
-        "description": "An experienced Software Engineer with a keen emphasis on emerging technologies, proficient across diverse platforms and programming languages, particularly excelling in back-end development. Possessing robust leadership abilities, he have a proven track record of effectively guiding teams to success."
+        "description": "Merouane AMQOR, an experienced Software Engineer and Certified ScrumMaster® based in Casablanca, Morocco, specializes in innovative web development solutions. Skilled in a variety of platforms and languages, with a particular proficiency in back-end development, Merouane is known for his strong leadership skills and experience in leading teams to achieve their goals."
       }
     }
   }
