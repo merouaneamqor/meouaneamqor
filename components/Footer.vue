@@ -15,7 +15,7 @@
             <li><a href="/" class="text-white hover:text-blue-300">Home</a></li>
             <li><a href="/portfolio" class="text-white hover:text-blue-300">Portfolio</a></li>
             <li><a href="/contact" class="text-white hover:text-blue-300">Contact</a></li>
-            <li><a href="#!" class="text-white hover:text-blue-300">About</a></li>
+            <li><a href="/about" class="text-white hover:text-blue-300">About</a></li>
           </ul>
         </div>
 
@@ -28,10 +28,11 @@
 
         <!-- Social Media Section -->
         <div class="w-full lg:w-1/4 px-6 mb-5">
-          <h2 class="text-xl font-bold mb-2">Follow Me</h2>
+          <h2 class="text-xl font-bold mb-2">Read about me</h2>
           <div class="flex justify-center lg:justify-start">
-            <a href="http://linkedin.com/in/merouane-amqor" target="_blank" class="text-white hover:text-blue-300 mr-6">LinkedIn</a>
-            <!-- Add more social links as needed -->
+            <a href="https://linkedin.com/in/merouane-amqor" target="_blank" class="text-white hover:text-blue-300 mr-6">LinkedIn</a>
+            <a href="https://en.m.wikipedia.org/wiki/AMQOR_Merouane" target="_blank" class="text-white hover:text-blue-300 mr-6">Wikipedia</a>
+
           </div>
         </div>
       </div>
