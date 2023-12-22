@@ -40,6 +40,7 @@ export default {
           "https://rubygems.org/profiles/merouaneamqor",
           "https://github.com/merouaneamqor",
           "https://www.crunchbase.com/person/amqor-merouane",
+          "https://en.wikipedia.org/wiki/User:AMQOR_Merouane",
         ],
         "interactionStatistic": [
           {
