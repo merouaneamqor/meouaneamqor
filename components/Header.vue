@@ -6,6 +6,7 @@
               <h1 class="text-3xl font-semibold">Merouane Amqor</h1>
               <p class="text-lg">Software Engineer | Certified ScrumMaster®</p>
               <span> Casablanca - Morocco <span/>
+              <span class="text-sm" >I don’t do if buts and maybes, I do absolutes. <span/>
               <div class="flex mt-4">
                   <a href="mailto:marouane.amqor@gmail.com" class="text-gray-400 hover:text-gray-300 mr-4">Email</a>
                   <a href="tel:+212701086726" class="text-gray-400 hover:text-gray-300 mr-4">Phone</a>
