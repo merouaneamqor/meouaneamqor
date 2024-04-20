@@ -31,7 +31,7 @@
           <h2 class="text-xl font-bold mb-2">Read about me and my Project</h2>
           <div class="flex justify-center lg:justify-start">
             <a href="https://linkedin.com/in/merouane-amqor" target="_blank" class="text-white hover:text-blue-300 mr-6">LinkedIn</a>
-            <a href="https://douq.ma/about" target="_blank" class="text-white hover:text-blue-300 mr-6">Wikipedia</a>
+            <a href="https://douq.ma/about" target="_blank" class="text-white hover:text-blue-300 mr-6">Douq.ma</a>
 
           </div>
         </div>
