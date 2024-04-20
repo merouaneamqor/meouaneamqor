@@ -28,10 +28,10 @@
 
         <!-- Social Media Section -->
         <div class="w-full lg:w-1/4 px-6 mb-5">
-          <h2 class="text-xl font-bold mb-2">Read about me</h2>
+          <h2 class="text-xl font-bold mb-2">Read about me and my Project</h2>
           <div class="flex justify-center lg:justify-start">
             <a href="https://linkedin.com/in/merouane-amqor" target="_blank" class="text-white hover:text-blue-300 mr-6">LinkedIn</a>
-            <a href="https://en.m.wikipedia.org/wiki/AMQOR_Merouane" target="_blank" class="text-white hover:text-blue-300 mr-6">Wikipedia</a>
+            <a href="https://douq.ma/about" target="_blank" class="text-white hover:text-blue-300 mr-6">Wikipedia</a>
 
           </div>
         </div>
