@@ -68,7 +68,7 @@ export default {
         { href: '/portfolio', text: 'Portfolio' },
         { href: '/about', text: 'About' },
         { href: '/contact', text: 'Contact' },
-
+				{ href: 'https://douq.ma', text: 'Douq.ma' },
         // Add more links as needed
       ]
     };
