@@ -24,7 +24,13 @@ export default {
     return {
       experiences: [
         {
-          role: 'Full-stack Developer at DabaDoc',
+          role: 'Founder & Technical Lead at Douq.ma',
+          description: 'Leading the creation of Douq, a cutting-edge platform designed to revolutionize the discovery of cozy spaces in Morocco. Managing a dynamic team to implement innovative solutions using Nuxt.js, Laravel, and exploring blockchain technology for review verification.',
+          startDate: '2024',
+          endDate: `${currentYear}`
+        },
+        {
+          role: 'Development team lead at DabaDoc',
           description: 'Guided a team of developers, concentrating on emerging technologies to create influential features. Collaborated intimately with the marketing team, bolstering brand recognition and user engagement via the deployment of robust back-end systems.',
           startDate: `2022`,
           endDate: `${currentYear}`
@@ -34,16 +40,13 @@ export default {
           description: 'Initiated and developed an e-commerce web application using Ruby on Rails, providing a comprehensive JSON API for mobile applications, streamlining the online shopping experience.',
           startDate: '2018',
           endDate: '2019'
-
         },
         {
           role: 'Information System Developer at Riad Raha',
           description: 'Developed a real estate sales management information system, significantly enhancing business operations and client management capabilities.',
           startDate: '2021',
           endDate: '2021'
-
-        },
-
+        }
       ]
     };
   }
