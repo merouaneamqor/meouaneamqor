@@ -25,25 +25,37 @@ export default {
       experiences: [
         {
           role: 'Founder & Technical Lead at Douq.ma',
-          description: 'Leading the creation of Douq, a cutting-edge platform designed to revolutionize the discovery of cozy spaces in Morocco. Managing a dynamic team to implement innovative solutions using Nuxt.js, Laravel, and exploring blockchain technology for review verification.',
+          description: 'Founded and lead Douq.ma, pioneering a platform that transforms how cozy spaces are discovered in Morocco. I drive the team to develop and integrate cutting-edge solutions with Nuxt.js and Laravel, and explore blockchain for review authenticity.',
           startDate: '2024',
           endDate: `${currentYear}`
         },
         {
-          role: 'Development team lead at DabaDoc',
-          description: 'Guided a team of developers, concentrating on emerging technologies to create influential features. Collaborated intimately with the marketing team, bolstering brand recognition and user engagement via the deployment of robust back-end systems.',
-          startDate: `2022`,
+          role: 'Development Team Lead at DabaDoc',
+          description: 'Leading development initiatives and managing a team focused on deploying scalable health solutions. Enhanced system capabilities with a blend of modern technologies and collaborative efforts, significantly improving platform engagement and performance.',
+          startDate: '2024',
           endDate: `${currentYear}`
         },
         {
+          role: 'Full-stack Developer at DabaDoc',
+          description: 'Guided and mentored a development team, focusing on leveraging emerging technologies to innovate and enhance feature sets. Worked closely with the marketing team to boost brand recognition and user engagement.',
+          startDate: '2022',
+          endDate: '2024'
+        },
+        {
+          role: 'Software Engineer at Majorel',
+          description: 'Specialized in front-end development, focusing on enhancing application interfaces and user experiences. Utilized a wide array of technologies including Ruby on Rails, AngularJS, and cloud services, to deliver high-quality software solutions.',
+          startDate: '2019',
+          endDate: '2022'
+        },
+        {
           role: 'Co-founder, Meram / Texam',
-          description: 'Initiated and developed an e-commerce web application using Ruby on Rails, providing a comprehensive JSON API for mobile applications, streamlining the online shopping experience.',
+          description: 'Co-founded and engineered a comprehensive e-commerce platform using Ruby on Rails. Designed and deployed a JSON API for mobile application integration, enhancing the digital shopping experience.',
           startDate: '2018',
           endDate: '2019'
         },
         {
           role: 'Information System Developer at Riad Raha',
-          description: 'Developed a real estate sales management information system, significantly enhancing business operations and client management capabilities.',
+          description: 'Developed and optimized a real estate sales management system, significantly boosting business operations and client service efficiency.',
           startDate: '2021',
           endDate: '2021'
         }
