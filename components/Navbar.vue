@@ -1,83 +1,81 @@
 <template>
-  <div class="relative bg-gray-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="flex justify-between items-center border-b-2 border-gray-800 py-6 md:justify-start md:space-x-10">
-        <!-- Logo Section -->
-        <div class="flex justify-start lg:w-0 lg:flex-1 text-white">
-          <a href="/">
-            <h1>AMQOR Merouane</h1>
-          </a>
+  <nav class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center">
+          <NuxtLink to="/" class="flex-shrink-0">
+            <h1 class="text-2xl font-bold text-gray-800">AMQOR Merouane</h1>
+          </NuxtLink>
         </div>
-
-        <!-- Hamburger Menu for Mobile -->
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-4">
+            <NuxtLink 
+              v-for="link in links" 
+              :key="link.href" 
+              :to="link.href"
+              :target="link.target"
+              class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors duration-300"
+            >
+              {{ link.text }}
+            </NuxtLink>
+          </div>
+        </div>
         <div class="md:hidden">
-          <button @click="isMenuOpen = !isMenuOpen" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100">
-            <span class="sr-only">Open menu</span>
-            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 6H4"></path>
-            </svg>
+          <button 
+            @click="isMenuOpen = !isMenuOpen" 
+            class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Open main menu</span>
+            <Menu v-if="!isMenuOpen" class="block h-6 w-6" aria-hidden="true" />
+            <X v-else class="block h-6 w-6" aria-hidden="true" />
           </button>
         </div>
-
-        <!-- Desktop Navigation -->
-        <nav class="hidden md:flex space-x-10">
-          <a v-for="link in links" :key="link.href" :href="link.href" :target="link.target"  class="text-base font-medium text-gray-100 hover:text-gray-200">{{ link.text }}</a>
-        </nav>
-
       </div>
     </div>
 
-    <!-- Mobile Menu -->
-    <div v-if="isMenuOpen" class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
-      <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
-        <div class="pt-5 pb-6 px-5">
-          <div class="flex items-center justify-between">
-            <div>
-              <!-- Mobile Logo -->
-              <h1>AMQOR Merouane</h1>
-              
-            </div>
-            <!-- Close Mobile Menu Button -->
-            <div class="-mr-2">
-              <button @click="isMenuOpen = false" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100">
-                <span class="sr-only">Close menu</span>
-                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-              </button>
-            </div>
-          </div>
-          <!-- Mobile Navigation Links -->
-          <nav class="mt-6">
-            <a v-for="link in links" :key="link.href" :href="link.href" :target="link.target"  class="block p-3 rounded-md hover:bg-gray-50">{{ link.text }}</a>
-          </nav>
+    <transition
+      enter-active-class="transition duration-150 ease-out"
+      enter-from-class="opacity-0 scale-95"
+      enter-to-class="opacity-100 scale-100"
+      leave-active-class="transition duration-100 ease-in"
+      leave-from-class="opacity-100 scale-100"
+      leave-to-class="opacity-0 scale-95"
+    >
+      <div v-if="isMenuOpen" class="md:hidden">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <NuxtLink
+            v-for="link in links"
+            :key="link.href"
+            :to="link.href"
+            :target="link.target"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors duration-300"
+            @click="isMenuOpen = false"
+          >
+            {{ link.text }}
+          </NuxtLink>
         </div>
       </div>
-    </div>
-  </div>
+    </transition>
+  </nav>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      isMenuOpen: false,
-      links: [
-        { href: 'https://github.com/merouaneamqor', text: 'GitHub', target: '_blank' },
-        { href: 'https://linkedin.com/in/merouane-amqor', text: 'LinkedIn', target: '_blank' },
-        { href: '/portfolio', text: 'Portfolio' },
-        { href: '/about', text: 'About' },
-        { href: '/contact', text: 'Contact' },
-        { href: 'https://douq.ma', text: 'Douq.ma' , target: '_blank'}
-        // Add more links as needed
-      ]
-    };
-  },
-  // Other script code
-};
+<script setup lang="ts">
+import { ref } from 'vue'
+import { Menu, X } from 'lucide-vue-next'
+
+const isMenuOpen = ref(false)
+
+const links = [
+  { href: 'https://github.com/merouaneamqor', text: 'GitHub', target: '_blank' },
+  { href: 'https://linkedin.com/in/merouane-amqor', text: 'LinkedIn', target: '_blank' },
+  { href: '/portfolio', text: 'Portfolio' },
+  { href: '/about', text: 'About' },
+  { href: '/contact', text: 'Contact' },
+  { href: 'https://douq.ma', text: 'Douq.ma', target: '_blank' }
+]
 </script>
 
-
 <style scoped>
-/* Your CSS goes here */
+/**/
 </style>

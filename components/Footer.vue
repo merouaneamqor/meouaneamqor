@@ -1,41 +1,110 @@
 <template>
-  <footer class="bg-gray-800 text-white">
-    <div class="container mx-auto px-6 pt-10 pb-6">
-      <div class="flex flex-wrap text-center lg:text-left">
+  <footer class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto px-6 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <!-- About Section -->
-        <div class="w-full lg:w-1/4 px-6 mb-5">
-          <h2 class="text-xl font-bold mb-2">Merouane Amqor</h2>
-          <p class="mb-4">Committed Software Engineer and Certified ScrumMaster® based in Casablanca, Morocco.</p>
+        <div>
+          <h2 class="text-2xl font-bold mb-4">Merouane Amqor</h2>
+          <p class="text-gray-600 mb-4">Committed Software Engineer and Certified ScrumMaster® based in Casablanca, Morocco.</p>
+
         </div>
 
         <!-- Navigation Section -->
-        <div class="w-full lg:w-1/4 px-6 mb-5">
-          <h2 class="text-xl font-bold mb-2">Quick Links</h2>
-          <ul class="list-none mb-0">
-            <li><a href="/" class="text-white hover:text-blue-300">Home</a></li>
-            <li><a href="/portfolio" class="text-white hover:text-blue-300">Portfolio</a></li>
-            <li><a href="/contact" class="text-white hover:text-blue-300">Contact</a></li>
-            <li><a href="/about" class="text-white hover:text-blue-300">About</a></li>
+        <div>
+          <h2 class="text-xl font-bold mb-4">Quick Links</h2>
+          <ul class="space-y-2">
+            <li v-for="link in quickLinks" :key="link.url">
+              <NuxtLink 
+                :to="link.url" 
+                class="text-gray-600 hover:text-blue-500 transition duration-300"
+              >
+                {{ link.text }}
+              </NuxtLink>
+            </li>
           </ul>
         </div>
 
         <!-- Contact Section -->
-        <div class="w-full lg:w-1/4 px-6 mb-5">
-          <h2 class="text-xl font-bold mb-2">Contact Info</h2>
-          <p>Email: <a href="mailto:marouane.amqor@gmail.com" class="text-white hover:text-blue-300">marouane.amqor@gmail.com</a></p>
-          <p>Phone: <a href="tel:+212701086726" class="text-white hover:text-blue-300">+212701086726</a></p>
+        <div>
+          <h2 class="text-xl font-bold mb-4">Contact Info</h2>
+          <ul class="space-y-2">
+            <li>
+              <a 
+                href="mailto:marouane.amqor@gmail.com" 
+                class="text-gray-600 hover:text-blue-500 transition duration-300 flex items-center"
+              >
+                <Mail class="w-5 h-5 mr-2" />
+                marouane.amqor@gmail.com
+              </a>
+            </li>
+            <li>
+              <a 
+                href="tel:+212701086726" 
+                class="text-gray-600 hover:text-blue-500 transition duration-300 flex items-center"
+              >
+                <Phone class="w-5 h-5 mr-2" />
+                +212701086726
+              </a>
+            </li>
+            <li class="flex items-center text-gray-600">
+              <MapPin class="w-5 h-5 mr-2" />
+              Casablanca, Morocco
+            </li>
+          </ul>
         </div>
 
         <!-- Social Media Section -->
-        <div class="w-full lg:w-1/4 px-6 mb-5">
-          <h2 class="text-xl font-bold mb-2">Read about me and my Project</h2>
-          <div class="flex justify-center lg:justify-start">
-            <a href="https://linkedin.com/in/merouane-amqor" target="_blank" class="text-white hover:text-blue-300 mr-6">LinkedIn</a>
-            <a href="https://douq.ma/about" target="_blank" class="text-white hover:text-blue-300 mr-6">Douq.ma</a>
-
+        <div>
+          <h2 class="text-xl font-bold mb-4">Connect With Me</h2>
+          <div class="flex space-x-4">
+            <a 
+              href="https://linkedin.com/in/merouane-amqor" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="text-gray-600 hover:text-blue-500 transition duration-300"
+            >
+              <Linkedin class="w-6 h-6" />
+              <span class="sr-only">LinkedIn</span>
+            </a>
+            <a 
+              href="https://github.com/merouaneamqor" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="text-gray-600 hover:text-blue-500 transition duration-300"
+            >
+              <Github class="w-6 h-6" />
+              <span class="sr-only">GitHub</span>
+            </a>
+            <a 
+              href="https://douq.ma/about" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="text-gray-600 hover:text-blue-500 transition duration-300"
+            >
+              <Globe class="w-6 h-6" />
+              <span class="sr-only">Douq.ma</span>
+            </a>
           </div>
         </div>
+      </div>
+
+      <div class="mt-8 pt-8 border-t border-gray-200 text-center">
+        <p class="text-gray-600">
+          © {{ new Date().getFullYear() }} Merouane Amqor. All rights reserved.
+        </p>
       </div>
     </div>
   </footer>
 </template>
+
+<script setup lang="ts">
+import { Mail, Phone, MapPin, Linkedin, Github, Globe } from 'lucide-vue-next'
+
+const quickLinks = [
+  { text: 'Home', url: '/' },
+  { text: 'Portfolio', url: '/portfolio' },
+  { text: 'About', url: '/about' },
+  { text: 'Contact', url: '/contact' },
+  { text: 'Blog', url: '/blog' }
+]
+</script>
