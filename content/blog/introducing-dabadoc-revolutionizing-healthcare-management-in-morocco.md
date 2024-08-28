@@ -2,7 +2,7 @@
 title: 'DabaDoc: Revolutionizing Healthcare in Africa Through Digital Innovation'
 date: 2024-08-05
 excerpt: 'Explore how DabaDoc is transforming healthcare access and delivery across Africa with its innovative digital platform and strategic partnerships.'
-coverImage: https://picsum.photos/seed/dabadocDigital-Innovation/800/400
+coverImage: https://info.dabadoc.com/asset/165:lematindabadoccorporatejpg
 ---
 
 # DabaDoc: Revolutionizing Healthcare in Africa Through Digital Innovation
