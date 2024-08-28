@@ -48,7 +48,7 @@ const projects: Project[] = [
     name: 'Meram / Texam',
     duration: '2018 - 2019',
     description: 'Spearheaded the creation and design of an innovative e-commerce web application as a Software Engineer. Developed a robust JSON API tailored for seamless integration with mobile applications.',
-    link: '#'
+    link: 'https://texam-app-git-master-douq-ma.vercel.app/'
   },
   {
     id: 3,
@@ -62,21 +62,21 @@ const projects: Project[] = [
     name: 'DabaDoc Corporate Platform',
     duration: 'Apr 2022 - Jan 2024',
     description: 'Led the development of a comprehensive healthcare management platform for corporations, streamlining employee access to health services and enhancing overall healthcare delivery.',
-    link: 'https://corporate.dabadoc.com'
+    link: 'https://info.dabadoc.com/corporate'
   },
   {
     id: 5,
     name: 'DabaDoc Mind',
     duration: 'Apr 2022 - Jan 2024',
     description: 'Developed key features for a mental health initiative providing online consultations with mental health professionals, improving community mental health accessibility and confidentiality.',
-    link: 'https://mind.dabadoc.com'
+    link: 'https://info.dabadoc.com/mind'
   },
   {
     id: 6,
     name: 'DabaDoc Live',
     duration: 'Apr 2022 - Jan 2024',
     description: 'Enhanced the DabaDoc Live experience by implementing interactive features and real-time communication tools to engage users and deliver live health education and consultation.',
-    link: 'https://live.dabadoc.com'
+    link: 'https://info.dabadoc.com/live'
   }
 ];
 </script>
