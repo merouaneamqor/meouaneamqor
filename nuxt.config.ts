@@ -1,4 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
@@ -20,10 +19,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'vercel-edge',
-    output: {
-      dir: '.output'
-    }
+    preset: 'vercel',
   },
 
   site: {
@@ -66,7 +62,5 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/**': { ssr: true }
-  },
-
-  compatibilityDate: '2024-08-28'
+  }
 })
