@@ -3,8 +3,26 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   modules: [
-    '@nuxtjs/tailwindcss','nuxt-jsonld','@zadigetvoltaire/nuxt-gtm','nuxt-simple-sitemap'
+    '@nuxtjs/tailwindcss','nuxt-jsonld','@zadigetvoltaire/nuxt-gtm','nuxt-simple-sitemap', '@nuxt/content'
   ],
+
+  content: {
+    // Optional: Configure the content module
+    highlight: {
+      theme: 'github-light'
+    },
+    experimental: {
+      clientDB: true
+    }
+  },
+
+  nitro: {
+    esbuild: {
+      options: {
+        target: 'esnext'
+      }
+    }
+  },
 
   app: {
     head: {
