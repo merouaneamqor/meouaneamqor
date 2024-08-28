@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build && cp -r .output/public dist/",
+    "build": "nuxt build && node scripts/post-build.js",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -13,6 +13,7 @@
     "@nuxt/devtools": "latest",
     "@nuxtjs/tailwindcss": "^6.10.1",
     "@zadigetvoltaire/nuxt-gtm": "^0.0.13",
+    "fs-extra": "^11.2.0",
     "nuxt": "^3.8.2",
     "nuxt-simple-sitemap": "^4.1.9",
     "vue": "^3.3.8",

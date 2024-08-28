@@ -27,6 +27,14 @@ export default defineNuxtConfig({
       }
     }
   },
+  site: {
+    url: process.env.NUXT_PUBLIC_SITE_URL || 'https://merouaneamqor.com',
+  },
+  sitemap: {
+    // Sitemap configuration options
+    hostname: process.env.NUXT_PUBLIC_SITE_URL || 'https://merouaneamqor.com',
+    gzip: true,
+  },
   vite: {
     optimizeDeps: {
       include: ['vue', '@vue/server-renderer']
