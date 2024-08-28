@@ -1,7 +1,7 @@
 <template>
     <div class="min-h-screen bg-gray-50 py-16">
       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <article v-if="post">
+        <article v-if="post" class="prose prose-lg max-w-none">
           <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-4">{{ post.title }}</h1>
           <div class="flex items-center text-sm text-gray-500 mb-8">
             <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -36,19 +36,40 @@
   </script>
   
   <style>
+  .prose {
+    @apply text-gray-900;
+  }
+  .prose h1 {
+    @apply text-3xl font-extrabold sm:text-4xl mb-4;
+  }
   .prose h2 {
     @apply text-2xl font-bold mt-8 mb-4;
+  }
+  .prose h3 {
+    @apply text-xl font-semibold mt-6 mb-3;
   }
   .prose p {
     @apply mb-4;
   }
-  .prose ul {
-    @apply list-disc list-inside mb-4;
+  .prose ul, .prose ol {
+    @apply mb-4 pl-5;
+  }
+  .prose li {
+    @apply mb-2;
+  }
+  .prose a {
+    @apply text-gray-600 hover:underline;
+  }
+  .prose blockquote {
+    @apply border-l-4 border-gray-300 pl-4 italic my-4;
   }
   .prose code {
-    @apply bg-gray-100 rounded px-1;
+    @apply bg-gray-100 rounded px-1 py-0.5 text-sm;
   }
   .prose pre {
     @apply bg-gray-100 rounded p-4 mb-4 overflow-x-auto;
+  }
+  .prose img {
+    @apply rounded-lg my-4;
   }
   </style>
