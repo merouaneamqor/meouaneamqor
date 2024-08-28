@@ -18,12 +18,15 @@
 <script setup lang="ts">
 
 useHead({
-
+  title: 'Merouane Amqor - Full-Stack Developer & Certified ScrumMaster®',
+  meta: [
+    { name: 'description', content: 'Portfolio of Merouane Amqor, a Full-Stack Developer and Certified ScrumMaster® with expertise in web development, team leadership, and innovative solutions.' }
+  ]
 });
 
 useSeoMeta({
-  ogTitle: 'Merouane Amqor',
-  ogDescription: 'Discover the portfolio and expertise of Merouane Amqor in web development.',
-  ogImage: 'https://avatars.githubusercontent.com/u/37594453?v=4'
-  });
+  ogTitle: 'Merouane Amqor - Full-Stack Developer & Certified ScrumMaster®',
+  ogDescription: 'Discover the portfolio and expertise of Merouane Amqor in web development, team leadership, and innovative tech solutions.',
+  ogImage: 'https://merouaneamqor.com/merouane_amqor.jpg'
+});
 </script>
