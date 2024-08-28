@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   modules: [
-    '@nuxtjs/tailwindcss','nuxt-jsonld','@zadigetvoltaire/nuxt-gtm','nuxt-simple-sitemap', '@nuxt/content'
+    '@nuxtjs/tailwindcss', 'nuxt-jsonld', '@zadigetvoltaire/nuxt-gtm', 'nuxt-simple-sitemap', '@nuxt/content'
   ],
 
   content: {
@@ -17,10 +17,16 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    preset: 'node-server',
     esbuild: {
       options: {
         target: 'esnext'
       }
+    }
+  },
+  vite: {
+    optimizeDeps: {
+      include: ['vue', '@vue/server-renderer']
     }
   },
 
@@ -44,6 +50,7 @@ export default defineNuxtConfig({
   gtm: {
     id: 'GTM-PNCBHTD5',
   },
+  ssr: true,
 
   compatibilityDate: '2024-08-28'
 })
