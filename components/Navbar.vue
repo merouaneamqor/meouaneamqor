@@ -22,7 +22,7 @@
               ]"
             >
               {{ link.text }}
-              <ExternalLink v-if="link.target === '_blank'" class="w-4 h-4 ml-1" />
+              <ExternalLink v-if="link.target === '_blank'" class="w-4 h-4 ml-1 external-link-icon" />
             </NuxtLink>
           </div>
         </div>
@@ -64,7 +64,7 @@
             @click="isMenuOpen = false"
           >
             {{ link.text }}
-            <ExternalLink v-if="link.target === '_blank'" class="w-4 h-4 ml-1" />
+            <ExternalLink v-if="link.target === '_blank'" class="w-4 h-4 ml-1 external-link-icon" />
           </NuxtLink>
         </div>
       </div>
