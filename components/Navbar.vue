@@ -8,15 +8,21 @@
           </NuxtLink>
         </div>
         <div class="hidden md:block">
-          <div class="ml-10 flex items-baseline space-x-4">
+          <div class="ml-10 flex items-center space-x-4">
             <NuxtLink 
               v-for="link in links" 
               :key="link.href" 
               :to="link.href"
               :target="link.target"
-              class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors duration-300"
+              :class="[
+                'px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300',
+                link.target === '_blank' 
+                  ? 'text-blue-600 hover:text-blue-800 hover:bg-blue-100 flex items-center' 
+                  : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+              ]"
             >
               {{ link.text }}
+              <ExternalLink v-if="link.target === '_blank'" class="w-4 h-4 ml-1" />
             </NuxtLink>
           </div>
         </div>
@@ -49,10 +55,16 @@
             :key="link.href"
             :to="link.href"
             :target="link.target"
-            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors duration-300"
+            :class="[
+              'block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300',
+              link.target === '_blank' 
+                ? 'text-blue-600 hover:text-blue-800 hover:bg-blue-100 flex items-center' 
+                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+            ]"
             @click="isMenuOpen = false"
           >
             {{ link.text }}
+            <ExternalLink v-if="link.target === '_blank'" class="w-4 h-4 ml-1" />
           </NuxtLink>
         </div>
       </div>
@@ -62,20 +74,32 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Menu, X } from 'lucide-vue-next'
+import { Menu, X, ExternalLink } from 'lucide-vue-next'
 
 const isMenuOpen = ref(false)
 
 const links = [
-  { href: 'https://github.com/merouaneamqor', text: 'GitHub', target: '_blank' },
-  { href: 'https://linkedin.com/in/merouane-amqor', text: 'LinkedIn', target: '_blank' },
   { href: '/portfolio', text: 'Portfolio' },
+  { href: '/blog', text: 'Blog' },
   { href: '/about', text: 'About' },
   { href: '/contact', text: 'Contact' },
-  { href: 'https://douq.ma', text: 'Douq.ma', target: '_blank' }
+  { href: 'https://douq.ma', text: 'Douq.ma', target: '_blank' },
+  { href: 'https://github.com/merouaneamqor', text: 'GitHub', target: '_blank' },
+  { href: 'https://linkedin.com/in/merouane-amqor', text: 'LinkedIn', target: '_blank' }
 ]
 </script>
 
 <style scoped>
-/**/
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.external-link-icon {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
 </style>
