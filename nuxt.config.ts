@@ -3,11 +3,14 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   modules: [
-    '@nuxtjs/tailwindcss', 'nuxt-jsonld', '@zadigetvoltaire/nuxt-gtm', 'nuxt-simple-sitemap', '@nuxt/content'
+    '@nuxtjs/tailwindcss',
+    'nuxt-jsonld',
+    '@zadigetvoltaire/nuxt-gtm',
+    'nuxt-simple-sitemap',
+    '@nuxt/content'
   ],
 
   content: {
-    // Optional: Configure the content module
     highlight: {
       theme: 'github-light'
     },
@@ -17,24 +20,21 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    preset: 'vercel',
     output: {
-      dir: './dist'
-    },
-    preset: 'node-server',
-    esbuild: {
-      options: {
-        target: 'esnext'
-      }
+      dir: '.output'
     }
   },
+
   site: {
     url: process.env.NUXT_PUBLIC_SITE_URL || 'https://merouaneamqor.com',
   },
+
   sitemap: {
-    // Sitemap configuration options
     hostname: process.env.NUXT_PUBLIC_SITE_URL || 'https://merouaneamqor.com',
     gzip: true,
   },
+
   vite: {
     optimizeDeps: {
       include: ['vue', '@vue/server-renderer']
@@ -61,7 +61,10 @@ export default defineNuxtConfig({
   gtm: {
     id: 'GTM-PNCBHTD5',
   },
+
   ssr: true,
 
-  compatibilityDate: '2024-08-28'
+  routeRules: {
+    '/**': { ssr: true }
+  }
 })

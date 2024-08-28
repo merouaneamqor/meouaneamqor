@@ -1,22 +1,20 @@
 {
+    "buildCommand": "pnpm run build",
+    "outputDirectory": ".output",
+    "framework": "nuxt",
     "builds": [
       {
         "src": "nuxt.config.ts",
-        "use": "@nuxtjs/vercel-builder",
-        "config": {
-          "serverFiles": ["server/**"]
-        }
+        "use": "@nuxtjs/vercel-builder@1.0.2"
       }
     ],
     "routes": [
       {
         "src": "/.*",
-        "dest": "dist/server/index.mjs"
+        "dest": ".output/server/index.mjs"
       }
     ],
-    "build": {
-      "env": {
-        "PNPM_FLAGS": "--shamefully-hoist"
-      }
+    "env": {
+      "NITRO_PRESET": "vercel"
     }
   }
