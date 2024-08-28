@@ -1,9 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+
   modules: [
     '@nuxtjs/tailwindcss','nuxt-jsonld','@zadigetvoltaire/nuxt-gtm','nuxt-simple-sitemap'
   ],
+
   app: {
     head: {
       htmlAttrs: {
@@ -20,7 +22,10 @@ export default defineNuxtConfig({
       ]
     }
   },
+
   gtm: {
     id: 'GTM-PNCBHTD5',
-  }
+  },
+
+  compatibilityDate: '2024-08-28'
 })
