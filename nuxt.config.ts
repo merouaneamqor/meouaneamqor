@@ -1,13 +1,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
-  modules: [
-    '@nuxtjs/tailwindcss',
-    'nuxt-jsonld',
-    '@zadigetvoltaire/nuxt-gtm',
-    'nuxt-simple-sitemap',
-    '@nuxt/content'
-  ],
+  modules: ['@nuxtjs/tailwindcss', 'nuxt-jsonld', '@zadigetvoltaire/nuxt-gtm', 'nuxt-simple-sitemap', '@nuxt/content', '@nuxt/image'],
 
   content: {
     highlight: {
