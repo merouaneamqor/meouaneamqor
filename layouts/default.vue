@@ -12,9 +12,48 @@
   </div>
 </template>
 
-<style>
-/* You may still need some scoped styles if they are very specific */
-</style>
+<script setup>
+import { useHead } from '#app'
+
+const keywordSuggestions = [
+  "Full-Stack Developer",
+  "Certified ScrumMaster",
+  "Web Development Expert",
+  "Software Engineering Leadership",
+  "Rapid Prototyping Specialist",
+  "Solution Design Expertise",
+  "Tech Market Research",
+  "Technology Benchmarking",
+  "MongoDB Developer",
+  "AngularJS Specialist",
+  "Vue.js Developer",
+  "React Developer",
+  "Ruby on Rails Developer",
+  "Node.js Developer",
+  "AWS Expert",
+  "Docker Specialist",
+  "Git Version Control",
+  "RESTful API Development",
+  "Front-End Development",
+  "Back-End Development",
+  "Database Management Expert",
+  "Server Administration Skills",
+  "Team Leadership in Tech",
+  "Web Application Development",
+  "Nuxt.js Developer",
+  "Laravel Developer",
+  "Blockchain in Web Solutions",
+  "Technology Innovation",
+  "Web Solutions Architect",
+  "Tech Project Leadership"
+]
+
+useHead({
+  meta: [
+    { name: 'keywords', content: keywordSuggestions.join(', ') }
+  ]
+})
+</script>
 
 <script>
 export default {
@@ -60,3 +99,7 @@ export default {
   }
 }
 </script>
+
+<style>
+/* You may still need some scoped styles if they are very specific */
+</style>
