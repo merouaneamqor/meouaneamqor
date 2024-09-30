@@ -1,6 +1,5 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
-
   modules: ['@nuxtjs/tailwindcss', 'nuxt-jsonld', '@zadigetvoltaire/nuxt-gtm', 'nuxt-simple-sitemap', '@nuxt/content', '@nuxt/image'],
 
   content: {
@@ -56,5 +55,7 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/**': { ssr: true }
-  }
+  },
+
+  compatibilityDate: '2024-09-30'
 })

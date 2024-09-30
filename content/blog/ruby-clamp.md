@@ -1,8 +1,8 @@
 ---
-title: "Understanding Ruby's clamp Method: A Powerful Tool for Value Constraints"
-date: 2023-10-20
-excerpt: 'Dive into Ruby's clamp method, a versatile feature of the Comparable module that allows for easy value constraints within specified ranges.'
-coverImage: https://picsum.photos/seed/ruby-clamp/800/400
+title: "Ruby clamp Method: A Powerful Tool for Value Constraints"
+date: 2024-09-30
+excerpt: "Dive into Ruby clamp method, a versatile feature of the Comparable module that allows for easy value constraints within specified ranges."
+coverImage: https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190902124355/ruby-programming-language.png
 ---
 
 As a Ruby developer, I've often found myself in situations where I needed to constrain a value within a specific range. Whether it's for input validation, data normalization, or ensuring values stay within acceptable bounds, Ruby's `clamp` method has proven to be an invaluable tool. In this article, we'll explore the `clamp` method, its functionality, and how it can be applied in various scenarios.

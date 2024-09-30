@@ -1,7 +1,7 @@
 ---
 title: 'Le Soutien Social Direct au Maroc : Une Perspective Réaliste'
 date: 2023-10-19
-excerpt: 'Un entrepreneur marocain partage ses réflexions sur le programme de soutien social direct, soulignant les avantages et les risques potentiels pour l'initiative individuelle et l'entrepreneuriat.'
+excerpt: "Un entrepreneur marocain partage ses réflexions sur le programme de soutien social direct, soulignant les avantages et les risques potentiels pour l'initiative individuelle et l'entrepreneuriat."
 coverImage: https://picsum.photos/seed/morocco-social/800/400
 ---
 
