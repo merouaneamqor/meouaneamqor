@@ -2,7 +2,7 @@
 title: 'From Full-Stack Developer to Development Team Lead: Lessons Learned at DabaDoc'
 date: 2024-08-10
 excerpt: 'Explore the journey and key insights gained while transitioning from a Full-Stack Developer to a Development Team Lead at DabaDoc, a leading healthcare technology company in Morocco.'
-coverImage: https://picsum.photos/seed/career-growth/800/400
+coverImage: https://avatars.githubusercontent.com/u/37594453?v=4
 ---
 
 # From Full-Stack Developer to Development Team Lead: Lessons Learned at DabaDoc
