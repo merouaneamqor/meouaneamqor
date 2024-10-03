@@ -1,7 +1,26 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxtjs/tailwindcss', 'nuxt-jsonld', '@zadigetvoltaire/nuxt-gtm', 'nuxt-simple-sitemap', '@nuxt/content', '@nuxt/image'],
-
+  tailwindcss: {
+    config: {
+      theme: {
+        extend: {
+          colors: {
+            cyan: {
+              300: '#67e8f9',
+              400: '#22d3ee',
+              500: '#06b6d4',
+            },
+            purple: {
+              300: '#d8b4fe',
+              400: '#c084fc',
+              500: '#a855f7',
+            },
+          },
+        },
+      },
+    },
+  },
   content: {
     highlight: {
       theme: 'github-light'

@@ -1,10 +1,10 @@
 <template>
-  <nav class="bg-white shadow-md">
+  <nav class="bg-gray-900 shadow-md border-b sticky border-cyan-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <div class="flex items-center">
           <NuxtLink to="/" class="flex-shrink-0">
-            <h1 class="text-2xl font-bold text-gray-800">AMQOR Merouane</h1>
+            <h1 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">AMQOR Merouane</h1>
           </NuxtLink>
         </div>
         <div class="hidden md:block">
@@ -17,8 +17,8 @@
               :class="[
                 'px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300',
                 link.target === '_blank' 
-                  ? 'text-blue-600 hover:text-blue-800 hover:bg-blue-100 flex items-center' 
-                  : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                  ? 'text-cyan-400 hover:text-cyan-300 hover:bg-blue-900 flex items-center' 
+                  : 'text-gray-300 hover:text-white hover:bg-gray-800'
               ]"
             >
               {{ link.text }}
@@ -29,7 +29,7 @@
         <div class="md:hidden">
           <button 
             @click="isMenuOpen = !isMenuOpen" 
-            class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500"
+            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500"
             aria-expanded="false"
           >
             <span class="sr-only">Open main menu</span>
@@ -58,8 +58,8 @@
             :class="[
               'block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300',
               link.target === '_blank' 
-                ? 'text-blue-600 hover:text-blue-800 hover:bg-blue-100 flex items-center' 
-                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                ? 'text-cyan-400 hover:text-cyan-300 hover:bg-blue-900 flex items-center' 
+                : 'text-gray-300 hover:text-white hover:bg-gray-800'
             ]"
             @click="isMenuOpen = false"
           >
@@ -101,5 +101,18 @@ const links = [
 
 .external-link-icon {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(103, 232, 249, 0.5), 0 0 10px rgba(103, 232, 249, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(103, 232, 249, 0.8), 0 0 20px rgba(103, 232, 249, 0.5);
+  }
+}
+
+h1 {
+  animation: glow 3s ease-in-out infinite;
 }
 </style>

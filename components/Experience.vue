@@ -1,22 +1,30 @@
 <template>
-  <section class="py-16 bg-gray-50 text-gray-900">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-semibold mb-8 border-b pb-2">Experience Timeline</h2>
-      <div class="space-y-8">
+  <section class="py-16 bg-gray-900 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-900 to-purple-900 opacity-25"></div>
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <h2 class="text-3xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Professional Experience</h2>
+      <div class="space-y-12">
         <div 
           v-for="(experience, index) in sortedExperiences" 
           :key="index" 
-          class="bg-white border rounded-md shadow-sm"
+          class="bg-gray-800 border border-cyan-900 rounded-lg shadow-2xl overflow-hidden backdrop-filter backdrop-blur-lg bg-opacity-50 hover:border-cyan-400 transition-all duration-300"
         >
-          <div class="p-4 border-b bg-gray-100">
-            <div class="flex items-center justify-between">
-              <h3 class="text-xl font-semibold text-gray-900">{{ experience.role }}</h3>
-              <span class="text-sm text-gray-600">{{ experience.startDate }} - {{ experience.endDate }}</span>
+          <div class="p-6 border-b border-gray-700 bg-gray-800 bg-opacity-50">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+              <h3 class="text-2xl font-semibold text-cyan-300">{{ experience.role }}</h3>
+              <div class="text-sm text-gray-400 mt-2 md:mt-0">
+                <span class="font-medium text-purple-400">{{ experience.company }}</span> | {{ experience.location }}
+              </div>
             </div>
+            <div class="mt-2 text-sm text-gray-400">{{ experience.startDate }} - {{ experience.endDate }}</div>
           </div>
-          <div class="p-4">
-            <p class="text-gray-700 mb-4">{{ experience.description }}</p>
-            <div class="flex flex-wrap gap-2">
+          <div class="p-6">
+            <ul class="list-disc list-inside space-y-2 text-gray-300 mb-4">
+              <li v-for="(achievement, achIndex) in experience.achievements" :key="achIndex">
+                {{ achievement }}
+              </li>
+            </ul>
+            <div class="flex flex-wrap gap-2 mt-4">
               <span 
                 v-for="(skill, skillIndex) in experience.skills" 
                 :key="skillIndex"
@@ -26,12 +34,6 @@
                 {{ skill }}
               </span>
             </div>
-          </div>
-          <div class="p-2 bg-gray-50 border-t text-sm text-gray-600 flex items-center">
-            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
-            </svg>
-            Started {{ experience.startDate }}
           </div>
         </div>
       </div>
@@ -44,89 +46,93 @@ import { ref, computed } from 'vue'
 
 interface Experience {
   role: string;
-  description: string;
+  company: string;
+  location: string;
   startDate: string;
   endDate: string;
+  achievements: string[];
   skills: string[];
 }
 
-const currentYear = new Date().getFullYear()
-
 const experiences = ref<Experience[]>([
   {
-    role: 'Founder & Technical Lead at Douq.ma',
-    description: 'Founded and lead Douq.ma, pioneering a platform that transforms how cozy spaces are discovered in Morocco. I drive the team to develop and integrate cutting-edge solutions with Nuxt.js and Laravel, and explore blockchain for review authenticity.',
-    startDate: '2024',
-    endDate: `${currentYear}`,
-    skills: ['Nuxt.js', 'Ruby On Rails', 'Team Leadership', 'Product Development']
+    role: 'TechLead',
+    company: 'DabaDoc',
+    location: 'Casablanca, Morocco',
+    startDate: 'Jan 2024',
+    endDate: 'Present',
+    achievements: [
+      'Lead a team of engineers in developing innovative healthcare web and mobile applications across Africa and the Middle East.',
+      'Successfully reduced page load times by 40%, improving site performance and user satisfaction.',
+      'Introduced Agile methodologies and Scrum practices, enhancing team collaboration and project delivery speed.',
+      'Spearheaded cloud infrastructure migration to AWS, reducing operational costs by 15%.'
+    ],
+    skills: ['Team Leadership', 'Healthcare Tech', 'Agile & Scrum', 'AWS', 'Performance Optimization']
   },
   {
-    role: 'Development Team Lead at DabaDoc',
-    description: 'Leading development initiatives and managing a team focused on deploying scalable health solutions. Enhanced system capabilities with a blend of modern technologies and collaborative efforts, significantly improving platform engagement and performance.',
-    startDate: '2024',
-    endDate: `${currentYear}`,
-    skills: ['Team Management', 'Scalable Solutions', 'Health Tech', 'Performance Optimization']
+    role: 'Full-stack Developer',
+    company: 'DabaDoc',
+    location: 'Casablanca, Morocco',
+    startDate: 'Apr 2022',
+    endDate: 'Dec 2023',
+    achievements: [
+      'Collaborated with product and design teams to develop new features, improving user engagement by 25%.',
+      'Utilized Ruby on Rails, MongoDB, AngularJS, and Tailwind to build responsive web applications.',
+      'Implemented cloud-based deployments on AWS and Heroku, ensuring seamless scalability and uptime.'
+    ],
+    skills: ['Ruby on Rails', 'MongoDB', 'AngularJS', 'Tailwind CSS', 'AWS', 'Heroku']
   },
   {
-    role: 'Full-stack Developer at DabaDoc',
-    description: 'Guided and mentored a development team, focusing on leveraging emerging technologies to innovate and enhance feature sets. Worked closely with the marketing team to boost brand recognition and user engagement.',
-    startDate: '2022',
-    endDate: '2024',
-    skills: ['Full-stack Development', 'Mentoring', 'Emerging Technologies', 'User Engagement']
+    role: 'Software Engineer',
+    company: 'Majorel',
+    location: 'Casablanca, Morocco',
+    startDate: 'May 2020',
+    endDate: 'Apr 2022',
+    achievements: [
+      'Worked on both front-end and back-end development for various clients, delivering comprehensive web solutions.',
+      'Collaborated with cross-functional teams to implement scalable and efficient systems, ensuring seamless user experiences.'
+    ],
+    skills: ['Full-stack Development', 'Cross-functional Collaboration', 'Scalable Systems']
   },
   {
-    role: 'Software Engineer at Majorel',
-    description: 'Specialized in front-end development, focusing on enhancing application interfaces and user experiences. Utilized a wide array of technologies including Ruby on Rails, AngularJS, and cloud services, to deliver high-quality software solutions.',
-    startDate: '2019',
-    endDate: '2022',
-    skills: ['Front-end Development', 'Ruby on Rails', 'AngularJS', 'Cloud Services']
-  },
-  {
-    role: 'Co-founder, Meram / Texam',
-    description: 'Co-founded and engineered a comprehensive e-commerce platform using Ruby on Rails. Designed and deployed a JSON API for mobile application integration, enhancing the digital shopping experience.',
-    startDate: '2020',
-    endDate: `${currentYear}`,
-    skills: ['E-commerce', 'Ruby on Rails', 'API Development', 'Mobile Integration']
-  },
-  {
-    role: 'Information System Developer at Riad Raha',
-    description: 'Developed and optimized a real estate sales management system, significantly boosting business operations and client service efficiency.',
-    startDate: '2021',
-    endDate: '2021',
-    skills: ['Information Systems', 'Real Estate Tech', 'Business Operations']
+    role: 'Full-stack Developer',
+    company: 'Majorel',
+    location: 'Casablanca, Morocco',
+    startDate: 'Mar 2018',
+    endDate: 'Apr 2020',
+    achievements: [
+      "Developed websites for Solocal's clients from Morocco while Solocal was based in France.",
+      'Gained valuable experience in remote collaboration and international project management.'
+    ],
+    skills: ['Web Development', 'Remote Collaboration', 'International Projects']
   }
 ])
 
 const sortedExperiences = computed(() => {
   return [...experiences.value].sort((a, b) => {
-    return parseInt(b.startDate) - parseInt(a.startDate)
+    return new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
   })
 })
 
 const getSkillColor = (skill: string) => {
   const colors = {
-    'Nuxt.js': 'bg-green-100 text-green-800',
-    'Ruby On Rails': 'bg-red-100 text-red-800',
-    'Team Leadership': 'bg-blue-100 text-blue-800',
-    'Product Development': 'bg-purple-100 text-purple-800',
-    'Team Management': 'bg-indigo-100 text-indigo-800',
-    'Scalable Solutions': 'bg-yellow-100 text-yellow-800',
-    'Health Tech': 'bg-pink-100 text-pink-800',
-    'Performance Optimization': 'bg-orange-100 text-orange-800',
-    'Full-stack Development': 'bg-teal-100 text-teal-800',
-    'Mentoring': 'bg-cyan-100 text-cyan-800',
-    'Emerging Technologies': 'bg-lime-100 text-lime-800',
-    'User Engagement': 'bg-sky-100 text-sky-800',
-    'Front-end Development': 'bg-amber-100 text-amber-800',
-    'AngularJS': 'bg-red-100 text-red-800',
-    'Cloud Services': 'bg-blue-100 text-blue-800',
-    'E-commerce': 'bg-green-100 text-green-800',
-    'API Development': 'bg-violet-100 text-violet-800',
-    'Mobile Integration': 'bg-fuchsia-100 text-fuchsia-800',
-    'Information Systems': 'bg-emerald-100 text-emerald-800',
-    'Real Estate Tech': 'bg-rose-100 text-rose-800',
-    'Business Operations': 'bg-slate-100 text-slate-800'
+    'Team Leadership': 'bg-blue-900 text-cyan-300',
+    'Healthcare Tech': 'bg-green-900 text-green-300',
+    'Agile & Scrum': 'bg-purple-900 text-purple-300',
+    'AWS': 'bg-orange-900 text-orange-300',
+    'Performance Optimization': 'bg-red-900 text-red-300',
+    'Ruby on Rails': 'bg-pink-900 text-pink-300',
+    'MongoDB': 'bg-green-900 text-green-300',
+    'AngularJS': 'bg-blue-900 text-blue-300',
+    'Tailwind CSS': 'bg-teal-900 text-teal-300',
+    'Heroku': 'bg-purple-900 text-purple-300',
+    'Full-stack Development': 'bg-indigo-900 text-indigo-300',
+    'Cross-functional Collaboration': 'bg-yellow-900 text-yellow-300',
+    'Scalable Systems': 'bg-blue-900 text-blue-300',
+    'Web Development': 'bg-green-900 text-green-300',
+    'Remote Collaboration': 'bg-red-900 text-red-300',
+    'International Projects': 'bg-purple-900 text-purple-300'
   }
-  return colors[skill as keyof typeof colors] || 'bg-gray-100 text-gray-800'
+  return colors[skill as keyof typeof colors] || 'bg-gray-800 text-gray-300'
 }
 </script>
