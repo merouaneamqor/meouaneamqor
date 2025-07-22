@@ -2,7 +2,7 @@
   <section class="py-12 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 border-b border-slate-700/50 relative overflow-hidden">
     <div class="container mx-auto px-6 lg:px-8 flex flex-col-reverse lg:flex-row items-center justify-between gap-12 relative z-10">
       <div class="w-full lg:w-1/2 flex items-center justify-center mb-8 lg:mb-0">
-        <img src="https://www.agile42.com/za/wp-content/uploads/sites/23/2024/02/CSM-1.png" alt="" srcset="">
+        <img src="/assets/images/CSM-1.webp" alt="Scrum Master" class="w-auto h-auto rounded-lg opacity-80">
       </div>
       <!-- Left: Manager Info -->
       <div class="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
