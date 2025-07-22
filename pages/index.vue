@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-gradient-to-br from-gray-900 to-blue-900 text-white">
+  <div class="min-h-screen flex flex-col bg-white text-gray-900 font-sans">
     <Header />
     <Introduction />
     <Skills />
@@ -24,10 +24,6 @@ useSeoMeta({
 });
 </script>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@400;500;700&display=swap');
+<style scoped>
 
-body {
-  font-family: 'Orbitron', sans-serif;
-}
-</style>
+</style>  

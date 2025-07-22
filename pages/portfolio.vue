@@ -1,42 +1,37 @@
 <template>
-  <section id="portfolio" class="py-16 bg-gradient-to-br from-gray-50 to-white">
+  <section id="portfolio" class="py-16 bg-white font-sans">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="mx-auto">
-        <h2 class="text-4xl font-bold text-gray-900 mb-2 text-center">My Portfolio</h2>
-        <p class="text-lg text-gray-600 mb-12 text-center max-w-2xl mx-auto">
-          Showcasing a curated selection of projects that highlight my expertise in web development, 
-          healthcare tech, and innovative solutions.
-        </p>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div v-for="project in projects" :key="project.id" 
-               class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col">
-            <div class="p-6 flex-grow">
-              <h3 class="text-2xl font-semibold text-gray-800 mb-2">{{ project.name }}</h3>
-              <p class="text-sm text-blue-600 mb-4 flex items-center">
-                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                </svg>
-                {{ project.duration }}
-              </p>
-              <p class="text-gray-600 mb-4">{{ project.description }}</p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span v-for="(tech, index) in project.technologies" :key="index"
-                      class="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">
-                  {{ tech }}
-                </span>
-              </div>
+      <h2 class="text-4xl font-bold text-blue-900 mb-2 text-center">My Portfolio</h2>
+      <p class="text-lg text-gray-700 mb-12 text-center max-w-2xl mx-auto">
+        Showcasing a curated selection of projects that highlight my expertise in web development, healthcare tech, and innovative solutions.
+      </p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div v-for="project in projects" :key="project.id" class="bg-blue-50 rounded-xl overflow-hidden shadow-sm flex flex-col">
+          <div class="p-6 flex-grow">
+            <h3 class="text-2xl font-semibold text-blue-800 mb-2">{{ project.name }}</h3>
+            <p class="text-sm text-blue-600 mb-4 flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              {{ project.duration }}
+            </p>
+            <p class="text-gray-700 mb-4">{{ project.description }}</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span v-for="(tech, index) in project.technologies" :key="index"
+                    class="px-2 py-1 bg-white text-blue-900 text-xs font-semibold rounded-full border border-blue-100">
+                {{ tech }}
+              </span>
             </div>
-            <div class="px-6 py-4 bg-gray-50 flex justify-between items-center">
-              <a :href="project.link" target="_blank" rel="noopener noreferrer" 
-                 class="text-blue-600 hover:text-blue-800 font-medium flex items-center transition-colors duration-300">
-                Learn more
-                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                </svg>
-              </a>
-              <span class="text-xs text-gray-500">Project ID: {{ project.id }}</span>
-            </div>
+          </div>
+          <div class="px-6 py-4 bg-blue-100 flex justify-between items-center">
+            <a :href="project.link" target="_blank" rel="noopener noreferrer" 
+               class="text-blue-700 hover:text-blue-900 font-semibold flex items-center transition-colors duration-200">
+              Learn more
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+              </svg>
+            </a>
+            <span class="text-xs text-gray-500">Project ID: {{ project.id }}</span>
           </div>
         </div>
       </div>
@@ -106,5 +101,4 @@ const projects: Project[] = [
 ];
 </script>
 
-<style scoped>
-/** */</style>
+<!-- No custom styles needed, all handled by Tailwind -->
