@@ -1,16 +1,16 @@
 <template>
-  <section class="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-b border-slate-700/50 relative overflow-hidden">
+  <section class="py-12 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-b border-slate-700/50 relative overflow-hidden">
     <!-- Subtle Background Pattern -->
-    <div class="absolute inset-0 opacity-5">
+    <div class="absolute inset-0 opacity-2">
       <div class="skills-grid-pattern"></div>
     </div>
     
     <!-- Floating Tech Icons -->
     <div class="absolute inset-0 overflow-hidden">
-      <div class="floating-tech tech-1"></div>
-      <div class="floating-tech tech-2"></div>
-      <div class="floating-tech tech-3"></div>
-      <div class="floating-tech tech-4"></div>
+      <div class="floating-tech tech-1" style="opacity:0.2;"></div>
+      <div class="floating-tech tech-2" style="opacity:0.2;"></div>
+      <div class="floating-tech tech-3" style="opacity:0.2;"></div>
+      <div class="floating-tech tech-4" style="opacity:0.2;"></div>
     </div>
 
     <div class="container mx-auto px-6 lg:px-8 relative z-10">
@@ -21,15 +21,15 @@
         </h2>
         <div class="w-24 h-1 bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400 rounded-full mx-auto mb-4"></div>
         <p class="text-slate-300 text-lg max-w-2xl mx-auto">
-          A comprehensive toolkit for building modern, scalable applications and leading high-performing teams
+          My core technologies and tools for building robust, modern web applications and leading teams.
         </p>
       </div>
 
       <!-- Skills Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
         
         <!-- Backend & Infrastructure -->
-        <div class="skill-domain">
+        <div class="skill-domain p-6">
           <div class="skill-domain-header">
             <div class="flex items-center gap-3 mb-6">
               <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center">
@@ -58,7 +58,7 @@
         </div>
 
         <!-- Frontend & UI -->
-        <div class="skill-domain">
+        <div class="skill-domain p-6">
           <div class="skill-domain-header">
             <div class="flex items-center gap-3 mb-6">
               <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-lg flex items-center justify-center">
@@ -87,7 +87,7 @@
         </div>
 
         <!-- DevOps & Tools -->
-        <div class="skill-domain">
+        <div class="skill-domain p-6">
           <div class="skill-domain-header">
             <div class="flex items-center gap-3 mb-6">
               <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
@@ -117,7 +117,7 @@
         </div>
 
         <!-- Leadership & Process -->
-        <div class="skill-domain">
+        <div class="skill-domain p-6">
           <div class="skill-domain-header">
             <div class="flex items-center gap-3 mb-6">
               <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center">

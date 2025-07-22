@@ -1,128 +1,36 @@
 <template>
-  <section class="py-20 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 border-b border-slate-700/50 relative overflow-hidden">
-    <!-- Subtle Background Pattern -->
-    <div class="absolute inset-0 opacity-5">
-      <div class="about-grid-pattern"></div>
-    </div>
-    
-    <!-- Floating Elements -->
-    <div class="absolute inset-0 overflow-hidden">
-      <div class="floating-element element-1"></div>
-      <div class="floating-element element-2"></div>
-    </div>
-
-    <div class="container mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-start justify-between gap-16 relative z-10">
+  <section class="py-12 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 border-b border-slate-700/50 relative overflow-hidden">
+    <div class="container mx-auto px-6 lg:px-8 flex flex-col-reverse lg:flex-row items-center justify-between gap-12 relative z-10">
+      <div class="w-full lg:w-1/2 flex items-center justify-center mb-8 lg:mb-0">
+        <img src="https://www.agile42.com/za/wp-content/uploads/sites/23/2024/02/CSM-1.png" alt="" srcset="">
+      </div>
+      <!-- Left: Manager Info -->
+      <div class="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
+        <h2 class="text-xl lg:text-2xl font-semibold mb-4 text-emerald-400">Engineering Manager & Certified ScrumMaster®</h2>
+        <p class="text-lg text-slate-300 mb-6 max-w-xl">
+          Empowering teams to deliver world-class products through vision, empathy, and operational excellence. Passionate about building high-performing cultures and driving digital transformation.
+        </p>
+        <ul class="mb-8 w-full max-w-md space-y-3">
+          <li class="flex items-center gap-3 text-slate-300 text-base">
+            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Led and mentored cross-functional teams of 10+ engineers
+          </li>
+          <li class="flex items-center gap-3 text-slate-300 text-base">
+            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Scaled products to 1M+ users in healthcare and tech
+          </li>
+          <li class="flex items-center gap-3 text-slate-300 text-base">
+            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Agile & Scrum champion, fostering continuous improvement
+          </li>
+          <li class="flex items-center gap-3 text-slate-300 text-base">
+            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Advocate for diversity, inclusion, and team growth
+          </li>
+        </ul>
+        <NuxtLink to="/portfolio" class="inline-block px-8 py-4 bg-emerald-600 text-white font-semibold rounded-lg shadow hover:bg-emerald-700 transition">View My Work</NuxtLink>
+      </div>
       
-      <!-- About Me Section -->
-      <div class="lg:w-1/2 w-full flex flex-col items-center lg:items-start text-center lg:text-left">
-        <div class="mb-8">
-          <h2 class="text-3xl lg:text-4xl font-bold text-white mb-2 professional-glow">
-            About Me
-          </h2>
-          <div class="w-16 h-1 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full"></div>
-        </div>
-        
-        <div class="bg-slate-800/40 backdrop-blur-sm border border-slate-600/30 rounded-xl p-8 mb-8 w-full">
-          <p class="text-slate-300 leading-relaxed text-lg mb-6">
-            I'm a full-stack developer specializing in Ruby on Rails with a passion for building 
-            fast, scalable applications. I combine clean code practices with strong product thinking 
-            to deliver exceptional user experiences.
-          </p>
-          
-          <div class="space-y-4 mb-6">
-            <div class="flex items-center gap-3 text-slate-300">
-              <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-              <span class="text-sm">Certified ScrumMaster® (CSM)</span>
-            </div>
-            <div class="flex items-center gap-3 text-slate-300">
-              <div class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-              <span class="text-sm">Startup Co-founder & Tech Lead</span>
-            </div>
-            <div class="flex items-center gap-3 text-slate-300">
-              <div class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-              <span class="text-sm">Full-Stack Development Expert</span>
-            </div>
-          </div>
-        </div>
-
-        <NuxtLink
-          to="/portfolio"
-          class="professional-cta-button group"
-        >
-          <span class="relative z-10 flex items-center gap-2">
-            View My Work
-            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-            </svg>
-          </span>
-          <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
-        </NuxtLink>
-      </div>
-
-      <!-- Skills Section -->
-      <div class="lg:w-1/2 w-full flex flex-col items-center lg:items-start text-center lg:text-left">
-        <div class="mb-8">
-          <h3 class="text-2xl lg:text-3xl font-bold text-white mb-2 professional-glow">
-            Technical Expertise
-          </h3>
-          <div class="w-12 h-1 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full"></div>
-        </div>
-
-        <!-- Skills Categories -->
-        <div class="space-y-8 w-full">
-          <!-- Backend & Frameworks -->
-          <div class="skill-category">
-            <h4 class="text-lg font-semibold text-slate-200 mb-4 flex items-center gap-2">
-              <div class="w-3 h-3 bg-emerald-400 rounded-full"></div>
-              Backend & Frameworks
-            </h4>
-            <div class="flex flex-wrap gap-3">
-              <span v-for="tech in backendTech" :key="tech" class="skill-tag backend-tag">
-                {{ tech }}
-              </span>
-            </div>
-          </div>
-
-          <!-- Frontend & UI -->
-          <div class="skill-category">
-            <h4 class="text-lg font-semibold text-slate-200 mb-4 flex items-center gap-2">
-              <div class="w-3 h-3 bg-cyan-400 rounded-full"></div>
-              Frontend & UI
-            </h4>
-            <div class="flex flex-wrap gap-3">
-              <span v-for="tech in frontendTech" :key="tech" class="skill-tag frontend-tag">
-                {{ tech }}
-              </span>
-            </div>
-          </div>
-
-          <!-- DevOps & Tools -->
-          <div class="skill-category">
-            <h4 class="text-lg font-semibold text-slate-200 mb-4 flex items-center gap-2">
-              <div class="w-3 h-3 bg-blue-400 rounded-full"></div>
-              DevOps & Tools
-            </h4>
-            <div class="flex flex-wrap gap-3">
-              <span v-for="tech in devopsTech" :key="tech" class="skill-tag devops-tag">
-                {{ tech }}
-              </span>
-            </div>
-          </div>
-
-          <!-- Leadership & Process -->
-          <div class="skill-category">
-            <h4 class="text-lg font-semibold text-slate-200 mb-4 flex items-center gap-2">
-              <div class="w-3 h-3 bg-purple-400 rounded-full"></div>
-              Leadership & Process
-            </h4>
-            <div class="flex flex-wrap gap-3">
-              <span v-for="tech in leadershipTech" :key="tech" class="skill-tag leadership-tag">
-                {{ tech }}
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 </template>
@@ -204,6 +112,22 @@ const leadershipTech = [
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
+/* Scrum Master SVG Styling */
+.scrum-illustration-container {
+  position: relative;
+  padding: 2rem;
+}
+
+.scrum-master-svg {
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+  animation: gentle-float 6s ease-in-out infinite;
+}
+
+@keyframes gentle-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+}
+
 /* Skill Categories */
 .skill-category {
   @apply bg-slate-800/30 backdrop-blur-sm border border-slate-600/20 rounded-lg p-6;
@@ -243,6 +167,14 @@ const leadershipTech = [
   
   .skill-category h4 {
     justify-content: center;
+  }
+}
+
+/* Mobile responsiveness for SVG */
+@media (max-width: 768px) {
+  .scrum-master-svg {
+    width: 300px;
+    height: 300px;
   }
 }
 </style>

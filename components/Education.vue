@@ -1,5 +1,5 @@
 <template>
-  <section class="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-b border-slate-700/50 relative overflow-hidden">
+  <section class="py-12 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-b border-slate-700/50 relative overflow-hidden">
     <!-- Subtle Background Pattern -->
     <div class="absolute inset-0 opacity-5">
       <div class="education-grid-pattern"></div>
@@ -20,7 +20,7 @@
         </h2>
         <div class="w-24 h-1 bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400 rounded-full mx-auto mb-4"></div>
         <p class="text-slate-300 text-lg max-w-2xl mx-auto">
-          Advanced education in computer science with leadership experience in academic organizations
+          My academic background in computer science and leadership.
         </p>
       </div>
 

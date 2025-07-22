@@ -1,5 +1,5 @@
 <template>
-  <section class="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-b border-slate-700/50 relative overflow-hidden">
+  <section class="py-12 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-b border-slate-700/50 relative overflow-hidden">
     <!-- Subtle Background Pattern -->
     <div class="absolute inset-0 opacity-5">
       <div class="projects-grid-pattern"></div>
@@ -21,21 +21,21 @@
         </h2>
         <div class="w-24 h-1 bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400 rounded-full mx-auto mb-4"></div>
         <p class="text-slate-300 text-lg max-w-2xl mx-auto">
-          Innovative solutions spanning healthcare, e-commerce, and real estate sectors
+          Selected projects that showcase my technical expertise and product impact.
         </p>
       </div>
 
       <!-- Projects Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
         <div 
           v-for="(project, index) in projects"
           :key="project.name"
           class="project-card group"
         >
-          <div class="bg-slate-800/40 backdrop-blur-sm border border-slate-600/30 rounded-xl overflow-hidden transition-all duration-300 hover:border-slate-500/50 hover:bg-slate-800/60 h-full flex flex-col">
+          <div class="bg-slate-800/40 backdrop-blur-sm border border-slate-600/30 rounded-xl overflow-hidden transition-all duration-300 hover:border-slate-500/50 hover:bg-slate-800/60 h-full flex flex-col p-6">
             
             <!-- Project Header -->
-            <div class="p-8 border-b border-slate-600/20">
+            <div class="p-6 border-b border-slate-600/20">
               <div class="flex items-start gap-4">
                 <!-- Project Icon -->
                 <div class="flex-shrink-0">
@@ -69,7 +69,7 @@
             </div>
 
             <!-- Project Content -->
-            <div class="p-8 flex-1 flex flex-col">
+            <div class="p-6 flex-1 flex flex-col">
               <!-- Description -->
               <p class="text-slate-300 leading-relaxed mb-6 flex-1">
                 {{ project.description }}
@@ -169,7 +169,7 @@ import { ArrowRight } from 'lucide-vue-next'
 const projects = [
   {
     name: 'DabaDoc Healthcare Platform',
-    description: 'Led the development of a comprehensive healthcare platform connecting patients with doctors across Africa and the Middle East. Implemented scalable architecture serving thousands of users daily.',
+    description: 'Architected and delivered a scalable healthcare platform connecting patients with doctors across Africa and the Middle East. Focused on secure data, real-time scheduling, and high availability.',
     technologies: ['Ruby on Rails', 'AngularJS', 'MongoDB', 'AWS'],
     category: 'healthcare',
     status: 'Live Production',
@@ -183,7 +183,7 @@ const projects = [
   },
   {
     name: 'Douq.ma',
-    description: 'Founded and developed a platform for discovering cozy spaces in Morocco, integrating cutting-edge technologies and exploring blockchain for review authenticity.',
+    description: 'Founded and developed a platform for discovering cozy spaces in Morocco, integrating advanced mapping and blockchain for review authenticity.',
     technologies: ['Nuxt.js', 'Laravel', 'Blockchain'],
     category: 'discovery',
     status: 'Founded',
@@ -197,7 +197,7 @@ const projects = [
   },
   {
     name: 'Meram / Texam E-commerce Platform',
-    description: 'Co-founded and engineered a comprehensive e-commerce platform with mobile application integration, handling complex inventory management and payment processing.',
+    description: 'Co-founded and engineered an e-commerce platform with mobile integration, handling complex inventory and payment flows.',
     technologies: ['Ruby on Rails', 'React Native', 'PostgreSQL'],
     category: 'ecommerce',
     status: 'Co-founded',
@@ -211,7 +211,7 @@ const projects = [
   },
   {
     name: 'Real Estate Sales Management System',
-    description: 'Developed and optimized a comprehensive system for Riad Raha, significantly boosting business operations and client service efficiency through automated workflows.',
+    description: 'Built and optimized a real estate management system for Riad Raha, automating workflows and improving client service efficiency.',
     technologies: ['Ruby on Rails', 'Vue.js', 'MySQL'],
     category: 'realestate',
     status: 'Client Project',

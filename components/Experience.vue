@@ -1,15 +1,15 @@
 <template>
-  <section class="py-20 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 border-b border-slate-700/50 relative overflow-hidden">
+  <section class="py-12 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 border-b border-slate-700/50 relative overflow-hidden">
     <!-- Subtle Background Pattern -->
-    <div class="absolute inset-0 opacity-5">
+    <div class="absolute inset-0 opacity-2">
       <div class="experience-grid-pattern"></div>
     </div>
     
     <!-- Timeline Elements -->
     <div class="absolute inset-0 overflow-hidden">
-      <div class="timeline-dot dot-1"></div>
-      <div class="timeline-dot dot-2"></div>
-      <div class="timeline-dot dot-3"></div>
+      <div class="timeline-dot dot-1" style="opacity:0.2;"></div>
+      <div class="timeline-dot dot-2" style="opacity:0.2;"></div>
+      <div class="timeline-dot dot-3" style="opacity:0.2;"></div>
     </div>
 
     <div class="container mx-auto px-6 lg:px-8 relative z-10">
@@ -20,7 +20,7 @@
         </h2>
         <div class="w-24 h-1 bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400 rounded-full mx-auto mb-4"></div>
         <p class="text-slate-300 text-lg max-w-2xl mx-auto">
-          A progressive career path from developer to tech leader, driving innovation in healthcare technology
+          My path from developer to tech lead, delivering impact across multiple industries.
         </p>
       </div>
 
@@ -30,7 +30,7 @@
         <div class="timeline-line absolute top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-400 via-cyan-400 to-blue-400 opacity-30"></div>
         
         <!-- Experience Cards -->
-        <div class="space-y-12">
+        <div class="space-y-8">
           <div 
             v-for="(experience, index) in sortedExperiences"
             :key="index"
@@ -49,7 +49,7 @@
 
             <!-- Experience Card -->
             <div class="flex-1 experience-card group">
-              <div class="bg-slate-800/40 backdrop-blur-sm border border-slate-600/30 rounded-xl p-8 transition-all duration-300 hover:border-slate-500/50 hover:bg-slate-800/60">
+              <div class="bg-slate-800/40 backdrop-blur-sm border border-slate-600/30 rounded-xl p-6 transition-all duration-300 hover:border-slate-500/50 hover:bg-slate-800/60">
                 
                 <!-- Header -->
                 <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
@@ -152,7 +152,7 @@ const experiences = ref<Experience[]>([
     startDate: 'Jan 2024',
     endDate: 'Present',
     achievements: [
-      'Lead a team of engineers in developing innovative healthcare web and mobile applications across Africa and the Middle East.',
+      'Led a team of engineers in developing innovative healthcare web and mobile applications across Africa and the Middle East.',
       'Successfully reduced page load times by 40%, improving site performance and user satisfaction.',
       'Introduced Agile methodologies and Scrum practices, enhancing team collaboration and project delivery speed.',
       'Spearheaded cloud infrastructure migration to AWS, reducing operational costs by 15%.'
