@@ -1,170 +1,132 @@
 <template>
-  <section class="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-b border-slate-700/50 relative overflow-hidden">
-    <!-- Enhanced background pattern -->
-    <div class="absolute inset-0 opacity-5">
-      <div class="education-grid-pattern"></div>
+  <section class="py-16 bg-academic-dark border-b border-academic-border relative overflow-hidden font-sans">
+    <!-- Subtle parchment/thesis-like background texture -->
+    <div class="absolute inset-0 opacity-5 pointer-events-none">
+      <div class="academic-texture"></div>
+    </div>
+    <!-- Floating elements for a scholarly yet digital feel -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="floating-academic elem-1"></div>
+      <div class="floating-academic elem-2"></div>
+      <div class="floating-academic elem-3"></div>
     </div>
     
-    <!-- Enhanced floating academic elements -->
-    <div class="absolute inset-0 overflow-hidden">
-      <div class="academic-element element-1"></div>
-      <div class="academic-element element-2"></div>
-      <div class="academic-element element-3"></div>
-      <div class="academic-element element-4"></div>
-    </div>
-
-    <div class="container mx-auto px-6 lg:px-8 relative z-10">
-      <!-- Enhanced section header -->
-      <div class="text-center mb-20">
-        <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6 professional-glow relative inline-block">
-          <span class="relative z-10">Academic Foundation</span>
-          <span class="absolute inset-0 bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent opacity-20">Academic Foundation</span>
+    <div class="container mx-auto px-4 sm:px-6 relative z-10 max-w-5xl">
+      <!-- Section header -->
+      <div class="mb-10">
+        <div class="flex items-center gap-2 mb-2">
+          <!-- Academic/Coding icon set -->
+          <Icon name="mdi:book-open-variant" class="text-academic-blue w-5 h-5" />
+          <Icon name="mdi:code-braces" class="text-academic-green w-5 h-5" />
+        </div>
+        <h2 class="text-3xl font-bold text-academic-text mb-2">
+          // Academic_Foundation.md
         </h2>
-        <div class="w-24 h-1 bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400 rounded-full mx-auto mb-6"></div>
-        <p class="text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed">
-          My academic background in computer science and leadership.
+        <div class="w-24 h-0.5 bg-academic-green mb-4"></div>
+        <p class="text-academic-text-secondary text-sm">
+          // My academic background in computer science and leadership.
         </p>
       </div>
 
-      <!-- Enhanced education card -->
-      <div class="max-w-4xl mx-auto">
-        <div class="education-card group">
-          <div class="bg-slate-800/40 backdrop-blur-sm border border-slate-600/30 rounded-2xl overflow-hidden transition-all duration-500 hover:border-slate-500/50 hover:bg-slate-800/60 shadow-xl hover:shadow-2xl">
-            
-            <!-- Enhanced card header with icon -->
-            <div class="bg-gradient-to-r from-slate-700/50 to-slate-800/50 p-10 border-b border-slate-600/30">
-              <div class="flex flex-col md:flex-row items-start md:items-center gap-8">
-                <!-- Enhanced academic icon -->
-                <div class="flex-shrink-0">
-                  <div class="w-20 h-20 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-emerald-500/20 transition-all duration-300">
-                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/>
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
-                    </svg>
-                  </div>
-                </div>
-
-                <!-- Enhanced degree information -->
-                <div class="flex-1">
-                  <h3 class="text-3xl font-bold text-white mb-4 group-hover:text-emerald-300 transition-colors duration-300">
-                    Master in Computer Science
-                  </h3>
-                  <p class="text-xl text-slate-300 mb-6 font-medium">
-                    Engineering in Networks & Multimedia
-                  </p>
-                  
-                  <!-- Enhanced institution and date -->
-                  <div class="flex flex-col sm:flex-row sm:items-center gap-6">
-                    <div class="flex items-center gap-4">
-                      <div class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
-                      <span class="text-slate-200 text-lg font-semibold">SUPEMIR</span>
-                    </div>
-                    <div class="flex items-center gap-4">
-                      <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                      </svg>
-                      <span class="text-slate-300 text-lg">2019 - 2021</span>
-                    </div>
-                  </div>
-                </div>
+      <!-- Main content container -->
+      <div class="bg-academic-card-bg border border-academic-border rounded-lg overflow-hidden shadow-xl">
+        <!-- Degree Header -->
+        <div class="px-6 py-5 bg-academic-header-bg border-b border-academic-border">
+          <div class="flex flex-col md:flex-row items-start md:items-center gap-4">
+            <div class="flex-shrink-0">
+              <div class="w-14 h-14 bg-academic-blue/20 border border-academic-blue/30 rounded-lg flex items-center justify-center">
+                <img src="/assets/images/supemir.jpg" alt="BDE" class="w-14 h-14 rounded-lg p-1 grayscale" />
               </div>
             </div>
-
-            <!-- Enhanced card body -->
-            <div class="p-10">
-              <!-- Enhanced leadership roles -->
-              <div class="mb-12">
-                <h4 class="text-xl font-semibold text-slate-200 mb-8 flex items-center gap-3">
-                  <div class="w-3 h-3 bg-cyan-400 rounded-full"></div>
-                  Leadership Positions
-                </h4>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <!-- Junior Enterprise Club -->
-                  <div class="leadership-role group/role">
-                    <div class="bg-slate-700/30 backdrop-blur-sm border border-slate-600/30 rounded-xl p-8 transition-all duration-300 hover:border-emerald-500/50 hover:bg-slate-700/50 shadow-lg hover:shadow-xl">
-                      <div class="flex items-center gap-4 mb-5">
-                        <div class="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-500 rounded-xl flex items-center justify-center shadow-md">
-                          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H9m0 0H5m4 0V9a2 2 0 012-2h2a2 2 0 012 2v12"/>
-                          </svg>
-                        </div>
-                        <div>
-                          <h5 class="font-bold text-white text-lg">President</h5>
-                          <p class="text-sm text-slate-400">Junior Enterprise Club</p>
-                        </div>
-                      </div>
-                      <p class="text-slate-300">
-                        Led entrepreneurial initiatives and business development projects within the academic community.
-                      </p>
-                      <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent rounded-xl opacity-0 group-hover/role:opacity-100 transition-opacity duration-500"></div>
-                    </div>
-                  </div>
-
-                  <!-- Student Union -->
-                  <div class="leadership-role group/role">
-                    <div class="bg-slate-700/30 backdrop-blur-sm border border-slate-600/30 rounded-xl p-8 transition-all duration-300 hover:border-cyan-500/50 hover:bg-slate-700/50 shadow-lg hover:shadow-xl">
-                      <div class="flex items-center gap-4 mb-5">
-                        <div class="w-12 h-12 bg-gradient-to-br from-cyan-400 to-cyan-500 rounded-xl flex items-center justify-center shadow-md">
-                          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-                          </svg>
-                        </div>
-                        <div>
-                          <h5 class="font-bold text-white text-lg">President</h5>
-                          <p class="text-sm text-slate-400">Student Union (BDE)</p>
-                        </div>
-                      </div>
-                      <p class="text-slate-300">
-                        Represented student interests and organized campus-wide events and activities.
-                      </p>
-                      <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent rounded-xl opacity-0 group-hover/role:opacity-100 transition-opacity duration-500"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Enhanced institution information -->
-              <div class="bg-slate-700/20 backdrop-blur-sm border border-slate-600/20 rounded-xl p-8 group/about">
-                <h4 class="text-xl font-semibold text-slate-200 mb-5 flex items-center gap-3">
-                  <div class="w-3 h-3 bg-blue-400 rounded-full"></div>
-                  About SUPEMIR
-                </h4>
-                <p class="text-slate-300 leading-relaxed">
-                  SUPEMIR is now an institution equivalent to public status, offering comprehensive degree programs 
-                  in computer science, management, marketing, and entrepreneurship. The institution focuses on 
-                  developing both technical expertise and leadership skills in its graduates.
-                </p>
-                <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent rounded-xl opacity-0 group-hover/about:opacity-100 transition-opacity duration-500"></div>
+            <div>
+              <h3 class="text-xl font-bold text-academic-text">Master in Computer Science</h3>
+              <p class="text-academic-green font-medium">Engineering in Networks & Multimedia</p>
+              <div class="flex flex-wrap items-center gap-3 mt-2 text-xs text-academic-text-secondary">
+                <span class="flex items-center gap-1">
+                  <Icon name="mdi:domain" class="w-4 h-4" />
+                  SUPEMIR
+                </span>
+                <span class="flex items-center gap-1">
+                  <Icon name="mdi:calendar-range" class="w-4 h-4" />
+                  2019 - 2021
+                </span>
               </div>
             </div>
           </div>
         </div>
-
-        <!-- Enhanced academic achievements stats -->
-        <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="achievement-stat group/stat">
-            <div class="bg-slate-800/30 backdrop-blur-sm border border-slate-600/20 rounded-2xl p-8 text-center transition-all duration-500 hover:border-slate-500/50 hover:bg-slate-800/50 shadow-lg hover:shadow-xl">
-              <div class="achievement-number mb-4">2</div>
-              <div class="achievement-label">Leadership Roles</div>
-              <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent rounded-2xl opacity-0 group-hover/stat:opacity-100 transition-opacity duration-500"></div>
+        
+        <!-- Content Body -->
+        <div class="p-6 space-y-8">
+          <!-- Leadership Roles -->
+          <div>
+            <h4 class="text-lg font-semibold text-academic-text mb-4 flex items-center gap-2">
+              <Icon name="mdi:account-group" class="text-academic-blue w-5 h-5" />
+              Leadership Positions
+            </h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="leadership-card p-4 bg-academic-card-bg/50 border border-academic-border rounded hover:border-academic-green/30 transition-colors">
+                <div class="flex items-start gap-3 mb-3">
+                  <div class="w-10 h-10 bg-academic-green/20 border border-academic-green/30 rounded flex items-center justify-center flex-shrink-0">
+                    <Icon name="mdi:briefcase" class="text-academic-green w-5 h-5" />
+                  </div>
+                  <div>
+                    <h5 class="font-bold text-academic-text">President</h5>
+                    <p class="text-xs text-academic-text-secondary">Junior Enterprise Club</p>
+                  </div>
+                </div>
+                <p class="text-sm text-academic-text-secondary">
+                  Led entrepreneurial initiatives and business development projects within the academic community.
+                </p>
+              </div>
+              <div class="leadership-card p-4 bg-academic-card-bg/50 border border-academic-border rounded hover:border-academic-blue/30 transition-colors">
+                <div class="flex items-start gap-3 mb-3">
+                  <div class="w-10 h-10 bg-academic-blue/20 border border-academic-blue/30 rounded flex items-center justify-center flex-shrink-0">
+                    <Icon name="mdi:account-multiple" class="text-academic-blue w-5 h-5" />
+                  </div>
+                  <div>
+                    <h5 class="font-bold text-academic-text">President</h5>
+                    <p class="text-xs text-academic-text-secondary">Student Union (BDE)</p>
+                  </div>
+                </div>
+                <p class="text-sm text-academic-text-secondary">
+                  Represented student interests and organized campus-wide events and activities.
+                </p>
+              </div>
             </div>
           </div>
-          <div class="achievement-stat group/stat">
-            <div class="bg-slate-800/30 backdrop-blur-sm border border-slate-600/20 rounded-2xl p-8 text-center transition-all duration-500 hover:border-slate-500/50 hover:bg-slate-800/50 shadow-lg hover:shadow-xl">
-              <div class="achievement-number mb-4">2021</div>
-              <div class="achievement-label">Graduation Year</div>
-              <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent rounded-2xl opacity-0 group-hover/stat:opacity-100 transition-opacity duration-500"></div>
-            </div>
+          
+          <!-- Institution Info -->
+          <div class="p-4 bg-academic-card-bg/30 border border-academic-border rounded">
+            <h4 class="text-lg font-semibold text-academic-text mb-3 flex items-center gap-2">
+              <Icon name="mdi:information" class="text-academic-purple w-5 h-5" />
+              About SUPEMIR
+            </h4>
+            <p class="text-sm text-academic-text-secondary leading-relaxed">
+              SUPEMIR is now an institution equivalent to public status, offering comprehensive degree programs 
+              in computer science, management, marketing, and entrepreneurship. The institution focuses on 
+              developing both technical expertise and leadership skills in its graduates.
+            </p>
           </div>
-          <div class="achievement-stat group/stat">
-            <div class="bg-slate-800/30 backdrop-blur-sm border border-slate-600/20 rounded-2xl p-8 text-center transition-all duration-500 hover:border-slate-500/50 hover:bg-slate-800/50 shadow-lg hover:shadow-xl">
-              <div class="achievement-number mb-4">M.Sc</div>
-              <div class="achievement-label">Master's Degree</div>
-              <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent rounded-2xl opacity-0 group-hover/stat:opacity-100 transition-opacity duration-500"></div>
-            </div>
-          </div>
+        </div>
+      </div>
+      
+      <!-- Academic Achievements Summary -->
+      <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="stat-card p-4 bg-academic-card-bg/50 border border-academic-border rounded text-center hover:border-academic-green/30 transition-colors">
+          <div class="text-xl font-bold text-academic-green">2</div>
+          <div class="text-xs text-academic-text-secondary uppercase tracking-wide">Leadership Roles</div>
+        </div>
+        <div class="stat-card p-4 bg-academic-card-bg/50 border border-academic-border rounded text-center hover:border-academic-blue/30 transition-colors">
+          <div class="text-xl font-bold text-academic-blue">2021</div>
+          <div class="text-xs text-academic-text-secondary uppercase tracking-wide">Graduation Year</div>
+        </div>
+        <div class="stat-card p-4 bg-academic-card-bg/50 border border-academic-border rounded text-center hover:border-academic-purple/30 transition-colors">
+          <div class="text-xl font-bold text-academic-purple">M.Sc</div>
+          <div class="text-xs text-academic-text-secondary uppercase tracking-wide">Master's Degree</div>
+        </div>
+        <div class="stat-card p-4 bg-academic-card-bg/50 border border-academic-border rounded text-center hover:border-academic-yellow/30 transition-colors">
+          <div class="text-xl font-bold text-academic-yellow">CS</div>
+          <div class="text-xs text-academic-text-secondary uppercase tracking-wide">Field</div>
         </div>
       </div>
     </div>
@@ -172,166 +134,75 @@
 </template>
 
 <script setup lang="ts">
-// No additional logic needed for this component
+// No script changes needed for this version
 </script>
 
 <style scoped>
-/* Enhanced background grid pattern */
-.education-grid-pattern {
+/* Academic/Coding inspired theme */
+.bg-academic-dark { background-color: #0f1419; } /* Deep, scholarly dark */
+.bg-academic-card-bg { background-color: #1a2026; } /* Slightly lighter card */
+.bg-academic-header-bg { background-color: #1e2933; } /* Header background */
+.border-academic-border { border-color: #2d3748; } /* Muted border */
+.text-academic-text { color: #e2e8f0; } /* Main text */
+.text-academic-text-secondary { color: #a0aec0; } /* Secondary text */
+.text-academic-green { color: #4ade80; } /* Academic success */
+.text-academic-blue { color: #60a5fa; } /* Academic info */
+.text-academic-purple { color: #a78bfa; } /* Academic specialty */
+.text-academic-yellow { color: #fbbf24; } /* Academic highlight */
+
+/* Font stack prioritizing readability */
+.font-sans {
+  font-family: 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
+}
+
+/* Subtle background texture */
+.academic-texture {
   background-image: 
-    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
-  background-size: 160px 160px;
+    radial-gradient(#2d374820 1px, transparent 1px),
+    radial-gradient(#2d374810 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
   width: 100%;
   height: 100%;
-  animation: education-grid-drift 120s linear infinite;
 }
 
-@keyframes education-grid-drift {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(160px, 160px); }
-}
-
-/* Enhanced floating academic elements */
-.academic-element {
+/* Floating scholarly elements */
+.floating-academic {
   position: absolute;
-  width: 8px;
-  height: 8px;
-  background: linear-gradient(45deg, rgba(16, 185, 129, 0.6), rgba(6, 182, 212, 0.6));
-  border-radius: 50%;
-  animation: academic-float 30s ease-in-out infinite;
-  box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+  width: 6px;
+  height: 6px;
+  background-color: #4ade80;
+  border-radius: 2px;
+  animation: academic-float 25s ease-in-out infinite;
+  opacity: 0.2;
+  box-shadow: 0 0 6px #4ade80;
 }
-
-.element-1 { top: 20%; left: 15%; animation-delay: 0s; }
-.element-2 { top: 55%; right: 20%; animation-delay: 8s; }
-.element-3 { bottom: 30%; left: 25%; animation-delay: 16s; }
-.element-4 { top: 70%; right: 15%; animation-delay: 24s; }
-
+.elem-1 { top: 15%; left: 10%; animation-delay: 0s; }
+.elem-2 { bottom: 25%; right: 15%; animation-delay: 8s; }
+.elem-3 { top: 60%; right: 10%; animation-delay: 16s; }
 @keyframes academic-float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.5; }
-  50% { transform: translateY(-60px) rotate(180deg); opacity: 0.9; }
+  0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.2; }
+  25% { transform: translateY(-30px) translateX(20px); opacity: 0.5; }
+  50% { transform: translateY(15px) translateX(-25px); opacity: 0.3; }
+  75% { transform: translateY(-20px) translateX(30px); opacity: 0.4; }
 }
 
-/* Professional glow effect */
-.professional-glow {
-  text-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+/* Card hover effects */
+.leadership-card, .stat-card {
+  transition: all 0.2s ease;
+}
+.leadership-card:hover, .stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Enhanced education card */
-.education-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.education-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(16, 185, 129, 0.05), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.6s;
-}
-
-.education-card:hover::before {
-  transform: translateX(100%);
-}
-
-.education-card:hover .bg-slate-800\/40 {
-  transform: translateY(-8px);
-}
-
-/* Enhanced leadership roles */
-.leadership-role {
-  position: relative;
-  overflow: hidden;
-}
-
-.leadership-role::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.03), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.6s;
-}
-
-.leadership-role:hover::before {
-  transform: translateX(100%);
-}
-
-.leadership-role:hover {
-  transform: translateY(-4px);
-}
-
-/* Enhanced achievement stats */
-.achievement-stat {
-  position: relative;
-  overflow: hidden;
-}
-
-.achievement-stat::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(16, 185, 129, 0.05), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.6s;
-}
-
-.achievement-stat:hover::before {
-  transform: translateX(100%);
-}
-
-.achievement-stat:hover {
-  transform: translateY(-6px);
-}
-
-.achievement-number {
-  font-size: 3rem;
-  font-weight: 800;
-  color: white;
-  background: linear-gradient(135deg, #10b981, #06b6d4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1;
-}
-
-.achievement-label {
-  color: rgb(148, 163, 184);
-  font-size: 1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-/* Responsive design */
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .grid-cols-2 {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  
-  .flex-col.sm\:flex-row {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  .p-10 {
-    padding: 2rem;
-  }
-  
-  .p-8 {
-    padding: 1.5rem;
+  .sm\:grid-cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 </style>

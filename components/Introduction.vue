@@ -21,60 +21,78 @@
     <div class="container mx-auto px-6 lg:px-8 flex flex-col-reverse lg:flex-row items-center justify-between gap-16 relative z-10">
       <!-- Left: Manager Info -->
       <div class="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
+        <!-- Enhanced name with better animation -->
         <div class="mb-6">
           <h1 class="text-4xl lg:text-5xl font-bold mb-4 text-white relative inline-block">
-            <span class="relative z-10">Merouane Amqor</span>
+            <span class="relative z-10 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">Merouane Amqor</span>
             <span class="absolute inset-0 bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent opacity-20">Merouane Amqor</span>
           </h1>
-          <div class="w-24 h-1 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full mx-auto lg:mx-0"></div>
+          <div class="w-24 h-1 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full mx-auto lg:mx-0 animate-pulse"></div>
         </div>
         
-        <h2 class="text-xl lg:text-2xl font-semibold mb-6 text-emerald-400">Professional Scrum Master & Engineering Manager</h2>
+        <h2 class="text-xl lg:text-2xl font-semibold mb-6 text-emerald-400 animate-fade-in">
+          Professional Scrum Master & Engineering Manager
+        </h2>
         
-        <p class="text-lg text-slate-300 mb-8 leading-relaxed max-w-2xl">
+        <p class="text-lg text-slate-300 mb-8 leading-relaxed max-w-2xl animate-fade-in-up">
           With over 6 years of experience leading teams in fast-paced environments, I specialize in transforming organizations through Agile principles and servant leadership. My approach is rooted in empowering people, fostering collaboration, and driving continuous improvement. I believe that great products are built by great teams—and my mission is to create the conditions where teams can thrive, innovate, and deliver exceptional results.
         </p>
         
         <!-- Enhanced highlights with improved badges -->
         <div class="flex flex-wrap justify-center lg:justify-start gap-4 mb-10">
-          <span class="inline-flex items-center px-5 py-3 bg-slate-800/50 text-slate-200 text-sm font-medium rounded-full border border-slate-700/50 backdrop-blur-sm hover:border-emerald-400/50 transition-all duration-300">
-            <span class="w-2 h-2 bg-emerald-400 rounded-full mr-2 animate-pulse"></span>
-            10+ Engineers Led
-          </span>
-          <span class="inline-flex items-center px-5 py-3 bg-slate-800/50 text-slate-200 text-sm font-medium rounded-full border border-slate-700/50 backdrop-blur-sm hover:border-cyan-400/50 transition-all duration-300">
-            <span class="w-2 h-2 bg-cyan-400 rounded-full mr-2 animate-pulse"></span>
-            Enterprise Delivery
-          </span>
-          <span class="inline-flex items-center px-5 py-3 bg-slate-800/50 text-slate-200 text-sm font-medium rounded-full border border-slate-700/50 backdrop-blur-sm hover:border-blue-400/50 transition-all duration-300">
-            <span class="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></span>
-            CSM® & Agile Coach
-          </span>
-          <span class="inline-flex items-center px-5 py-3 bg-slate-800/50 text-slate-200 text-sm font-medium rounded-full border border-slate-700/50 backdrop-blur-sm hover:border-purple-400/50 transition-all duration-300">
-            <span class="w-2 h-2 bg-purple-400 rounded-full mr-2 animate-pulse"></span>
-            Continuous Improvement
+          <span v-for="(badge, index) in badges" 
+                :key="badge.text"
+                class="inline-flex items-center px-5 py-3 bg-slate-800/50 text-slate-200 text-sm font-medium rounded-full border border-slate-700/50 backdrop-blur-sm hover:border-emerald-400/50 transition-all duration-300 animate-fade-in-up"
+                :style="{ animationDelay: `${index * 0.1}s` }">
+            <span class="w-2 h-2 rounded-full mr-2 animate-pulse" :class="badge.color"></span>
+            {{ badge.text }}
           </span>
         </div>
         
-        <NuxtLink to="/portfolio" class="inline-block px-8 py-4 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold rounded-xl shadow-lg hover:from-emerald-600 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl">
-          <span class="flex items-center">
-            View My Work
-            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </span>
-        </NuxtLink>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <NuxtLink to="/portfolio" class="inline-block px-8 py-4 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold rounded-xl shadow-lg hover:from-emerald-600 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl animate-fade-in-up" style="animation-delay: 0.4s;">
+            <span class="flex items-center">
+              View My Work
+              <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </span>
+          </NuxtLink>
+          
+          <NuxtLink to="/about" class="inline-block px-8 py-4 bg-slate-800 text-slate-200 font-semibold rounded-xl border border-slate-600 shadow-lg hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl animate-fade-in-up" style="animation-delay: 0.5s;">
+            <span class="flex items-center">
+              Learn More
+              <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+            </span>
+          </NuxtLink>
+        </div>
       </div>
       
       <!-- Right: Professional Avatar -->
       <div class="w-full lg:w-1/2 flex items-center justify-center mb-8 lg:mb-0">
-        <div class="relative flex items-center justify-center">
+        <div class="relative flex items-center justify-center group">
           <!-- Enhanced floating animation -->
-          <div class="absolute w-64 h-64 rounded-full bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 blur-3xl animate-pulse"></div>
-          <div class="relative w-56 h-56 rounded-full bg-slate-800 flex items-center justify-center border-4 border-slate-600/50 shadow-2xl overflow-hidden">
-            <img src="/assets/images/1__xsAVKi5G0AzK7INXcma7w.png" alt="Merouane Amqor" class="w-full h-full object-cover">
+          <div class="absolute w-64 h-64 rounded-xl bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 blur-3xl animate-pulse"></div>
+          <div class="relative w-56 h-56 rounded-xl bg-slate-800 flex items-center justify-center border-4 border-slate-600/50 shadow-2xl overflow-hidden transform transition-transform duration-500 group-hover:scale-105">
+            <img 
+              src="/assets/images/CSM-1.webp" 
+              alt="Merouane Amqor" 
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              loading="eager"
+            />
             <!-- Decorative elements -->
-            <div class="absolute -top-4 -right-4 w-16 h-16 rounded-full bg-emerald-500/20 blur-xl"></div>
-            <div class="absolute -bottom-4 -left-4 w-16 h-16 rounded-full bg-cyan-500/20 blur-xl"></div>
+            <div class="absolute -top-4 -right-4 w-16 h-16 rounded-xl bg-emerald-500/20 blur-xl animate-pulse"></div>
+            <div class="absolute -bottom-4 -left-4 w-16 h-16 rounded-xl bg-cyan-500/20 blur-xl animate-pulse" style="animation-delay: 1s;"></div>
+            
+            <!-- Hover overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-emerald-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+          
+          <!-- Floating badge -->
+          <div class="absolute -bottom-4 -right-4 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-bounce">
+            Available for hire
           </div>
         </div>
       </div>
@@ -83,5 +101,32 @@
 </template>
 
 <script setup lang="ts">
-// No custom CSS or style block needed
+
+const badges = [
+  { text: '10+ Engineers Led', color: 'bg-emerald-400' },
+  { text: 'Enterprise Delivery', color: 'bg-cyan-400' },
+  { text: 'CSM® & Agile Coach', color: 'bg-blue-400' },
+  { text: 'Continuous Improvement', color: 'bg-purple-400' }
+]
 </script>
+
+<style scoped>
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+</style>
