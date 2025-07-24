@@ -1,0 +1,24 @@
+{
+  "welcome": "Welcome",
+  "about": "About",
+  "portfolio": "Portfolio",
+  "blog": "Blog",
+  "contact": "Contact",
+  "home": "Home",
+  "read_more": "Read More",
+  "view_project": "View Project",
+  "send_message": "Send Message",
+  "name": "Name",
+  "email": "Email",
+  "message": "Message",
+  "submit": "Submit",
+  "loading": "Loading...",
+  "error": "An error occurred. Please try again.",
+  "success": "Message sent successfully!",
+  "navigation": {
+    "toggle": "Toggle navigation"
+  },
+  "footer": {
+    "rights": "All rights reserved"
+  }
+} 

@@ -1,39 +1,39 @@
 <template>
   <nav class="bg-slate-900/95 backdrop-blur-md border-b border-slate-700/50 shadow-2xl sticky top-0 z-50 font-mono">
-    <!-- Subtle animated background -->
+    <!-- Enhanced animated background -->
     <div class="absolute inset-0 overflow-hidden">
       <div class="nav-grid-pattern"></div>
     </div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="flex items-center justify-between h-16">
+      <div class="flex items-center justify-between h-20">
         
-        <!-- Logo Section -->
+        <!-- Enhanced logo section -->
         <div class="flex items-center">
-          <NuxtLink to="/" class="flex-shrink-0 select-none flex items-center gap-3 group">
+          <NuxtLink to="/" class="flex-shrink-0 select-none flex items-center gap-4 group">
             <div class="relative">
-              <span class="inline-block w-10 h-10 p-2 bg-slate-800 rounded-lg border border-slate-600/50 group-hover:border-slate-500 transition-colors">
+              <span class="inline-block w-12 h-12 p-2.5 bg-slate-800 rounded-xl border border-slate-600/50 group-hover:border-slate-500 transition-colors shadow-lg">
                 <img src="https://www.svgrepo.com/show/376345/rails.svg" alt="Rails logo" class="w-full h-full filter brightness-0 invert" />
               </span>
-              <!-- Subtle glow effect -->
-              <div class="absolute inset-0 bg-slate-400/20 rounded-lg blur-sm opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <!-- Enhanced glow effect -->
+              <div class="absolute inset-0 bg-slate-400/30 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
-            <h1 class="text-xl font-bold tracking-wider text-slate-100 group-hover:text-white transition-colors">
+            <h1 class="text-2xl font-bold tracking-wider text-slate-100 group-hover:text-white transition-colors">
               amqor<span class="text-slate-400">.</span><span class="text-emerald-400">dev</span>
             </h1>
           </NuxtLink>
         </div>
 
-        <!-- Desktop Navigation -->
+        <!-- Enhanced desktop navigation -->
         <div class="hidden md:block">
-          <div class="ml-10 flex items-center space-x-1">
+          <div class="ml-10 flex items-center space-x-2">
             <NuxtLink 
               v-for="link in links"
               :key="link.href"
               :to="link.href"
               :target="link.target"
               :class="[
-                'px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 relative group',
+                'px-5 py-2.5 rounded-xl font-medium text-base transition-all duration-300 relative group/nav',
                 link.target === '_blank'
                   ? 'text-slate-300 hover:text-white hover:bg-slate-800/50'
                   : [
@@ -42,56 +42,56 @@
                     ]
               ]"
             >
-              <span class="relative z-10 flex items-center gap-1">
+              <span class="relative z-10 flex items-center gap-2">
                 {{ link.text }}
-                <ExternalLink v-if="link.target === '_blank'" class="w-3 h-3 opacity-60" />
+                <ExternalLink v-if="link.target === '_blank'" class="w-4 h-4 opacity-60" />
               </span>
               
-              <!-- Active indicator -->
+              <!-- Enhanced active indicator -->
               <div 
                 v-if="isActive(link.href)" 
-                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-emerald-400 rounded-full"
+                class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-emerald-400 rounded-full"
               ></div>
               
-              <!-- Hover effect -->
-              <div class="absolute inset-0 bg-gradient-to-r from-slate-700/0 via-slate-700/50 to-slate-700/0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"></div>
+              <!-- Enhanced hover effect -->
+              <div class="absolute inset-0 bg-gradient-to-r from-slate-700/0 via-slate-700/50 to-slate-700/0 opacity-0 group-hover/nav:opacity-100 transition-opacity rounded-xl"></div>
             </NuxtLink>
           </div>
         </div>
 
-        <!-- Mobile Menu Button -->
+        <!-- Enhanced mobile menu button -->
         <div class="md:hidden">
           <button 
             @click="isMenuOpen = !isMenuOpen"
-            class="inline-flex items-center justify-center p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 focus:outline-none focus:ring-2 focus:ring-slate-600 transition-colors"
+            class="inline-flex items-center justify-center p-2.5 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/50 focus:outline-none focus:ring-2 focus:ring-slate-600 transition-colors shadow-lg"
             aria-expanded="false"
           >
             <span class="sr-only">Open main menu</span>
-            <Menu v-if="!isMenuOpen" class="block h-5 w-5" aria-hidden="true" />
-            <X v-else class="block h-5 w-5" aria-hidden="true" />
+            <Menu v-if="!isMenuOpen" class="block h-6 w-6" aria-hidden="true" />
+            <X v-else class="block h-6 w-6" aria-hidden="true" />
           </button>
         </div>
       </div>
     </div>
 
-    <!-- Mobile Menu -->
+    <!-- Enhanced mobile menu -->
     <transition
-      enter-active-class="transition duration-200 ease-out"
+      enter-active-class="transition duration-300 ease-out"
       enter-from-class="opacity-0 transform -translate-y-2"
       enter-to-class="opacity-100 transform translate-y-0"
-      leave-active-class="transition duration-150 ease-in"
+      leave-active-class="transition duration-200 ease-in"
       leave-from-class="opacity-100 transform translate-y-0"
       leave-to-class="opacity-0 transform -translate-y-2"
     >
       <div v-if="isMenuOpen" class="md:hidden bg-slate-900/98 backdrop-blur-md border-t border-slate-700/50">
-        <div class="px-4 pt-2 pb-3 space-y-1">
+        <div class="px-5 pt-4 pb-6 space-y-2">
           <NuxtLink
             v-for="link in links"
             :key="link.href"
             :to="link.href"
             :target="link.target"
             :class="[
-              'block px-4 py-3 rounded-lg font-medium text-sm transition-all duration-200 relative',
+              'block px-5 py-4 rounded-xl font-medium text-base transition-all duration-300 relative group/mobile',
               link.target === '_blank'
                 ? 'text-slate-300 hover:text-white hover:bg-slate-800/50'
                 : [
@@ -101,10 +101,12 @@
             ]"
             @click="isMenuOpen = false"
           >
-            <span class="flex items-center gap-2">
+            <span class="flex items-center gap-3">
               {{ link.text }}
-              <ExternalLink v-if="link.target === '_blank'" class="w-3 h-3 opacity-60" />
+              <ExternalLink v-if="link.target === '_blank'" class="w-4 h-4 opacity-60" />
             </span>
+            <!-- Enhanced hover effect for mobile -->
+            <div class="absolute inset-0 bg-gradient-to-r from-slate-700/0 via-slate-700/30 to-slate-700/0 opacity-0 group-hover/mobile:opacity-100 transition-opacity rounded-xl"></div>
           </NuxtLink>
         </div>
       </div>
@@ -137,20 +139,20 @@ function isActive(href: string) {
 </script>
 
 <style scoped>
-/* Subtle grid pattern for nav background */
+/* Enhanced grid pattern for nav background */
 .nav-grid-pattern {
   background-image: 
-    linear-gradient(rgba(148, 163, 184, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
+    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
   width: 100%;
   height: 100%;
-  animation: nav-grid-drift 40s linear infinite;
+  animation: nav-grid-drift 50s linear infinite;
 }
 
 @keyframes nav-grid-drift {
   0% { transform: translate(0, 0); }
-  100% { transform: translate(40px, 40px); }
+  100% { transform: translate(50px, 50px); }
 }
 
 /* Smooth transitions for all interactive elements */

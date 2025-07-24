@@ -1,6 +1,28 @@
+import { defineNuxtConfig } from 'nuxt/config'
+
 export default defineNuxtConfig({
-  devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', 'nuxt-jsonld', '@zadigetvoltaire/nuxt-gtm', 'nuxt-simple-sitemap', '@nuxt/content', '@nuxt/image'],
+  modules: [
+    // Temporarily comment out i18n due to the import.meta issue
+    // '@nuxtjs/i18n',
+    '@nuxtjs/tailwindcss',
+    'nuxt-jsonld',
+    '@zadigetvoltaire/nuxt-gtm',
+    'nuxt-simple-sitemap',
+    '@nuxt/content',
+    '@nuxt/image',
+  ],
+
+  // Comment out i18n config temporarily
+  // i18n: {
+  //   locales: [
+  //     { code: 'en', name: 'English', file: 'en.json' },
+  //     { code: 'fr', name: 'Français', file: 'fr.json' }
+  //   ],
+  //   defaultLocale: 'en',
+  //   lazy: true,
+  //   langDir: 'locales/',
+  // },
+
   tailwindcss: {
     config: {
       theme: {
@@ -21,6 +43,7 @@ export default defineNuxtConfig({
       },
     },
   },
+
   content: {
     highlight: {
       theme: 'github-light'
@@ -35,17 +58,34 @@ export default defineNuxtConfig({
   },
 
   site: {
-    url: process.env.NUXT_PUBLIC_SITE_URL || 'https://merouaneamqor.com',
+    url: process.env.NUXT_PUBLIC_SITE_URL?.trim() || 'https://merouaneamqor.com',
   },
 
   sitemap: {
-    hostname: process.env.NUXT_PUBLIC_SITE_URL || 'https://merouaneamqor.com',
-    gzip: true,
+    // Removed gzip option - not needed
   },
 
   vite: {
     optimizeDeps: {
       include: ['vue', '@vue/server-renderer']
+    },
+    server: {
+      fs: {
+        allow: ['..']
+      }
+    },
+    build: {
+      rollupOptions: {
+        // Remove external packages that might cause issues
+      }
+    },
+  },
+  
+  hooks: {
+    'vite:extendConfig': (config: any) => {
+      config.define = config.define || {}
+      config.define.__VUE_I18N_FULL_INSTALL__ = JSON.stringify(true)
+      config.define.__VUE_I18N_LEGACY_API__ = JSON.stringify(false)
     }
   },
 
@@ -71,10 +111,6 @@ export default defineNuxtConfig({
   },
 
   ssr: true,
-
-  routeRules: {
-    '/**': { ssr: true }
-  },
 
   compatibilityDate: '2024-09-30'
 })
