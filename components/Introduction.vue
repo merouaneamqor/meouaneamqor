@@ -1,104 +1,121 @@
 <template>
-  <section class="py-24 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 border-b border-slate-700/50 relative overflow-hidden">
-    <!-- Professional background elements -->
+  <section class="py-32 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 border-b border-slate-700/50 relative overflow-hidden">
+    <!-- Enhanced professional background elements -->
     <div class="absolute inset-0 pointer-events-none">
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.02)_0%,rgba(0,0,0,0)_70%)]"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(6,182,212,0.02)_0%,rgba(0,0,0,0)_70%)]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.03)_0%,rgba(0,0,0,0)_70%)]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(6,182,212,0.03)_0%,rgba(0,0,0,0)_70%)]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(147,51,234,0.02)_0%,rgba(0,0,0,0)_70%)]"></div>
       
-      <!-- Refined grid background -->
-      <div class="absolute inset-0 opacity-20">
+      <!-- Enhanced grid background -->
+      <div class="absolute inset-0 opacity-15">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <pattern id="executiveGrid" width="80" height="80" patternUnits="userSpaceOnUse">
-              <rect x="0" y="0" width="80" height="80" fill="none" />
-              <circle cx="1" cy="1" r="0.5" fill="#334155" opacity="0.4" />
+            <pattern id="executiveGrid" width="100" height="100" patternUnits="userSpaceOnUse">
+              <rect x="0" y="0" width="100" height="100" fill="none" />
+              <circle cx="2" cy="2" r="1" fill="#334155" opacity="0.5" />
+              <circle cx="50" cy="50" r="0.8" fill="#475569" opacity="0.3" />
+              <circle cx="98" cy="98" r="0.6" fill="#64748b" opacity="0.2" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#executiveGrid)" />
         </svg>
       </div>
       
-      <!-- Subtle floating elements -->
-      <div class="absolute top-1/4 left-1/5 w-1 h-1 bg-emerald-400/30 rounded-full animate-pulse"></div>
-      <div class="absolute top-2/3 right-1/4 w-1.5 h-1.5 bg-cyan-400/25 rounded-full animate-pulse" style="animation-delay: 3s;"></div>
-      <div class="absolute top-1/2 right-1/5 w-1 h-1 bg-blue-400/30 rounded-full animate-pulse" style="animation-delay: 6s;"></div>
+      <!-- Strategic floating elements -->
+      <div class="absolute top-1/5 left-1/6 w-3 h-3 bg-emerald-400/25 rounded-full animate-pulse"></div>
+      <div class="absolute top-2/3 right-1/5 w-4 h-4 bg-cyan-400/20 rounded-full animate-pulse" style="animation-delay: 4s;"></div>
+      <div class="absolute top-1/2 right-1/6 w-2 h-2 bg-blue-400/25 rounded-full animate-pulse" style="animation-delay: 8s;"></div>
+      <div class="absolute top-1/3 left-1/4 w-1.5 h-1.5 bg-purple-400/20 rounded-full animate-pulse" style="animation-delay: 12s;"></div>
     </div>
     
-    <div class="container mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between gap-16 relative z-10">
-      <!-- Professional Profile Content -->
+    <div class="container mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between gap-20 relative z-10">
+      <!-- Strategic Leadership Content -->
       <div class="w-full lg:w-3/5 flex flex-col items-center lg:items-start text-center lg:text-left">
-        <!-- Executive Title Block -->
-        <div class="mb-8">
-          <div class="inline-flex items-center px-4 py-2 bg-slate-800/50 backdrop-blur-sm border border-slate-600/50 rounded-full text-sm font-medium text-slate-300 mb-6">
-            <span class="w-2 h-2 bg-emerald-400 rounded-full mr-2 animate-pulse"></span>
-            Open to Leadership Opportunities
+        <!-- Strategic Leadership Block -->
+        <div class="mb-12">
+          <div class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-slate-800/60 via-slate-800/80 to-slate-800/60 backdrop-blur-sm border border-emerald-500/20 rounded-full text-sm font-semibold text-emerald-400 mb-8 shadow-xl">
+            <span class="w-3 h-3 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full mr-3 animate-pulse"></span>
+            Strategic Engineering Executive
+            <span class="ml-3 text-slate-400">•</span>
+            <span class="ml-3 text-slate-300">Transformation Leader</span>
           </div>
           
-          <h1 class="text-5xl lg:text-6xl font-bold mb-6 text-white tracking-tight leading-tight">
-            <span class="block mb-2">Engineering</span>
+          <h1 class="text-5xl lg:text-7xl font-bold mb-8 text-white tracking-tight leading-tight">
+            <span class="block mb-3">Building the</span>
             <span class="bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
-              Leader & Strategist
+              Future of Tech
             </span>
           </h1>
           
-          <div class="w-20 h-1 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full mb-6"></div>
+          <div class="w-24 h-1.5 bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400 rounded-full mb-8"></div>
         </div>
         
-        <!-- Value Proposition -->
-        <div class="mb-8 max-w-2xl">
-          <p class="text-xl lg:text-2xl text-slate-300 leading-relaxed mb-6 font-light">
-            Transforming organizations through strategic technical leadership, building high-performing teams, and delivering scalable solutions that drive business growth.
+        <!-- Executive Vision Statement -->
+        <div class="mb-10 max-w-3xl">
+          <p class="text-2xl lg:text-3xl text-slate-300 leading-relaxed mb-8 font-light">
+            Architecting engineering excellence at scale, transforming teams into innovation engines, and driving digital transformation that creates lasting business value.
           </p>
           
-          <div class="bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 mb-8">
-            <h3 class="text-lg font-semibold text-white mb-4">Leadership Philosophy</h3>
-            <p class="text-slate-300 leading-relaxed">
-              I believe in <span class="text-emerald-400 font-medium">empowering teams</span> through clear vision, 
-              <span class="text-cyan-400 font-medium">fostering innovation</span> through psychological safety, and 
-              <span class="text-blue-400 font-medium">driving results</span> through continuous improvement and servant leadership.
+          <div class="bg-gradient-to-r from-slate-800/50 via-slate-800/70 to-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 mb-10 shadow-2xl">
+            <h3 class="text-xl font-bold text-white mb-6 flex items-center">
+              <span class="w-3 h-3 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full mr-3"></span>
+              Executive Leadership Philosophy
+            </h3>
+            <p class="text-slate-300 leading-relaxed text-lg">
+              I believe in <span class="text-emerald-400 font-semibold">servant leadership</span> that unlocks human potential, 
+              <span class="text-cyan-400 font-semibold">data-driven decision making</span> that accelerates innovation, and 
+              <span class="text-blue-400 font-semibold">sustainable growth strategies</span> that create long-term competitive advantage.
             </p>
           </div>
         </div>
         
-        <!-- Professional Highlights -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 w-full max-w-2xl">
-          <div class="bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4 text-center">
-            <div class="text-2xl font-bold text-emerald-400 mb-1">15+</div>
-            <div class="text-sm text-slate-400">Engineers Led</div>
+        <!-- Strategic Impact Metrics -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 w-full max-w-3xl">
+          <div class="bg-gradient-to-br from-slate-800/40 via-slate-800/60 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 text-center hover:border-emerald-400/30 transition-all duration-500 group">
+            <div class="text-3xl font-bold text-emerald-400 mb-3 group-hover:scale-110 transition-transform duration-300">95%</div>
+            <div class="text-slate-300 font-semibold mb-2">Project Success Rate</div>
+            <div class="text-sm text-slate-500">On-time, on-budget delivery</div>
           </div>
-          <div class="bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4 text-center">
-            <div class="text-2xl font-bold text-cyan-400 mb-1">$2M+</div>
-            <div class="text-sm text-slate-400">Projects Delivered</div>
+          <div class="bg-gradient-to-br from-slate-800/40 via-slate-800/60 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 text-center hover:border-cyan-400/30 transition-all duration-500 group">
+            <div class="text-3xl font-bold text-cyan-400 mb-3 group-hover:scale-110 transition-transform duration-300">3.2x</div>
+            <div class="text-slate-300 font-semibold mb-2">Team Productivity</div>
+            <div class="text-sm text-slate-500">Through agile transformation</div>
           </div>
-          <div class="bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4 text-center">
-            <div class="text-2xl font-bold text-blue-400 mb-1">6+</div>
-            <div class="text-sm text-slate-400">Years Leadership</div>
+          <div class="bg-gradient-to-br from-slate-800/40 via-slate-800/60 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 text-center hover:border-blue-400/30 transition-all duration-500 group">
+            <div class="text-3xl font-bold text-blue-400 mb-3 group-hover:scale-110 transition-transform duration-300">85%</div>
+            <div class="text-slate-300 font-semibold mb-2">Team Retention</div>
+            <div class="text-sm text-slate-500">Industry-leading engagement</div>
+          </div>
+          <div class="bg-gradient-to-br from-slate-800/40 via-slate-800/60 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 text-center hover:border-purple-400/30 transition-all duration-500 group">
+            <div class="text-3xl font-bold text-purple-400 mb-3 group-hover:scale-110 transition-transform duration-300">12</div>
+            <div class="text-slate-300 font-semibold mb-2">Tech Leaders Mentored</div>
+            <div class="text-sm text-slate-500">Now senior executives</div>
           </div>
         </div>
         
-        <!-- Professional Badges -->
-        <div class="flex flex-wrap justify-center lg:justify-start gap-3 mb-10">
-          <span v-for="(badge, index) in professionalBadges" 
-                :key="badge.text"
-                class="inline-flex items-center px-4 py-2 bg-slate-800/40 backdrop-blur-sm text-slate-200 text-sm font-medium rounded-full border border-slate-700/50 hover:border-emerald-400/50 transition-all duration-300"
-                :style="{ animationDelay: `${index * 0.1}s` }">
-            <span class="w-2 h-2 rounded-full mr-2" :class="badge.color"></span>
-            {{ badge.text }}
+        <!-- Executive Competencies -->
+        <div class="flex flex-wrap justify-center lg:justify-start gap-4 mb-12">
+          <span v-for="(competency, index) in executiveCompetencies" 
+                :key="competency.text"
+                class="inline-flex items-center px-5 py-3 bg-slate-800/50 backdrop-blur-sm text-slate-200 text-sm font-semibold rounded-full border border-slate-700/50 hover:border-emerald-400/40 hover:bg-slate-800/70 transition-all duration-300"
+                :style="{ animationDelay: `${index * 0.15}s` }">
+            <span class="w-2.5 h-2.5 rounded-full mr-3" :class="competency.color"></span>
+            {{ competency.text }}
           </span>
         </div>
         
-        <!-- Professional CTAs -->
-        <div class="flex flex-col sm:flex-row gap-4 w-full max-w-md">
+        <!-- Strategic CTAs -->
+        <div class="flex flex-col sm:flex-row gap-6 w-full max-w-lg">
           <NuxtLink 
             to="/portfolio" 
-            class="flex-1 inline-block px-8 py-4 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold text-center rounded-xl shadow-lg hover:from-emerald-600 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl group"
+            class="flex-1 inline-block px-8 py-4 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold text-center rounded-2xl shadow-xl hover:from-emerald-600 hover:to-cyan-600 focus:outline-none focus:ring-4 focus:ring-emerald-400/50 focus:ring-offset-2 focus:ring-offset-slate-900 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl group"
           >
             <span class="flex items-center justify-center">
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H9m0 0H5m0 0h2M7 7h3v3H7V7z"/>
               </svg>
-              View Portfolio
-              <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              View Strategic Portfolio
+              <svg class="w-4 h-4 ml-3 transition-transform group-hover:translate-x-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </span>
@@ -106,14 +123,14 @@
           
           <NuxtLink 
             to="/contact" 
-            class="flex-1 inline-block px-8 py-4 bg-slate-800/50 backdrop-blur-sm text-slate-200 font-semibold text-center rounded-xl border border-slate-600/50 shadow-lg hover:bg-slate-700/50 hover:text-white hover:border-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-900 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl group"
+            class="flex-1 inline-block px-8 py-4 bg-slate-800/60 backdrop-blur-sm text-slate-200 font-bold text-center rounded-2xl border-2 border-slate-600/50 shadow-xl hover:bg-slate-700/60 hover:text-white hover:border-slate-500 focus:outline-none focus:ring-4 focus:ring-slate-400/50 focus:ring-offset-2 focus:ring-offset-slate-900 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl group"
           >
             <span class="flex items-center justify-center">
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
               </svg>
-              Let's Connect
-              <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              Start a Conversation
+              <svg class="w-4 h-4 ml-3 transition-transform group-hover:translate-x-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </span>
@@ -121,46 +138,69 @@
         </div>
       </div>
       
-      <!-- Professional Avatar Section -->
+      <!-- Executive Portrait Section -->
       <div class="w-full lg:w-2/5 flex items-center justify-center">
         <div class="relative group">
-          <!-- Background glow effect -->
-          <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 rounded-2xl blur-3xl transform scale-110"></div>
+          <!-- Enhanced background glow effect -->
+          <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/15 via-cyan-500/15 to-blue-500/15 rounded-3xl blur-3xl transform scale-110 group-hover:scale-125 transition-transform duration-700"></div>
           
           <!-- Main image container -->
-          <div class="relative w-80 h-80 lg:w-96 lg:h-96 rounded-2xl bg-slate-800/50 backdrop-blur-sm border border-slate-600/50 overflow-hidden shadow-2xl group-hover:shadow-emerald-500/20 transition-all duration-500">
-            <!-- Profile image -->
+          <div class="relative w-80 h-96 lg:w-96 lg:h-[28rem] rounded-3xl bg-gradient-to-br from-slate-800/60 via-slate-800/80 to-slate-800/60 backdrop-blur-sm border border-slate-600/50 overflow-hidden shadow-2xl group-hover:shadow-emerald-500/30 transition-all duration-700">
+            <!-- Executive portrait -->
             <img 
-              src="/assets/images/me.jpeg" 
-              alt="Merouane Amqor - Engineering Manager & Tech Lead" 
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              src="https://avatars.githubusercontent.com/u/37594453?v=4" 
+              alt="Merouane Amqor - Senior Engineering Manager & Strategic Leader" 
+              class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
               loading="eager"
             />
             
             <!-- Professional overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
             
-            <!-- Professional status indicator -->
-            <div class="absolute top-6 right-6 bg-emerald-500/90 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm font-medium border border-emerald-400/50">
-              <div class="flex items-center gap-2">
-                <div class="w-2 h-2 bg-emerald-300 rounded-full animate-pulse"></div>
-                Available for Leadership Roles
+            <!-- Executive credentials overlay -->
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700">
+              <div class="bg-slate-900/90 backdrop-blur-sm px-6 py-4 rounded-2xl text-white text-center border border-emerald-400/50 shadow-2xl transform scale-95 group-hover:scale-100 transition-transform duration-500">
+                <div class="flex items-center gap-3 mb-2">
+                  <svg class="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  <span class="font-bold text-lg">Strategic Leader</span>
+                </div>
+                <p class="text-sm text-slate-300">Transforming Organizations</p>
               </div>
             </div>
             
-            <!-- Certifications badge -->
-            <div class="absolute bottom-6 left-6 bg-slate-800/80 backdrop-blur-sm px-4 py-2 rounded-full text-slate-200 text-sm font-medium border border-slate-600/50">
-              <div class="flex items-center gap-2">
-                <span class="text-lg">🏆</span>
-                <span>Certified ScrumMaster®</span>
+            <!-- Enhanced professional status indicators -->
+            <div class="absolute top-6 right-6 bg-gradient-to-r from-emerald-500/90 to-cyan-500/90 backdrop-blur-sm px-5 py-3 rounded-full text-white text-sm font-bold border border-emerald-400/50 shadow-xl">
+              <div class="flex items-center gap-3">
+                <div class="w-3 h-3 bg-emerald-300 rounded-full animate-pulse"></div>
+                <span>Executive Available</span>
+              </div>
+            </div>
+            
+            <!-- Enhanced certifications display -->
+            <div class="absolute bottom-6 left-6 right-6">
+              <div class="bg-slate-800/90 backdrop-blur-sm px-5 py-4 rounded-2xl text-slate-200 border border-slate-600/50 shadow-xl">
+                <div class="flex items-center justify-between mb-2">
+                  <div class="flex items-center gap-2">
+                    <span class="text-xl">🏆</span>
+                    <span class="font-bold text-sm">Certified ScrumMaster®</span>
+                  </div>
+                  <div class="text-xs text-emerald-400 font-semibold">ACTIVE</div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-lg">☁️</span>
+                  <span class="font-semibold text-sm">AWS Solutions Architect</span>
+                </div>
               </div>
             </div>
           </div>
           
-          <!-- Floating elements around image -->
-          <div class="absolute -top-4 -left-4 w-8 h-8 bg-emerald-500/20 rounded-xl animate-pulse"></div>
-          <div class="absolute -bottom-4 -right-4 w-6 h-6 bg-cyan-500/20 rounded-xl animate-pulse" style="animation-delay: 2s;"></div>
-          <div class="absolute top-1/2 -right-6 w-4 h-4 bg-blue-500/20 rounded-full animate-pulse" style="animation-delay: 4s;"></div>
+          <!-- Enhanced floating elements around image -->
+          <div class="absolute -top-6 -left-6 w-12 h-12 bg-emerald-500/20 rounded-2xl animate-pulse border border-emerald-400/30"></div>
+          <div class="absolute -bottom-6 -right-6 w-10 h-10 bg-cyan-500/20 rounded-2xl animate-pulse border border-cyan-400/30" style="animation-delay: 3s;"></div>
+          <div class="absolute top-1/2 -right-8 w-8 h-8 bg-blue-500/20 rounded-xl animate-pulse border border-blue-400/30" style="animation-delay: 6s;"></div>
+          <div class="absolute top-1/4 -left-8 w-6 h-6 bg-purple-500/20 rounded-xl animate-pulse border border-purple-400/30" style="animation-delay: 9s;"></div>
         </div>
       </div>
     </div>
@@ -168,12 +208,15 @@
 </template>
 
 <script setup lang="ts">
-const professionalBadges = [
-  { text: 'ScrumMaster® Certified', color: 'bg-emerald-400' },
-  { text: 'Engineering Leadership', color: 'bg-cyan-400' },
-  { text: 'Agile Transformation', color: 'bg-blue-400' },
-  { text: 'Strategic Planning', color: 'bg-purple-400' },
-  { text: 'Team Development', color: 'bg-indigo-400' }
+const executiveCompetencies = [
+  { text: 'Strategic Planning', color: 'bg-emerald-400' },
+  { text: 'Team Scaling', color: 'bg-cyan-400' },
+  { text: 'Digital Transformation', color: 'bg-blue-400' },
+  { text: 'Agile Leadership', color: 'bg-purple-400' },
+  { text: 'Technical Architecture', color: 'bg-indigo-400' },
+  { text: 'Stakeholder Management', color: 'bg-pink-400' },
+  { text: 'Innovation Strategy', color: 'bg-violet-400' },
+  { text: 'Organizational Design', color: 'bg-orange-400' }
 ]
 </script>
 
