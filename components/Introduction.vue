@@ -58,15 +58,15 @@
         <!-- Key Metrics -->
         <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12 w-full max-w-2xl">
           <div class="bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 text-center hover:border-emerald-400/30 transition-all duration-300 group">
-            <div class="text-2xl font-bold text-emerald-400 mb-2 group-hover:scale-110 transition-transform duration-300">20+</div>
+            <div class="text-2xl font-bold text-emerald-400 mb-2 group-hover:scale-110 transition-transform duration-300">15+</div>
             <div class="text-slate-300 font-semibold text-sm">Engineers Led</div>
           </div>
           <div class="bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 text-center hover:border-cyan-400/30 transition-all duration-300 group">
-            <div class="text-2xl font-bold text-cyan-400 mb-2 group-hover:scale-110 transition-transform duration-300">$5M+</div>
+            <div class="text-2xl font-bold text-cyan-400 mb-2 group-hover:scale-110 transition-transform duration-300">$3M+</div>
             <div class="text-slate-300 font-semibold text-sm">Projects Delivered</div>
           </div>
           <div class="bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 text-center hover:border-blue-400/30 transition-all duration-300 group">
-            <div class="text-2xl font-bold text-blue-400 mb-2 group-hover:scale-110 transition-transform duration-300">7+</div>
+            <div class="text-2xl font-bold text-blue-400 mb-2 group-hover:scale-110 transition-transform duration-300">6+</div>
             <div class="text-slate-300 font-semibold text-sm">Years Experience</div>
           </div>
         </div>

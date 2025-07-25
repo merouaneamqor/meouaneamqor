@@ -136,8 +136,40 @@
         </div>
       </div>
       
-      <!-- Executive summary -->
+      <!-- Challenges & Lessons Learned -->
       <div class="mt-20 bg-slate-800/20 backdrop-blur-sm border border-slate-700/30 rounded-2xl p-8">
+        <div class="text-center mb-8">
+          <h3 class="text-2xl font-bold text-white mb-4">Challenges & Lessons Learned</h3>
+          <div class="w-16 h-1 bg-gradient-to-r from-orange-400 to-red-400 rounded-full mx-auto"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div v-for="(lesson, index) in challengesLearned" :key="lesson.title" class="bg-slate-800/30 border border-slate-700/50 rounded-xl p-6 hover:border-orange-400/30 transition-all duration-300">
+            <div class="flex items-start gap-3 mb-4">
+              <div class="w-8 h-8 bg-orange-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                <svg class="w-4 h-4 text-orange-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 14.5c-.77.833.192 2.5 1.732 2.5z"/>
+                </svg>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold text-white mb-2">{{ lesson.title }}</h4>
+                <p class="text-slate-300 mb-3 leading-relaxed">{{ lesson.challenge }}</p>
+                <div class="text-sm text-emerald-400 font-medium">
+                  <span class="flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                    </svg>
+                    Solution: {{ lesson.solution }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Executive summary -->
+      <div class="mt-12 bg-slate-800/20 backdrop-blur-sm border border-slate-700/30 rounded-2xl p-8">
         <div class="text-center mb-8">
           <h3 class="text-2xl font-bold text-white mb-4">Executive Summary</h3>
           <div class="w-16 h-1 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full mx-auto"></div>
@@ -211,9 +243,9 @@ const executiveExperiences = ref<ExecutiveExperience[]>([
     ],
     skills: ['Ruby on Rails', 'React', 'MongoDB', 'API Design', 'Mentoring', 'Product Development'],
     metrics: [
-      { value: '100K+', label: 'Active Users' },
+      { value: '400K+', label: 'Active Users monthly' },
       { value: '99.9%', label: 'System Uptime' },
-      { value: '1M+', label: 'Daily API Calls' }
+      { value: '1.2M+', label: 'Daily API Calls' }
     ]
   },
   {
@@ -248,6 +280,29 @@ const executiveExperiences = ref<ExecutiveExperience[]>([
   }
 ])
 
+const challengesLearned = [
+  {
+    title: 'Scaling Database Performance',
+    challenge: 'DabaDoc\'s user base grew 300% in 6 months, causing database timeouts and affecting user experience. Initial attempts to optimize queries weren\'t sufficient.',
+    solution: 'Implemented database sharding and caching strategies, reducing query times by 75% and handling the increased load effectively.'
+  },
+  {
+    title: 'Remote Team Communication',
+    challenge: 'Managing distributed teams across different time zones led to misaligned priorities and delayed deliveries. Some projects fell behind schedule by 2-3 weeks.',
+    solution: 'Established clear communication protocols, introduced daily async standups, and created shared documentation standards.'
+  },
+  {
+    title: 'Legacy Code Refactoring',
+    challenge: 'Inherited a monolithic codebase at Majorel with 60% test coverage and frequent production bugs. Technical debt was slowing down feature development.',
+    solution: 'Gradually extracted microservices, improved test coverage to 85%, and established code review practices that reduced bugs by 50%.'
+  },
+  {
+    title: 'Team Retention During Growth',
+    challenge: 'Lost 3 senior engineers within 6 months due to burnout and unclear career progression. Team morale and productivity dropped significantly.',
+    solution: 'Implemented regular 1-on-1s, created clear career paths, and introduced rotation opportunities. Retention improved to 90% over the next year.'
+  }
+]
+
 const executiveStats = [
   { 
     value: '6+', 
@@ -260,7 +315,7 @@ const executiveStats = [
     description: 'Across multiple projects' 
   },
   { 
-    value: '$2M+', 
+    value: '$3M+', 
     label: 'Project Value', 
     description: 'Healthcare & E-commerce' 
   },

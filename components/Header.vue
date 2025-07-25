@@ -33,12 +33,10 @@
     <div class="container mx-auto px-6 py-24 flex flex-col items-center justify-center relative z-10 mt-16">
       <!-- Executive Status Badge -->
       <div class="mb-8">
-        <div class="inline-flex items-center px-6 py-3 bg-slate-800/60 backdrop-blur-sm border border-emerald-500/30 rounded-full text-sm font-semibold text-emerald-400 shadow-lg">
-          <span class="w-2.5 h-2.5 bg-emerald-400 rounded-full mr-3 animate-pulse"></span>
-          Available for Senior Leadership Roles
-          <span class="ml-3 text-slate-400">•</span>
-          <span class="ml-3 text-slate-300">Remote & Hybrid Welcome</span>
-        </div>
+                  <div class="inline-flex items-center px-6 py-3 bg-slate-800/60 backdrop-blur-sm border border-emerald-500/30 rounded-full text-sm font-semibold text-emerald-400 shadow-lg">
+            <span class="w-2.5 h-2.5 bg-emerald-400 rounded-full mr-3 animate-pulse"></span>
+            Open to Engineering Management • Tech Leadership • Consulting
+          </div>
       </div>
       
       <!-- Professional avatar section -->
@@ -101,24 +99,24 @@
         <!-- Enhanced key achievements -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
           <div class="bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 hover:border-emerald-400/50 transition-all duration-300 group">
-            <div class="text-4xl font-bold text-emerald-400 mb-2 group-hover:scale-110 transition-transform duration-300">20+</div>
+            <div class="text-4xl font-bold text-emerald-400 mb-2 group-hover:scale-110 transition-transform duration-300">15+</div>
             <div class="text-slate-300 font-semibold mb-1">Engineers Led</div>
-            <div class="text-sm text-slate-500">Across 5 teams</div>
+            <div class="text-sm text-slate-500">Across multiple teams</div>
           </div>
           <div class="bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 hover:border-cyan-400/50 transition-all duration-300 group">
-            <div class="text-4xl font-bold text-cyan-400 mb-2 group-hover:scale-110 transition-transform duration-300">$5M+</div>
-            <div class="text-slate-300 font-semibold mb-1">Revenue Impact</div>
-            <div class="text-sm text-slate-500">Healthcare & Fintech</div>
+            <div class="text-4xl font-bold text-cyan-400 mb-2 group-hover:scale-110 transition-transform duration-300">$3M+</div>
+            <div class="text-slate-300 font-semibold mb-1">Projects Delivered</div>
+            <div class="text-sm text-slate-500">Healthcare & E-commerce</div>
           </div>
           <div class="bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 hover:border-blue-400/50 transition-all duration-300 group">
-            <div class="text-4xl font-bold text-blue-400 mb-2 group-hover:scale-110 transition-transform duration-300">60%</div>
-            <div class="text-slate-300 font-semibold mb-1">Delivery Speed</div>
-            <div class="text-sm text-slate-500">Team optimization</div>
+            <div class="text-4xl font-bold text-blue-400 mb-2 group-hover:scale-110 transition-transform duration-300">40%</div>
+            <div class="text-slate-300 font-semibold mb-1">Delivery Improvement</div>
+            <div class="text-sm text-slate-500">Through process optimization</div>
           </div>
           <div class="bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 hover:border-purple-400/50 transition-all duration-300 group">
-            <div class="text-4xl font-bold text-purple-400 mb-2 group-hover:scale-110 transition-transform duration-300">7+</div>
-            <div class="text-slate-300 font-semibold mb-1">Years Leadership</div>
-            <div class="text-sm text-slate-500">Proven track record</div>
+            <div class="text-4xl font-bold text-purple-400 mb-2 group-hover:scale-110 transition-transform duration-300">6+</div>
+            <div class="text-slate-300 font-semibold mb-1">Years Experience</div>
+            <div class="text-sm text-slate-500">Leadership & Development</div>
           </div>
         </div>
       </div>
@@ -185,7 +183,7 @@
       <!-- Executive availability note -->
       <div class="mt-12 mb-20 text-center">
         <p class="text-slate-400 text-sm font-medium">
-          Open to discussing strategic leadership opportunities • Remote, hybrid, or on-site arrangements welcome
+          Currently exploring: Senior Engineering Management roles, Technical Leadership positions, Consulting opportunities, and early-stage Co-founder partnerships
         </p>
       </div>
     </div>
