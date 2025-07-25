@@ -1,126 +1,159 @@
 <template>
-  <section class="py-5 bg-black border-b border-odyssey-border relative overflow-hidden font-mono text-sm min-h-screen flex items-center justify-center">
-    <!-- Subtle starfield background -->
-    <div class="absolute inset-0 opacity-20 pointer-events-none">
-      <div class="starfield"></div>
+  <section class="py-20 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800/50 relative overflow-hidden min-h-screen flex items-center justify-center">
+    <!-- Professional background pattern -->
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+      <div class="executive-grid-pattern"></div>
     </div>
-    <!-- Floating data particles -->
+    <!-- Subtle floating elements -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div class="data-particle particle-1"></div>
-      <div class="data-particle particle-2"></div>
-      <div class="data-particle particle-3"></div>
+      <div class="leadership-element element-1"></div>
+      <div class="leadership-element element-2"></div>
+      <div class="leadership-element element-3"></div>
     </div>
     
-    <div class="container mx-auto px-0 sm:px-0 relative z-10 w-full">
-      <!-- Section header -->
-      <div class="mb-12">
-        <div class="flex items-center gap-2 mb-2">
-          <div class="w-3 h-3 rounded-full bg-red-500"></div>
-          <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-          <div class="w-3 h-3 rounded-full bg-green-500"></div>
+    <div class="container mx-auto px-6 lg:px-8 relative z-10 w-full">
+      <!-- Professional section header -->
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <div class="text-left">
+            <h2 class="text-4xl lg:text-5xl font-bold text-white professional-glow">
+              Leadership Journey
+            </h2>
+            <p class="text-slate-400 text-sm">Building teams • Driving results • Creating impact</p>
+          </div>
         </div>
-        <h2 class="text-3xl font-bold text-odyssey-green mb-2">
-          // Professional_Journey.log
-        </h2>
-        <div class="w-32 h-0.5 bg-odyssey-blue mb-4"></div>
-        <p class="text-odyssey-text-secondary">
-          // My path from developer to tech lead, delivering impact across multiple industries.
-        </p>
+        <div class="w-24 h-1 bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400 rounded-full mx-auto"></div>
       </div>
 
-      <!-- Terminal log container -->
-      <div class="bg-odyssey-terminal border border-odyssey-border overflow-hidden shadow-2xl font-mono" style="border-radius:0;">
-        <!-- Terminal header -->
-        <div class="px-4 py-2 bg-odyssey-terminal-header border-b border-odyssey-border flex items-center font-mono" style="border-radius:0;">
-          <div class="flex items-center gap-1.5">
-            <span class="text-xs text-green-400">user@portfolio</span>
-            <span class="text-xs text-odyssey-text-secondary">:</span>
-            <span class="text-xs text-green-400">~</span>
-            <span class="text-xs text-odyssey-text-secondary">$</span>
-          </div>
-          <span class="ml-2 text-odyssey-text font-mono">view_professional_journey --sorted<span class="animate-blink">|</span></span>
-        </div>
-        
-        <!-- Terminal content -->
-        <div class="p-4 md:p-6 space-y-8">
-          <!-- Experience entries -->
-          <div v-for="(experience, index) in sortedExperiences" :key="index" class="experience-entry">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="text-odyssey-blue font-bold">></div>
-              <div>
-                <h3 class="text-lg font-bold text-odyssey-green">{{ experience.role }}</h3>
-                <div class="flex flex-wrap items-center gap-2 text-xs text-odyssey-text-secondary mt-1">
-                  <span class="font-semibold">{{ experience.company }}</span>
-                  <span>•</span>
-                  <span>{{ experience.location }}</span>
-                  <span>•</span>
-                  <span class="text-odyssey-blue">{{ experience.startDate }} – {{ experience.endDate }}</span>
-                </div>
-              </div>
-            </div>
-            
-            <div class="ml-6 pl-3 border-l border-odyssey-border/30 space-y-3">
-              <!-- Achievements -->
-              <div>
-                <div class="flex items-center gap-2 mb-2">
-                  <Icon name="mdi:star" class="text-yellow-400 w-4 h-4" />
-                  <span class="text-odyssey-text font-semibold">Key Achievements:</span>
-                </div>
-                <ul class="space-y-2">
-                  <li v-for="(achievement, achIndex) in experience.achievements" :key="achIndex" class="flex items-start gap-2 text-odyssey-text">
-                    <span class="text-odyssey-green mt-1">•</span>
-                    <span>{{ achievement }}</span>
-                  </li>
-                </ul>
-              </div>
-              
-              <!-- Skills -->
-              <div>
-                <div class="flex items-center gap-2 mb-2">
-                  <Icon name="mdi:code-tags" class="text-cyan-400 w-4 h-4" />
-                  <span class="text-odyssey-text font-semibold">Technologies & Skills:</span>
-                </div>
-                <div class="flex flex-wrap gap-2">
-                  <span 
-                    v-for="(skill, skillIndex) in experience.skills"
-                    :key="skillIndex"
-                    class="skill-tag px-2.5 py-1 bg-odyssey-dark/50 border border-odyssey-border text-xs text-odyssey-text rounded hover:bg-odyssey-blue/10 hover:border-odyssey-blue/30 transition-colors"
-                  >
-                    {{ skill }}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
+      <!-- Executive Experience Timeline -->
+      <div class="max-w-5xl mx-auto">
+        <div class="relative">
+          <!-- Timeline line -->
+          <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-400 via-cyan-400 to-blue-400 opacity-30"></div>
           
-          <!-- Career stats summary -->
-          <div class="pt-6 border-t border-odyssey-border/30">
-            <div class="flex items-center gap-2 mb-4">
-              <Icon name="mdi:chart-line" class="text-emerald-400 w-5 h-5" />
-              <span class="text-odyssey-text font-semibold">Career Summary:</span>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div class="stat-card p-4 bg-odyssey-dark/30 border border-odyssey-border rounded text-center">
-                <div class="text-2xl font-bold text-odyssey-green">6+</div>
-                <div class="text-xs text-odyssey-text-secondary uppercase tracking-wider">Years Experience</div>
-              </div>
-              <div class="stat-card p-4 bg-odyssey-dark/30 border border-odyssey-border rounded text-center">
-                <div class="text-2xl font-bold text-odyssey-blue">15+</div>
-                <div class="text-xs text-odyssey-text-secondary uppercase tracking-wider">Projects Delivered</div>
-              </div>
-              <div class="stat-card p-4 bg-odyssey-dark/30 border border-odyssey-border rounded text-center">
-                <div class="text-2xl font-bold text-purple-400">3</div>
-                <div class="text-xs text-odyssey-text-secondary uppercase tracking-wider">Leadership Roles</div>
+          <div class="space-y-12">
+            <div 
+              v-for="(experience, index) in executiveExperiences"
+              :key="index"
+              class="experience-card group relative"
+            >
+              <!-- Timeline dot -->
+              <div class="absolute left-6 top-8 w-4 h-4 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full border-4 border-slate-900 shadow-lg group-hover:scale-125 transition-transform duration-300"></div>
+              
+              <!-- Experience content -->
+              <div class="ml-20 bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:bg-slate-800/50 hover:border-slate-600/50 transition-all duration-300">
+                <!-- Header -->
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
+                  <div>
+                    <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">
+                      {{ experience.role }}
+                    </h3>
+                    <div class="flex flex-wrap items-center gap-4 text-slate-400">
+                      <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H9m0 0H5m0 0h2M7 7h3v3H7V7z"/>
+                        </svg>
+                        <span class="font-medium">{{ experience.company }}</span>
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 12.414a2 2 0 00-2.828 0l-4.243 4.243A8 8 0 1116 8a8.001 8.001 0 01-1.343 8.657z"/>
+                        </svg>
+                        <span>{{ experience.location }}</span>
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        <span class="font-medium">{{ experience.startDate }} – {{ experience.endDate }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div v-if="experience.teamSize" class="lg:text-right mt-4 lg:mt-0">
+                    <div class="inline-flex items-center px-4 py-2 bg-slate-700/50 rounded-full text-sm">
+                      <svg class="w-4 h-4 mr-2 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                      </svg>
+                      <span class="text-slate-300">{{ experience.teamSize }} team members</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="grid lg:grid-cols-2 gap-8">
+                  <!-- Leadership Impact -->
+                  <div>
+                    <div class="flex items-center gap-2 mb-4">
+                      <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                      <span class="text-white font-semibold">Leadership Impact:</span>
+                    </div>
+                    <ul class="space-y-3">
+                      <li v-for="(achievement, achIndex) in experience.achievements" :key="achIndex" class="flex items-start gap-3 text-slate-300">
+                        <span class="text-emerald-400 mt-1.5 w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
+                        <span class="leading-relaxed">{{ achievement }}</span>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <!-- Technical Excellence -->
+                  <div>
+                    <div class="flex items-center gap-2 mb-4">
+                      <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                      </svg>
+                      <span class="text-white font-semibold">Technical Excellence:</span>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                      <span 
+                        v-for="(skill, skillIndex) in experience.skills"
+                        :key="skillIndex"
+                        class="px-3 py-1.5 bg-slate-700/50 border border-slate-600/50 text-xs text-slate-300 rounded-lg hover:bg-slate-600/50 hover:border-slate-500/50 transition-colors"
+                      >
+                        {{ skill }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Key metrics if available -->
+                <div v-if="experience.metrics" class="mt-8 pt-6 border-t border-slate-700/50">
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div v-for="(metric, metricIndex) in experience.metrics" :key="metricIndex" class="text-center">
+                      <div class="text-2xl font-bold text-emerald-400 mb-1">{{ metric.value }}</div>
+                      <div class="text-sm text-slate-400">{{ metric.label }}</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+      
+      <!-- Executive summary -->
+      <div class="mt-20 bg-slate-800/20 backdrop-blur-sm border border-slate-700/30 rounded-2xl p-8">
+        <div class="text-center mb-8">
+          <h3 class="text-2xl font-bold text-white mb-4">Executive Summary</h3>
+          <div class="w-16 h-1 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full mx-auto"></div>
+        </div>
         
-        <!-- Terminal footer -->
-        <div class="px-4 py-2 bg-odyssey-terminal-header border-t border-odyssey-border text-xs text-odyssey-text-secondary font-mono" style="border-radius:0;">
-          <div class="flex items-center gap-4">
-            <span class="text-green-400">user@portfolio</span><span class="text-odyssey-text-secondary">:</span><span class="text-green-400">~</span><span class="text-odyssey-text-secondary">$</span>
-            <span class="text-odyssey-text-secondary"># End of log. Press any key to continue...</span>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div v-for="(stat, index) in executiveStats" :key="stat.label" class="text-center group">
+            <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-emerald-400 to-cyan-400 mb-2">
+              {{ stat.value }}
+            </div>
+            <div class="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-1">
+              {{ stat.label }}
+            </div>
+            <div class="text-xs text-slate-500">
+              {{ stat.description }}
+            </div>
           </div>
         </div>
       </div>
@@ -129,182 +162,216 @@
 </template>
 
 <script setup lang="ts">
-interface Experience {
+interface ExecutiveExperience {
   role: string;
   company: string;
   location: string;
   startDate: string;
   endDate: string;
+  teamSize?: string;
   achievements: string[];
   skills: string[];
+  metrics?: { value: string; label: string }[];
 }
-const experiences = ref<Experience[]>([
+
+const executiveExperiences = ref<ExecutiveExperience[]>([
   {
-    role: 'Tech Lead',
+    role: 'Tech Lead & Engineering Manager',
     company: 'DabaDoc',
     location: 'Casablanca, Morocco',
     startDate: 'Jan 2024',
     endDate: 'Present',
+    teamSize: '15+',
     achievements: [
-      'Led a team of engineers in developing innovative healthcare web and mobile applications across Africa and the Middle East.',
-      'Successfully reduced page load times by 40%, improving site performance and user satisfaction.',
-      'Introduced Agile methodologies and Scrum practices, enhancing team collaboration and project delivery speed.',
-      'Spearheaded cloud infrastructure migration to AWS, reducing operational costs by 15%.'
+      'Leading cross-functional engineering teams across Africa and Middle East healthcare markets',
+      'Architected microservices infrastructure reducing system latency by 40% and improving user satisfaction',
+      'Implemented Agile/Scrum methodologies resulting in 30% faster delivery cycles',
+      'Mentored junior developers and established code review processes that improved code quality by 50%',
+      'Spearheaded cloud migration to AWS, reducing operational costs by 25% while improving scalability'
     ],
-    skills: ['Team Leadership', 'Healthcare Tech', 'Agile & Scrum', 'AWS', 'Performance Optimization']
+    skills: ['Team Leadership', 'AWS Architecture', 'Agile/Scrum', 'Performance Optimization', 'Microservices'],
+    metrics: [
+      { value: '40%', label: 'Performance Gain' },
+      { value: '25%', label: 'Cost Reduction' },
+      { value: '30%', label: 'Faster Delivery' }
+    ]
   },
   {
-    role: 'Full-stack Developer',
+    role: 'Senior Full-stack Developer',
     company: 'DabaDoc',
     location: 'Casablanca, Morocco',
     startDate: 'Apr 2022',
     endDate: 'Dec 2023',
+    teamSize: '8',
     achievements: [
-      'Collaborated with product and design teams to develop new features, improving user engagement by 25%.',
-      'Utilized Ruby on Rails, MongoDB, AngularJS, and Tailwind to build responsive web applications.',
-      'Implemented cloud-based deployments on AWS and Heroku, ensuring seamless scalability and uptime.'
+      'Led development of patient-doctor matching platform serving 100K+ users across multiple countries',
+      'Collaborated with product teams to translate business requirements into scalable technical solutions',
+      'Designed and implemented RESTful APIs handling 1M+ requests daily with 99.9% uptime',
+      'Mentored 3 junior developers and established best practices for code quality and testing'
     ],
-    skills: ['Ruby on Rails', 'MongoDB', 'AngularJS', 'Tailwind CSS', 'AWS', 'Heroku']
+    skills: ['Ruby on Rails', 'React', 'MongoDB', 'API Design', 'Mentoring', 'Product Development'],
+    metrics: [
+      { value: '100K+', label: 'Active Users' },
+      { value: '99.9%', label: 'System Uptime' },
+      { value: '1M+', label: 'Daily API Calls' }
+    ]
   },
   {
-    role: 'Software Engineer',
+    role: 'Software Engineer & Team Contributor',
     company: 'Majorel',
     location: 'Casablanca, Morocco',
     startDate: 'May 2020',
     endDate: 'Apr 2022',
+    teamSize: '12',
     achievements: [
-      'Worked on both front-end and back-end development for various clients, delivering comprehensive web solutions.',
-      'Collaborated with cross-functional teams to implement scalable and efficient systems, ensuring seamless user experiences.'
+      'Contributed to multi-client projects serving international markets with diverse technical requirements',
+      'Developed responsive web applications using modern JavaScript frameworks and backend technologies',
+      'Participated in agile development processes and cross-team collaboration initiatives',
+      'Gained expertise in client communication and project management in international context'
     ],
-    skills: ['Full-stack Development', 'Cross-functional Collaboration', 'Scalable Systems']
+    skills: ['Full-stack Development', 'JavaScript', 'Agile Methodologies', 'Client Relations', 'Project Management']
   },
   {
-    role: 'Full-stack Developer',
-    company: 'Majorel',
+    role: 'Junior Developer',
+    company: 'Majorel (Solocal Partnership)',
     location: 'Casablanca, Morocco',
     startDate: 'Mar 2018',
     endDate: 'Apr 2020',
+    teamSize: '6',
     achievements: [
-      "Developed websites for Solocal's clients from Morocco while Solocal was based in France.",
-      'Gained valuable experience in remote collaboration and international project management.'
+      'Developed websites for French clients while working remotely, gaining international project experience',
+      'Learned foundational web development technologies and professional development practices',
+      'Built communication skills working with distributed teams across different time zones',
+      'Established strong foundation in software development lifecycle and client requirements analysis'
     ],
-    skills: ['Web Development', 'Remote Collaboration', 'International Projects']
+    skills: ['Web Development', 'Remote Collaboration', 'HTML/CSS/JavaScript', 'PHP', 'Client Communication']
   }
 ])
-const sortedExperiences = computed(() => {
-  return [...experiences.value].sort((a, b) => {
-    const dateA = new Date(a.startDate === 'Present' ? new Date() : a.startDate)
-    const dateB = new Date(b.startDate === 'Present' ? new Date() : b.startDate)
-    return dateB.getTime() - dateA.getTime()
-  })
-})
+
+const executiveStats = [
+  { 
+    value: '6+', 
+    label: 'Years Leadership', 
+    description: 'Managing technical teams' 
+  },
+  { 
+    value: '15+', 
+    label: 'Engineers Led', 
+    description: 'Across multiple projects' 
+  },
+  { 
+    value: '$2M+', 
+    label: 'Project Value', 
+    description: 'Healthcare & E-commerce' 
+  },
+  { 
+    value: '5', 
+    label: 'Countries', 
+    description: 'International reach' 
+  }
+]
 </script>
 
 <style scoped>
-/* "Digital Odyssey" theme colors */
-.bg-odyssey-dark { background-color: #0a0e17; } /* Deep space */
-.bg-odyssey-terminal { background-color: #0f1421; } /* Terminal background */
-.bg-odyssey-terminal-header { background-color: #151b2b; } /* Terminal header */
-.border-odyssey-border { border-color: #2a334c; }
-.text-odyssey-text { color: #c0c7d9; } /* Main text */
-.text-odyssey-text-secondary { color: #7d87a5; } /* Secondary text */
-.text-odyssey-green { color: #4ade80; } /* Success/Accent green */
-.text-odyssey-blue { color: #60a5fa; } /* Info/Accent blue */
-
-/* Font */
-.font-mono {
-  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
+/* Professional executive theme */
+.professional-glow {
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
 }
 
-/* Starfield background */
-.starfield {
+/* Executive grid pattern */
+.executive-grid-pattern {
   background-image: 
-    radial-gradient(2px 2px at 20px 30px, #4ade80, transparent),
-    radial-gradient(2px 2px at 40px 70px, #60a5fa, transparent),
-    radial-gradient(1px 1px at 90px 40px, #7d87a5, transparent),
-    radial-gradient(1px 1px at 130px 80px, #4ade80, transparent),
-    radial-gradient(2px 2px at 40px 120px, #c0c7d9, transparent);
-  background-repeat: repeat;
-  background-size: 200px 200px;
+    radial-gradient(circle at 25% 25%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(6, 182, 212, 0.05) 0%, transparent 50%),
+    linear-gradient(rgba(148, 163, 184, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.02) 1px, transparent 1px);
+  background-size: 300px 300px, 200px 200px, 60px 60px, 60px 60px;
   width: 100%;
   height: 100%;
-  animation: drift 120s linear infinite;
+  animation: executive-grid-float 120s linear infinite;
 }
-@keyframes drift {
+
+@keyframes executive-grid-float {
   0% { transform: translate(0, 0); }
-  100% { transform: translate(200px, 200px); }
+  100% { transform: translate(60px, 60px); }
 }
 
-/* Floating data particles */
-.data-particle {
+/* Leadership floating elements */
+.leadership-element {
   position: absolute;
-  width: 6px;
-  height: 6px;
-  background-color: #4ade80;
-  border-radius: 2px;
-  animation: particle-float 25s ease-in-out infinite;
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(45deg, #10b981, #06b6d4);
+  border-radius: 50%;
+  animation: leadership-float 40s ease-in-out infinite;
   opacity: 0.3;
-  box-shadow: 0 0 8px #4ade80;
-}
-.particle-1 { top: 20%; left: 15%; animation-delay: 0s; }
-.particle-2 { bottom: 30%; right: 20%; animation-delay: 8s; }
-.particle-3 { top: 60%; right: 10%; animation-delay: 16s; }
-@keyframes particle-float {
-  0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.3; }
-  25% { transform: translateY(-40px) translateX(20px); opacity: 0.7; }
-  50% { transform: translateY(20px) translateX(-30px); opacity: 0.5; }
-  75% { transform: translateY(-30px) translateX(40px); opacity: 0.6; }
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
 }
 
-/* Terminal elements */
-.skill-tag {
-  transition: all 0.2s ease;
-}
-.skill-tag:hover {
-  transform: translateY(-2px);
+.element-1 { top: 15%; left: 10%; animation-delay: 0s; }
+.element-2 { bottom: 25%; right: 15%; animation-delay: 15s; }
+.element-3 { top: 60%; right: 10%; animation-delay: 30s; }
+
+@keyframes leadership-float {
+  0%, 100% { 
+    transform: translate(0px, 0px) rotate(0deg); 
+    opacity: 0.3; 
+  }
+  25% { 
+    transform: translate(-30px, 20px) rotate(90deg); 
+    opacity: 0.6; 
+  }
+  50% { 
+    transform: translate(20px, -40px) rotate(180deg); 
+    opacity: 0.4; 
+  }
+  75% { 
+    transform: translate(30px, 30px) rotate(270deg); 
+    opacity: 0.5; 
+  }
 }
 
-/* Experience entry styling */
-.experience-entry {
-  animation: fadeIn 0.5s ease-out forwards;
+/* Experience cards */
+.experience-card {
   opacity: 0;
-}
-.experience-entry:nth-child(1) { animation-delay: 0.1s; }
-.experience-entry:nth-child(2) { animation-delay: 0.3s; }
-.experience-entry:nth-child(3) { animation-delay: 0.5s; }
-.experience-entry:nth-child(4) { animation-delay: 0.7s; }
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  transform: translateX(-30px);
+  animation: slideInLeft 0.6s ease-out forwards;
 }
 
-/* Stat cards */
-.stat-card {
-  transition: all 0.3s ease;
-}
-.stat-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  border-color: #4ade80;
+.experience-card:nth-child(1) { animation-delay: 0.1s; }
+.experience-card:nth-child(2) { animation-delay: 0.3s; }
+.experience-card:nth-child(3) { animation-delay: 0.5s; }
+.experience-card:nth-child(4) { animation-delay: 0.7s; }
+
+@keyframes slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-/* Responsive adjustments */
+/* Responsive design */
+@media (max-width: 1024px) {
+  .ml-20 {
+    margin-left: 3rem;
+  }
+}
+
 @media (max-width: 768px) {
-  .ml-6 {
-    margin-left: 0;
+  .absolute.left-8 {
+    left: 1rem;
   }
-  .pl-3 {
-    padding-left: 0;
+  
+  .ml-20 {
+    margin-left: 2rem;
   }
-  .border-l {
-    border-left-width: 0;
+  
+  .left-6 {
+    left: 0.75rem;
   }
-}
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-.animate-blink {
-  animation: blink 1s steps(2, start) infinite;
+
+  .grid.lg\\:grid-cols-2 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
 }
 </style>
