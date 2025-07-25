@@ -93,7 +93,7 @@
           <span class="text-emerald-400 font-semibold">strategic leadership</span>, 
           <span class="text-cyan-400 font-semibold">technical excellence</span>, and 
           <span class="text-blue-400 font-semibold">sustainable team growth</span> • 
-          Delivered <span class="text-purple-400 font-semibold">$5M+ in project value</span> across healthcare, fintech, and e-commerce sectors
+          Delivered <span class="text-purple-400 font-semibold">$3M+ in project value</span> across healthcare, real estate, and e-commerce sectors
         </p>
         
         <!-- Enhanced key achievements -->
