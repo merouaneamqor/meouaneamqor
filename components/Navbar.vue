@@ -1,24 +1,24 @@
 <template>
   <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-xl border-b border-slate-700/50 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-14 sm:h-16">
         <!-- Logo/Brand -->
         <div class="flex items-center">
-          <NuxtLink to="/" class="flex items-center gap-3 text-white font-bold text-lg hover:text-emerald-400 transition-colors">
-            <div class="w-8 h-8 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center">
-              <span class="text-white text-sm font-bold">MA</span>
+          <NuxtLink to="/" class="flex items-center gap-2 sm:gap-3 text-white font-bold text-base sm:text-lg hover:text-emerald-400 transition-colors">
+            <div class="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center">
+              <span class="text-white text-xs sm:text-sm font-bold">MA</span>
             </div>
             <span class="hidden sm:block">Merouane Amqor</span>
           </NuxtLink>
         </div>
 
         <!-- Desktop Navigation -->
-        <div class="hidden md:flex items-center gap-8">
+        <div class="hidden md:flex items-center gap-4 lg:gap-8">
           <NuxtLink 
             v-for="item in navigation" 
             :key="item.href"
             :to="item.href"
-            class="nav-link relative py-2 px-3 text-slate-300 hover:text-emerald-400 transition-colors font-medium"
+            class="nav-link relative py-2 px-2 lg:px-3 text-slate-300 hover:text-emerald-400 transition-colors font-medium text-sm lg:text-base"
             :class="{ 'text-emerald-400': isActive(item.href) }"
           >
             {{ item.name }}
@@ -30,9 +30,10 @@
         <div class="hidden md:flex items-center gap-4">
           <a 
             href="mailto:marouane.amqor@gmail.com"
-            class="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold rounded-lg hover:from-emerald-600 hover:to-cyan-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-emerald-500/25"
+            class="px-4 lg:px-6 py-2 lg:py-2.5 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold rounded-lg hover:from-emerald-600 hover:to-cyan-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-emerald-500/25 text-sm lg:text-base"
           >
-            Let's Connect
+            <span class="hidden lg:inline">Let's Connect</span>
+            <span class="lg:hidden">Connect</span>
           </a>
         </div>
 
@@ -51,21 +52,21 @@
       </div>
 
       <!-- Mobile Navigation -->
-      <div v-if="mobileMenuOpen" class="md:hidden border-t border-slate-700/50 py-4">
-        <div class="flex flex-col gap-4">
+      <div v-if="mobileMenuOpen" class="md:hidden border-t border-slate-700/50 py-3">
+        <div class="flex flex-col gap-3">
           <NuxtLink 
             v-for="item in navigation" 
             :key="item.href"
             :to="item.href"
             @click="closeMobileMenu"
-            class="py-2 px-3 text-slate-300 hover:text-emerald-400 transition-colors font-medium"
+            class="py-2.5 px-3 text-slate-300 hover:text-emerald-400 transition-colors font-medium text-base"
             :class="{ 'text-emerald-400': isActive(item.href) }"
           >
             {{ item.name }}
           </NuxtLink>
           <a 
             href="mailto:marouane.amqor@gmail.com"
-            class="mt-4 px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold rounded-lg text-center"
+            class="mt-3 mx-3 px-6 py-3 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold rounded-lg text-center"
           >
             Let's Connect
           </a>
