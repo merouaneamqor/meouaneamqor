@@ -1,5 +1,5 @@
 <template>
-  <section class="py-16 bg-gray-900 border-b border-gray-800 relative overflow-hidden font-mono text-sm">
+  <section class="py-16 bg-gray-900 border-b border-gray-800 relative overflow-hidden font-mono text-sm min-h-screen flex items-center justify-center">
     <!-- Subtle background pattern -->
     <div class="absolute inset-0 opacity-5 pointer-events-none">
       <div class="github-grid-pattern"></div>
@@ -10,7 +10,7 @@
       <div class="floating-element elem-2"></div>
     </div>
     
-    <div class="container mx-auto px-4 sm:px-6 relative z-10 max-w-4xl">
+    <div class="container mx-auto px-4 sm:px-6 relative z-10 w-full">
       <!-- Section header -->
       <div class="mb-10">
         <h2 class="text-3xl font-bold text-white mb-2 flex items-center gap-2">
@@ -22,9 +22,14 @@
         </p>
       </div>
 
-      <div class="space-y-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <!-- Leadership & Process (Prioritized) -->
         <div class="skill-category bg-gray-800/50 border border-gray-700 rounded-lg overflow-hidden">
+          <div class="flex items-center gap-2 px-4 p-3">
+            <span class="inline-block w-2.5 h-2.5 rounded-full bg-red-500"></span>
+            <span class="inline-block w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
+            <span class="inline-block w-2.5 h-2.5 rounded-full bg-green-500"></span>
+          </div>
           <div class="category-header px-4 py-3 bg-gray-800/80 border-b border-gray-700 flex items-center gap-2">
             <Icon name="mdi:account-group" class="text-blue-400 w-5 h-5" />
             <h3 class="font-semibold text-white">Leadership & Process</h3>
@@ -35,18 +40,17 @@
                 <span class="text-gray-400">{{ skill.icon }}</span>
                 <span class="text-gray-200">{{ skill.name }}</span>
               </div>
-              <div class="flex items-center gap-2">
-                <span class="text-gray-500 text-xs">{{ skill.level }}%</span>
-                <div class="w-16 h-1.5 bg-gray-700 rounded-full overflow-hidden">
-                  <div class="skill-progress leadership-progress h-full rounded-full" :style="{ width: skill.level + '%' }"></div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
 
         <!-- Backend & Infrastructure -->
         <div class="skill-category bg-gray-800/50 border border-gray-700 rounded-lg overflow-hidden">
+          <div class="flex items-center gap-2 px-4 p-3">
+            <span class="inline-block w-2.5 h-2.5 rounded-full bg-red-500"></span>
+            <span class="inline-block w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
+            <span class="inline-block w-2.5 h-2.5 rounded-full bg-green-500"></span>
+          </div>
           <div class="category-header px-4 py-3 bg-gray-800/80 border-b border-gray-700 flex items-center gap-2">
             <Icon name="mdi:server-network" class="text-emerald-400 w-5 h-5" />
             <h3 class="font-semibold text-white">Backend & Infrastructure</h3>
@@ -57,18 +61,17 @@
                 <span class="text-gray-400">{{ skill.icon }}</span>
                 <span class="text-gray-200">{{ skill.name }}</span>
               </div>
-              <div class="flex items-center gap-2">
-                <span class="text-gray-500 text-xs">{{ skill.level }}%</span>
-                <div class="w-16 h-1.5 bg-gray-700 rounded-full overflow-hidden">
-                  <div class="skill-progress backend-progress h-full rounded-full" :style="{ width: skill.level + '%' }"></div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
 
         <!-- Frontend & UI -->
         <div class="skill-category bg-gray-800/50 border border-gray-700 rounded-lg overflow-hidden">
+          <div class="flex items-center gap-2 px-4 p-3">
+            <span class="inline-block w-2.5 h-2.5 rounded-full bg-red-500"></span>
+            <span class="inline-block w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
+            <span class="inline-block w-2.5 h-2.5 rounded-full bg-green-500"></span>
+          </div>
           <div class="category-header px-4 py-3 bg-gray-800/80 border-b border-gray-700 flex items-center gap-2">
             <Icon name="mdi:monitor-screenshot" class="text-cyan-400 w-5 h-5" />
             <h3 class="font-semibold text-white">Frontend & UI</h3>
@@ -79,18 +82,17 @@
                 <span class="text-gray-400">{{ skill.icon }}</span>
                 <span class="text-gray-200">{{ skill.name }}</span>
               </div>
-              <div class="flex items-center gap-2">
-                <span class="text-gray-500 text-xs">{{ skill.level }}%</span>
-                <div class="w-16 h-1.5 bg-gray-700 rounded-full overflow-hidden">
-                  <div class="skill-progress frontend-progress h-full rounded-full" :style="{ width: skill.level + '%' }"></div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
 
         <!-- DevOps & Tools -->
         <div class="skill-category bg-gray-800/50 border border-gray-700 rounded-lg overflow-hidden">
+          <div class="flex items-center gap-2 px-4 p-3">
+            <span class="inline-block w-2.5 h-2.5 rounded-full bg-red-500"></span>
+            <span class="inline-block w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
+            <span class="inline-block w-2.5 h-2.5 rounded-full bg-green-500"></span>
+          </div>
           <div class="category-header px-4 py-3 bg-gray-800/80 border-b border-gray-700 flex items-center gap-2">
             <Icon name="mdi:cog" class="text-purple-400 w-5 h-5" />
             <h3 class="font-semibold text-white">DevOps & Tools</h3>
@@ -101,11 +103,25 @@
                 <span class="text-gray-400">{{ skill.icon }}</span>
                 <span class="text-gray-200">{{ skill.name }}</span>
               </div>
+            </div>
+          </div>
+        </div>
+        <!-- Conception Tools -->
+        <div class="skill-category bg-gray-800/50 border border-gray-700 rounded-lg overflow-hidden">
+          <div class="flex items-center gap-2 px-4 p-3">
+            <span class="inline-block w-2.5 h-2.5 rounded-full bg-red-500"></span>
+            <span class="inline-block w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
+            <span class="inline-block w-2.5 h-2.5 rounded-full bg-green-500"></span>
+          </div>
+          <div class="category-header px-4 py-3 bg-gray-800/80 border-b border-gray-700 flex items-center gap-2">
+            <Icon name="mdi:lightbulb-outline" class="text-yellow-400 w-5 h-5" />
+            <h3 class="font-semibold text-white">Conception Tools</h3>
+          </div>
+          <div class="p-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div v-for="skill in conceptionSkills" :key="skill.name" class="skill-item flex items-center justify-between py-2 px-3 rounded hover:bg-gray-700/50 transition-colors">
               <div class="flex items-center gap-2">
-                <span class="text-gray-500 text-xs">{{ skill.level }}%</span>
-                <div class="w-16 h-1.5 bg-gray-700 rounded-full overflow-hidden">
-                  <div class="skill-progress devops-progress h-full rounded-full" :style="{ width: skill.level + '%' }"></div>
-                </div>
+                <span class="text-gray-400">{{ skill.icon }}</span>
+                <span class="text-gray-200">{{ skill.name }}</span>
               </div>
             </div>
           </div>
@@ -123,12 +139,22 @@ const leadershipSkills = [
   { name: "Code Review", icon: "🔍", level: 95 },
   { name: "Mentoring", icon: "🎓", level: 90 },
   { name: "Product Strategy", icon: "📊", level: 85 },
-  { name: "Project Management", icon: "📋", level: 85 }
+  { name: "Project Management", icon: "📋", level: 85 },
+  { name: "Communication", icon: "💬" },
+  { name: "Conflict Resolution", icon: "🤝" },
+  { name: "Decision Making", icon: "🧠" },
+  { name: "Change Management", icon: "🔄" },
+  { name: "Stakeholder Management", icon: "🤝" }
 ]
 
 const backendSkills = [
   { name: "Ruby on Rails", icon: "💎", level: 95 },
   { name: "PostgreSQL", icon: "🐘", level: 90 },
+  { name: "PHP", icon: "🐘", level: 85 },
+  { name: "Java", icon: "☕", level: 85 },
+  { name: "Python", icon: "🐍", level: 85 },
+  { name: "Node.js", icon: "🟩", level: 80 },
+  { name: "C#", icon: "#️⃣", level: 80 },
   { name: "MongoDB", icon: "🍃", level: 85 },
   { name: "GraphQL", icon: "⚡", level: 80 },
   { name: "Redis", icon: "🔴", level: 85 },
@@ -141,7 +167,13 @@ const frontendSkills = [
   { name: "Nuxt.js", icon: "🟢", level: 90 },
   { name: "Next.js", icon: "▲", level: 80 },
   { name: "Tailwind CSS", icon: "🎨", level: 95 },
-  { name: "TypeScript", icon: "📘", level: 85 }
+  { name: "TypeScript", icon: "📘", level: 85 },
+  { name: "Angular", icon: "🅰️" },
+  { name: "Bootstrap", icon: "🟦" },
+  { name: "SASS", icon: "🎀" },
+  { name: "jQuery", icon: "💠" },
+  { name: "Figma", icon: "🎨" },
+  { name: "Adobe XD", icon: "🖌️" }
 ]
 
 const devopsSkills = [
@@ -150,7 +182,27 @@ const devopsSkills = [
   { name: "GitHub Actions", icon: "🚀", level: 85 },
   { name: "Heroku", icon: "🟣", level: 90 },
   { name: "Vercel", icon: "🔺", level: 85 },
-  { name: "Linux", icon: "🐧", level: 80 }
+  { name: "Linux", icon: "🐧", level: 80 },
+  { name: "Jenkins", icon: "☕" },
+  { name: "GitLab CI", icon: "🦊" },
+  { name: "Terraform", icon: "🌍" },
+  { name: "Kubernetes", icon: "☸️" },
+  { name: "Nginx", icon: "🚦" },
+  { name: "Apache", icon: "🔥" },
+  { name: "DigitalOcean", icon: "💧" },
+  { name: "Azure DevOps", icon: "🔷" },
+  { name: "Slack", icon: "💬" },
+  { name: "Trello", icon: "📋" },
+  { name: "Jira", icon: "📒" }
+]
+
+const conceptionSkills = [
+  { name: "UML", icon: "📐" },
+  { name: "ERD", icon: "🗂️" },
+  { name: "BPMN", icon: "🔄" },
+  { name: "Lucidchart", icon: "💡" },
+  { name: "Miro", icon: "🟨" },
+  { name: "Draw.io", icon: "✏️" }
 ]
 </script>
 
