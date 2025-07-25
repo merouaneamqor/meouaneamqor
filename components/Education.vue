@@ -1,7 +1,7 @@
 <template>
-  <section class="py-16 bg-academic-dark border-b border-academic-border relative overflow-hidden font-sans">
+  <section class="py-0 bg-gray-900 border-b border-gray-800 relative overflow-hidden font-markdown text-base min-h-screen flex items-center justify-center">
     <!-- Subtle parchment/thesis-like background texture -->
-    <div class="absolute inset-0 opacity-5 pointer-events-none">
+    <div class="absolute inset-0 opacity-3 pointer-events-none">
       <div class="academic-texture"></div>
     </div>
     <!-- Floating elements for a scholarly yet digital feel -->
@@ -11,122 +11,58 @@
       <div class="floating-academic elem-3"></div>
     </div>
     
-    <div class="container mx-auto px-4 sm:px-6 relative z-10 max-w-5xl">
+    <div class="container mx-auto px-0 sm:px-0 relative z-10 w-full">
       <!-- Section header -->
-      <div class="mb-10">
-        <div class="flex items-center gap-2 mb-2">
-          <!-- Academic/Coding icon set -->
-          <Icon name="mdi:book-open-variant" class="text-academic-blue w-5 h-5" />
-          <Icon name="mdi:code-braces" class="text-academic-green w-5 h-5" />
-        </div>
-        <h2 class="text-3xl font-bold text-academic-text mb-2">
-          // Academic_Foundation.md
-        </h2>
-        <div class="w-24 h-0.5 bg-academic-green mb-4"></div>
-        <p class="text-academic-text-secondary text-sm">
-          // My academic background in computer science and leadership.
-        </p>
+      <div class="mb-8">
+        <h2 class="text-3xl font-bold text-gray-100 mb-2 tracking-tight">Academic_Foundation.md</h2>
+        <div class="w-24 h-0.5 bg-green-400 mb-4"></div>
+        <blockquote class="text-gray-400 italic pl-4 border-l-4 border-gray-700">My academic background in computer science and leadership.</blockquote>
       </div>
-
-      <!-- Main content container -->
-      <div class="bg-academic-card-bg border border-academic-border rounded-lg overflow-hidden shadow-xl">
-        <!-- Degree Header -->
-        <div class="px-6 py-5 bg-academic-header-bg border-b border-academic-border">
-          <div class="flex flex-col md:flex-row items-start md:items-center gap-4">
-            <div class="flex-shrink-0">
-              <div class="w-14 h-14 bg-academic-blue/20 border border-academic-blue/30 rounded-lg flex items-center justify-center">
-                <img src="/assets/images/supemir.jpg" alt="BDE" class="w-14 h-14 rounded-lg p-1 grayscale" />
-              </div>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold text-academic-text">Master in Computer Science</h3>
-              <p class="text-academic-green font-medium">Engineering in Networks & Multimedia</p>
-              <div class="flex flex-wrap items-center gap-3 mt-2 text-xs text-academic-text-secondary">
-                <span class="flex items-center gap-1">
-                  <Icon name="mdi:domain" class="w-4 h-4" />
-                  SUPEMIR
-                </span>
-                <span class="flex items-center gap-1">
-                  <Icon name="mdi:calendar-range" class="w-4 h-4" />
-                  2019 - 2021
-                </span>
-              </div>
-            </div>
-          </div>
+      <hr class="my-8 border-gray-800" />
+      <!-- Degree Header -->
+      <div class="mb-6">
+        <h3 class="text-2xl font-semibold text-gray-200 mb-1">Master in Computer Science</h3>
+        <div class="text-green-400 font-medium mb-2">Engineering in Networks & Multimedia</div>
+        <div class="flex flex-wrap items-center gap-4 text-xs text-gray-400 mb-2">
+          <span><strong>SUPEMIR</strong></span>
+          <span>•</span>
+          <span>2019 - 2021</span>
         </div>
-        
-        <!-- Content Body -->
-        <div class="p-6 space-y-8">
-          <!-- Leadership Roles -->
-          <div>
-            <h4 class="text-lg font-semibold text-academic-text mb-4 flex items-center gap-2">
-              <Icon name="mdi:account-group" class="text-academic-blue w-5 h-5" />
-              Leadership Positions
-            </h4>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="leadership-card p-4 bg-academic-card-bg/50 border border-academic-border rounded hover:border-academic-green/30 transition-colors">
-                <div class="flex items-start gap-3 mb-3">
-                  <div class="w-10 h-10 bg-academic-green/20 border border-academic-green/30 rounded flex items-center justify-center flex-shrink-0">
-                    <Icon name="mdi:briefcase" class="text-academic-green w-5 h-5" />
-                  </div>
-                  <div>
-                    <h5 class="font-bold text-academic-text">President</h5>
-                    <p class="text-xs text-academic-text-secondary">Junior Enterprise Club</p>
-                  </div>
-                </div>
-                <p class="text-sm text-academic-text-secondary">
-                  Led entrepreneurial initiatives and business development projects within the academic community.
-                </p>
-              </div>
-              <div class="leadership-card p-4 bg-academic-card-bg/50 border border-academic-border rounded hover:border-academic-blue/30 transition-colors">
-                <div class="flex items-start gap-3 mb-3">
-                  <div class="w-10 h-10 bg-academic-blue/20 border border-academic-blue/30 rounded flex items-center justify-center flex-shrink-0">
-                    <Icon name="mdi:account-multiple" class="text-academic-blue w-5 h-5" />
-                  </div>
-                  <div>
-                    <h5 class="font-bold text-academic-text">President</h5>
-                    <p class="text-xs text-academic-text-secondary">Student Union (BDE)</p>
-                  </div>
-                </div>
-                <p class="text-sm text-academic-text-secondary">
-                  Represented student interests and organized campus-wide events and activities.
-                </p>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Institution Info -->
-          <div class="p-4 bg-academic-card-bg/30 border border-academic-border rounded">
-            <h4 class="text-lg font-semibold text-academic-text mb-3 flex items-center gap-2">
-              <Icon name="mdi:information" class="text-academic-purple w-5 h-5" />
-              About SUPEMIR
-            </h4>
-            <p class="text-sm text-academic-text-secondary leading-relaxed">
-              SUPEMIR is now an institution equivalent to public status, offering comprehensive degree programs 
-              in computer science, management, marketing, and entrepreneurship. The institution focuses on 
-              developing both technical expertise and leadership skills in its graduates.
-            </p>
-          </div>
-        </div>
+        <code class="bg-gray-800 text-gray-200 px-2 py-0.5 rounded text-xs">/assets/images/supemir.jpg</code>
       </div>
-      
+      <hr class="my-8 border-gray-800" />
+      <!-- Leadership Roles -->
+      <div class="mb-8">
+        <h4 class="text-lg font-bold text-gray-100 mb-4">Leadership Positions</h4>
+        <ul class="list-disc pl-6 space-y-2 text-gray-200">
+          <li><strong>President</strong>, Junior Enterprise Club<br/><span class="text-gray-400 text-sm">Led entrepreneurial initiatives and business development projects within the academic community.</span></li>
+          <li><strong>President</strong>, Student Union (BDE)<br/><span class="text-gray-400 text-sm">Represented student interests and organized campus-wide events and activities.</span></li>
+        </ul>
+      </div>
+      <hr class="my-8 border-gray-800" />
+      <!-- Institution Info -->
+      <div class="mb-8">
+        <h4 class="text-lg font-bold text-gray-100 mb-3">About SUPEMIR</h4>
+        <blockquote class="border-l-4 border-green-700 pl-4 text-gray-300 italic">SUPEMIR is now an institution equivalent to public status, offering comprehensive degree programs in computer science, management, marketing, and entrepreneurship. The institution focuses on developing both technical expertise and leadership skills in its graduates.</blockquote>
+      </div>
+      <hr class="my-8 border-gray-800" />
       <!-- Academic Achievements Summary -->
-      <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <div class="stat-card p-4 bg-academic-card-bg/50 border border-academic-border rounded text-center hover:border-academic-green/30 transition-colors">
-          <div class="text-xl font-bold text-academic-green">2</div>
-          <div class="text-xs text-academic-text-secondary uppercase tracking-wide">Leadership Roles</div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="text-center">
+          <div class="text-xl font-bold text-green-400">2</div>
+          <div class="text-xs text-gray-400 uppercase tracking-wide">Leadership Roles</div>
         </div>
-        <div class="stat-card p-4 bg-academic-card-bg/50 border border-academic-border rounded text-center hover:border-academic-blue/30 transition-colors">
-          <div class="text-xl font-bold text-academic-blue">2021</div>
-          <div class="text-xs text-academic-text-secondary uppercase tracking-wide">Graduation Year</div>
+        <div class="text-center">
+          <div class="text-xl font-bold text-blue-400">2021</div>
+          <div class="text-xs text-gray-400 uppercase tracking-wide">Graduation Year</div>
         </div>
-        <div class="stat-card p-4 bg-academic-card-bg/50 border border-academic-border rounded text-center hover:border-academic-purple/30 transition-colors">
-          <div class="text-xl font-bold text-academic-purple">M.Sc</div>
-          <div class="text-xs text-academic-text-secondary uppercase tracking-wide">Master's Degree</div>
+        <div class="text-center">
+          <div class="text-xl font-bold text-purple-400">M.Sc</div>
+          <div class="text-xs text-gray-400 uppercase tracking-wide">Master's Degree</div>
         </div>
-        <div class="stat-card p-4 bg-academic-card-bg/50 border border-academic-border rounded text-center hover:border-academic-yellow/30 transition-colors">
-          <div class="text-xl font-bold text-academic-yellow">CS</div>
-          <div class="text-xs text-academic-text-secondary uppercase tracking-wide">Field</div>
+        <div class="text-center">
+          <div class="text-xl font-bold text-yellow-400">CS</div>
+          <div class="text-xs text-gray-400 uppercase tracking-wide">Field</div>
         </div>
       </div>
     </div>
@@ -153,6 +89,9 @@
 /* Font stack prioritizing readability */
 .font-sans {
   font-family: 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
+}
+.font-markdown {
+  font-family: 'Merriweather', 'Georgia', 'Times New Roman', serif;
 }
 
 /* Subtle background texture */
