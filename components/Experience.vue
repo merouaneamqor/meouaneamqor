@@ -1,5 +1,5 @@
 <template>
-  <section class="py-16 bg-odyssey-dark border-b border-odyssey-border relative overflow-hidden font-mono text-sm">
+  <section class="py-5 bg-black border-b border-odyssey-border relative overflow-hidden font-mono text-sm min-h-screen flex items-center justify-center">
     <!-- Subtle starfield background -->
     <div class="absolute inset-0 opacity-20 pointer-events-none">
       <div class="starfield"></div>
@@ -11,7 +11,7 @@
       <div class="data-particle particle-3"></div>
     </div>
     
-    <div class="container mx-auto px-4 sm:px-6 relative z-10 max-w-5xl">
+    <div class="container mx-auto px-0 sm:px-0 relative z-10 w-full">
       <!-- Section header -->
       <div class="mb-12">
         <div class="flex items-center gap-2 mb-2">
@@ -29,17 +29,16 @@
       </div>
 
       <!-- Terminal log container -->
-      <div class="bg-odyssey-terminal border border-odyssey-border rounded-lg overflow-hidden shadow-2xl">
+      <div class="bg-odyssey-terminal border border-odyssey-border overflow-hidden shadow-2xl font-mono" style="border-radius:0;">
         <!-- Terminal header -->
-        <div class="px-4 py-3 bg-odyssey-terminal-header border-b border-odyssey-border flex items-center">
+        <div class="px-4 py-2 bg-odyssey-terminal-header border-b border-odyssey-border flex items-center font-mono" style="border-radius:0;">
           <div class="flex items-center gap-1.5">
-            <span class="text-xs text-odyssey-text-secondary">bash</span>
-            <span class="text-odyssey-green">~</span>
-            <span class="text-odyssey-text-secondary">$</span>
+            <span class="text-xs text-green-400">user@portfolio</span>
+            <span class="text-xs text-odyssey-text-secondary">:</span>
+            <span class="text-xs text-green-400">~</span>
+            <span class="text-xs text-odyssey-text-secondary">$</span>
           </div>
-          <span class="ml-2 text-odyssey-text">view_professional_journey --sorted</span>
-
-          
+          <span class="ml-2 text-odyssey-text font-mono">view_professional_journey --sorted<span class="animate-blink">|</span></span>
         </div>
         
         <!-- Terminal content -->
@@ -118,10 +117,10 @@
         </div>
         
         <!-- Terminal footer -->
-        <div class="px-4 py-3 bg-odyssey-terminal-header border-t border-odyssey-border text-xs text-odyssey-text-secondary">
+        <div class="px-4 py-2 bg-odyssey-terminal-header border-t border-odyssey-border text-xs text-odyssey-text-secondary font-mono" style="border-radius:0;">
           <div class="flex items-center gap-4">
-            <span>// End of log</span>
-            <span>// Press any key to continue...</span>
+            <span class="text-green-400">user@portfolio</span><span class="text-odyssey-text-secondary">:</span><span class="text-green-400">~</span><span class="text-odyssey-text-secondary">$</span>
+            <span class="text-odyssey-text-secondary"># End of log. Press any key to continue...</span>
           </div>
         </div>
       </div>
@@ -300,5 +299,12 @@ const sortedExperiences = computed(() => {
   .border-l {
     border-left-width: 0;
   }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.animate-blink {
+  animation: blink 1s steps(2, start) infinite;
 }
 </style>
