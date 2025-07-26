@@ -163,23 +163,23 @@
                 </div>
 
                 <!-- Core Competencies Developed -->
-                <div class="space-y-2 sm:space-y-3">
-                  <h5 class="text-base sm:text-lg font-semibold text-white mb-2 sm:mb-3">Core Competencies Developed</h5>
-                  <div class="flex items-center gap-2 sm:gap-3 py-1 sm:py-2">
-                    <div class="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-emerald-400 rounded-full"></div>
-                    <span class="text-slate-300 text-xs sm:text-sm">Advanced Software Engineering</span>
+                <div class="space-y-1 sm:space-y-2">
+                  <h5 class="text-sm sm:text-base md:text-lg font-semibold text-white mb-1.5 sm:mb-2">Core Competencies Developed</h5>
+                  <div class="flex items-center gap-1.5 sm:gap-2 py-0.5 sm:py-1">
+                    <div class="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-emerald-400 rounded-full"></div>
+                    <span class="text-slate-300 text-xs">Advanced Software Engineering</span>
                   </div>
-                  <div class="flex items-center gap-2 sm:gap-3 py-1 sm:py-2">
-                    <div class="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-cyan-400 rounded-full"></div>
-                    <span class="text-slate-300 text-xs sm:text-sm">Network Architecture & Security</span>
+                  <div class="flex items-center gap-1.5 sm:gap-2 py-0.5 sm:py-1">
+                    <div class="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-cyan-400 rounded-full"></div>
+                    <span class="text-slate-300 text-xs">Network Architecture & Security</span>
                   </div>
-                  <div class="flex items-center gap-2 sm:gap-3 py-1 sm:py-2">
-                    <div class="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-400 rounded-full"></div>
-                    <span class="text-slate-300 text-xs sm:text-sm">Project Management Methodologies</span>
+                  <div class="flex items-center gap-1.5 sm:gap-2 py-0.5 sm:py-1">
+                    <div class="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-blue-400 rounded-full"></div>
+                    <span class="text-slate-300 text-xs">Project Management Methodologies</span>
                   </div>
-                  <div class="flex items-center gap-2 sm:gap-3 py-1 sm:py-2">
-                    <div class="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-purple-400 rounded-full"></div>
-                    <span class="text-slate-300 text-xs sm:text-sm">Entrepreneurship & Innovation</span>
+                  <div class="flex items-center gap-1.5 sm:gap-2 py-0.5 sm:py-1">
+                    <div class="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-purple-400 rounded-full"></div>
+                    <span class="text-slate-300 text-xs">Entrepreneurship & Innovation</span>
                   </div>
                 </div>
               </div>
