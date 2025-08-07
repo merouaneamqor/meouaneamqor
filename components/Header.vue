@@ -101,7 +101,7 @@
     <!-- Clean iOS Navigation -->
     
     <!-- Hero Section with massive white space like Apple -->
-    <div class="pt-32 pb-24 px-6 max-w-6xl mx-auto text-center relative z-20 h-screen flex flex-col justify-center">
+    <div class="pt-64 pb-24 px-6 max-w-6xl mx-auto text-center relative z-20 h-screen flex flex-col justify-center">
       
       <!-- Clean minimal title -->
       <h1 class="text-5xl sm:text-7xl lg:text-8xl font-semibold text-ios-label mb-4 tracking-tight leading-none">
@@ -112,11 +112,14 @@
       <p class="text-2xl sm:text-3xl lg:text-4xl font-light text-ios-label-secondary mb-8 tracking-tight">
         Senior Engineering Manager
       </p>
+      <span class="text-sm sm:text-base lg:text-lg font-light text-ios-label-secondary mb-8 tracking-tight">
+        Engineering Leader. Product Builder. Certified ScrumMaster®
+      </span>
       
       <!-- Clean description -->
       <p class="text-lg sm:text-xl text-ios-label-tertiary max-w-2xl mx-auto mb-16 leading-relaxed">
-        Building exceptional engineering teams and scalable solutions. 
-        Certified ScrumMaster® with expertise in iOS development and AWS architecture.
+        Building exceptional engineering teams and scalable solutions.
+        Expert in SaaS development, cloud architecture, and delivering real-world impact — one sprint at a time.
       </p>
      
 

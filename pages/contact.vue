@@ -1,5 +1,5 @@
 <template>
-  <section id="contact" class="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden min-h-screen">
+  <section id="contact" class="py-20 bg-ios-background font-myriad relative overflow-hidden min-h-screen">
     <!-- Subtle Background Pattern -->
     <div class="absolute inset-0 opacity-5">
       <div class="contact-grid-pattern"></div>
@@ -15,11 +15,11 @@
     <div class="max-w-6xl mx-auto px-6 lg:px-8 relative z-10">
       <!-- Section Header -->
       <div class="text-center mb-16">
-        <h2 class="text-4xl lg:text-5xl font-bold text-white mb-4 professional-glow">
+        <h2 class="text-4xl lg:text-5xl font-semibold text-ios-label mb-4 tracking-tight">
           Let's Connect
         </h2>
-        <div class="w-24 h-1 bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400 rounded-full mx-auto mb-6"></div>
-        <p class="text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed">
+        <div class="w-24 h-1 bg-gradient-to-r from-ios-system-blue via-ios-system-purple to-ios-system-blue rounded-full mx-auto mb-6"></div>
+        <p class="text-ios-label-secondary text-lg max-w-2xl mx-auto leading-relaxed">
           Ready to collaborate on your next project? Whether you need a tech lead, want to discuss 
           opportunities, or just want to connect, I'd love to hear from you.
         </p>
@@ -114,16 +114,16 @@
 
           <!-- Availability Status -->
           <div class="availability-card">
-            <div class="bg-slate-800/40 backdrop-blur-sm border border-slate-600/30 rounded-xl p-6">
+            <div class="bg-ios-background-secondary backdrop-blur-sm border border-ios-separator rounded-xl p-6">
               <div class="flex items-center gap-3 mb-4">
-                <div class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
-                <h3 class="text-lg font-semibold text-white">Current Availability</h3>
+                <div class="w-3 h-3 bg-ios-system-green rounded-full animate-pulse"></div>
+                <h3 class="text-lg font-semibold text-ios-label">Current Availability</h3>
               </div>
-              <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              <p class="text-ios-label-secondary text-sm leading-relaxed mb-4">
                 I'm currently available for new opportunities and interesting projects. 
                 Response time is typically within 24 hours.
               </p>
-              <div class="flex items-center gap-2 text-xs text-slate-400">
+              <div class="flex items-center gap-2 text-xs text-ios-label-tertiary">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
@@ -135,10 +135,10 @@
 
         <!-- Contact Form -->
         <div class="contact-form-container">
-          <div class="bg-slate-800/40 backdrop-blur-sm border border-slate-600/30 rounded-xl overflow-hidden">
-            <div class="bg-gradient-to-r from-slate-700/50 to-slate-800/50 p-6 border-b border-slate-600/30">
-              <h3 class="text-2xl font-bold text-white mb-2">Send a Message</h3>
-              <p class="text-slate-400 text-sm">Fill out the form below and I'll get back to you soon</p>
+          <div class="bg-ios-background-secondary backdrop-blur-sm border border-ios-separator rounded-xl overflow-hidden">
+            <div class="bg-ios-background/50 p-6 border-b border-ios-separator">
+              <h3 class="text-2xl font-semibold text-ios-label mb-2">Send a Message</h3>
+              <p class="text-ios-label-tertiary text-sm">Fill out the form below and I'll get back to you soon</p>
             </div>
             
             <div class="p-8">
@@ -146,7 +146,7 @@
                 <div class="form-group">
                   <label for="name" class="form-label">
                     Full Name
-                    <span class="text-emerald-400">*</span>
+                    <span class="text-ios-system-red">*</span>
                   </label>
                   <input 
                     type="text" 
@@ -161,7 +161,7 @@
                 <div class="form-group">
                   <label for="email" class="form-label">
                     Email Address
-                    <span class="text-emerald-400">*</span>
+                    <span class="text-ios-system-red">*</span>
                   </label>
                   <input 
                     type="email" 
@@ -194,7 +194,7 @@
                 <div class="form-group">
                   <label for="message" class="form-label">
                     Message
-                    <span class="text-emerald-400">*</span>
+                    <span class="text-ios-system-red">*</span>
                   </label>
                   <textarea 
                     id="message" 
@@ -231,15 +231,15 @@
 
               <!-- Success Message -->
               <div v-if="showSuccess" class="success-message">
-                <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-4 flex items-center gap-3">
-                  <div class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <div class="bg-ios-system-green/10 border border-ios-system-green/30 rounded-lg p-4 flex items-center gap-3">
+                  <div class="w-8 h-8 bg-ios-system-green rounded-full flex items-center justify-center flex-shrink-0">
                     <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
                     </svg>
                   </div>
                   <div>
-                    <h4 class="text-emerald-300 font-semibold">Message Sent Successfully!</h4>
-                    <p class="text-emerald-400 text-sm">Thank you for reaching out. I'll get back to you within 24 hours.</p>
+                    <h4 class="text-ios-system-green font-semibold">Message Sent Successfully!</h4>
+                    <p class="text-ios-system-green text-sm">Thank you for reaching out. I'll get back to you within 24 hours.</p>
                   </div>
                 </div>
               </div>
@@ -294,11 +294,11 @@ const submitForm = async () => {
 </script>
 
 <style scoped>
-/* Background Grid Pattern */
+/* iOS-style Background Grid Pattern */
 .contact-grid-pattern {
   background-image: 
-    linear-gradient(rgba(148, 163, 184, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(142, 142, 147, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(142, 142, 147, 0.08) 1px, transparent 1px);
   background-size: 220px 220px;
   width: 100%;
   height: 100%;
@@ -310,12 +310,12 @@ const submitForm = async () => {
   100% { transform: translate(220px, 220px); }
 }
 
-/* Floating Contact Elements */
+/* iOS-style Floating Elements */
 .contact-element {
   position: absolute;
   width: 6px;
   height: 6px;
-  background: linear-gradient(45deg, rgba(16, 185, 129, 0.3), rgba(6, 182, 212, 0.3));
+  background: linear-gradient(45deg, rgba(0, 122, 255, 0.3), rgba(88, 86, 214, 0.3));
   border-radius: 50%;
   animation: contact-element-float 45s ease-in-out infinite;
 }
@@ -329,25 +329,20 @@ const submitForm = async () => {
   50% { transform: translateY(-60px) rotate(180deg); opacity: 0.8; }
 }
 
-/* Professional Glow Effect */
-.professional-glow {
-  text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
-}
-
-/* Contact Method Cards */
+/* iOS-style Contact Method Cards */
 .contact-method-card {
-  background-color: rgba(30, 41, 59, 0.3);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(71, 85, 105, 0.3);
+  background: rgba(242, 242, 247, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(174, 174, 178, 0.3);
   border-radius: 0.75rem;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
 
 .contact-method-card:hover {
-  background-color: rgba(30, 41, 59, 0.5);
-  border-color: rgba(100, 116, 139, 0.5);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(174, 174, 178, 0.5);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .contact-method-link {
@@ -355,7 +350,7 @@ const submitForm = async () => {
   align-items: center;
   gap: 1rem;
   padding: 1.5rem;
-  color: rgb(203, 213, 225);
+  color: var(--ios-label);
   text-decoration: none;
 }
 
@@ -371,15 +366,15 @@ const submitForm = async () => {
 }
 
 .email-icon {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.2));
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  color: rgb(16, 185, 129);
+  background: linear-gradient(135deg, rgba(52, 199, 89, 0.1), rgba(52, 199, 89, 0.2));
+  border: 1px solid rgba(52, 199, 89, 0.3);
+  color: rgb(52, 199, 89);
 }
 
 .phone-icon {
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(6, 182, 212, 0.2));
-  border: 1px solid rgba(6, 182, 212, 0.3);
-  color: rgb(6, 182, 212);
+  background: linear-gradient(135deg, rgba(0, 122, 255, 0.1), rgba(0, 122, 255, 0.2));
+  border: 1px solid rgba(0, 122, 255, 0.3);
+  color: rgb(0, 122, 255);
 }
 
 .linkedin-icon {
@@ -389,9 +384,9 @@ const submitForm = async () => {
 }
 
 .github-icon {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: white;
+  background: linear-gradient(135deg, rgba(28, 28, 30, 0.1), rgba(28, 28, 30, 0.2));
+  border: 1px solid rgba(28, 28, 30, 0.3);
+  color: rgb(28, 28, 30);
 }
 
 .contact-info {
@@ -401,24 +396,24 @@ const submitForm = async () => {
 .contact-title {
   font-size: 1.125rem;
   font-weight: 600;
-  color: white;
+  color: var(--ios-label);
   margin-bottom: 0.25rem;
 }
 
 .contact-detail {
   font-size: 0.875rem;
   font-weight: 500;
-  color: rgb(203, 213, 225);
+  color: var(--ios-label-secondary);
   margin-bottom: 0.25rem;
 }
 
 .contact-description {
   font-size: 0.75rem;
-  color: rgb(148, 163, 184);
+  color: var(--ios-label-tertiary);
 }
 
 .contact-arrow {
-  color: rgb(148, 163, 184);
+  color: var(--ios-label-tertiary);
 }
 
 /* Form Styles */
@@ -430,49 +425,49 @@ const submitForm = async () => {
   display: block;
   font-size: 0.875rem;
   font-weight: 600;
-  color: rgb(203, 213, 225);
+  color: var(--ios-label);
   margin-bottom: 0.5rem;
 }
 
 .form-input {
   width: 100%;
   padding: 0.75rem 1rem;
-  background-color: rgba(51, 65, 85, 0.5);
-  border: 1px solid rgba(71, 85, 105, 0.5);
-  border-radius: 0.5rem;
-  color: white;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(174, 174, 178, 0.3);
+  border-radius: 0.75rem;
+  color: var(--ios-label);
   font-size: 0.875rem;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
 
 .form-input::placeholder {
-  color: rgb(148, 163, 184);
+  color: var(--ios-label-tertiary);
 }
 
 .form-input:focus {
   outline: none;
-  border-color: rgb(16, 185, 129);
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
-  background-color: rgba(51, 65, 85, 0.7);
+  border-color: rgb(0, 122, 255);
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .submit-button {
   width: 100%;
   padding: 0.875rem 1.5rem;
-  background: linear-gradient(135deg, #10b981, #06b6d4);
+  background: rgb(0, 122, 255);
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   color: white;
   font-weight: 600;
   font-size: 0.875rem;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .submit-button:hover:not(:disabled) {
-  background: linear-gradient(135deg, #059669, #0891b2);
+  background: rgb(0, 100, 210);
   transform: translateY(-1px);
-  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
 }
 
 .submit-button:disabled {
