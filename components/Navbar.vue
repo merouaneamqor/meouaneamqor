@@ -1,39 +1,34 @@
 <template>
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-xl border-b border-slate-700/50 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-14 sm:h-16">
-        <!-- Logo/Brand -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-ios-separator font-myriad">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex items-center justify-between h-16">
+        <!-- Clean Logo -->
         <div class="flex items-center">
-          <NuxtLink to="/" class="flex items-center gap-2 sm:gap-3 text-white font-bold text-base sm:text-lg hover:text-emerald-400 transition-colors">
-            <div class="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center">
-              <span class="text-white text-xs sm:text-sm font-bold">MA</span>
-            </div>
-            <span class="hidden sm:block">Merouane Amqor</span>
+          <NuxtLink to="/" class="text-ios-label font-semibold text-lg hover:text-ios-blue transition-colors">
+            Merouane Amqor
           </NuxtLink>
         </div>
 
-        <!-- Desktop Navigation -->
-        <div class="hidden md:flex items-center gap-4 lg:gap-8">
+        <!-- Clean Desktop Navigation -->
+        <div class="hidden md:flex items-center gap-8">
           <NuxtLink 
             v-for="item in navigation" 
             :key="item.href"
             :to="item.href"
-            class="nav-link relative py-2 px-2 lg:px-3 text-slate-300 hover:text-emerald-400 transition-colors font-medium text-sm lg:text-base"
-            :class="{ 'text-emerald-400': isActive(item.href) }"
+            class="text-ios-label-secondary hover:text-ios-blue transition-colors font-medium"
+            :class="{ 'text-ios-blue': isActive(item.href) }"
           >
             {{ item.name }}
-            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-emerald-400 to-cyan-400 transition-all duration-300 group-hover:w-full"></span>
           </NuxtLink>
         </div>
 
-        <!-- CTA Button -->
-        <div class="hidden md:flex items-center gap-4">
+        <!-- iOS-style CTA Button -->
+        <div class="hidden md:flex items-center">
           <a 
-            href="mailto:marouane.amqor@gmail.com"
-            class="px-4 lg:px-6 py-2 lg:py-2.5 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold rounded-lg hover:from-emerald-600 hover:to-cyan-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-emerald-500/25 text-sm lg:text-base"
+            href="mailto:marouaneamqor@gmail.com"
+            class="px-4 py-2 bg-ios-label text-ios-background text-sm font-semibold rounded-full hover:bg-ios-label-secondary transition-colors"
           >
-            <span class="hidden lg:inline">Let's Connect</span>
-            <span class="lg:hidden">Connect</span>
+            Contact
           </a>
         </div>
 
@@ -41,7 +36,7 @@
         <div class="md:hidden">
           <button 
             @click="toggleMobileMenu"
-            class="p-2 text-slate-300 hover:text-emerald-400 transition-colors"
+            class="p-2 text-ios-label-secondary hover:text-ios-blue transition-colors"
           >
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path v-if="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
@@ -52,23 +47,23 @@
       </div>
 
       <!-- Mobile Navigation -->
-      <div v-if="mobileMenuOpen" class="md:hidden border-t border-slate-700/50 py-3">
-        <div class="flex flex-col gap-3">
+      <div v-if="mobileMenuOpen" class="md:hidden border-t border-ios-separator py-4">
+        <div class="flex flex-col gap-4">
           <NuxtLink 
             v-for="item in navigation" 
             :key="item.href"
             :to="item.href"
             @click="closeMobileMenu"
-            class="py-2.5 px-3 text-slate-300 hover:text-emerald-400 transition-colors font-medium text-base"
-            :class="{ 'text-emerald-400': isActive(item.href) }"
+            class="text-ios-label-secondary hover:text-ios-blue transition-colors font-medium"
+            :class="{ 'text-ios-blue': isActive(item.href) }"
           >
             {{ item.name }}
           </NuxtLink>
           <a 
-            href="mailto:marouane.amqor@gmail.com"
-            class="mt-3 mx-3 px-6 py-3 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold rounded-lg text-center"
+            href="mailto:marouaneamqor@gmail.com"
+            class="mt-4 px-6 py-3 bg-ios-label text-ios-background font-semibold rounded-full text-center hover:bg-ios-label-secondary transition-colors"
           >
-            Let's Connect
+            Contact
           </a>
         </div>
       </div>
@@ -110,19 +105,5 @@ watch(() => route.path, () => {
 </script>
 
 <style scoped>
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #10b981, #06b6d4);
-  transition: width 0.3s ease;
-}
-
-.nav-link:hover::after,
-.nav-link.router-link-active::after {
-  width: 100%;
-}
+/* Clean minimal styles */
 </style>

@@ -10,51 +10,45 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'myriad': ['Myriad Pro', '-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'SF Pro Text', 'system-ui', 'sans-serif'],
+        'mono': ['SF Mono', 'ui-monospace', 'Monaco', 'monospace'],
+        'sans': ['Myriad Pro', '-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'SF Pro Text', 'system-ui', 'sans-serif'],
+      },
       colors: {
-        'primary': {
-          '100': '#F0D6FF',
-          '200': '#E1ADFF',
-          '300': '#D384FF',
-          '400': '#C55BFF',
-          '500': '#AD00FF',
-          '600': '#9400CC',
-          '700': '#7B00A3',
-          '800': '#62007A',
-          '900': '#490051',
+        // Clean iOS Colors
+        'ios': {
+          'blue': '#007AFF',
+          'gray': '#8E8E93',
+          'gray-2': '#AEAEB2',
+          'gray-3': '#C7C7CC',
+          'gray-4': '#D1D1D6',
+          'gray-5': '#E5E5EA',
+          'gray-6': '#F2F2F7',
+          'label': '#000000',
+          'label-secondary': '#3C3C43',
+          'label-tertiary': '#3C3C4399',
+          'separator': '#3C3C434A',
+          'background': '#FFFFFF',
+          'background-secondary': '#F2F2F7',
         },
-        'secondary': {
-          '100': '#D6F0FF',
-          '200': '#ADDBFF',
-          '300': '#84C7FF',
-          '400': '#5BB2FF',
-          '500': '#329DFF',
-          '600': '#2981CC',
-          '700': '#2065A3',
-          '800': '#164A7A',
-          '900': '#0D2F51',
+        // Xcode syntax highlighting colors
+        'xcode': {
+          'keyword': '#AD3DA4',        // Purple for keywords (class, func, let, var)
+          'string': '#D12F1B',         // Red for strings
+          'comment': '#65737E',        // Gray for comments
+          'number': '#272AD8',         // Blue for numbers
+          'type': '#3F6E75',           // Teal for types (Int, String, UIViewController)
+          'function': '#4F8187',       // Dark teal for function names
+          'property': '#326D74',       // Property names
+          'constant': '#78492A',       // Brown for constants
+          'operator': '#000000',       // Black for operators
+          'plain': '#262626'           // Dark gray for plain text
         },
-        'success': {
-          '100': '#FFF3D1',
-          '200': '#FFE3A3',
-          '300': '#FFD375',
-          '400': '#FFC347',
-          '500': '#FFAD00',
-          '600': '#DB9800',
-          '700': '#B68300',
-          '800': '#916E00',
-          '900': '#6D5900',
-        },
-        'danger': {
-          '100': '#FFD6D6',
-          '200': '#FFADAD',
-          '300': '#FF8484',
-          '400': '#FF5B5B',
-          '500': '#FF3232',
-          '600': '#CC2929',
-          '700': '#A32020',
-          '800': '#7A1717',
-          '900': '#510D0D',
-        },
+      },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
       },
     },
   },

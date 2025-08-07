@@ -89,6 +89,10 @@ export default defineNuxtConfig({
     }
   },
 
+  css: [
+    '~/assets/css/fonts.css'
+  ],
+
   app: {
     head: {
       htmlAttrs: {
