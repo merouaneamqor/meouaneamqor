@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-slate-100 font-sans">
+  <div class="min-h-screen flex flex-col text-slate-900 font-sans">
     
     <!-- Hero Section with Management Focus -->
     <Header />

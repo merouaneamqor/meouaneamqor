@@ -1,11 +1,5 @@
 <template>
-  <section class="py-16 sm:py-20 md:py-24 lg:py-32 bg-gray-50 relative overflow-hidden min-h-screen flex items-center justify-center">
-    <!-- Minimal background elements -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
-      <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-      <div class="absolute bottom-1/3 right-1/4 w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse delay-1000"></div>
-      <div class="absolute top-2/3 right-1/6 w-1 h-1 bg-orange-500 rounded-full animate-pulse delay-2000"></div>
-    </div>
+  <section class="py-16 sm:py-20 md:py-24 lg:py-32 bg-transparent relative min-h-screen flex items-center justify-center">
         
     <div class="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10 w-full max-w-4xl">
       <!-- iOS-style section header -->
@@ -16,10 +10,10 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
             </svg>
           </div>
-          <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900 mb-4 tracking-tight leading-tight">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-slate-900 mb-4 tracking-tight leading-tight">
             Leadership Journey
           </h2>
-          <p class="text-lg sm:text-xl text-gray-600 font-light">Building teams • Driving results • Creating impact</p>
+          <p class="text-lg sm:text-xl text-slate-700 font-light">Building teams • Driving results • Creating impact</p>
         </div>
       </div>
       
@@ -32,15 +26,15 @@
           :style="{ animationDelay: `${index * 100}ms` }"
         >
           <!-- iOS Card -->
-          <div class="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all duration-300 ease-out">
+          <div class="bg-white/70 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 backdrop-blur-xl border border-slate-200 hover:bg-white/80 hover:-translate-y-1 transition-all duration-300 ease-out">
             <!-- Header -->
             <div class="mb-6 sm:mb-8">
               <div class="flex items-start justify-between mb-4">
                 <div class="flex-1">
-                  <h3 class="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 mb-2 leading-tight">
+                  <h3 class="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-900 mb-2 leading-tight">
                     {{ experience.role }}
                   </h3>
-                  <div class="flex flex-wrap items-center gap-4 text-gray-600 text-base sm:text-lg">
+                  <div class="flex flex-wrap items-center gap-4 text-slate-700 text-base sm:text-lg">
                     <div class="flex items-center gap-2">
                       <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
                       <span class="font-medium">{{ experience.company }}</span>
@@ -52,12 +46,12 @@
                   </div>
                 </div>
                 <div v-if="experience.teamSize" class="ml-4">
-                  <div class="bg-gray-100 rounded-full px-4 py-2">
-                    <span class="text-gray-600 text-sm font-medium">{{ experience.teamSize }} team</span>
+                  <div class="bg-slate-100 rounded-full px-4 py-2 border border-slate-200">
+                    <span class="text-slate-700 text-sm font-medium">{{ experience.teamSize }} team</span>
                   </div>
                 </div>
               </div>
-              <div class="flex items-center gap-2 text-gray-500 text-sm sm:text-base">
+              <div class="flex items-center gap-2 text-slate-600 text-sm sm:text-base">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5a2.25 2.25 0 002.25-2.25m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5a2.25 2.25 0 012.25 2.25v7.5"/>
                 </svg>
@@ -75,10 +69,10 @@
                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
                   </div>
-                  <span class="text-gray-900 font-semibold text-lg">Leadership Impact</span>
+                  <span class="text-slate-900 font-semibold text-lg">Leadership Impact</span>
                 </div>
                 <ul class="space-y-3">
-                  <li v-for="(achievement, achIndex) in experience.achievements" :key="achIndex" class="flex items-start gap-3 text-gray-600 leading-relaxed">
+                  <li v-for="(achievement, achIndex) in experience.achievements" :key="achIndex" class="flex items-start gap-3 text-slate-700 leading-relaxed">
                     <div class="w-1.5 h-1.5 bg-green-500 rounded-full mt-2.5 flex-shrink-0"></div>
                     <span>{{ achievement }}</span>
                   </li>
@@ -93,13 +87,13 @@
                       <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/>
                     </svg>
                   </div>
-                  <span class="text-gray-900 font-semibold text-lg">Technical Excellence</span>
+                  <span class="text-slate-900 font-semibold text-lg">Technical Excellence</span>
                 </div>
                 <div class="flex flex-wrap gap-2">
                   <span
                     v-for="(skill, skillIndex) in experience.skills"
                     :key="skillIndex"
-                    class="px-3 py-1.5 bg-gray-100 text-gray-600 text-sm rounded-full border border-gray-200 hover:bg-gray-200 transition-colors"
+                    class="px-3 py-1.5 bg-slate-100 text-slate-700 text-sm rounded-full border border-slate-200 hover:bg-slate-200 transition-colors"
                   >
                     {{ skill }}
                   </span>
@@ -108,11 +102,11 @@
             </div>
             
             <!-- Key metrics -->
-            <div v-if="experience.metrics" class="mt-8 pt-8 border-t border-gray-200">
+            <div v-if="experience.metrics" class="mt-8 pt-8 border-t border-slate-200">
               <div class="grid grid-cols-3 gap-6">
                 <div v-for="(metric, metricIndex) in experience.metrics" :key="metricIndex" class="text-center">
-                  <div class="text-2xl sm:text-3xl font-semibold text-blue-600 mb-1">{{ metric.value }}</div>
-                  <div class="text-sm text-gray-500 font-medium">{{ metric.label }}</div>
+                  <div class="text-2xl sm:text-3xl font-semibold text-slate-900 mb-1">{{ metric.value }}</div>
+                  <div class="text-sm text-slate-600 font-medium">{{ metric.label }}</div>
                 </div>
               </div>
             </div>

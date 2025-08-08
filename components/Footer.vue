@@ -1,16 +1,5 @@
 <template>
-  <footer class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-slate-300 border-t border-slate-700/50 relative overflow-hidden">
-    <!-- Enhanced background pattern -->
-    <div class="absolute inset-0 opacity-5">
-      <div class="footer-grid-pattern"></div>
-    </div>
-    
-    <!-- Enhanced floating footer elements -->
-    <div class="absolute inset-0 overflow-hidden">
-      <div class="footer-element element-1"></div>
-      <div class="footer-element element-2"></div>
-      <div class="footer-element element-3"></div>
-    </div>
+  <footer class="bg-transparent text-slate-700 border-t border-slate-200 relative">
 
     <div class="container mx-auto px-6 py-20 relative z-10">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -37,7 +26,7 @@
           </div>
 
           <!-- Enhanced newsletter signup -->
-          <div class="bg-slate-800/30 backdrop-blur-sm border border-slate-600/30 rounded-xl p-6 group/newsletter">
+          <div class="bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl p-6 group/newsletter">
             <h3 class="text-lg font-bold text-slate-200 mb-3">
               Stay Connected
             </h3>
@@ -54,7 +43,7 @@
                 Subscribe
               </button>
             </div>
-            <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent rounded-xl opacity-0 group-hover/newsletter:opacity-100 transition-opacity duration-500"></div>
+             
           </div>
         </div>
 
@@ -139,7 +128,7 @@
                 title="LinkedIn"
               >
                 <Linkedin class="w-6 h-6" />
-                <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent rounded-xl opacity-0 group-hover/social:opacity-100 transition-opacity duration-500"></div>
+                 
               </a>
               <a
                 href="https://github.com/merouaneamqor"
@@ -149,7 +138,7 @@
                 title="GitHub"
               >
                 <Github class="w-6 h-6" />
-                <div class="absolute inset-0 bg-gradient-to-br from-gray-500/10 to-transparent rounded-xl opacity-0 group-hover/social:opacity-100 transition-opacity duration-500"></div>
+                 
               </a>
               <a
                 href="https://douq.ma/about"
@@ -159,7 +148,7 @@
                 title="Douq.ma"
               >
                 <Globe class="w-6 h-6" />
-                <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent rounded-xl opacity-0 group-hover/social:opacity-100 transition-opacity duration-500"></div>
+                 
               </a>
             </div>
           </div>
@@ -170,7 +159,7 @@
       <div class="mt-20 pt-10 border-t border-slate-700/50">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div class="flex flex-col sm:flex-row sm:items-center gap-4">
-            <p class="text-slate-500 text-base">
+            <p class="text-slate-600 text-base">
               © {{ new Date().getFullYear() }} Merouane Amqor. All rights reserved.
             </p>
             <div class="hidden md:flex items-center gap-3">

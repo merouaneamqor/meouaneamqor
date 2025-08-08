@@ -1,16 +1,5 @@
 <template>
-  <section class="py-20 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800/50 relative overflow-hidden min-h-screen flex items-center justify-center">
-    <!-- Professional background pattern -->
-    <div class="absolute inset-0 opacity-5 pointer-events-none">
-      <div class="projects-grid-pattern"></div>
-    </div>
-    <!-- Refined floating elements -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div class="professional-element element-1"></div>
-      <div class="professional-element element-2"></div>
-      <div class="professional-element element-3"></div>
-      <div class="professional-element element-4"></div>
-    </div>
+  <section class="py-20 bg-transparent border-b border-slate-200 relative min-h-screen flex items-center justify-center">
     
     <div class="container mx-auto px-6 lg:px-8 relative z-10 w-full">
       <!-- Professional section header -->
@@ -51,9 +40,9 @@
             </div>
             
             <!-- Card Container -->
-            <div class="bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-2xl overflow-hidden hover:bg-slate-800/50 hover:border-slate-600/50 transition-all duration-300 h-full">
+             <div class="bg-white/70 backdrop-blur-xl border border-slate-200 rounded-2xl overflow-hidden hover:bg-white/80 transition-all duration-300 h-full">
               <!-- Card Header -->
-              <div class="bg-gradient-to-r from-slate-700/20 to-slate-800/20 border-b border-slate-700/50 p-6">
+               <div class="bg-white border-b border-slate-200 p-6">
                 <div class="flex items-start justify-between mb-4">
                   <div class="flex items-center gap-3">
                     <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -62,10 +51,10 @@
                       </svg>
                     </div>
                     <div>
-                      <h3 class="text-xl font-bold text-white group-hover:text-emerald-300 transition-colors duration-300">
+                       <h3 class="text-xl font-bold text-slate-900 group-hover:text-slate-800 transition-colors duration-300">
                         {{ project.name }}
                       </h3>
-                      <p class="text-slate-400 text-sm">{{ project.category }}</p>
+                       <p class="text-slate-600 text-sm">{{ project.category }}</p>
                     </div>
                   </div>
                 </div>
@@ -89,10 +78,10 @@
 
                 <!-- Technical Stack -->
                 <div class="mb-6">
-                  <h4 class="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-3">Technology Leadership</h4>
+                   <h4 class="text-sm font-semibold text-slate-800 uppercase tracking-wider mb-3">Technology Leadership</h4>
                   <div class="flex flex-wrap gap-2">
-                    <span v-for="tech in project.technologies" :key="tech" 
-                          class="px-2 py-1 bg-slate-700/50 border border-slate-600/50 text-xs text-slate-300 rounded-md hover:bg-slate-600/50 transition-colors">
+                     <span v-for="tech in project.technologies" :key="tech" 
+                           class="px-2 py-1 bg-slate-100 border border-slate-200 text-xs text-slate-700 rounded-md hover:bg-slate-200 transition-colors">
                       {{ tech }}
                     </span>
                   </div>

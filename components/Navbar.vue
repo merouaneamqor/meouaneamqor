@@ -1,70 +1,78 @@
 <template>
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-ios-separator font-myriad">
-    <div class="max-w-6xl mx-auto px-6">
+  <nav
+    :class="[
+      'fixed top-0 left-0 right-0 z-50 supports-backdrop-blur:bg-white/60 backdrop-blur-2xl font-myriad transition-colors duration-300',
+      isScrolled ? 'bg-white/80 border-b border-slate-200 shadow-[0_10px_30px_rgba(0,0,0,0.04)]' : 'bg-white/60 border-b border-transparent'
+    ]"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="flex items-center justify-between h-16">
-        <!-- Clean Logo -->
-        <div class="flex items-center">
-          <NuxtLink to="/" class="text-ios-label font-semibold text-lg hover:text-ios-blue transition-colors">
-            Merouane Amqor
-          </NuxtLink>
-        </div>
+        <!-- Logo -->
+        <NuxtLink to="/" class="text-slate-900 font-semibold text-lg tracking-tight hover:text-slate-700 transition-colors">
+          Merouane Amqor
+        </NuxtLink>
 
-        <!-- Clean Desktop Navigation -->
-        <div class="hidden md:flex items-center gap-8">
-          <NuxtLink 
-            v-for="item in navigation" 
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center gap-1">
+          <NuxtLink
+            v-for="item in navigation"
             :key="item.href"
             :to="item.href"
-            class="text-ios-label-secondary hover:text-ios-blue transition-colors font-medium"
-            :class="{ 'text-ios-blue': isActive(item.href) }"
+            :aria-current="isActive(item.href) ? 'page' : undefined"
+            class="px-3 py-2 rounded-full text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-900/5 transition-colors"
+            :class="{ 'text-slate-900 bg-slate-900/10': isActive(item.href) }"
           >
             {{ item.name }}
           </NuxtLink>
         </div>
 
-        <!-- iOS-style CTA Button -->
+        <!-- CTA -->
         <div class="hidden md:flex items-center">
-          <a 
+          <a
             href="mailto:marouaneamqor@gmail.com"
-            class="px-4 py-2 bg-ios-label text-ios-background text-sm font-semibold rounded-full hover:bg-ios-label-secondary transition-colors"
+            class="px-4 py-2 rounded-full text-sm font-semibold bg-slate-900 text-white hover:bg-slate-800 transition-colors"
           >
             Contact
           </a>
         </div>
 
         <!-- Mobile menu button -->
-        <div class="md:hidden">
-          <button 
-            @click="toggleMobileMenu"
-            class="p-2 text-ios-label-secondary hover:text-ios-blue transition-colors"
-          >
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path v-if="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-              <path v-else stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-            </svg>
-          </button>
-        </div>
+        <button
+          @click="toggleMobileMenu"
+          class="md:hidden p-2 text-slate-700 hover:text-slate-900 transition-colors"
+          aria-label="Toggle menu"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path v-if="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+            <path v-else stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
       </div>
+    </div>
 
-      <!-- Mobile Navigation -->
-      <div v-if="mobileMenuOpen" class="md:hidden border-t border-ios-separator py-4">
-        <div class="flex flex-col gap-4">
-          <NuxtLink 
-            v-for="item in navigation" 
-            :key="item.href"
-            :to="item.href"
-            @click="closeMobileMenu"
-            class="text-ios-label-secondary hover:text-ios-blue transition-colors font-medium"
-            :class="{ 'text-ios-blue': isActive(item.href) }"
-          >
-            {{ item.name }}
-          </NuxtLink>
-          <a 
-            href="mailto:marouaneamqor@gmail.com"
-            class="mt-4 px-6 py-3 bg-ios-label text-ios-background font-semibold rounded-full text-center hover:bg-ios-label-secondary transition-colors"
-          >
-            Contact
-          </a>
+    <!-- Mobile Sheet -->
+    <div v-if="mobileMenuOpen" class="md:hidden">
+      <div class="border-t border-slate-200/80 bg-white/80 backdrop-blur-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
+          <div class="flex flex-col">
+            <NuxtLink
+              v-for="item in navigation"
+              :key="item.href"
+              :to="item.href"
+              @click="closeMobileMenu"
+              :aria-current="isActive(item.href) ? 'page' : undefined"
+              class="px-3 py-3 rounded-xl text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-900/5 transition-colors"
+              :class="{ 'text-slate-900 bg-slate-900/10': isActive(item.href) }"
+            >
+              {{ item.name }}
+            </NuxtLink>
+            <a
+              href="mailto:marouaneamqor@gmail.com"
+              class="mt-2 px-4 py-3 rounded-xl text-base font-semibold bg-slate-900 text-white text-center hover:bg-slate-800 transition-colors"
+            >
+              Contact
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -74,6 +82,7 @@
 <script setup lang="ts">
 const route = useRoute()
 const mobileMenuOpen = ref(false)
+const isScrolled = ref(false)
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -84,9 +93,7 @@ const navigation = [
 ]
 
 const isActive = (href: string) => {
-  if (href === '/') {
-    return route.path === '/'
-  }
+  if (href === '/') return route.path === '/'
   return route.path.startsWith(href)
 }
 
@@ -98,12 +105,28 @@ const closeMobileMenu = () => {
   mobileMenuOpen.value = false
 }
 
-// Close mobile menu when route changes
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 4
+}
+
+onMounted(() => {
+  handleScroll()
+  window.addEventListener('scroll', handleScroll, { passive: true })
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
+
 watch(() => route.path, () => {
   mobileMenuOpen.value = false
 })
 </script>
 
 <style scoped>
-/* Clean minimal styles */
+@media (prefers-reduced-motion: reduce) {
+  .transition-colors {
+    transition: none;
+  }
+}
 </style>

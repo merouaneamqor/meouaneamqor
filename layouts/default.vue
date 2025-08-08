@@ -3,7 +3,8 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PNCBHTD5"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <div class="flex flex-col min-h-screen">
+  <div class="flex flex-col min-h-screen relative">
+    <BlurBackground class="pointer-events-none" />
     <Navbar class="w-full" />
     <main class="flex-1 w-full">
       <slot />
@@ -14,6 +15,7 @@
 
 <script setup>
 import { useHead } from '#app'
+import BlurBackground from '~/components/BlurBackground.vue'
 
 const keywordSuggestions = [
   "Full-Stack Developer",
