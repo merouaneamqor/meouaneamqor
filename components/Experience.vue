@@ -11,9 +11,9 @@
             </svg>
           </div>
           <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-slate-900 mb-4 tracking-tight leading-tight">
-            Leadership Journey
+            Expériences Professionnelles
           </h2>
-          <p class="text-lg sm:text-xl text-slate-700 font-light">Building teams • Driving results • Creating impact</p>
+          <p class="text-lg sm:text-xl text-slate-700 font-light">Encadrement d’équipes • Livraison continue • Impact produit</p>
         </div>
       </div>
       

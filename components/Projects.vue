@@ -14,12 +14,12 @@
             <h2 class="text-4xl lg:text-5xl font-bold text-slate-900">
               Featured Projects
             </h2>
-            <p class="text-slate-600 text-sm">Case studies • Outcomes • Impact</p>
+            <p class="text-slate-600 text-sm">Études de cas • Résultats • Impact</p>
           </div>
         </div>
         <div class="w-24 h-1 bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400 rounded-full mx-auto mb-6"></div>
         <p class="text-slate-700 text-lg max-w-3xl mx-auto leading-relaxed">
-          A selection of work highlighting product leadership, engineering execution, and measurable business results
+          Sélection de projets illustrant le leadership produit, l’exécution technique et les résultats mesurables
         </p>
       </div>
       

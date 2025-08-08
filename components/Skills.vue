@@ -1,12 +1,12 @@
 <template>
-  <section class="py-24 bg-ios-background-secondary font-myriad">
+  <section class="py-24 bg-transparent font-myriad">
     <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-ios-label mb-6 tracking-tight">Skills & Expertise</h2>
-      <p class="text-xl sm:text-2xl text-ios-label-secondary mb-8 max-w-3xl mx-auto leading-relaxed font-light">
-        Building teams. Writing code. Delivering results.
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-slate-900 mb-6 tracking-tight">Compétences & Outils</h2>
+      <p class="text-xl sm:text-2xl text-slate-700 mb-8 max-w-3xl mx-auto leading-relaxed font-light">
+        Code, architecture, design produit et agilité — pour livrer vite et bien.
       </p>
-      <p class="text-base sm:text-lg text-ios-label-tertiary mb-16 max-w-2xl mx-auto leading-relaxed">
-        From technical architecture to team leadership, I combine deep engineering knowledge with strategic thinking to create exceptional outcomes.
+      <p class="text-base sm:text-lg text-slate-600 mb-16 max-w-2xl mx-auto leading-relaxed">
+        De l’idéation au déploiement cloud : UI/UX, développement full‑stack, qualité et livraison continue.
       </p>
     </div>
     
@@ -16,8 +16,8 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
           
           <!-- Leadership & Team Management -->
-          <div class="bg-ios-background border border-ios-separator rounded-3xl p-8 hover:bg-ios-background-secondary transition-colors duration-300">
-            <h3 class="text-2xl font-semibold text-ios-label mb-6">Leadership & Team Management</h3>
+          <div class="bg-white/70 backdrop-blur-xl border border-slate-200 rounded-3xl p-8 hover:bg-white/80 transition-colors duration-300">
+            <h3 class="text-2xl font-semibold text-slate-900 mb-6">Leadership & Gestion d’équipe</h3>
             <div class="space-y-4">
               <div v-for="skill in leadershipSkills" :key="skill.name" class="flex items-start gap-4">
                 <span class="text-2xl">{{ skill.icon }}</span>
@@ -30,8 +30,8 @@
           </div>
 
           <!-- Technical Architecture -->
-          <div class="bg-ios-background border border-ios-separator rounded-3xl p-8 hover:bg-ios-background-secondary transition-colors duration-300">
-            <h3 class="text-2xl font-semibold text-ios-label mb-6">Technical Architecture</h3>
+          <div class="bg-white/70 backdrop-blur-xl border border-slate-200 rounded-3xl p-8 hover:bg-white/80 transition-colors duration-300">
+            <h3 class="text-2xl font-semibold text-slate-900 mb-6">Architecture Technique</h3>
             <div class="space-y-4">
               <div v-for="skill in technicalSkills" :key="skill.name" class="flex items-start gap-4">
                 <span class="text-2xl">{{ skill.icon }}</span>
@@ -44,8 +44,8 @@
           </div>
 
           <!-- Strategic Management -->
-          <div class="bg-ios-background border border-ios-separator rounded-3xl p-8 hover:bg-ios-background-secondary transition-colors duration-300">
-            <h3 class="text-2xl font-semibold text-ios-label mb-6">Strategic Management</h3>
+          <div class="bg-white/70 backdrop-blur-xl border border-slate-200 rounded-3xl p-8 hover:bg-white/80 transition-colors duration-300">
+            <h3 class="text-2xl font-semibold text-slate-900 mb-6">Management Stratégique</h3>
             <div class="space-y-4">
               <div v-for="skill in strategicSkills" :key="skill.name" class="flex items-start gap-4">
                 <span class="text-2xl">{{ skill.icon }}</span>
@@ -58,8 +58,8 @@
           </div>
 
           <!-- Business Development -->
-          <div class="bg-ios-background border border-ios-separator rounded-3xl p-8 hover:bg-ios-background-secondary transition-colors duration-300">
-            <h3 class="text-2xl font-semibold text-ios-label mb-6">Business Development</h3>
+          <div class="bg-white/70 backdrop-blur-xl border border-slate-200 rounded-3xl p-8 hover:bg-white/80 transition-colors duration-300">
+            <h3 class="text-2xl font-semibold text-slate-900 mb-6">Développement Produit</h3>
             <div class="space-y-4">
               <div v-for="skill in businessSkills" :key="skill.name" class="flex items-start gap-4">
                 <span class="text-2xl">{{ skill.icon }}</span>
@@ -73,20 +73,20 @@
         </div>
 
         <!-- Professional Certifications -->
-        <div class="mt-16 bg-ios-background border border-ios-separator rounded-3xl p-8">
+        <div class="mt-16 bg-white/70 backdrop-blur-xl border border-slate-200 rounded-3xl p-8">
           <div class="text-center mb-8">
-            <h3 class="text-3xl font-semibold text-ios-label mb-4">Certifications & Education</h3>
-            <p class="text-lg text-ios-label-tertiary">Professional credentials that validate expertise</p>
+            <h3 class="text-3xl font-semibold text-slate-900 mb-4">Certificats & Diplômes</h3>
+            <p class="text-lg text-slate-600">Références professionnelles</p>
           </div>
           
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div v-for="cert in certifications" :key="cert.name" class="text-center">
-              <div class="w-20 h-20 mx-auto mb-4 bg-ios-background-secondary rounded-2xl flex items-center justify-center">
+              <div class="w-20 h-20 mx-auto mb-4 bg-white/70 border border-slate-200 rounded-2xl flex items-center justify-center">
                 <span class="text-3xl">{{ cert.icon }}</span>
               </div>
-              <h4 class="text-lg font-semibold text-ios-label mb-2">{{ cert.name }}</h4>
-              <p class="text-base text-ios-label-secondary mb-2">{{ cert.issuer }}</p>
-              <span class="inline-flex items-center px-3 py-1 bg-ios-background-secondary text-ios-label-tertiary text-sm rounded-full border border-ios-separator">
+              <h4 class="text-lg font-semibold text-slate-900 mb-2">{{ cert.name }}</h4>
+              <p class="text-base text-slate-700 mb-2">{{ cert.issuer }}</p>
+              <span class="inline-flex items-center px-3 py-1 bg-white/70 text-slate-700 text-sm rounded-full border border-slate-200">
                 {{ cert.year }}
               </span>
             </div>

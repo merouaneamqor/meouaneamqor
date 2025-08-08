@@ -13,14 +13,14 @@
           </div>
           <div class="text-left">
             <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-slate-900 tracking-tight">
-              Academic Foundation
+              Formation
             </h2>
             <p class="text-slate-700 text-xs sm:text-sm">Education • Leadership Development • Excellence</p>
           </div>
         </div>
         <div class="w-16 sm:w-20 md:w-24 h-1 bg-slate-300 rounded-full mx-auto mb-4 sm:mb-6"></div>
         <p class="text-slate-700 text-sm sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed px-2 sm:px-0">
-          Building leadership capabilities through rigorous academic training and hands-on organizational experience
+          Parcours académique en ingénierie logicielle et management des équipes techniques
         </p>
       </div>
       <div class="max-w-5xl mx-auto">

@@ -6,22 +6,22 @@
       
       <!-- Clean minimal title -->
       <h1 class="text-4xl sm:text-6xl lg:text-7xl font-semibold text-slate-900 mb-6 tracking-tight leading-none">
-        Software Engineer & Certified ScrumMaster®
+        Parcours & Impact
       </h1>
       
       <!-- Main value proposition -->
       <p class="text-xl sm:text-2xl lg:text-3xl font-light text-slate-800 mb-8 tracking-tight leading-relaxed max-w-4xl mx-auto">
-        I build software that works beautifully and scales effortlessly.
+        Développe des produits qui fonctionnent simplement et passent à l’échelle.
       </p>
       
       <!-- Supporting statement -->
       <p class="text-lg sm:text-xl text-slate-700 max-w-3xl mx-auto mb-8 leading-relaxed">
-        From healthcare platforms to e-commerce systems, I lead teams and write code that deliver measurable impact.
+        Santé, e‑commerce et plateformes SaaS : je code et j’encadre des équipes pour livrer un impact mesurable.
       </p>
       
       <!-- Philosophy statement -->
       <p class="text-base sm:text-lg text-slate-700 max-w-2xl mx-auto mb-16 leading-relaxed font-light">
-        With a focus on clean architecture, human-centered interfaces, and Agile processes, I craft experiences that feel simple — because they are.
+        Architecture propre, interfaces humaines et agilité pragmatique pour des expériences réellement simples.
       </p>
       
       <!-- Clean Stats Section -->
@@ -46,7 +46,7 @@
 
       <!-- Clean Technologies List -->
       <div class="mb-12 sm:mb-20">
-        <h3 class="text-2xl font-semibold text-slate-900 mb-8">Core Technologies</h3>
+        <h3 class="text-2xl font-semibold text-slate-900 mb-8">Compétences techniques</h3>
         <div class="flex flex-wrap justify-center gap-2 sm:gap-3">
           <span
             v-for="tech in technologies"
