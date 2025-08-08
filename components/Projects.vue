@@ -11,15 +11,15 @@
             </svg>
           </div>
           <div class="text-left">
-            <h2 class="text-4xl lg:text-5xl font-bold text-slate-900">
-              Featured Projects
+            <h2 class="text-4xl lg:text-5xl font-bold text-white professional-glow">
+              {{ t('projects.title') }}
             </h2>
-            <p class="text-slate-600 text-sm">Études de cas • Résultats • Impact</p>
+            <p class="text-slate-400 text-sm">{{ t('projects.caption') }}</p>
           </div>
         </div>
         <div class="w-24 h-1 bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400 rounded-full mx-auto mb-6"></div>
-        <p class="text-slate-700 text-lg max-w-3xl mx-auto leading-relaxed">
-          Sélection de projets illustrant le leadership produit, l’exécution technique et les résultats mesurables
+        <p class="text-slate-300 text-lg max-w-3xl mx-auto leading-relaxed">
+          {{ t('projects.description') }}
         </p>
       </div>
       
@@ -72,8 +72,8 @@
               <div class="p-4 sm:p-6 flex-1 flex flex-col">
                 <!-- Leadership Impact -->
                 <div class="mb-6">
-                  <h4 class="text-sm font-semibold text-slate-800 uppercase tracking-wider mb-3">Overview</h4>
-                  <p class="text-slate-700 leading-relaxed">{{ project.summary || project.leadershipImpact }}</p>
+                  <h4 class="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-3">{{ t('projects.leadership_impact') }}</h4>
+                  <p class="text-slate-300 leading-relaxed">{{ project.leadershipImpact }}</p>
                 </div>
 
                 <!-- Business Metrics -->
@@ -86,7 +86,7 @@
 
                 <!-- Technical Stack -->
                 <div class="mb-6">
-                  <h4 class="text-sm font-semibold text-slate-800 uppercase tracking-wider mb-3">Tech</h4>
+                   <h4 class="text-sm font-semibold text-slate-800 uppercase tracking-wider mb-3">{{ t('projects.technology_leadership') }}</h4>
                   <div class="flex flex-wrap gap-2">
                     <span v-for="tech in project.technologies" :key="tech" 
                           class="px-2 py-1 bg-slate-100 border border-slate-200 text-xs text-slate-700 rounded-md hover:bg-slate-200 transition-colors">
@@ -98,9 +98,9 @@
                 <!-- Project Link -->
                 <div class="flex items-center justify-between mt-auto pt-2">
                   <a v-if="project.link !== '#'" :href="project.link" target="_blank" rel="noopener noreferrer" 
-                     class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-colors">
-                    <span>Open</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                     class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-medium transition-colors group/link">
+                    <span>{{ t('common.view_project') }}</span>
+                    <svg class="w-4 h-4 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                     </svg>
                   </a>
@@ -108,7 +108,7 @@
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
                     </svg>
-                    Confidential Project
+                    {{ t('projects.confidential_project') }}
                   </span>
                   <div class="text-xs text-slate-500">{{ project.duration }}</div>
                 </div>
@@ -120,7 +120,7 @@
         <!-- Executive Summary -->
         <div class="bg-white/70 backdrop-blur-xl border border-slate-200 rounded-2xl p-8">
           <div class="text-center mb-8">
-            <h3 class="text-2xl font-bold text-slate-900 mb-4">Portfolio Impact Summary</h3>
+            <h3 class="text-2xl font-bold text-white mb-4">{{ t('projects.portfolio_impact_summary') }}</h3>
             <div class="w-16 h-1 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full mx-auto"></div>
           </div>
           
@@ -145,6 +145,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+const { t } = useI18n()
 interface Project {
   name: string;
   category: string;
@@ -315,13 +316,13 @@ const portfolioStats = [
 
 /* Responsive design */
 @media (max-width: 1024px) {
-  .grid.grid-cols-1.lg\\:grid-cols-2 {
+  .grid.grid-cols-1.lg\:grid-cols-2 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 768px) {
-  .grid.grid-cols-2.md\\:grid-cols-4 {
+  .grid.grid-cols-2.md\:grid-cols-4 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   

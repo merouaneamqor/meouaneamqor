@@ -16,12 +16,11 @@
       <!-- Section Header -->
       <div class="text-center mb-16">
         <h2 class="text-4xl lg:text-5xl font-semibold text-ios-label mb-4 tracking-tight">
-          Let's Connect
+          {{ t('contact.title') }}
         </h2>
         <div class="w-24 h-1 bg-gradient-to-r from-ios-system-blue via-ios-system-purple to-ios-system-blue rounded-full mx-auto mb-6"></div>
         <p class="text-ios-label-secondary text-lg max-w-2xl mx-auto leading-relaxed">
-          Ready to collaborate on your next project? Whether you need a tech lead, want to discuss 
-          opportunities, or just want to connect, I'd love to hear from you.
+          {{ t('contact.subtitle') }}
         </p>
       </div>
 
@@ -39,9 +38,9 @@
                   </svg>
                 </div>
                 <div class="contact-info">
-                  <h3 class="contact-title">Email</h3>
+                  <h3 class="contact-title">{{ t('common.email') }}</h3>
                   <p class="contact-detail">marouane.amqor@gmail.com</p>
-                  <p class="contact-description">Best for detailed discussions and project inquiries</p>
+                  <p class="contact-description">{{ t('contact.email_desc') }}</p>
                 </div>
                 <div class="contact-arrow">
                   <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -59,9 +58,9 @@
                   </svg>
                 </div>
                 <div class="contact-info">
-                  <h3 class="contact-title">Phone</h3>
+                  <h3 class="contact-title">{{ t('common.phone') }}</h3>
                   <p class="contact-detail">+212 7 01 086 726</p>
-                  <p class="contact-description">Available for urgent matters and quick calls</p>
+                  <p class="contact-description">{{ t('contact.phone_desc') }}</p>
                 </div>
                 <div class="contact-arrow">
                   <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -80,8 +79,8 @@
                 </div>
                 <div class="contact-info">
                   <h3 class="contact-title">LinkedIn</h3>
-                  <p class="contact-detail">Professional Network</p>
-                  <p class="contact-description">Connect for professional opportunities</p>
+                  <p class="contact-detail">{{ t('contact.professional_network') }}</p>
+                  <p class="contact-description">{{ t('contact.linkedin_desc') }}</p>
                 </div>
                 <div class="contact-arrow">
                   <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -100,8 +99,8 @@
                 </div>
                 <div class="contact-info">
                   <h3 class="contact-title">GitHub</h3>
-                  <p class="contact-detail">Code Repository</p>
-                  <p class="contact-description">Explore my projects and contributions</p>
+                  <p class="contact-detail">{{ t('contact.code_repository') }}</p>
+                  <p class="contact-description">{{ t('contact.github_desc') }}</p>
                 </div>
                 <div class="contact-arrow">
                   <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -117,17 +116,16 @@
             <div class="bg-ios-background-secondary backdrop-blur-sm border border-ios-separator rounded-xl p-6">
               <div class="flex items-center gap-3 mb-4">
                 <div class="w-3 h-3 bg-ios-system-green rounded-full animate-pulse"></div>
-                <h3 class="text-lg font-semibold text-ios-label">Current Availability</h3>
+                <h3 class="text-lg font-semibold text-ios-label">{{ t('contact.current_availability') }}</h3>
               </div>
               <p class="text-ios-label-secondary text-sm leading-relaxed mb-4">
-                I'm currently available for new opportunities and interesting projects. 
-                Response time is typically within 24 hours.
+                {{ t('contact.availability_desc') }}
               </p>
               <div class="flex items-center gap-2 text-xs text-ios-label-tertiary">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
-                <span>Timezone: GMT+1 (Casablanca, Morocco)</span>
+                <span>{{ t('contact.timezone') }}</span>
               </div>
             </div>
           </div>
@@ -137,15 +135,15 @@
         <div class="contact-form-container">
           <div class="bg-ios-background-secondary backdrop-blur-sm border border-ios-separator rounded-xl overflow-hidden">
             <div class="bg-ios-background/50 p-6 border-b border-ios-separator">
-              <h3 class="text-2xl font-semibold text-ios-label mb-2">Send a Message</h3>
-              <p class="text-ios-label-tertiary text-sm">Fill out the form below and I'll get back to you soon</p>
+              <h3 class="text-2xl font-semibold text-ios-label mb-2">{{ t('contact.send_a_message') }}</h3>
+              <p class="text-ios-label-tertiary text-sm">{{ t('contact.form_subtitle') }}</p>
             </div>
             
             <div class="p-8">
               <form @submit.prevent="submitForm" class="space-y-6">
                 <div class="form-group">
                   <label for="name" class="form-label">
-                    Full Name
+                    {{ t('common.full_name') }}
                     <span class="text-ios-system-red">*</span>
                   </label>
                   <input 
@@ -154,13 +152,13 @@
                     v-model="form.name" 
                     required 
                     class="form-input"
-                    placeholder="Enter your full name"
+                    :placeholder="t('contact.name_placeholder')"
                   >
                 </div>
 
                 <div class="form-group">
                   <label for="email" class="form-label">
-                    Email Address
+                    {{ t('common.email_address') }}
                     <span class="text-ios-system-red">*</span>
                   </label>
                   <input 
@@ -169,31 +167,31 @@
                     v-model="form.email" 
                     required 
                     class="form-input"
-                    placeholder="your@email.com"
+                    :placeholder="t('common.email_placeholder')"
                   >
                 </div>
 
                 <div class="form-group">
                   <label for="subject" class="form-label">
-                    Subject
+                    {{ t('contact.subject') }}
                   </label>
                   <select 
                     id="subject" 
                     v-model="form.subject" 
                     class="form-input"
                   >
-                    <option value="">Select a subject</option>
-                    <option value="collaboration">Project Collaboration</option>
-                    <option value="opportunity">Job Opportunity</option>
-                    <option value="consulting">Consulting Inquiry</option>
-                    <option value="mentoring">Mentoring Request</option>
-                    <option value="other">Other</option>
+                    <option value="">{{ t('contact.select_subject') }}</option>
+                    <option value="collaboration">{{ t('contact.subject_collaboration') }}</option>
+                    <option value="opportunity">{{ t('contact.subject_opportunity') }}</option>
+                    <option value="consulting">{{ t('contact.subject_consulting') }}</option>
+                    <option value="mentoring">{{ t('contact.subject_mentoring') }}</option>
+                    <option value="other">{{ t('contact.subject_other') }}</option>
                   </select>
                 </div>
 
                 <div class="form-group">
                   <label for="message" class="form-label">
-                    Message
+                    {{ t('contact.message') }}
                     <span class="text-ios-system-red">*</span>
                   </label>
                   <textarea 
@@ -202,7 +200,7 @@
                     rows="5" 
                     required 
                     class="form-input resize-none"
-                    placeholder="Tell me about your project or inquiry..."
+                    :placeholder="t('contact.message_placeholder')"
                   ></textarea>
                 </div>
 
@@ -213,7 +211,7 @@
                     class="submit-button group"
                   >
                     <span v-if="!isSubmitting" class="flex items-center gap-2">
-                      Send Message
+                      {{ t('contact.send_message') }}
                       <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
                       </svg>
@@ -223,7 +221,7 @@
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
-                      Sending...
+                      {{ t('common.sending') }}
                     </span>
                   </button>
                 </div>
@@ -238,8 +236,8 @@
                     </svg>
                   </div>
                   <div>
-                    <h4 class="text-ios-system-green font-semibold">Message Sent Successfully!</h4>
-                    <p class="text-ios-system-green text-sm">Thank you for reaching out. I'll get back to you within 24 hours.</p>
+                    <h4 class="text-ios-system-green font-semibold">{{ t('contact.success_title') }}</h4>
+                    <p class="text-ios-system-green text-sm">{{ t('contact.success_desc') }}</p>
                   </div>
                 </div>
               </div>
@@ -253,6 +251,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+const { t } = useI18n()
 
 const form = ref({
   name: '',
@@ -268,23 +267,11 @@ const submitForm = async () => {
   isSubmitting.value = true
   
   try {
-    // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    // Here you would typically send the form data to a server
     console.log('Form submitted:', form.value)
-    
-    // Show success message
     showSuccess.value = true
-    
-    // Reset form after submission
     form.value = { name: '', email: '', subject: '', message: '' }
-    
-    // Hide success message after 5 seconds
-    setTimeout(() => {
-      showSuccess.value = false
-    }, 5000)
-    
+    setTimeout(() => { showSuccess.value = false }, 5000)
   } catch (error) {
     console.error('Form submission error:', error)
   } finally {

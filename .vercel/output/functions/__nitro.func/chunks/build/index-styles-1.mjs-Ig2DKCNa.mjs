@@ -1,0 +1,4 @@
+const index_vue_vue_type_style_index_0_scoped_f6ac7d84_lang = '.font-sans[data-v-f6ac7d84]{font-family:Inter,"system-ui",-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif}html[data-v-f6ac7d84]{scroll-behavior:smooth}[data-v-f6ac7d84]:focus-visible{outline:2px solid #10b981;outline-offset:2px}@supports ((-webkit-backdrop-filter:blur(12px)) or (backdrop-filter:blur(12px))){.backdrop-blur-sm[data-v-f6ac7d84]{-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}.backdrop-blur-md[data-v-f6ac7d84]{-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}.backdrop-blur-xl[data-v-f6ac7d84]{-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px)}}';
+
+export { index_vue_vue_type_style_index_0_scoped_f6ac7d84_lang as i };
+//# sourceMappingURL=index-styles-1.mjs-Ig2DKCNa.mjs.map

@@ -1,12 +1,12 @@
 <template>
   <section class="py-24 bg-transparent font-myriad">
     <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-slate-900 mb-6 tracking-tight">Compétences & Outils</h2>
-      <p class="text-xl sm:text-2xl text-slate-700 mb-8 max-w-3xl mx-auto leading-relaxed font-light">
-        Code, architecture, design produit et agilité — pour livrer vite et bien.
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-ios-label mb-6 tracking-tight">{{ t('skills.title') }}</h2>
+      <p class="text-xl sm:text-2xl text-ios-label-secondary mb-8 max-w-3xl mx-auto leading-relaxed font-light">
+        {{ t('skills.subtitle') }}
       </p>
-      <p class="text-base sm:text-lg text-slate-600 mb-16 max-w-2xl mx-auto leading-relaxed">
-        De l’idéation au déploiement cloud : UI/UX, développement full‑stack, qualité et livraison continue.
+      <p class="text-base sm:text-lg text-ios-label-tertiary mb-16 max-w-2xl mx-auto leading-relaxed">
+        {{ t('skills.description') }}
       </p>
     </div>
     
@@ -16,8 +16,8 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
           
           <!-- Leadership & Team Management -->
-          <div class="bg-white/70 backdrop-blur-xl border border-slate-200 rounded-3xl p-8 hover:bg-white/80 transition-colors duration-300">
-            <h3 class="text-2xl font-semibold text-slate-900 mb-6">Leadership & Gestion d’équipe</h3>
+          <div class="bg-ios-background border border-ios-separator rounded-3xl p-8 hover:bg-ios-background-secondary transition-colors duration-300">
+            <h3 class="text-2xl font-semibold text-ios-label mb-6">{{ t('skills.leadership') }}</h3>
             <div class="space-y-4">
               <div v-for="skill in leadershipSkills" :key="skill.name" class="flex items-start gap-4">
                 <span class="text-2xl">{{ skill.icon }}</span>
@@ -30,8 +30,8 @@
           </div>
 
           <!-- Technical Architecture -->
-          <div class="bg-white/70 backdrop-blur-xl border border-slate-200 rounded-3xl p-8 hover:bg-white/80 transition-colors duration-300">
-            <h3 class="text-2xl font-semibold text-slate-900 mb-6">Architecture Technique</h3>
+          <div class="bg-ios-background border border-ios-separator rounded-3xl p-8 hover:bg-ios-background-secondary transition-colors duration-300">
+            <h3 class="text-2xl font-semibold text-ios-label mb-6">{{ t('skills.technical_architecture') }}</h3>
             <div class="space-y-4">
               <div v-for="skill in technicalSkills" :key="skill.name" class="flex items-start gap-4">
                 <span class="text-2xl">{{ skill.icon }}</span>
@@ -44,8 +44,8 @@
           </div>
 
           <!-- Strategic Management -->
-          <div class="bg-white/70 backdrop-blur-xl border border-slate-200 rounded-3xl p-8 hover:bg-white/80 transition-colors duration-300">
-            <h3 class="text-2xl font-semibold text-slate-900 mb-6">Management Stratégique</h3>
+          <div class="bg-ios-background border border-ios-separator rounded-3xl p-8 hover:bg-ios-background-secondary transition-colors duration-300">
+            <h3 class="text-2xl font-semibold text-ios-label mb-6">{{ t('skills.strategic_management') }}</h3>
             <div class="space-y-4">
               <div v-for="skill in strategicSkills" :key="skill.name" class="flex items-start gap-4">
                 <span class="text-2xl">{{ skill.icon }}</span>
@@ -58,8 +58,8 @@
           </div>
 
           <!-- Business Development -->
-          <div class="bg-white/70 backdrop-blur-xl border border-slate-200 rounded-3xl p-8 hover:bg-white/80 transition-colors duration-300">
-            <h3 class="text-2xl font-semibold text-slate-900 mb-6">Développement Produit</h3>
+          <div class="bg-ios-background border border-ios-separator rounded-3xl p-8 hover:bg-ios-background-secondary transition-colors duration-300">
+            <h3 class="text-2xl font-semibold text-ios-label mb-6">{{ t('skills.business_development') }}</h3>
             <div class="space-y-4">
               <div v-for="skill in businessSkills" :key="skill.name" class="flex items-start gap-4">
                 <span class="text-2xl">{{ skill.icon }}</span>
@@ -75,8 +75,8 @@
         <!-- Professional Certifications -->
         <div class="mt-16 bg-white/70 backdrop-blur-xl border border-slate-200 rounded-3xl p-8">
           <div class="text-center mb-8">
-            <h3 class="text-3xl font-semibold text-slate-900 mb-4">Certificats & Diplômes</h3>
-            <p class="text-lg text-slate-600">Références professionnelles</p>
+            <h3 class="text-3xl font-semibold text-ios-label mb-4">{{ t('skills.certifications') }}</h3>
+            <p class="text-lg text-ios-label-tertiary">{{ t('skills.certifications_desc') }}</p>
           </div>
           
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -98,6 +98,7 @@
 </template>
 
 <script setup lang="ts">
+const { t } = useI18n()
 // Leadership & Team Management
 const leadershipSkills = [
   { 

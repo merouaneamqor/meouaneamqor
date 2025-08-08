@@ -12,11 +12,11 @@
         <ContentRenderer :value="post" />
       </article>
       <div v-else class="text-center py-16">
-        <h2 class="text-2xl font-semibold text-gray-900">Post not found</h2>
-        <p class="mt-2 text-gray-600">The blog post you're looking for doesn't exist or has been removed.</p>
-        <NuxtLink to="/blog"
+        <h2 class="text-2xl font-semibold text-gray-900">{{ t('blog.post_not_found') }}</h2>
+        <p class="mt-2 text-gray-600">{{ t('blog.post_not_found_desc') }}</p>
+        <NuxtLink :to="localePath('/blog')"
           class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors duration-300">
-          Back to Blog
+          {{ t('blog.back_to_blog') }}
         </NuxtLink>
       </div>
     </div>
@@ -25,6 +25,8 @@
 
 <script setup lang="ts">
 import { CalendarIcon } from 'lucide-vue-next'
+const { t, locale } = useI18n()
+const localePath = useLocalePath()
 
 const { path } = useRoute()
 const { data: post } = await useAsyncData(`content-${path}`, () =>
@@ -32,14 +34,14 @@ const { data: post } = await useAsyncData(`content-${path}`, () =>
 )
 
 useHead(() => ({
-  title: post.value ? `${post.value.title} | Merouane Amqor's Blog` : 'Post Not Found',
+  title: post.value ? `${post.value.title} | Merouane Amqor` : t('blog.post_not_found'),
   meta: [
-    { name: 'description', content: post.value ? post.value.excerpt : 'Blog post not found' }
+    { name: 'description', content: post.value ? post.value.excerpt : t('blog.post_not_found_desc') }
   ]
 }))
 
 const formatDate = (dateString: string) => {
-  return new Date(dateString).toLocaleDateString('en-US', {
+  return new Date(dateString).toLocaleDateString(locale.value === 'fr' ? 'fr-FR' : 'en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric'

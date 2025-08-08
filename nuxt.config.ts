@@ -2,8 +2,7 @@ import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
   modules: [
-    // Temporarily comment out i18n due to the import.meta issue
-    // '@nuxtjs/i18n',
+    '@nuxtjs/i18n',
     '@nuxtjs/tailwindcss',
     'nuxt-jsonld',
     '@zadigetvoltaire/nuxt-gtm',
@@ -12,16 +11,24 @@ export default defineNuxtConfig({
     '@nuxt/image',
   ],
 
-  // Comment out i18n config temporarily
-  // i18n: {
-  //   locales: [
-  //     { code: 'en', name: 'English', file: 'en.json' },
-  //     { code: 'fr', name: 'Français', file: 'fr.json' }
-  //   ],
-  //   defaultLocale: 'en',
-  //   lazy: true,
-  //   langDir: 'locales/',
-  // },
+  i18n: {
+    locales: [
+      { code: 'en', name: 'English', file: 'en.json' },
+      { code: 'fr', name: 'Français', file: 'fr.json' }
+    ],
+    defaultLocale: 'en',
+    lazy: true,
+    langDir: 'locales/',
+    strategy: 'prefix_except_default',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
+      cookieCrossOrigin: false,
+      cookieSecure: false
+    },
+    seo: true
+  },
 
   tailwindcss: {
     config: {
