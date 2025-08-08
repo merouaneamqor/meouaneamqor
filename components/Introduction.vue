@@ -2,7 +2,7 @@
   <section class="bg-transparent font-myriad relative">
     
     <!-- Hero Section with massive white space like Apple -->
-    <div class="pt-32 pb-24 px-6 max-w-6xl mx-auto text-center relative z-20">
+    <div class="pt-16 sm:pt-24 pb-16 sm:pb-24 px-4 sm:px-6 max-w-6xl mx-auto text-center relative z-20">
       
       <!-- Clean minimal title -->
       <h1 class="text-5xl sm:text-7xl lg:text-8xl font-semibold text-slate-900 mb-6 tracking-tight leading-none">
@@ -25,7 +25,7 @@
       </p>
       
       <!-- Clean Stats Section -->
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 mb-20">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 lg:gap-16 mb-16 sm:mb-20">
         <div class="text-center">
           <div class="text-4xl lg:text-5xl font-semibold text-slate-900 mb-2">8</div>
           <div class="text-lg text-slate-700">{{ t('intro.stats.developers_led') }}</div>
@@ -51,7 +51,7 @@
           <span
             v-for="tech in technologies"
             :key="tech"
-            class="px-4 py-2 rounded-full text-base font-medium text-slate-800 bg-white/70 border border-slate-200 backdrop-blur-xl hover:bg-white transition-colors"
+            class="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-sm sm:text-base font-medium text-slate-800 bg-white/70 border border-slate-200 backdrop-blur-xl hover:bg-white transition-colors"
           >
             {{ tech }}
           </span>

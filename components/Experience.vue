@@ -1,5 +1,5 @@
 <template>
-  <section class="py-16 sm:py-20 md:py-24 lg:py-32 bg-transparent relative min-h-screen flex items-center justify-center">
+  <section class="py-12 sm:py-16 md:py-24 lg:py-32 bg-transparent relative min-h-screen flex items-center justify-center">
         
     <div class="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10 w-full max-w-4xl">
       <!-- iOS-style section header -->
@@ -18,7 +18,7 @@
       </div>
       
       <!-- iOS-style Experience Timeline -->
-      <div class="space-y-8 sm:space-y-12 md:space-y-16">
+      <div class="space-y-6 sm:space-y-10 md:space-y-16">
         <div 
           v-for="(experience, index) in executiveExperiences"
           :key="index"
@@ -26,7 +26,7 @@
           :style="{ animationDelay: `${index * 100}ms` }"
         >
           <!-- iOS Card -->
-          <div class="bg-white/70 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 backdrop-blur-xl border border-slate-200 hover:bg-white/80 hover:-translate-y-1 transition-all duration-300 ease-out">
+          <div class="bg-white/70 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 backdrop-blur-xl border border-slate-200 hover:bg-white/80 hover:-translate-y-1 transition-all duration-300 ease-out">
             <!-- Header -->
             <div class="mb-6 sm:mb-8">
               <div class="flex items-start justify-between mb-4">
@@ -60,7 +60,7 @@
             </div>
             
             <!-- Content Grid -->
-            <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+              <div class="grid md:grid-cols-2 gap-6 md:gap-10">
               <!-- Leadership Impact -->
               <div>
                 <div class="flex items-center gap-3 mb-4">

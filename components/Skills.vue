@@ -1,5 +1,5 @@
 <template>
-  <section class="py-24 bg-ios-background-secondary font-myriad">
+  <section class="py-24 bg-transparent font-myriad">
     <div class="max-w-6xl mx-auto px-6 text-center">
       <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-ios-label mb-6 tracking-tight">{{ t('skills.title') }}</h2>
       <p class="text-xl sm:text-2xl text-ios-label-secondary mb-8 max-w-3xl mx-auto leading-relaxed font-light">
@@ -73,7 +73,7 @@
         </div>
 
         <!-- Professional Certifications -->
-        <div class="mt-16 bg-ios-background border border-ios-separator rounded-3xl p-8">
+        <div class="mt-16 bg-white/70 backdrop-blur-xl border border-slate-200 rounded-3xl p-8">
           <div class="text-center mb-8">
             <h3 class="text-3xl font-semibold text-ios-label mb-4">{{ t('skills.certifications') }}</h3>
             <p class="text-lg text-ios-label-tertiary">{{ t('skills.certifications_desc') }}</p>
@@ -81,12 +81,12 @@
           
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div v-for="cert in certifications" :key="cert.name" class="text-center">
-              <div class="w-20 h-20 mx-auto mb-4 bg-ios-background-secondary rounded-2xl flex items-center justify-center">
+              <div class="w-20 h-20 mx-auto mb-4 bg-white/70 border border-slate-200 rounded-2xl flex items-center justify-center">
                 <span class="text-3xl">{{ cert.icon }}</span>
               </div>
-              <h4 class="text-lg font-semibold text-ios-label mb-2">{{ cert.name }}</h4>
-              <p class="text-base text-ios-label-secondary mb-2">{{ cert.issuer }}</p>
-              <span class="inline-flex items-center px-3 py-1 bg-ios-background-secondary text-ios-label-tertiary text-sm rounded-full border border-ios-separator">
+              <h4 class="text-lg font-semibold text-slate-900 mb-2">{{ cert.name }}</h4>
+              <p class="text-base text-slate-700 mb-2">{{ cert.issuer }}</p>
+              <span class="inline-flex items-center px-3 py-1 bg-white/70 text-slate-700 text-sm rounded-full border border-slate-200">
                 {{ cert.year }}
               </span>
             </div>

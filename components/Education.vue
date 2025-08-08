@@ -3,7 +3,7 @@
         
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
       <!-- Professional section header -->
-      <div class="text-center mb-12 sm:mb-14 md:mb-16">
+      <div class="text-center mb-10 sm:mb-14 md:mb-16 px-4 sm:px-0">
         <div class="inline-flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
           <div class="w-10 h-10 sm:w-12 sm:h-12 bg-slate-100 rounded-lg sm:rounded-xl flex items-center justify-center">
             <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -25,7 +25,7 @@
       </div>
       <div class="max-w-5xl mx-auto">
         <!-- Education Card -->
-        <div class="bg-white/70 backdrop-blur-xl border border-slate-200 rounded-xl sm:rounded-2xl overflow-hidden mb-8 sm:mb-10 md:mb-12 hover:bg-white/80 transition-all duration-300 group">
+        <div class="bg-white/70 backdrop-blur-xl border border-slate-200 rounded-xl sm:rounded-2xl overflow-hidden mb-6 sm:mb-10 md:mb-12 hover:bg-white/80 transition-all duration-300 group">
           <!-- Card Header -->
           <div class="bg-white border-b border-slate-200 p-4 sm:p-6 md:p-8">
             <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
@@ -75,7 +75,7 @@
             </div>
           </div>
           <!-- Card Content -->
-          <div class="p-4 sm:p-6 md:p-8">
+           <div class="p-4 sm:p-6 md:p-8">
             <div class="grid lg:grid-cols-2 gap-6 sm:gap-8">
               <!-- Leadership Development -->
               <div>

@@ -1,17 +1,14 @@
 <template>
   <footer class="bg-transparent text-slate-700 border-t border-slate-200 relative">
 
-    <div class="container mx-auto px-6 py-20 relative z-10">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+    <div class="container mx-auto px-4 sm:px-6 py-12 sm:py-16 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
         
         <!-- Enhanced about section -->
         <div class="lg:col-span-2">
           <div class="mb-8">
-            <h2 class="text-3xl font-bold mb-6 text-white professional-glow relative inline-block">
-              <span class="relative z-10">Merouane Amqor</span>
-              <span class="absolute inset-0 bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent opacity-20">Merouane Amqor</span>
-            </h2>
-            <div class="w-20 h-1 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full"></div>
+            <h2 class="text-3xl font-bold mb-3 text-slate-900 tracking-tight">Merouane Amqor</h2>
+            <div class="w-16 h-1 bg-slate-300 rounded-full"></div>
           </div>
           
           <p class="text-slate-300 mb-8 leading-relaxed max-w-md text-lg">
@@ -43,13 +40,12 @@
                 {{ t('common.subscribe') }}
               </button>
             </div>
-             
           </div>
         </div>
 
         <!-- Enhanced navigation section -->
         <div>
-          <h3 class="text-xl font-bold mb-8 text-white flex items-center gap-3">
+          <h3 class="text-xl font-bold mb-6 text-slate-900 flex items-center gap-3">
             <div class="w-3 h-3 bg-cyan-400 rounded-full"></div>
             {{ t('footer.quick_links') }}
           </h3>
@@ -61,6 +57,7 @@
               >
                 <div class="w-2 h-2 bg-slate-500 rounded-full group-hover:bg-emerald-400 transition-colors"></div>
                 <span class="text-base group-hover:text-emerald-300 transition-colors">{{ t(link.textKey) }}</span>
+
               </NuxtLink>
             </li>
           </ul>
@@ -68,7 +65,7 @@
 
         <!-- Enhanced contact & social section -->
         <div>
-          <h3 class="text-xl font-bold mb-8 text-white flex items-center gap-3">
+          <h3 class="text-xl font-bold mb-6 text-slate-900 flex items-center gap-3">
             <div class="w-3 h-3 bg-emerald-400 rounded-full"></div>
             {{ t('footer.get_in_touch') }}
           </h3>
@@ -76,11 +73,8 @@
           <!-- Enhanced contact info -->
           <ul class="space-y-5 mb-10">
             <li>
-              <a
-                href="mailto:marouane.amqor@gmail.com"
-                class="footer-contact-link group"
-              >
-                <div class="contact-icon">
+              <a href="mailto:marouane.amqor@gmail.com" class="flex items-center gap-4 p-3 rounded-lg border border-slate-200 bg-white/70 hover:bg-white transition-colors">
+                <div class="w-10 h-10 bg-slate-100 border border-slate-200 rounded-lg flex items-center justify-center text-slate-600">
                   <Mail class="w-5 h-5" />
                 </div>
                 <div>
@@ -90,11 +84,8 @@
               </a>
             </li>
             <li>
-              <a
-                href="tel:+212701086726"
-                class="footer-contact-link group"
-              >
-                <div class="contact-icon">
+              <a href="tel:+212701086726" class="flex items-center gap-4 p-3 rounded-lg border border-slate-200 bg-white/70 hover:bg-white transition-colors">
+                <div class="w-10 h-10 bg-slate-100 border border-slate-200 rounded-lg flex items-center justify-center text-slate-600">
                   <Phone class="w-5 h-5" />
                 </div>
                 <div>
@@ -103,8 +94,8 @@
                 </div>
               </a>
             </li>
-            <li class="footer-contact-link">
-              <div class="contact-icon">
+            <li class="flex items-center gap-4 p-3 rounded-lg border border-slate-200 bg-white/70">
+              <div class="w-10 h-10 bg-slate-100 border border-slate-200 rounded-lg flex items-center justify-center text-slate-600">
                 <MapPin class="w-5 h-5" />
               </div>
               <div>
@@ -120,35 +111,14 @@
               {{ t('footer.connect') }}
             </h4>
             <div class="flex gap-4">
-              <a
-                href="https://linkedin.com/in/merouane-amqor"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-link linkedin-link group/social"
-                title="LinkedIn"
-              >
+              <a href="https://linkedin.com/in/merouane-amqor" target="_blank" rel="noopener noreferrer" class="w-14 h-14 bg-white/70 border border-slate-200 rounded-lg flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-white transition-colors" title="LinkedIn">
                 <Linkedin class="w-6 h-6" />
-                 
               </a>
-              <a
-                href="https://github.com/merouaneamqor"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-link github-link group/social"
-                title="GitHub"
-              >
+              <a href="https://github.com/merouaneamqor" target="_blank" rel="noopener noreferrer" class="w-14 h-14 bg-white/70 border border-slate-200 rounded-lg flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-white transition-colors" title="GitHub">
                 <Github class="w-6 h-6" />
-                 
               </a>
-              <a
-                href="https://douq.ma/about"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-link website-link group/social"
-                title="Douq.ma"
-              >
+              <a href="https://douq.ma/about" target="_blank" rel="noopener noreferrer" class="w-14 h-14 bg-white/70 border border-slate-200 rounded-lg flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-white transition-colors" title="Douq.ma">
                 <Globe class="w-6 h-6" />
-                 
               </a>
             </div>
           </div>
@@ -156,7 +126,7 @@
       </div>
 
       <!-- Enhanced footer bottom -->
-      <div class="mt-20 pt-10 border-t border-slate-700/50">
+      <div class="mt-16 pt-8 border-t border-slate-200">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div class="flex flex-col sm:flex-row sm:items-center gap-4">
             <p class="text-slate-600 text-base">
