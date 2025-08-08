@@ -4,7 +4,7 @@
     <!-- Clean iOS Navigation -->
     
     <!-- Hero Section with massive white space like Apple -->
-    <div class="pt-64 pb-24 px-6 max-w-6xl mx-auto text-center relative z-40 h-screen flex flex-col justify-center pointer-events-auto">
+    <div class="pt-40 sm:pt-56 lg:pt-64 pb-16 sm:pb-24 px-4 sm:px-6 max-w-6xl mx-auto text-center relative z-40 min-h-[85vh] sm:min-h-[92vh] flex flex-col justify-center pointer-events-auto">
       
       <!-- Clean minimal title -->
       <h1 class="text-5xl sm:text-7xl lg:text-8xl font-semibold text-slate-900 mb-4 tracking-tight leading-none">
@@ -27,13 +27,13 @@
      
 
       <!-- Clean Technologies List -->
-      <div class="mb-20">
+      <div class="mb-12 sm:mb-20">
         <h3 class="text-2xl font-semibold text-slate-900 mb-8">Core Technologies</h3>
-        <div class="flex flex-wrap justify-center gap-2.5 sm:gap-3">
+        <div class="flex flex-wrap justify-center gap-2 sm:gap-3">
           <span
             v-for="tech in technologies"
             :key="tech"
-            class="px-4 py-2 rounded-full text-base font-medium text-slate-800 bg-white/70 border border-slate-200 backdrop-blur-xl hover:bg-white transition-colors"
+            class="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-sm sm:text-base font-medium text-slate-800 bg-white/70 border border-slate-200 backdrop-blur-xl hover:bg-white transition-colors"
           >
             {{ tech }}
           </span>
@@ -43,12 +43,12 @@
       <!-- iOS-style CTA Buttons -->
       <div class="flex flex-col sm:flex-row gap-3 justify-center items-center relative z-40 pointer-events-auto">
         <a href="mailto:marouaneamqor@gmail.com" 
-           class="px-6 py-3 bg-slate-900 text-white text-base font-semibold rounded-full hover:bg-slate-800 transition-colors min-w-[140px] text-center">
+           class="px-5 sm:px-6 py-3 bg-slate-900 text-white text-sm sm:text-base font-semibold rounded-full hover:bg-slate-800 transition-colors min-w-[140px] sm:min-w-[160px] text-center">
           Get in touch
         </a>
         <a href="/Merouane-AMQOR-en.pdf" 
            download
-           class="px-6 py-3 text-slate-800 text-base font-medium hover:text-slate-600 transition-colors">
+           class="px-5 sm:px-6 py-3 text-slate-800 text-sm sm:text-base font-medium hover:text-slate-600 transition-colors">
           Download resume
         </a>
       </div>

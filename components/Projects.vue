@@ -1,7 +1,7 @@
 <template>
   <section class="py-20 bg-transparent border-b border-slate-200 relative min-h-screen flex items-center justify-center">
     
-    <div class="container mx-auto px-6 lg:px-8 relative z-10 w-full">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
       <!-- Professional section header -->
       <div class="text-center mb-16">
         <div class="inline-flex items-center gap-3 mb-6">
@@ -11,40 +11,32 @@
             </svg>
           </div>
           <div class="text-left">
-            <h2 class="text-4xl lg:text-5xl font-bold text-white professional-glow">
-              Strategic Portfolio
+            <h2 class="text-4xl lg:text-5xl font-bold text-slate-900">
+              Featured Projects
             </h2>
-            <p class="text-slate-400 text-sm">Leadership • Innovation • Impact</p>
+            <p class="text-slate-600 text-sm">Case studies • Outcomes • Impact</p>
           </div>
         </div>
         <div class="w-24 h-1 bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400 rounded-full mx-auto mb-6"></div>
-        <p class="text-slate-300 text-lg max-w-3xl mx-auto leading-relaxed">
-          Key projects that demonstrate strategic leadership, team management, and business impact through technology innovation
+        <p class="text-slate-700 text-lg max-w-3xl mx-auto leading-relaxed">
+          A selection of work highlighting product leadership, engineering execution, and measurable business results
         </p>
       </div>
       
       <!-- Strategic Projects Grid -->
       <div class="max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16 items-stretch">
           <div 
             v-for="(project, index) in projects"
             :key="project.name"
-            class="project-card group relative transition-all duration-300"
+            class="project-card group relative transition-transform duration-300"
           >
-            <!-- Project Status Indicator -->
-            <div class="absolute top-6 right-6 z-10">
-              <span class="inline-flex items-center px-3 py-1 bg-emerald-500/20 backdrop-blur-sm border border-emerald-400/50 rounded-full text-emerald-300 text-xs font-medium">
-                <div class="w-2 h-2 bg-emerald-400 rounded-full mr-2 animate-pulse"></div>
-                {{ project.status }}
-              </span>
-            </div>
-            
             <!-- Card Container -->
-             <div class="bg-white/70 backdrop-blur-xl border border-slate-200 rounded-2xl overflow-hidden hover:bg-white/80 transition-all duration-300 h-full">
+            <div class="bg-white/90 backdrop-blur-xl border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 h-full flex flex-col">
               <!-- Card Header -->
-               <div class="bg-white border-b border-slate-200 p-6">
-                <div class="flex items-start justify-between mb-4">
-                  <div class="flex items-center gap-3">
+               <div class="bg-white border-b border-slate-200 p-4 sm:p-6">
+                <div class="flex items-start gap-3">
+                  <div class="flex items-center gap-3 flex-1">
                     <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center flex-shrink-0">
                       <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
@@ -57,42 +49,58 @@
                        <p class="text-slate-600 text-sm">{{ project.category }}</p>
                     </div>
                   </div>
+                  <div class="ml-auto">
+                    <span class="inline-flex items-center px-3 py-1 bg-emerald-500/15 border border-emerald-400/40 rounded-full text-emerald-700 text-xs font-medium">
+                      <span class="w-2 h-2 bg-emerald-400 rounded-full mr-2"></span>
+                      {{ project.status }}
+                    </span>
+                  </div>
+                </div>
+                <div class="flex flex-wrap items-center gap-3 text-slate-600 text-xs sm:text-sm mt-3">
+                  <span class="inline-flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16"/></svg>
+                    {{ project.category }}
+                  </span>
+                  <span class="inline-flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3"/></svg>
+                    {{ project.duration }}
+                  </span>
                 </div>
               </div>
 
               <!-- Card Content -->
-              <div class="p-6">
+              <div class="p-4 sm:p-6 flex-1 flex flex-col">
                 <!-- Leadership Impact -->
                 <div class="mb-6">
-                  <h4 class="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-3">Leadership Impact</h4>
-                  <p class="text-slate-300 leading-relaxed">{{ project.leadershipImpact }}</p>
+                  <h4 class="text-sm font-semibold text-slate-800 uppercase tracking-wider mb-3">Overview</h4>
+                  <p class="text-slate-700 leading-relaxed">{{ project.summary || project.leadershipImpact }}</p>
                 </div>
 
                 <!-- Business Metrics -->
-                <div class="grid grid-cols-2 gap-4 mb-6" v-if="project.metrics">
-                  <div v-for="metric in project.metrics" :key="metric.label" class="text-center p-3 bg-slate-700/30 rounded-lg">
-                    <div class="text-lg font-bold text-emerald-400">{{ metric.value }}</div>
-                    <div class="text-xs text-slate-500">{{ metric.label }}</div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-6" v-if="project.metrics">
+                  <div v-for="metric in project.metrics" :key="metric.label" class="text-center p-4 bg-slate-50 rounded-xl border border-slate-200">
+                    <div class="text-xl sm:text-2xl font-bold text-slate-900">{{ metric.value }}</div>
+                    <div class="text-xs sm:text-sm text-slate-600">{{ metric.label }}</div>
                   </div>
                 </div>
 
                 <!-- Technical Stack -->
                 <div class="mb-6">
-                   <h4 class="text-sm font-semibold text-slate-800 uppercase tracking-wider mb-3">Technology Leadership</h4>
+                  <h4 class="text-sm font-semibold text-slate-800 uppercase tracking-wider mb-3">Tech</h4>
                   <div class="flex flex-wrap gap-2">
-                     <span v-for="tech in project.technologies" :key="tech" 
-                           class="px-2 py-1 bg-slate-100 border border-slate-200 text-xs text-slate-700 rounded-md hover:bg-slate-200 transition-colors">
+                    <span v-for="tech in project.technologies" :key="tech" 
+                          class="px-2 py-1 bg-slate-100 border border-slate-200 text-xs text-slate-700 rounded-md hover:bg-slate-200 transition-colors">
                       {{ tech }}
                     </span>
                   </div>
                 </div>
 
                 <!-- Project Link -->
-                <div class="flex items-center justify-between">
+                <div class="flex items-center justify-between mt-auto pt-2">
                   <a v-if="project.link !== '#'" :href="project.link" target="_blank" rel="noopener noreferrer" 
-                     class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-medium transition-colors group/link">
-                    <span>View Project</span>
-                    <svg class="w-4 h-4 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                     class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-colors">
+                    <span>Open</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                     </svg>
                   </a>
@@ -110,21 +118,21 @@
         </div>
 
         <!-- Executive Summary -->
-        <div class="bg-slate-800/20 backdrop-blur-sm border border-slate-700/30 rounded-2xl p-8">
+        <div class="bg-white/70 backdrop-blur-xl border border-slate-200 rounded-2xl p-8">
           <div class="text-center mb-8">
-            <h3 class="text-2xl font-bold text-white mb-4">Portfolio Impact Summary</h3>
+            <h3 class="text-2xl font-bold text-slate-900 mb-4">Portfolio Impact Summary</h3>
             <div class="w-16 h-1 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full mx-auto"></div>
           </div>
           
           <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div v-for="(stat, index) in portfolioStats" :key="stat.label" class="text-center group">
-              <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-emerald-400 to-cyan-400 mb-2">
+              <div class="text-3xl font-bold text-slate-900 mb-2">
                 {{ stat.value }}
               </div>
-              <div class="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-1">
+              <div class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 {{ stat.label }}
               </div>
-              <div class="text-xs text-slate-500">
+              <div class="text-xs text-slate-600">
                 {{ stat.description }}
               </div>
             </div>
@@ -143,6 +151,7 @@ interface Project {
   status: string;
   duration: string;
   leadershipImpact: string;
+  summary?: string;
   technologies: string[];
   metrics?: { value: string; label: string }[];
   link: string;
