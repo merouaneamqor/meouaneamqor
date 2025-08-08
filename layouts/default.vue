@@ -16,6 +16,7 @@
 <script setup>
 import { useHead } from '#app'
 import BlurBackground from '~/components/BlurBackground.vue'
+const { locale } = useI18n()
 
 const keywordSuggestions = [
   "Full-Stack Developer",
@@ -51,6 +52,9 @@ const keywordSuggestions = [
 ]
 
 useHead({
+  htmlAttrs: {
+    lang: () => (locale.value === 'fr' ? 'fr' : 'en')
+  },
   meta: [
     { name: 'keywords', content: keywordSuggestions.join(', ') }
   ]

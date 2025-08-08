@@ -23,16 +23,23 @@
 </template>
 
 <script setup lang="ts">
+const { locale, t } = useI18n()
 useHead({
-  title: 'Merouane Amqor - Engineering Manager & Certified ScrumMaster®',
+  title: () => locale.value === 'fr' 
+    ? 'Merouane Amqor - Engineering Manager & Certified ScrumMaster®' 
+    : 'Merouane Amqor - Engineering Manager & Certified ScrumMaster®',
   meta: [
     { 
       name: 'description', 
-      content: 'Experienced Engineering Manager and Certified ScrumMaster® specializing in team leadership, agile transformation, and strategic technical solutions. Leading high-performing teams across healthcare and e-commerce sectors.' 
+      content: () => locale.value === 'fr'
+        ? "Ingénieur Manager et Certified ScrumMaster® expérimenté, spécialisé dans le leadership d'équipe, la transformation agile et des solutions techniques stratégiques."
+        : 'Experienced Engineering Manager and Certified ScrumMaster® specializing in team leadership, agile transformation, and strategic technical solutions.' 
     },
     { 
       name: 'keywords', 
-      content: 'engineering manager, scrum master, team leadership, agile transformation, technical leadership, software development, project management, morocco, casablanca' 
+      content: () => locale.value === 'fr'
+        ? 'engineering manager, scrum master, leadership, transformation agile, direction technique, développement logiciel, gestion de projet, maroc, casablanca'
+        : 'engineering manager, scrum master, team leadership, agile transformation, technical leadership, software development, project management, morocco, casablanca' 
     },
     { property: 'og:type', content: 'website' },
     { property: 'og:site_name', content: 'Merouane Amqor Portfolio' }
@@ -40,8 +47,12 @@ useHead({
 });
 
 useSeoMeta({
-  ogTitle: 'Merouane Amqor - Engineering Manager & Certified ScrumMaster®',
-  ogDescription: 'Experienced Engineering Manager and Certified ScrumMaster® leading high-performing teams and driving digital transformation across healthcare and e-commerce sectors.',
+  ogTitle: () => locale.value === 'fr'
+    ? 'Merouane Amqor - Engineering Manager & Certified ScrumMaster®'
+    : 'Merouane Amqor - Engineering Manager & Certified ScrumMaster®',
+  ogDescription: () => locale.value === 'fr'
+    ? "Ingénieur Manager et Certified ScrumMaster® dirigeant des équipes performantes et pilotant la transformation digitale dans la santé et l'e-commerce."
+    : 'Experienced Engineering Manager and Certified ScrumMaster® leading high-performing teams and driving digital transformation across healthcare and e-commerce sectors.',
   ogImage: 'https://merouaneamqor.com/merouane_amqor.jpg',
   ogUrl: 'https://merouaneamqor.com',
   twitterCard: 'summary_large_image',
@@ -55,7 +66,9 @@ useJsonld({
   '@type': 'Person',
   name: 'Merouane Amqor',
   jobTitle: 'Engineering Manager & Certified ScrumMaster®',
-  description: 'Experienced Engineering Manager specializing in team leadership, agile transformation, and strategic technical solutions.',
+  description: () => locale.value === 'fr' 
+    ? "Ingénieur Manager expérimenté, spécialisé dans le leadership d'équipe, la transformation agile et des solutions techniques stratégiques."
+    : 'Experienced Engineering Manager specializing in team leadership, agile transformation, and strategic technical solutions.',
   url: 'https://merouaneamqor.com',
   image: 'https://merouaneamqor.com/merouane_amqor.jpg',
   sameAs: [
@@ -71,7 +84,9 @@ useJsonld({
   alumniOf: {
     '@type': 'Organization',
     name: 'SUPEMIR',
-    description: 'Master in Computer Science - Engineering in Networks & Multimedia'
+    description: () => locale.value === 'fr'
+      ? "Master en Informatique - Ingénierie des Réseaux & Multimédia"
+      : 'Master in Computer Science - Engineering in Networks & Multimedia'
   },
   hasCredential: [
     {

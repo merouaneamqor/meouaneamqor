@@ -1,12 +1,12 @@
 <template>
   <section class="py-24 bg-ios-background-secondary font-myriad">
     <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-ios-label mb-6 tracking-tight">Skills & Expertise</h2>
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-ios-label mb-6 tracking-tight">{{ t('skills.title') }}</h2>
       <p class="text-xl sm:text-2xl text-ios-label-secondary mb-8 max-w-3xl mx-auto leading-relaxed font-light">
-        Building teams. Writing code. Delivering results.
+        {{ t('skills.subtitle') }}
       </p>
       <p class="text-base sm:text-lg text-ios-label-tertiary mb-16 max-w-2xl mx-auto leading-relaxed">
-        From technical architecture to team leadership, I combine deep engineering knowledge with strategic thinking to create exceptional outcomes.
+        {{ t('skills.description') }}
       </p>
     </div>
     
@@ -17,7 +17,7 @@
           
           <!-- Leadership & Team Management -->
           <div class="bg-ios-background border border-ios-separator rounded-3xl p-8 hover:bg-ios-background-secondary transition-colors duration-300">
-            <h3 class="text-2xl font-semibold text-ios-label mb-6">Leadership & Team Management</h3>
+            <h3 class="text-2xl font-semibold text-ios-label mb-6">{{ t('skills.leadership') }}</h3>
             <div class="space-y-4">
               <div v-for="skill in leadershipSkills" :key="skill.name" class="flex items-start gap-4">
                 <span class="text-2xl">{{ skill.icon }}</span>
@@ -31,7 +31,7 @@
 
           <!-- Technical Architecture -->
           <div class="bg-ios-background border border-ios-separator rounded-3xl p-8 hover:bg-ios-background-secondary transition-colors duration-300">
-            <h3 class="text-2xl font-semibold text-ios-label mb-6">Technical Architecture</h3>
+            <h3 class="text-2xl font-semibold text-ios-label mb-6">{{ t('skills.technical_architecture') }}</h3>
             <div class="space-y-4">
               <div v-for="skill in technicalSkills" :key="skill.name" class="flex items-start gap-4">
                 <span class="text-2xl">{{ skill.icon }}</span>
@@ -45,7 +45,7 @@
 
           <!-- Strategic Management -->
           <div class="bg-ios-background border border-ios-separator rounded-3xl p-8 hover:bg-ios-background-secondary transition-colors duration-300">
-            <h3 class="text-2xl font-semibold text-ios-label mb-6">Strategic Management</h3>
+            <h3 class="text-2xl font-semibold text-ios-label mb-6">{{ t('skills.strategic_management') }}</h3>
             <div class="space-y-4">
               <div v-for="skill in strategicSkills" :key="skill.name" class="flex items-start gap-4">
                 <span class="text-2xl">{{ skill.icon }}</span>
@@ -59,7 +59,7 @@
 
           <!-- Business Development -->
           <div class="bg-ios-background border border-ios-separator rounded-3xl p-8 hover:bg-ios-background-secondary transition-colors duration-300">
-            <h3 class="text-2xl font-semibold text-ios-label mb-6">Business Development</h3>
+            <h3 class="text-2xl font-semibold text-ios-label mb-6">{{ t('skills.business_development') }}</h3>
             <div class="space-y-4">
               <div v-for="skill in businessSkills" :key="skill.name" class="flex items-start gap-4">
                 <span class="text-2xl">{{ skill.icon }}</span>
@@ -75,8 +75,8 @@
         <!-- Professional Certifications -->
         <div class="mt-16 bg-ios-background border border-ios-separator rounded-3xl p-8">
           <div class="text-center mb-8">
-            <h3 class="text-3xl font-semibold text-ios-label mb-4">Certifications & Education</h3>
-            <p class="text-lg text-ios-label-tertiary">Professional credentials that validate expertise</p>
+            <h3 class="text-3xl font-semibold text-ios-label mb-4">{{ t('skills.certifications') }}</h3>
+            <p class="text-lg text-ios-label-tertiary">{{ t('skills.certifications_desc') }}</p>
           </div>
           
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -98,6 +98,7 @@
 </template>
 
 <script setup lang="ts">
+const { t } = useI18n()
 // Leadership & Team Management
 const leadershipSkills = [
   { 

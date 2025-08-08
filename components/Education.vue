@@ -13,14 +13,14 @@
           </div>
           <div class="text-left">
             <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-slate-900 tracking-tight">
-              Academic Foundation
+              {{ t('education.title') }}
             </h2>
-            <p class="text-slate-700 text-xs sm:text-sm">Education • Leadership Development • Excellence</p>
+            <p class="text-slate-700 text-xs sm:text-sm">{{ t('education.subtitle') }}</p>
           </div>
         </div>
         <div class="w-16 sm:w-20 md:w-24 h-1 bg-slate-300 rounded-full mx-auto mb-4 sm:mb-6"></div>
         <p class="text-slate-700 text-sm sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed px-2 sm:px-0">
-          Building leadership capabilities through rigorous academic training and hands-on organizational experience
+          {{ t('education.description') }}
         </p>
       </div>
       <div class="max-w-5xl mx-auto">
@@ -39,8 +39,8 @@
                 </div>
                                 
                 <div>
-                  <h3 class="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-900 mb-1 sm:mb-2">Master in Computer Science</h3>
-                  <div class="text-base sm:text-lg md:text-xl text-slate-800 font-semibold mb-2 sm:mb-3">Engineering in Networks & Multimedia</div>
+                  <h3 class="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-900 mb-1 sm:mb-2">{{ t('education.degree') }}</h3>
+                  <div class="text-base sm:text-lg md:text-xl text-slate-800 font-semibold mb-2 sm:mb-3">{{ t('education.specialization') }}</div>
                   <div class="flex flex-wrap items-center gap-2 sm:gap-3 md:gap-4 text-slate-700 text-sm">
                     <div class="flex items-center gap-1 sm:gap-2">
                        <svg class="w-3 h-3 sm:w-4 sm:h-4 text-slate-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -63,14 +63,14 @@
                   </div>
                 </div>
               </div>
-                            
+                              
               <!-- Graduation Status -->
               <div class="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 bg-slate-100 backdrop-blur-sm border border-slate-200 rounded-full text-slate-800 text-xs sm:text-sm font-medium">
                 <svg class="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
-                 <span class="hidden sm:inline">Graduated with Distinction</span>
-                 <span class="sm:hidden">Distinction Graduate</span>
+                 <span class="hidden sm:inline">{{ t('education.graduated_with_distinction') }}</span>
+                 <span class="sm:hidden">{{ t('education.distinction_short') }}</span>
               </div>
             </div>
           </div>
@@ -85,7 +85,7 @@
                       <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
                     </svg>
                   </div>
-                  <h4 class="text-lg sm:text-xl font-semibold text-slate-900">Leadership Positions</h4>
+                  <h4 class="text-lg sm:text-xl font-semibold text-slate-900">{{ t('education.leadership_positions') }}</h4>
                 </div>
                                 
                 <div class="space-y-4 sm:space-y-6">
@@ -97,15 +97,14 @@
                         </svg>
                       </div>
                       <div>
-                        <h5 class="text-base sm:text-lg font-semibold text-slate-900 mb-1 sm:mb-2">President, Junior Enterprise Club</h5>
+                        <h5 class="text-base sm:text-lg font-semibold text-slate-900 mb-1 sm:mb-2">{{ t('education.president_junior_enterprise') }}</h5>
                         <p class="text-slate-700 text-xs sm:text-sm leading-relaxed">
-                          Led entrepreneurial initiatives and business development projects within the academic community. 
-                          Managed cross-functional teams and drove strategic partnerships with industry leaders.
+                          {{ t('education.president_junior_enterprise_desc') }}
                         </p>
                       </div>
                     </div>
                   </div>
-                                    
+                                      
                   <div class="bg-white/70 backdrop-blur-xl border border-slate-200 rounded-lg sm:rounded-xl p-4 sm:p-6 hover:bg-white/80 transition-all duration-300">
                     <div class="flex items-start gap-3 sm:gap-4">
                       <div class="w-10 h-10 sm:w-12 sm:h-12 bg-slate-100 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
@@ -114,10 +113,9 @@
                         </svg>
                       </div>
                       <div>
-                        <h5 class="text-base sm:text-lg font-semibold text-slate-900 mb-1 sm:mb-2">President, Student Union (BDE)</h5>
+                        <h5 class="text-base sm:text-lg font-semibold text-slate-900 mb-1 sm:mb-2">{{ t('education.president_student_union') }}</h5>
                         <p class="text-slate-700 text-xs sm:text-sm leading-relaxed">
-                          Represented student interests and organized campus-wide events and activities. 
-                          Developed stakeholder management and organizational skills that shaped my leadership approach.
+                          {{ t('education.president_student_union_desc') }}
                         </p>
                       </div>
                     </div>
@@ -132,39 +130,39 @@
                       <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
                     </svg>
                   </div>
-                  <h4 class="text-lg sm:text-xl font-semibold text-slate-900">Academic Excellence</h4>
+                  <h4 class="text-lg sm:text-xl font-semibold text-slate-900">{{ t('education.academic_excellence') }}</h4>
                 </div>
                 <div class="bg-ios-background backdrop-blur-sm border border-ios-separator rounded-lg sm:rounded-xl p-4 sm:p-6 mb-4 sm:mb-6">
-                  <h5 class="text-base sm:text-lg font-semibold text-slate-900 mb-3 sm:mb-4">About SUPEMIR</h5>
+                  <h5 class="text-base sm:text-lg font-semibold text-slate-900 mb-3 sm:mb-4">{{ t('education.about_supemir') }}</h5>
                   <p class="text-slate-700 leading-relaxed text-xs sm:text-sm mb-3 sm:mb-4">
-                    SUPEMIR is a prestigious institution offering comprehensive degree programs in computer science, 
-                    management, marketing, and entrepreneurship. The institution focuses on developing both 
-                    <span class="text-ios-system-blue font-medium">technical expertise</span> and 
-                    <span class="text-ios-system-purple font-medium">leadership skills</span> in its graduates.
+                    {{ t('education.about_supemir_desc_1') }} 
+                    <span class="text-ios-system-blue font-medium">{{ t('education.technical_expertise') }}</span> 
+                    {{ t('education.and') }} 
+                    <span class="text-ios-system-purple font-medium">{{ t('education.leadership_skills') }}</span> {{ t('education.about_supemir_desc_2') }}
                   </p>
                   <div class="inline-flex items-center px-2 sm:px-3 py-1 bg-slate-100 backdrop-blur-sm border border-slate-200 rounded-full text-slate-800 text-xs font-medium">
-                    <span class="hidden sm:inline">Equivalent to Public University Status</span>
-                    <span class="sm:hidden">University Status</span>
+                    <span class="hidden sm:inline">{{ t('education.equivalent_public_status') }}</span>
+                    <span class="sm:hidden">{{ t('education.university_status') }}</span>
                   </div>
                 </div>
                 <!-- Core Competencies Developed -->
                 <div class="space-y-1 sm:space-y-2">
-                  <h5 class="text-sm sm:text-base md:text-lg font-semibold text-slate-900 mb-1.5 sm:mb-2">Core Competencies Developed</h5>
+                  <h5 class="text-sm sm:text-base md:text-lg font-semibold text-slate-900 mb-1.5 sm:mb-2">{{ t('education.core_competencies') }}</h5>
                   <div class="flex items-center gap-1.5 sm:gap-2 py-0.5 sm:py-1">
                     <div class="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-slate-400 rounded-full"></div>
-                    <span class="text-slate-700 text-xs">Advanced Software Engineering</span>
+                    <span class="text-slate-700 text-xs">{{ t('education.competency_software') }}</span>
                   </div>
                   <div class="flex items-center gap-1.5 sm:gap-2 py-0.5 sm:py-1">
                     <div class="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-slate-400 rounded-full"></div>
-                    <span class="text-slate-700 text-xs">Network Architecture & Security</span>
+                    <span class="text-slate-700 text-xs">{{ t('education.competency_network') }}</span>
                   </div>
                   <div class="flex items-center gap-1.5 sm:gap-2 py-0.5 sm:py-1">
                     <div class="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-slate-400 rounded-full"></div>
-                    <span class="text-slate-700 text-xs">Project Management Methodologies</span>
+                    <span class="text-slate-700 text-xs">{{ t('education.competency_project') }}</span>
                   </div>
                   <div class="flex items-center gap-1.5 sm:gap-2 py-0.5 sm:py-1">
                     <div class="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-slate-400 rounded-full"></div>
-                    <span class="text-slate-700 text-xs">Entrepreneurship & Innovation</span>
+                    <span class="text-slate-700 text-xs">{{ t('education.competency_entrepreneurship') }}</span>
                   </div>
                 </div>
               </div>
@@ -174,20 +172,20 @@
         <!-- Academic Achievements Summary -->
         <div class="bg-white/70 backdrop-blur-xl border border-slate-200 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8">
           <div class="text-center mb-6 sm:mb-8">
-            <h3 class="text-lg sm:text-xl md:text-2xl font-semibold text-slate-900 mb-3 sm:mb-4">Academic Achievement Summary</h3>
+            <h3 class="text-lg sm:text-xl md:text-2xl font-semibold text-slate-900 mb-3 sm:mb-4">{{ t('education.achievements_summary') }}</h3>
             <div class="w-12 sm:w-16 h-1 bg-slate-300 rounded-full mx-auto"></div>
           </div>
-                    
+                      
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             <div class="text-center group">
               <div class="text-2xl sm:text-3xl font-bold text-slate-900 mb-1 sm:mb-2">
                 2
               </div>
               <div class="text-xs sm:text-sm font-semibold text-slate-700 uppercase tracking-wider mb-1">
-                Leadership Roles
+                {{ t('education.leadership_roles') }}
               </div>
               <div class="text-xs text-slate-600">
-                Campus organizations
+                {{ t('education.campus_organizations') }}
               </div>
             </div>
                         
@@ -196,10 +194,10 @@
                 2021
               </div>
               <div class="text-xs sm:text-sm font-semibold text-slate-700 uppercase tracking-wider mb-1">
-                Graduation
+                {{ t('education.graduation') }}
               </div>
               <div class="text-xs text-slate-600">
-                Master's degree
+                {{ t('education.masters_degree') }}
               </div>
             </div>
                         
@@ -208,10 +206,10 @@
                 M.Sc
               </div>
               <div class="text-xs sm:text-sm font-semibold text-slate-700 uppercase tracking-wider mb-1">
-                Degree Level
+                {{ t('education.degree_level') }}
               </div>
               <div class="text-xs text-slate-600">
-                Computer Science
+                {{ t('education.computer_science') }}
               </div>
             </div>
                         
@@ -220,10 +218,10 @@
                 Excellence
               </div>
               <div class="text-xs sm:text-sm font-semibold text-slate-700 uppercase tracking-wider mb-1">
-                Academic Standing
+                {{ t('education.academic_standing') }}
               </div>
               <div class="text-xs text-slate-600">
-                Distinguished graduate
+                {{ t('education.distinguished_graduate') }}
               </div>
             </div>
           </div>
@@ -234,6 +232,7 @@
 </template>
 
 <script setup lang="ts">
+const { t } = useI18n()
 // Professional education component - no additional logic needed
 </script>
 

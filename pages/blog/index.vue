@@ -23,30 +23,29 @@
             </svg>
           </div>
           <h1 class="text-4xl lg:text-5xl font-bold text-white professional-glow">
-            Tech Blog
+            {{ t('blog.title') }}
           </h1>
         </div>
         
         <div class="w-24 h-1 bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400 rounded-full mx-auto mb-6"></div>
         
         <p class="text-slate-300 text-lg max-w-3xl mx-auto leading-relaxed mb-8">
-          Explore insightful articles on web development, Ruby on Rails, team leadership, 
-          and software engineering best practices. Sharing knowledge from real-world experience.
+          {{ t('blog.subtitle') }}
         </p>
 
         <!-- Blog Stats -->
         <div class="flex flex-wrap justify-center gap-6 mb-12">
           <div class="blog-stat">
             <div class="stat-number">{{ posts?.length || 0 }}</div>
-            <div class="stat-label">Articles</div>
+            <div class="stat-label">{{ t('blog.articles') }}</div>
           </div>
           <div class="blog-stat">
             <div class="stat-number">{{ categories?.length || 0 }}</div>
-            <div class="stat-label">Categories</div>
+            <div class="stat-label">{{ t('blog.categories') }}</div>
           </div>
           <div class="blog-stat">
             <div class="stat-number">{{ totalReadTime }}</div>
-            <div class="stat-label">Min Read</div>
+            <div class="stat-label">{{ t('blog.min_read') }}</div>
           </div>
         </div>
 
@@ -56,7 +55,7 @@
             @click="selectedCategory = 'all'"
             :class="['category-filter', selectedCategory === 'all' ? 'active' : '']"
           >
-            All Posts
+            {{ t('blog.all_posts') }}
           </button>
           <button 
             v-for="category in categories" 
@@ -85,7 +84,7 @@
             >
             <div class="post-overlay">
               <div class="post-category-badge">
-                {{ post.category || 'General' }}
+                {{ post.category || t('blog.general') }}
               </div>
             </div>
           </div>
@@ -104,7 +103,7 @@
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
-                <span>{{ post.readTime || calculateReadTime(post.body?.children) }} min read</span>
+                <span>{{ post.readTime || calculateReadTime(post.body?.children) }} {{ t('blog.min_read_short') }}</span>
               </div>
             </div>
 
@@ -135,7 +134,7 @@
                 :to="post._path" 
                 class="read-more-btn group/btn"
               >
-                <span>Read Article</span>
+                <span>{{ t('blog.read_article') }}</span>
                 <svg class="w-4 h-4 transition-transform group-hover/btn:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                 </svg>
@@ -152,9 +151,9 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
           </svg>
         </div>
-        <h3 class="text-xl font-semibold text-slate-300 mb-2">No articles found</h3>
+        <h3 class="text-xl font-semibold text-slate-300 mb-2">{{ t('blog.no_articles_found') }}</h3>
         <p class="text-slate-400">
-          {{ selectedCategory === 'all' ? 'No blog posts available yet.' : `No articles in "${selectedCategory}" category.` }}
+          {{ selectedCategory === 'all' ? t('blog.no_posts_yet') : t('blog.no_articles_in_category', { category: selectedCategory }) }}
         </p>
       </div>
 
@@ -165,13 +164,13 @@
           :disabled="isLoading"
           class="load-more-btn"
         >
-          <span v-if="!isLoading">Load More Articles</span>
+          <span v-if="!isLoading">{{ t('blog.load_more') }}</span>
           <span v-else class="flex items-center gap-2">
             <svg class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
               <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
               <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
-            Loading...
+            {{ t('common.loading') }}
           </span>
         </button>
       </div>
@@ -180,15 +179,15 @@
       <div class="newsletter-section">
         <div class="bg-slate-800/40 backdrop-blur-sm border border-slate-600/30 rounded-xl p-8 text-center">
           <div class="mb-6">
-            <h3 class="text-2xl font-bold text-white mb-3">Stay Updated</h3>
-            <p class="text-slate-300">Get notified when I publish new articles about web development and tech leadership.</p>
+            <h3 class="text-2xl font-bold text-white mb-3">{{ t('blog.stay_updated') }}</h3>
+            <p class="text-slate-300">{{ t('blog.stay_updated_desc') }}</p>
           </div>
           
           <div class="max-w-md mx-auto">
             <div class="flex gap-3">
               <input 
                 type="email" 
-                placeholder="your@email.com"
+                :placeholder="t('common.email_placeholder')"
                 v-model="newsletterEmail"
                 class="flex-1 px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-lg text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-400 transition-colors"
               >
@@ -197,13 +196,13 @@
                 :disabled="!newsletterEmail || isSubscribing"
                 class="px-6 py-3 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-medium rounded-lg hover:from-emerald-600 hover:to-cyan-600 transition-all disabled:opacity-50"
               >
-                {{ isSubscribing ? 'Subscribing...' : 'Subscribe' }}
+                {{ isSubscribing ? t('blog.subscribing') : t('common.subscribe') }}
               </button>
             </div>
             
             <!-- Success Message -->
             <div v-if="subscriptionSuccess" class="mt-3 text-emerald-400 text-sm">
-              ✓ Successfully subscribed! Thank you for joining.
+              ✓ {{ t('blog.subscribe_success') }}
             </div>
           </div>
         </div>
@@ -215,12 +214,13 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useAsyncData, queryContent, useHead } from '#imports'
+const { t, locale } = useI18n()
 
 // SEO
 useHead({
-  title: 'Blog | Merouane Amqor',
+  title: () => locale.value === 'fr' ? 'Blog | Merouane Amqor' : 'Blog | Merouane Amqor',
   meta: [
-    { name: 'description', content: 'Explore insightful articles on web development, Ruby on Rails, team leadership, and software engineering best practices.' }
+    { name: 'description', content: t('blog.seo_description') }
   ]
 })
 
@@ -261,9 +261,9 @@ const filteredPosts = computed(() => {
 
 // Helper functions
 const formatDate = (dateString: string) => {
-  if (!dateString) return 'Recent'
+  if (!dateString) return t('blog.recent')
   const date = new Date(dateString)
-  return date.toLocaleDateString('en-US', { 
+  return date.toLocaleDateString(locale.value === 'fr' ? 'fr-FR' : 'en-US', { 
     year: 'numeric', 
     month: 'short', 
     day: 'numeric' 
@@ -279,7 +279,7 @@ const calculateReadTime = (content: any) => {
 }
 
 const generateExcerpt = (content: any) => {
-  if (!content) return 'Click to read more...'
+  if (!content) return t('blog.read_more_prompt')
   const text = JSON.stringify(content)
   return text.substring(0, 150) + '...'
 }

@@ -13,22 +13,22 @@
       
       <!-- Subtitle -->
       <p class="text-2xl sm:text-3xl lg:text-4xl font-light text-slate-800 mb-8 tracking-tight">
-        Senior Engineering Manager
+        {{ t('header.subtitle') }}
       </p>
       <span class="text-sm sm:text-base lg:text-lg font-light text-slate-700 mb-8 tracking-tight">
-        Engineering Leader. Product Builder. Certified ScrumMaster®
+        {{ t('header.tagline') }}
       </span>
       
       <!-- Clean description -->
       <p class="text-lg sm:text-xl text-slate-800 max-w-2xl mx-auto mb-16 leading-relaxed">
-        Building exceptional engineering teams and scalable solutions.
-        Expert in SaaS development, cloud architecture, and delivering real-world impact — one sprint at a time.
+        {{ t('header.description_1') }}
+        {{ t('header.description_2') }}
       </p>
      
 
       <!-- Clean Technologies List -->
       <div class="mb-20">
-        <h3 class="text-2xl font-semibold text-slate-900 mb-8">Core Technologies</h3>
+        <h3 class="text-2xl font-semibold text-slate-900 mb-8">{{ t('common.core_technologies') }}</h3>
         <div class="flex flex-wrap justify-center gap-2.5 sm:gap-3">
           <span
             v-for="tech in technologies"
@@ -44,12 +44,12 @@
       <div class="flex flex-col sm:flex-row gap-3 justify-center items-center relative z-40 pointer-events-auto">
         <a href="mailto:marouaneamqor@gmail.com" 
            class="px-6 py-3 bg-slate-900 text-white text-base font-semibold rounded-full hover:bg-slate-800 transition-colors min-w-[140px] text-center">
-          Get in touch
+          {{ t('common.get_in_touch') }}
         </a>
         <a href="/Merouane-AMQOR-en.pdf" 
            download
            class="px-6 py-3 text-slate-800 text-base font-medium hover:text-slate-600 transition-colors">
-          Download resume
+          {{ t('common.download_resume') }}
         </a>
       </div>
     </div>
@@ -59,6 +59,7 @@
 </template>
 
 <script setup lang="ts">
+const { t } = useI18n()
 // Clean iOS-style technologies list
 const technologies = [
   'Swift',

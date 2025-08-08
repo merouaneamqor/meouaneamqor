@@ -6,47 +6,47 @@
       
       <!-- Clean minimal title -->
       <h1 class="text-5xl sm:text-7xl lg:text-8xl font-semibold text-slate-900 mb-6 tracking-tight leading-none">
-        Software Engineer & Certified ScrumMaster®
+        {{ t('intro.title') }}
       </h1>
       
       <!-- Main value proposition -->
       <p class="text-2xl sm:text-3xl lg:text-4xl font-light text-slate-800 mb-8 tracking-tight leading-relaxed max-w-4xl mx-auto">
-        I build software that works beautifully and scales effortlessly.
+        {{ t('intro.value') }}
       </p>
       
       <!-- Supporting statement -->
       <p class="text-lg sm:text-xl text-slate-700 max-w-3xl mx-auto mb-8 leading-relaxed">
-        From healthcare platforms to e-commerce systems, I lead teams and write code that deliver measurable impact.
+        {{ t('intro.supporting') }}
       </p>
       
       <!-- Philosophy statement -->
       <p class="text-base sm:text-lg text-slate-700 max-w-2xl mx-auto mb-16 leading-relaxed font-light">
-        With a focus on clean architecture, human-centered interfaces, and Agile processes, I craft experiences that feel simple — because they are.
+        {{ t('intro.philosophy') }}
       </p>
       
       <!-- Clean Stats Section -->
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 mb-20">
         <div class="text-center">
           <div class="text-4xl lg:text-5xl font-semibold text-slate-900 mb-2">8</div>
-          <div class="text-lg text-slate-700">Developers Led</div>
+          <div class="text-lg text-slate-700">{{ t('intro.stats.developers_led') }}</div>
         </div>
         <div class="text-center">
           <div class="text-4xl lg:text-5xl font-semibold text-slate-900 mb-2">10K+</div>
-          <div class="text-lg text-slate-700">Monthly Users</div>
+          <div class="text-lg text-slate-700">{{ t('intro.stats.monthly_users') }}</div>
         </div>
         <div class="text-center">
           <div class="text-4xl lg:text-5xl font-semibold text-slate-900 mb-2">30%</div>
-          <div class="text-lg text-slate-700">Cycle Reduction</div>
+          <div class="text-lg text-slate-700">{{ t('intro.stats.cycle_reduction') }}</div>
         </div>
         <div class="text-center">
           <div class="text-4xl lg:text-5xl font-semibold text-slate-900 mb-2">93%</div>
-          <div class="text-lg text-slate-700">Sprint Success</div>
+          <div class="text-lg text-slate-700">{{ t('intro.stats.sprint_success') }}</div>
         </div>
       </div>
 
       <!-- Clean Technologies List -->
       <div class="mb-20">
-        <h3 class="text-2xl font-semibold text-slate-900 mb-8">Core Technologies</h3>
+        <h3 class="text-2xl font-semibold text-slate-900 mb-8">{{ t('common.core_technologies') }}</h3>
         <div class="flex flex-wrap justify-center gap-2.5 sm:gap-3">
           <span
             v-for="tech in technologies"
@@ -61,14 +61,14 @@
       <!-- iOS-style CTA Buttons -->
       <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
         <NuxtLink 
-          to="/portfolio" 
+          :to="localePath('/portfolio')"
           class="px-6 py-3 bg-slate-900 text-white text-base font-semibold rounded-full hover:bg-slate-800 transition-colors min-w-[160px] text-center">
-          View Portfolio
+          {{ t('intro.view_portfolio') }}
         </NuxtLink>
         <NuxtLink 
-          to="/contact" 
+          :to="localePath('/contact')"
           class="px-6 py-3 text-slate-800 text-base font-medium hover:text-slate-600 transition-colors">
-          Get in Touch
+          {{ t('common.get_in_touch') }}
         </NuxtLink>
       </div>
     </div>
@@ -76,6 +76,8 @@
 </template>
 
 <script setup lang="ts">
+const { t } = useI18n()
+const localePath = useLocalePath()
 // Updated technologies based on resume
 const technologies = [
   'Ruby on Rails',

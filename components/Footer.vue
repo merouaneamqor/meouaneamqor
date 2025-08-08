@@ -15,32 +15,32 @@
           </div>
           
           <p class="text-slate-300 mb-8 leading-relaxed max-w-md text-lg">
-            Ruby on Rails Developer | Tech Lead | Certified ScrumMaster® based in Casablanca, Morocco. 
-            Building innovative solutions and leading high-performing teams.
+            {{ t('footer.about_line1') }}
+            {{ t('footer.about_line2') }}
           </p>
           
           <!-- Enhanced status indicator -->
           <div class="flex items-center gap-4 mb-10">
             <div class="w-4 h-4 bg-emerald-400 rounded-full animate-pulse"></div>
-            <span class="text-base font-medium text-slate-400">Available for new opportunities</span>
+            <span class="text-base font-medium text-slate-400">{{ t('footer.available') }}</span>
           </div>
 
           <!-- Enhanced newsletter signup -->
           <div class="bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl p-6 group/newsletter">
             <h3 class="text-lg font-bold text-slate-200 mb-3">
-              Stay Connected
+              {{ t('footer.stay_connected') }}
             </h3>
             <p class="text-sm text-slate-400 mb-5">
-              Get updates on new projects and tech insights
+              {{ t('footer.newsletter_cta') }}
             </p>
             <div class="flex flex-col sm:flex-row gap-3">
               <input 
                 type="email" 
-                placeholder="your@email.com"
+                :placeholder="t('common.email_placeholder')"
                 class="flex-1 px-5 py-3 bg-slate-700/50 border border-slate-600/50 rounded-lg text-base text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-400 transition-colors"
               >
               <button class="px-6 py-3 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white text-base font-semibold rounded-lg hover:from-emerald-600 hover:to-cyan-600 transition-all shadow-lg hover:shadow-emerald-500/20">
-                Subscribe
+                {{ t('common.subscribe') }}
               </button>
             </div>
              
@@ -51,16 +51,16 @@
         <div>
           <h3 class="text-xl font-bold mb-8 text-white flex items-center gap-3">
             <div class="w-3 h-3 bg-cyan-400 rounded-full"></div>
-            Quick Links
+            {{ t('footer.quick_links') }}
           </h3>
           <ul class="space-y-4">
             <li v-for="link in quickLinks" :key="link.url">
               <NuxtLink
-                :to="link.url"
+                :to="localePath(link.url)"
                 class="footer-link group flex items-center gap-3 py-2"
               >
                 <div class="w-2 h-2 bg-slate-500 rounded-full group-hover:bg-emerald-400 transition-colors"></div>
-                <span class="text-base group-hover:text-emerald-300 transition-colors">{{ link.text }}</span>
+                <span class="text-base group-hover:text-emerald-300 transition-colors">{{ t(link.textKey) }}</span>
               </NuxtLink>
             </li>
           </ul>
@@ -70,7 +70,7 @@
         <div>
           <h3 class="text-xl font-bold mb-8 text-white flex items-center gap-3">
             <div class="w-3 h-3 bg-emerald-400 rounded-full"></div>
-            Get In Touch
+            {{ t('footer.get_in_touch') }}
           </h3>
           
           <!-- Enhanced contact info -->
@@ -84,7 +84,7 @@
                   <Mail class="w-5 h-5" />
                 </div>
                 <div>
-                  <div class="text-xs text-slate-500 uppercase tracking-wider">Email</div>
+                  <div class="text-xs text-slate-500 uppercase tracking-wider">{{ t('common.email') }}</div>
                   <div class="text-base font-medium">marouane.amqor@gmail.com</div>
                 </div>
               </a>
@@ -98,7 +98,7 @@
                   <Phone class="w-5 h-5" />
                 </div>
                 <div>
-                  <div class="text-xs text-slate-500 uppercase tracking-wider">Phone</div>
+                  <div class="text-xs text-slate-500 uppercase tracking-wider">{{ t('common.phone') }}</div>
                   <div class="text-base font-medium">+212 7 01 086 726</div>
                 </div>
               </a>
@@ -108,7 +108,7 @@
                 <MapPin class="w-5 h-5" />
               </div>
               <div>
-                <div class="text-xs text-slate-500 uppercase tracking-wider">Location</div>
+                <div class="text-xs text-slate-500 uppercase tracking-wider">{{ t('common.location') }}</div>
                 <div class="text-base font-medium">Casablanca, Morocco</div>
               </div>
             </li>
@@ -117,7 +117,7 @@
           <!-- Enhanced social media -->
           <div>
             <h4 class="text-lg font-bold text-slate-200 mb-5">
-              Connect
+              {{ t('footer.connect') }}
             </h4>
             <div class="flex gap-4">
               <a
@@ -160,11 +160,11 @@
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div class="flex flex-col sm:flex-row sm:items-center gap-4">
             <p class="text-slate-600 text-base">
-              © {{ new Date().getFullYear() }} Merouane Amqor. All rights reserved.
+              © {{ new Date().getFullYear() }} Merouane Amqor. {{ t('footer.rights') }}
             </p>
             <div class="hidden md:flex items-center gap-3">
               <div class="w-1.5 h-1.5 bg-slate-600 rounded-full"></div>
-              <span class="text-sm text-slate-600">Built with Vue.js & Nuxt.js</span>
+              <span class="text-sm text-slate-600">{{ t('footer.built_with') }}</span>
             </div>
           </div>
           
@@ -172,12 +172,12 @@
           <button 
             @click="scrollToTop"
             class="back-to-top-btn group"
-            title="Back to top"
+            :title="t('footer.back_to_top')"
           >
             <svg class="w-5 h-5 transition-transform group-hover:-translate-y-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
             </svg>
-            <span class="text-sm">Back to Top</span>
+            <span class="text-sm">{{ t('footer.back_to_top') }}</span>
           </button>
         </div>
       </div>
@@ -187,13 +187,15 @@
 
 <script setup lang="ts">
 import { Mail, Phone, MapPin, Linkedin, Github, Globe } from 'lucide-vue-next'
+const { t } = useI18n()
+const localePath = useLocalePath()
 
 const quickLinks = [
-  { text: 'Home', url: '/' },
-  { text: 'Portfolio', url: '/portfolio' },
-  { text: 'About', url: '/about' },
-  { text: 'Contact', url: '/contact' },
-  { text: 'Blog', url: '/blog' }
+  { textKey: 'nav.home', url: '/' },
+  { textKey: 'nav.portfolio', url: '/portfolio' },
+  { textKey: 'nav.about', url: '/about' },
+  { textKey: 'nav.contact', url: '/contact' },
+  { textKey: 'nav.blog', url: '/blog' }
 ]
 
 const scrollToTop = () => {

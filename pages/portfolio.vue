@@ -4,11 +4,11 @@
     <nav class="bg-ios-background/95 backdrop-blur-xl border-b border-ios-separator/50 pt-16">
       <div class="max-w-4xl mx-auto px-6 py-4">
         <div class="flex items-center justify-between">
-          <NuxtLink to="/" class="flex items-center text-ios-label hover:text-ios-label-secondary transition-colors">
+          <NuxtLink :to="localePath('/')" class="flex items-center text-ios-label hover:text-ios-label-secondary transition-colors">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
             </svg>
-            <span class="font-medium">Back</span>
+            <span class="font-medium">{{ t('common.back') }}</span>
           </NuxtLink>
           
           <button @click="toggleView" class="flex items-center text-ios-label hover:text-ios-label-secondary transition-colors">
@@ -34,10 +34,10 @@
     <!-- Large Title Header -->
     <header class="px-6 pt-8 pb-4 max-w-4xl mx-auto">
       <h1 class="text-4xl sm:text-5xl font-bold text-ios-label mb-2 tracking-tight">
-        Portfolio
+        {{ t('nav.portfolio') }}
       </h1>
       <p class="text-lg text-ios-label-secondary leading-relaxed max-w-2xl">
-        Projects I've built that combine engineering excellence, great design, and real-world impact.
+        {{ t('portfolio.subtitle') }}
       </p>
     </header>
 
@@ -167,7 +167,7 @@
         <!-- Modal Header -->
         <div class="sticky top-0 bg-ios-background/95 backdrop-blur-xl border-b border-ios-separator p-4">
           <div class="flex items-center justify-between">
-            <h2 class="text-xl font-semibold text-ios-label">Project Details</h2>
+            <h2 class="text-xl font-semibold text-ios-label">{{ t('portfolio.project_details') }}</h2>
             <button @click="closeModal" class="w-8 h-8 rounded-full bg-ios-background-secondary flex items-center justify-center">
               <svg class="w-5 h-5 text-ios-label-secondary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
@@ -208,7 +208,7 @@
 
           <!-- Technologies Used -->
           <div class="mb-6">
-            <h4 class="text-lg font-semibold text-ios-label mb-3">Technologies Used</h4>
+            <h4 class="text-lg font-semibold text-ios-label mb-3">{{ t('portfolio.technologies_used') }}</h4>
             <div class="flex flex-wrap gap-2">
               <span 
                 v-for="tech in selectedProject.technologies" 
@@ -222,7 +222,7 @@
 
           <!-- Key Achievements -->
           <div class="mb-6">
-            <h4 class="text-lg font-semibold text-ios-label mb-3">Key Achievements</h4>
+            <h4 class="text-lg font-semibold text-ios-label mb-3">{{ t('portfolio.key_achievements') }}</h4>
             <div class="space-y-2">
               <div class="flex items-start space-x-3">
                 <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
@@ -230,11 +230,11 @@
               </div>
               <div class="flex items-start space-x-3">
                 <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                <p class="text-ios-label-secondary">Led cross-functional teams to deliver high-quality solutions on time and within budget</p>
+                <p class="text-ios-label-secondary">{{ t('portfolio.achievement_team_delivery') }}</p>
               </div>
               <div class="flex items-start space-x-3">
                 <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                <p class="text-ios-label-secondary">Implemented best practices for code quality, testing, and deployment processes</p>
+                <p class="text-ios-label-secondary">{{ t('portfolio.achievement_best_practices') }}</p>
               </div>
             </div>
           </div>
@@ -248,14 +248,14 @@
               rel="noopener noreferrer" 
               class="flex-1 bg-blue-500 text-white text-center py-3 px-4 rounded-xl font-semibold hover:bg-blue-600 transition-colors"
             >
-              View Live Project
+              {{ t('portfolio.view_live_project') }}
             </a>
             <button 
               v-else
               disabled
               class="flex-1 bg-ios-background-secondary text-ios-label-tertiary text-center py-3 px-4 rounded-xl font-semibold"
             >
-              Private Project
+              {{ t('portfolio.private_project') }}
             </button>
           </div>
         </div>
@@ -266,6 +266,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+const { t } = useI18n()
+const localePath = useLocalePath()
 
 interface Project {
   id: number;

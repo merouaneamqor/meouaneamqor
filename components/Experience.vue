@@ -11,9 +11,9 @@
             </svg>
           </div>
           <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-slate-900 mb-4 tracking-tight leading-tight">
-            Leadership Journey
+            {{ t('experience.title') }}
           </h2>
-          <p class="text-lg sm:text-xl text-slate-700 font-light">Building teams • Driving results • Creating impact</p>
+          <p class="text-lg sm:text-xl text-slate-700 font-light">{{ t('experience.subtitle') }}</p>
         </div>
       </div>
       
@@ -47,7 +47,7 @@
                 </div>
                 <div v-if="experience.teamSize" class="ml-4">
                   <div class="bg-slate-100 rounded-full px-4 py-2 border border-slate-200">
-                    <span class="text-slate-700 text-sm font-medium">{{ experience.teamSize }} team</span>
+                    <span class="text-slate-700 text-sm font-medium">{{ experience.teamSize }} {{ t('experience.team') }}</span>
                   </div>
                 </div>
               </div>
@@ -69,7 +69,7 @@
                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
                   </div>
-                  <span class="text-slate-900 font-semibold text-lg">Leadership Impact</span>
+                  <span class="text-slate-900 font-semibold text-lg">{{ t('experience.leadership_impact') }}</span>
                 </div>
                 <ul class="space-y-3">
                   <li v-for="(achievement, achIndex) in experience.achievements" :key="achIndex" class="flex items-start gap-3 text-slate-700 leading-relaxed">
@@ -87,7 +87,7 @@
                       <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/>
                     </svg>
                   </div>
-                  <span class="text-slate-900 font-semibold text-lg">Technical Excellence</span>
+                  <span class="text-slate-900 font-semibold text-lg">{{ t('experience.technical_excellence') }}</span>
                 </div>
                 <div class="flex flex-wrap gap-2">
                   <span
@@ -122,8 +122,8 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 7.478a12.06 12.06 0 004.5 0m-3.75 7.478V21a2.25 2.25 0 003.75 0V8.197a2.25 2.25 0 00-1.5-2.122L12 5.25a2.25 2.25 0 00-3 2.122v8.197a2.25 2.25 0 001.5 2.122z"/>
             </svg>
           </div>
-          <h3 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 mb-4">Challenges & Lessons</h3>
-          <p class="text-lg text-gray-600 font-light">Learning through experience</p>
+          <h3 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 mb-4">{{ t('experience.challenges_title') }}</h3>
+          <p class="text-lg text-gray-600 font-light">{{ t('experience.challenges_subtitle') }}</p>
         </div>
         
         <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
@@ -144,7 +144,7 @@
                     </svg>
                   </div>
                   <div>
-                    <span class="text-sm font-medium text-gray-500 uppercase tracking-wide">Solution</span>
+                    <span class="text-sm font-medium text-gray-500 uppercase tracking-wide">{{ t('experience.solution') }}</span>
                     <p class="text-green-600 font-medium mt-1">{{ lesson.solution }}</p>
                   </div>
                 </div>
@@ -158,6 +158,7 @@
 </template>
 
 <script setup lang="ts">
+const { t } = useI18n()
 
 interface ExecutiveExperience {
   role: string;
