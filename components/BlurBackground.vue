@@ -1,24 +1,23 @@
 <template>
   <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-    <!-- Responsive blurred background images -->
-    <NuxtImg
-      src="~/assets/images/bg-hero.png"
+    <!-- Responsive blurred background images (bundled asset to avoid IPX issues) -->
+    <img
+      :src="bgHero"
       alt="Background"
       class="absolute inset-0 block md:hidden w-full h-full object-cover scale-110 blur-xl opacity-95 filter saturate-150 contrast-125 brightness-110"
-      sizes="100vw"
       decoding="async"
       loading="eager"
-      placeholder="blur"
     />
-    <NuxtImg
-      src="~/assets/images/bg-hero.png"
+    <img
+      :src="bgHero"
       alt="Background"
       class="absolute inset-0 hidden md:block w-full h-full object-cover scale-110 blur-2xl opacity-95 filter saturate-150 contrast-125 brightness-110"
-      sizes="(min-width: 768px) 100vw"
       decoding="async"
       loading="eager"
-      placeholder="blur"
     />
+
+    <!-- Backdrop overlay to improve contrast behind content -->
+    <div class="absolute inset-0 bg-white/50 md:bg-white/40 backdrop-blur-xl"></div>
 
     <!-- Dark atmospheric gradient (GitHub-like) -->
     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/5 to-slate-950/10"></div>
@@ -37,8 +36,7 @@
 </template>
 
 <script setup lang="ts">
-// This component provides a site-wide, performant blurred background
-// using responsive images and a contrast overlay.
+import bgHero from '~/assets/images/bg-hero.png'
 </script>
 
 <style scoped>
