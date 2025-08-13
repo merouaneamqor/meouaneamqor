@@ -27,7 +27,11 @@
     "nitropack": "^2.9.7",
     "nuxt-i18n": "^6.28.1",
     "nuxt-jsonld": "^2.0.8",
-    "three": "^0.179.1"
+    "three": "^0.179.1",
+    "vue": "^3.4.38",
+    "@vue/server-renderer": "^3.4.38",
+    "@vue/compiler-dom": "^3.4.38",
+    "@vue/compiler-ssr": "^3.4.38"
   },
   "engines": {
     "node": ">=16.0.0"

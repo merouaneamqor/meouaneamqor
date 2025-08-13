@@ -1,5 +1,0 @@
-// ROLLUP_NO_REPLACE 
- const contentIndex = "{\"/blog/ai-in-healthcare\":[\"content:blog:ai-in-healthcare.md\"],\"/blog/discover-douq-ma-your-ultimate-guide-to-dining-in-morocco\":[\"content:blog:discover-douq-ma-your-ultimate-guide-to-dining-in-morocco.md\"],\"/blog/edge-computing\":[\"content:blog:edge-computing.md\"],\"/blog/full-stack-to-team-lead-lessons-learned\":[\"content:blog:full-stack-to-team-lead-lessons-learned.md\"],\"/blog/future-of-web-development\":[\"content:blog:future-of-web-development.md\"],\"/blog/how-companies-ship-code-to-production\":[\"content:blog:how-companies-ship-code-to-production.md\"],\"/blog/introducing-dabadoc-revolutionizing-healthcare-management-in-morocco\":[\"content:blog:introducing-dabadoc-revolutionizing-healthcare-management-in-morocco.md\"],\"/blog/morocco-social\":[\"content:blog:morocco-social.md\"],\"/blog/quantum-computing-impact\":[\"content:blog:quantum-computing-impact.md\"],\"/blog/ruby-clamp\":[\"content:blog:ruby-clamp.md\"]}";
-
-export { contentIndex as default };
-//# sourceMappingURL=content-index.mjs.map
