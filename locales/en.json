@@ -52,17 +52,41 @@
     "sending": "Sending...",
     "loading": "Loading..."
   },
+  "promo": {
+    "title": "Scrum Master | Engineering Team Lead | Software Engineer",
+    "left": "Portfolio",
+    "right": "Experience"
+  },
+  "showcase": {
+    "learn_more": "Learn more",
+    "ipad": {
+      "title": "iPad",
+      "subtitle": "Now with A16 speed and doubled base storage."
+    },
+    "macbook": {
+      "title": "MacBook Pro",
+      "subtitle": "Prodigious at everything."
+    },
+    "ipadPro": {
+      "title": "iPad Pro",
+      "subtitle": "Impossibly thin. Incredibly powerful."
+    },
+    "macStudio": {
+      "title": "Mac Studio",
+      "subtitle": "M4 Max and M3 Ultra. Choose your superpower."
+    }
+  },
   "header": {
-    "subtitle": "Senior Engineering Manager",
-    "tagline": "Engineering Leader. Product Builder. Certified ScrumMaster®",
-    "description_1": "Building exceptional engineering teams and scalable solutions.",
-    "description_2": " Expert in SaaS development, cloud architecture, and delivering real-world impact — one sprint at a time."
+    "subtitle": "Scrum Master | Engineering Team Lead | Software Engineer",
+    "tagline": "Certified ScrumMaster® focused on delivery and outcomes",
+    "description_1": "Strategic and results-driven Certified ScrumMaster® with a track record of leading Agile teams to deliver high-impact software solutions. Skilled at facilitating collaboration between stakeholders, Product Owners, and development teams to ensure delivery of business value on time and within scope.",
+    "description_2": "Adept at optimizing processes (+30% team velocity at DabaDoc), removing obstacles, and fostering a culture of continuous improvement."
   },
   "intro": {
     "title": "Software Engineer & Certified ScrumMaster®",
-    "value": "I build software that works beautifully and scales effortlessly.",
-    "supporting": "From healthcare platforms to e-commerce systems, I lead teams and write code that deliver measurable impact.",
-    "philosophy": "With a focus on clean architecture, human-centered interfaces, and Agile processes, I craft experiences that feel simple — because they are.",
+    "value": "Combining Ruby on Rails, JavaScript frameworks, and cloud architecture with leadership and coaching skills.",
+    "supporting": "I bridge business goals and technical execution, driving measurable outcomes in fast-paced corporate environments.",
+    "philosophy": "Recognized for clear communication, conflict resolution, and pragmatic delivery.",
     "view_portfolio": "View Portfolio",
     "stats": {
       "developers_led": "Developers Led",
@@ -137,6 +161,15 @@
     "technology_leadership": "Technology Leadership",
     "confidential_project": "Confidential Project",
     "portfolio_impact_summary": "Portfolio Impact Summary"
+  },
+  "portfolioPage": {
+    "subtitle": "Certified ScrumMaster® leading Agile teams to deliver high-impact software; bridging business goals and technical execution.",
+    "technologies_used": "Technologies Used",
+    "key_achievements": "Key Achievements",
+    "achievement_team_delivery": "Led cross-functional team delivery with measurable outcomes",
+    "achievement_best_practices": "Established best practices and scalable architecture",
+    "view_live_project": "View Live Project",
+    "private_project": "Private Project"
   },
   "contact": {
     "title": "Let's Connect",

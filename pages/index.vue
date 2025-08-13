@@ -3,10 +3,24 @@
     
     <!-- Hero Section with Management Focus -->
     <Header />
+
+    <!-- Promo Banner with your info -->
+    <PromoBanner
+      class="mt-0"
+      :title="t('promo.title')"
+      speakerName="Merouane Amqor"
+      :speakerRole="t('header.subtitle')"
+      avatarUrl="/merouane_amqor.jpg"
+      :leftPartnerLabel="t('promo.left')"
+      :rightPartnerLabel="t('promo.right')"
+    />
     
     <!-- Professional Introduction -->
     <Introduction />
     
+    <!-- Featured iOS-style grid -->
+    <FeaturedTiles />
+
     <!-- Core Competencies (Leadership-focused) -->
     <Skills />
     
@@ -60,15 +74,21 @@ useSeoMeta({
   twitterCreator: '@merouaneamqor'
 });
 
+// Resolve strings for JSON-LD to satisfy typings
+const jsonldDescription = locale.value === 'fr'
+  ? "Ingénieur Manager expérimenté, spécialisé dans le leadership d'équipe, la transformation agile et des solutions techniques stratégiques."
+  : 'Experienced Engineering Manager specializing in team leadership, agile transformation, and strategic technical solutions.'
+const jsonldAlumniDesc = locale.value === 'fr'
+  ? "Master en Informatique - Ingénierie des Réseaux & Multimédia"
+  : 'Master in Computer Science - Engineering in Networks & Multimedia'
+
 // Professional JSON-LD structured data for better SEO
 useJsonld({
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Merouane Amqor',
   jobTitle: 'Engineering Manager & Certified ScrumMaster®',
-  description: () => locale.value === 'fr' 
-    ? "Ingénieur Manager expérimenté, spécialisé dans le leadership d'équipe, la transformation agile et des solutions techniques stratégiques."
-    : 'Experienced Engineering Manager specializing in team leadership, agile transformation, and strategic technical solutions.',
+  description: jsonldDescription,
   url: 'https://merouaneamqor.com',
   image: 'https://merouaneamqor.com/merouane_amqor.jpg',
   sameAs: [
@@ -84,9 +104,7 @@ useJsonld({
   alumniOf: {
     '@type': 'Organization',
     name: 'SUPEMIR',
-    description: () => locale.value === 'fr'
-      ? "Master en Informatique - Ingénierie des Réseaux & Multimédia"
-      : 'Master in Computer Science - Engineering in Networks & Multimedia'
+    description: jsonldAlumniDesc
   },
   hasCredential: [
     {

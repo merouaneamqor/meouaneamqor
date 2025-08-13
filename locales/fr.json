@@ -52,17 +52,41 @@
     "sending": "Envoi...",
     "loading": "Chargement..."
   },
+  "promo": {
+    "title": "Scrum Master | Team Lead | Ingénieur Logiciel",
+    "left": "Portfolio",
+    "right": "Expérience"
+  },
+  "showcase": {
+    "learn_more": "En savoir plus",
+    "ipad": {
+      "title": "iPad",
+      "subtitle": "Maintenant avec la vitesse de la puce A16 et un stockage de base doublé."
+    },
+    "macbook": {
+      "title": "MacBook Pro",
+      "subtitle": "Prodigieux en tout."
+    },
+    "ipadPro": {
+      "title": "iPad Pro",
+      "subtitle": "Impossiblement fin. Incroyablement puissant."
+    },
+    "macStudio": {
+      "title": "Mac Studio",
+      "subtitle": "M4 Max et M3 Ultra. Choisissez votre superpouvoir."
+    }
+  },
   "header": {
-    "subtitle": "Engineering Manager Senior",
-    "tagline": "Leader technique. Bâtisseur de produits. Certified ScrumMaster®",
-    "description_1": "Constitution d'équipes d'ingénierie d'excellence et solutions évolutives.",
-    "description_2": " Expert en SaaS, architecture cloud et impact concret — sprint après sprint."
+    "subtitle": "Scrum Master | Team Lead | Ingénieur Logiciel",
+    "tagline": "Certified ScrumMaster® orienté résultats et delivery",
+    "description_1": "ScrumMaster® stratégique, pilotant des équipes agiles pour livrer des solutions logicielles à fort impact. Facilitation entre parties prenantes, Product Owners et équipes de dev pour délivrer la valeur métier à temps et dans le périmètre.",
+    "description_2": "Optimisation des processus (+30% de vélocité chez DabaDoc), levée d'obstacles et culture d'amélioration continue."
   },
   "intro": {
     "title": "Ingénieur Logiciel & Certified ScrumMaster®",
-    "value": "Je crée des logiciels élégants et hautement scalables.",
-    "supporting": "Des plateformes santé au e-commerce, je dirige des équipes et écris du code à fort impact.",
-    "philosophy": "Avec une architecture propre, des interfaces humaines et des processus agiles, je conçois des expériences simples — parce qu'elles le sont.",
+    "value": "Compétences techniques (Rails, JS, Cloud) + leadership & coaching.",
+    "supporting": "Je relie objectifs business et exécution technique, avec des résultats mesurables en contexte corporate.",
+    "philosophy": "Reconnu pour une communication claire, la gestion de conflits et une livraison pragmatique.",
     "view_portfolio": "Voir le portfolio",
     "stats": {
       "developers_led": "Développeurs encadrés",
@@ -137,6 +161,15 @@
     "technology_leadership": "Leadership technologique",
     "confidential_project": "Projet confidentiel",
     "portfolio_impact_summary": "Synthèse d'impact du portfolio"
+  },
+  "portfolioPage": {
+    "subtitle": "ScrumMaster® certifié menant des équipes agiles pour livrer des solutions à fort impact; alignement objectifs métiers / exécution technique.",
+    "technologies_used": "Technologies utilisées",
+    "key_achievements": "Réalisations clés",
+    "achievement_team_delivery": "Conduite de livraison d'équipe pluridisciplinaire avec résultats mesurables",
+    "achievement_best_practices": "Mise en place de bonnes pratiques et d'une architecture scalable",
+    "view_live_project": "Voir le projet en ligne",
+    "private_project": "Projet privé"
   },
   "contact": {
     "title": "Entrons en contact",

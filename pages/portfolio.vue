@@ -1,17 +1,17 @@
 <template>
-  <div class="bg-ios-background font-myriad min-h-screen">
+  <div class="bg-transparent font-myriad min-h-screen">
     <!-- iOS Navigation Bar -->
-    <nav class="bg-ios-background/95 backdrop-blur-xl border-b border-ios-separator/50 pt-16">
+    <nav class="bg-white/70 backdrop-blur-xl border-b border-slate-200 pt-16">
       <div class="max-w-4xl mx-auto px-6 py-4">
         <div class="flex items-center justify-between">
-          <NuxtLink :to="localePath('/')" class="flex items-center text-ios-label hover:text-ios-label-secondary transition-colors">
+          <NuxtLink :to="localePath('/')" class="flex items-center text-slate-900 hover:text-slate-700 transition-colors">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
             </svg>
             <span class="font-medium">{{ t('common.back') }}</span>
           </NuxtLink>
           
-          <button @click="toggleView" class="flex items-center text-ios-label hover:text-ios-label-secondary transition-colors">
+          <button @click="toggleView" class="flex items-center text-slate-900 hover:text-slate-700 transition-colors">
             <svg v-if="viewMode === 'list'" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <rect width="7" height="7" x="3" y="3" rx="1"/>
               <rect width="7" height="7" x="14" y="3" rx="1"/>
@@ -33,10 +33,10 @@
 
     <!-- Large Title Header -->
     <header class="px-6 pt-8 pb-4 max-w-4xl mx-auto">
-      <h1 class="text-4xl sm:text-5xl font-bold text-ios-label mb-2 tracking-tight">
+      <h1 class="text-4xl sm:text-5xl font-bold text-slate-900 mb-2 tracking-tight">
         {{ t('nav.portfolio') }}
       </h1>
-      <p class="text-lg text-ios-label-secondary leading-relaxed max-w-2xl">
+      <p class="text-lg text-slate-700 leading-relaxed max-w-2xl">
         {{ t('portfolio.subtitle') }}
       </p>
     </header>
@@ -48,7 +48,7 @@
           v-for="project in projects" 
           :key="project.id"
           @click="selectProject(project)"
-          class="bg-ios-background-secondary rounded-xl border border-ios-separator overflow-hidden hover:bg-ios-background-tertiary transition-all duration-200 cursor-pointer active:scale-[0.98] active:bg-ios-background-tertiary"
+          class="bg-white/70 backdrop-blur-xl rounded-xl border border-slate-200 overflow-hidden hover:bg-white/80 transition-all duration-200 cursor-pointer active:scale-[0.98]"
         >
           <!-- Project Card -->
           <div class="flex items-start p-4 space-x-4">
@@ -62,10 +62,10 @@
             <!-- Project Info -->
             <div class="flex-1 min-w-0">
               <div class="flex items-start justify-between mb-2">
-                <h3 class="text-lg font-semibold text-ios-label truncate">
+                <h3 class="text-lg font-semibold text-slate-900 truncate">
                   {{ project.name }}
                 </h3>
-                <svg class="w-5 h-5 text-ios-label-tertiary mt-0.5 flex-shrink-0 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <svg class="w-5 h-5 text-slate-500 mt-0.5 flex-shrink-0 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/>
                 </svg>
               </div>
@@ -75,25 +75,25 @@
                 <span 
                   v-for="tech in project.technologies.slice(0, 3)" 
                   :key="tech"
-                  class="px-2 py-1 bg-ios-background text-ios-label-secondary text-xs font-medium rounded-full border border-ios-separator"
+                  class="px-2 py-1 bg-white/60 text-slate-700 text-xs font-medium rounded-full border border-slate-200"
                 >
                   {{ tech }}
                 </span>
                 <span 
                   v-if="project.technologies.length > 3"
-                  class="px-2 py-1 bg-ios-background text-ios-label-tertiary text-xs rounded-full border border-ios-separator"
+                  class="px-2 py-1 bg-white/60 text-slate-500 text-xs rounded-full border border-slate-200"
                 >
                   +{{ project.technologies.length - 3 }}
                 </span>
               </div>
               
               <!-- Description -->
-              <p class="text-sm text-ios-label-secondary line-clamp-2 leading-relaxed">
+              <p class="text-sm text-slate-700 line-clamp-2 leading-relaxed">
                 {{ project.description }}
               </p>
               
               <!-- Duration -->
-              <p class="text-xs text-ios-label-tertiary mt-2">
+              <p class="text-xs text-slate-500 mt-2">
                 {{ project.duration }}
               </p>
             </div>
@@ -107,7 +107,7 @@
           v-for="project in projects" 
           :key="project.id"
           @click="selectProject(project)"
-          class="bg-ios-background-secondary rounded-xl border border-ios-separator overflow-hidden hover:bg-ios-background-tertiary transition-all duration-200 cursor-pointer active:scale-[0.98] active:bg-ios-background-tertiary"
+          class="bg-white/70 backdrop-blur-xl rounded-xl border border-slate-200 overflow-hidden hover:bg-white/80 transition-all duration-200 cursor-pointer active:scale-[0.98]"
         >
           <!-- Project Thumbnail -->
           <div class="h-32 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
@@ -118,7 +118,7 @@
           
           <!-- Project Info -->
           <div class="p-4">
-            <h3 class="text-lg font-semibold text-ios-label mb-2 line-clamp-1">
+            <h3 class="text-lg font-semibold text-slate-900 mb-2 line-clamp-1">
               {{ project.name }}
             </h3>
             
@@ -127,25 +127,25 @@
               <span 
                 v-for="tech in project.technologies.slice(0, 2)" 
                 :key="tech"
-                class="px-2 py-1 bg-ios-background text-ios-label-secondary text-xs font-medium rounded-full border border-ios-separator"
+                class="px-2 py-1 bg-white/60 text-slate-700 text-xs font-medium rounded-full border border-slate-200"
               >
                 {{ tech }}
               </span>
               <span 
                 v-if="project.technologies.length > 2"
-                class="px-2 py-1 bg-ios-background text-ios-label-tertiary text-xs rounded-full border border-ios-separator"
+                class="px-2 py-1 bg-white/60 text-slate-500 text-xs rounded-full border border-slate-200"
               >
                 +{{ project.technologies.length - 2 }}
               </span>
             </div>
             
             <!-- Description -->
-            <p class="text-sm text-ios-label-secondary line-clamp-3 leading-relaxed mb-2">
+            <p class="text-sm text-slate-700 line-clamp-3 leading-relaxed mb-2">
               {{ project.description }}
             </p>
             
             <!-- Duration -->
-            <p class="text-xs text-ios-label-tertiary">
+            <p class="text-xs text-slate-500">
               {{ project.duration }}
             </p>
           </div>
@@ -161,15 +161,15 @@
     >
       <div 
         @click.stop
-        class="bg-ios-background rounded-t-xl sm:rounded-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto transform transition-transform duration-300"
+        class="bg-white/90 backdrop-blur-xl border border-slate-200 rounded-t-xl sm:rounded-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto transform transition-transform duration-300"
         :class="{ 'translate-y-0': selectedProject, 'translate-y-full': !selectedProject }"
       >
         <!-- Modal Header -->
-        <div class="sticky top-0 bg-ios-background/95 backdrop-blur-xl border-b border-ios-separator p-4">
+        <div class="sticky top-0 bg-white/70 backdrop-blur-xl border-b border-slate-200 p-4">
           <div class="flex items-center justify-between">
-            <h2 class="text-xl font-semibold text-ios-label">{{ t('portfolio.project_details') }}</h2>
-            <button @click="closeModal" class="w-8 h-8 rounded-full bg-ios-background-secondary flex items-center justify-center">
-              <svg class="w-5 h-5 text-ios-label-secondary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <h2 class="text-xl font-semibold text-slate-900">{{ t('portfolio.project_details') }}</h2>
+            <button @click="closeModal" class="w-8 h-8 rounded-full bg-white/70 border border-slate-200 flex items-center justify-center">
+              <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
               </svg>
             </button>
@@ -186,20 +186,20 @@
           </div>
 
           <!-- Project Title -->
-          <h3 class="text-2xl font-bold text-ios-label mb-2">
+          <h3 class="text-2xl font-bold text-slate-900 mb-2">
             {{ selectedProject.name }}
           </h3>
 
           <!-- Role & Duration -->
           <div class="flex items-center space-x-4 mb-6">
-            <div class="flex items-center text-ios-label-secondary">
-              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <div class="flex items-center text-slate-700">
+              <svg class="w-4 h-4 mr-2 text-slate-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
               </svg>
-              <span class="text-sm">Senior Engineering Manager</span>
+              <span class="text-sm">Engineering Manager</span>
             </div>
-            <div class="flex items-center text-ios-label-secondary">
-              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <div class="flex items-center text-slate-700">
+              <svg class="w-4 h-4 mr-2 text-slate-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
               </svg>
               <span class="text-sm">{{ selectedProject.duration }}</span>
@@ -208,12 +208,12 @@
 
           <!-- Technologies Used -->
           <div class="mb-6">
-            <h4 class="text-lg font-semibold text-ios-label mb-3">{{ t('portfolio.technologies_used') }}</h4>
+            <h4 class="text-lg font-semibold text-slate-900 mb-3">{{ t('portfolio.technologies_used') }}</h4>
             <div class="flex flex-wrap gap-2">
               <span 
                 v-for="tech in selectedProject.technologies" 
                 :key="tech"
-                class="px-3 py-1 bg-ios-background-secondary text-ios-label text-sm font-medium rounded-full border border-ios-separator"
+                class="px-3 py-1 bg-white/70 backdrop-blur-xl text-slate-800 text-sm font-medium rounded-full border border-slate-200"
               >
                 {{ tech }}
               </span>
@@ -222,19 +222,19 @@
 
           <!-- Key Achievements -->
           <div class="mb-6">
-            <h4 class="text-lg font-semibold text-ios-label mb-3">{{ t('portfolio.key_achievements') }}</h4>
+            <h4 class="text-lg font-semibold text-slate-900 mb-3">{{ t('portfolio.key_achievements') }}</h4>
             <div class="space-y-2">
               <div class="flex items-start space-x-3">
                 <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                <p class="text-ios-label-secondary">{{ selectedProject.description }}</p>
+                <p class="text-slate-700">{{ selectedProject.description }}</p>
               </div>
               <div class="flex items-start space-x-3">
                 <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                <p class="text-ios-label-secondary">{{ t('portfolio.achievement_team_delivery') }}</p>
+                <p class="text-slate-700">{{ t('portfolio.achievement_team_delivery') }}</p>
               </div>
               <div class="flex items-start space-x-3">
                 <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                <p class="text-ios-label-secondary">{{ t('portfolio.achievement_best_practices') }}</p>
+                <p class="text-slate-700">{{ t('portfolio.achievement_best_practices') }}</p>
               </div>
             </div>
           </div>
@@ -246,14 +246,14 @@
               :href="selectedProject.link" 
               target="_blank" 
               rel="noopener noreferrer" 
-              class="flex-1 bg-blue-500 text-white text-center py-3 px-4 rounded-xl font-semibold hover:bg-blue-600 transition-colors"
+              class="flex-1 bg-slate-900 text-white text-center py-3 px-4 rounded-xl font-semibold hover:bg-slate-800 transition-colors"
             >
               {{ t('portfolio.view_live_project') }}
             </a>
             <button 
               v-else
               disabled
-              class="flex-1 bg-ios-background-secondary text-ios-label-tertiary text-center py-3 px-4 rounded-xl font-semibold"
+              class="flex-1 bg-white/70 text-slate-500 border border-slate-200 text-center py-3 px-4 rounded-xl font-semibold"
             >
               {{ t('portfolio.private_project') }}
             </button>
@@ -265,7 +265,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+
 const { t } = useI18n()
 const localePath = useLocalePath()
 
@@ -369,6 +369,7 @@ useSeoMeta({
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  line-clamp: 1;
 }
 
 .line-clamp-2 {
@@ -376,6 +377,7 @@ useSeoMeta({
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  line-clamp: 2;
 }
 
 .line-clamp-3 {
@@ -383,6 +385,7 @@ useSeoMeta({
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  line-clamp: 3;
 }
 </style>
 

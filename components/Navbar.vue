@@ -8,7 +8,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="flex items-center justify-between h-16">
         <!-- Logo -->
-        <NuxtLink :to="localePath('/')" class="text-slate-900 font-semibold text-lg tracking-tight hover:text-slate-700 transition-colors">
+        <NuxtLink :to="localePath('/')" class="text-slate-900 font-semibold text-lg tracking-tight hover:text-slate-700 transition-colors flex items-center">
+          <Logo class="mr-2" :width="32" :height="32" />
           Merouane Amqor
         </NuxtLink>
 
@@ -71,10 +72,10 @@
           <div class="flex flex-col gap-2">
             <div class="flex items-center gap-2 mb-1">
               <button
-                :aria-pressed="locale === 'en'"
+              :aria-pressed="locale === 'en'"
                 @click="switchTo('en')"
                 class="px-3 py-1.5 text-xs rounded-full border border-slate-200"
-                :class="locale === 'en' ? 'bg-slate-900 text-white' : 'text-slate-700'"
+              :class="locale === 'en' ? 'bg-slate-900 text-white' : 'text-slate-700'"
               >EN</button>
               <button
                 :aria-pressed="locale === 'fr'"
@@ -109,7 +110,17 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+// Nuxt i18n composables are auto-imported at runtime, but TypeScript needs symbols in scope
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+declare const useLocalePath: () => (path: string) => string
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+declare const useSwitchLocalePath: () => (locale: string) => string
+
 const route = useRoute()
+const router = useRouter()
 const mobileMenuOpen = ref(false)
 const isScrolled = ref(false)
 const { t, locale } = useI18n()
@@ -126,7 +137,7 @@ const navigation = [
 
 const switchTo = (toLocale: 'en' | 'fr') => {
   const path = switchLocalePath(toLocale)
-  if (path) navigateTo(path)
+  if (path) router.push(path)
 }
 
 const isActive = (href: string) => {

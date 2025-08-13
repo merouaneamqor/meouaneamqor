@@ -29,6 +29,8 @@
     <!-- Vibrant glow accents to boost color (screen blend) -->
     <div class="absolute inset-0 vibrant-glow pointer-events-none"></div>
 
+    <Logo  class="mr-2 absolute top-1/2 left-1/4 transform -translate-x-1/2 -translate-y-1/3 blur-xl opacity-10" :width="300" :height="300" />
+
     <!-- Optional dot grid removed to avoid gray wash-out -->
   </div>
   

@@ -15,12 +15,12 @@
       <p class="text-2xl sm:text-3xl lg:text-4xl font-light text-slate-800 mb-8 tracking-tight">
         {{ t('header.subtitle') }}
       </p>
-      <span class="text-sm sm:text-base lg:text-lg font-light text-slate-700 mb-8 tracking-tight">
+      <span class="text-sm sm:text-base lg:text-lg font-light text-slate-800 mb-8 tracking-tight">
         {{ t('header.tagline') }}
       </span>
       
       <!-- Clean description -->
-      <p class="text-lg sm:text-xl text-slate-800 max-w-2xl mx-auto mb-16 leading-relaxed">
+      <p class="text-sm sm:text-base text-slate-600 max-w-3xl mx-auto mb-16 leading-relaxed">
         {{ t('header.description_1') }}
         {{ t('header.description_2') }}
       </p>

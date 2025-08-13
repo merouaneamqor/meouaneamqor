@@ -26,7 +26,8 @@
     "lucide-vue-next": "^0.436.0",
     "nitropack": "^2.9.7",
     "nuxt-i18n": "^6.28.1",
-    "nuxt-jsonld": "^2.0.8"
+    "nuxt-jsonld": "^2.0.8",
+    "three": "^0.179.1"
   },
   "engines": {
     "node": ">=16.0.0"

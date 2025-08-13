@@ -1,4 +1,18 @@
 {
   // https://nuxt.com/docs/guide/concepts/typescript
-  "extends": "./.nuxt/tsconfig.json"
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "types": ["three"],
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./*"],
+      "three/examples/jsm/*": ["node_modules/three/examples/jsm/*"]
+    }
+  },
+  "include": [
+    "types/**/*.d.ts",
+    "**/*.ts",
+    "**/*.vue"
+  ]
 }
