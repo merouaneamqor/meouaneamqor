@@ -1,6 +1,6 @@
 import { composableNames, unpackMeta } from '@unhead/shared';
-import { ref, watchEffect, watch, getCurrentInstance } from 'vue';
-import { i as injectHead$1, k as resolveUnrefHeadInput$1 } from './server.mjs';
+import { v as injectHead$1, x as resolveUnrefHeadInput$1 } from './server.mjs';
+import { v as vueExports } from '../runtime.mjs';
 
 function useHead(input, options = {}) {
   const head = options.head || injectHead$1();
@@ -11,16 +11,16 @@ function useHead(input, options = {}) {
   }
 }
 function clientUseHead(head, input, options = {}) {
-  const deactivated = ref(false);
-  const resolvedInput = ref({});
-  watchEffect(() => {
+  const deactivated = vueExports.ref(false);
+  const resolvedInput = vueExports.ref({});
+  vueExports.watchEffect(() => {
     resolvedInput.value = deactivated.value ? {} : resolveUnrefHeadInput$1(input);
   });
   const entry = head.push(resolvedInput.value, options);
-  watch(resolvedInput, (e) => {
+  vueExports.watch(resolvedInput, (e) => {
     entry.patch(e);
   });
-  getCurrentInstance();
+  vueExports.getCurrentInstance();
   return entry;
 }
 const coreComposableNames = [

@@ -1,11 +1,16 @@
-import { ssrRenderAttrs, ssrRenderSlot } from 'vue/server-renderer';
-import { useSSRContext } from 'vue';
 import { _ as _export_sfc } from './server.mjs';
-import '../runtime.mjs';
+import { v as vueExports } from '../runtime.mjs';
+import { d as ssrRenderAttrs_1, m as ssrRenderSlot_1 } from '../routes/renderer.mjs';
+import 'unhead';
+import '@unhead/shared';
 import 'node:http';
 import 'node:https';
 import 'node:fs';
 import 'node:path';
+import '@vue/compiler-dom';
+import '@vue/runtime-dom';
+import '@vue/shared';
+import 'nitropack/dist/runtime/plugin';
 import 'unified';
 import 'mdast-util-to-string';
 import 'micromark';
@@ -31,23 +36,20 @@ import 'shiki/core';
 import '@shikijs/transformers';
 import 'node:url';
 import 'ipx';
-import '../routes/renderer.mjs';
-import 'vue-bundle-renderer/runtime';
 import 'devalue';
 import '@unhead/ssr';
-import 'unhead';
-import '@unhead/shared';
-import 'vue-router';
+import '@vue/compiler-ssr';
+import 'node:stream';
 
 const _sfc_main = {};
 function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
-  _push(`<thead${ssrRenderAttrs(_attrs)}>`);
-  ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
+  _push(`<thead${ssrRenderAttrs_1(_attrs)}>`);
+  ssrRenderSlot_1(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</thead>`);
 }
 const _sfc_setup = _sfc_main.setup;
 _sfc_main.setup = (props, ctx) => {
-  const ssrContext = useSSRContext();
+  const ssrContext = vueExports.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("node_modules/.pnpm/@nuxtjs+mdc@0.8.3_magicast@0.3.5_rollup@4.22.5_webpack-sources@3.2.3/node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseThead.vue");
   return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
 };

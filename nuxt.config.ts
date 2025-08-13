@@ -62,6 +62,9 @@ export default defineNuxtConfig({
 
   nitro: {
     preset: 'vercel',
+    externals: {
+      inline: ['vue', '@vue/server-renderer']
+    }
   },
 
   site: {

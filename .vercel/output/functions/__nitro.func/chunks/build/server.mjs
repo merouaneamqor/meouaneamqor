@@ -1,42 +1,7 @@
-import { hasInjectionContext, inject, version, unref, toRef, isRef, ref, defineAsyncComponent, defineComponent, h, getCurrentInstance, computed, provide, shallowReactive, watch, Suspense, nextTick, Fragment, Transition, mergeProps, useSSRContext, createApp, effectScope, reactive, getCurrentScope, shallowRef, onErrorCaptured, onServerPrefetch, createVNode, resolveDynamicComponent, isReadonly, Text, withCtx, isShallow, isReactive, toRaw, watchEffect } from 'vue';
-import { $ as $fetch, h as createError$1, l as klona, p as parse$1, m as getRequestHeader, n as defu, o as sanitizeStatusCode, q as destr, r as isEqual$1, t as setCookie, v as getCookie, w as deleteCookie, x as createHooks, y as toRouteMatcher, z as createRouter$1, A as getRequestHeaders } from '../runtime.mjs';
-import { b as baseURL } from '../routes/renderer.mjs';
+import { v as vueExports, $ as $fetch, i as createError$1, m as klona, p as parse$1, n as getRequestHeader, o as defu, q as sanitizeStatusCode, t as destr, x as isEqual$1, y as setCookie, z as getCookie, A as deleteCookie, B as createHooks, C as toRouteMatcher, D as createRouter$1, E as getRequestHeaders } from '../runtime.mjs';
+import { b as baseURL, s as ssrRenderSuspense_1, a as ssrRenderComponent_1, c as ssrRenderVNode } from '../routes/renderer.mjs';
 import { getActiveHead as getActiveHead$1, CapoPlugin } from 'unhead';
 import { defineHeadPlugin } from '@unhead/shared';
-import { useRoute as useRoute$1, RouterView, useRouter as useRouter$1, createMemoryHistory, createRouter, START_LOCATION } from 'vue-router';
-import { ssrRenderSuspense, ssrRenderComponent, ssrRenderVNode } from 'vue/server-renderer';
-import 'node:http';
-import 'node:https';
-import 'node:fs';
-import 'node:path';
-import 'unified';
-import 'mdast-util-to-string';
-import 'micromark';
-import 'unist-util-stringify-position';
-import 'micromark-util-character';
-import 'micromark-util-chunked';
-import 'micromark-util-resolve-all';
-import 'micromark-util-sanitize-uri';
-import 'slugify';
-import 'remark-parse';
-import 'remark-rehype';
-import 'remark-mdc';
-import 'remark-emoji';
-import 'remark-gfm';
-import 'rehype-external-links';
-import 'rehype-sort-attribute-values';
-import 'rehype-sort-attributes';
-import 'rehype-raw';
-import 'detab';
-import 'hast-util-to-string';
-import 'github-slugger';
-import 'shiki/core';
-import '@shikijs/transformers';
-import 'node:url';
-import 'ipx';
-import 'vue-bundle-renderer/runtime';
-import 'devalue';
-import '@unhead/ssr';
 
 function createContext$1(opts = {}) {
   let currentInstance;
@@ -135,6 +100,2535 @@ const getContext = (key, opts = {}) => defaultNamespace.get(key, opts);
 const asyncHandlersKey$1 = "__unctx_async_handlers__";
 const asyncHandlers$1 = _globalThis[asyncHandlersKey$1] || (_globalThis[asyncHandlersKey$1] = /* @__PURE__ */ new Set());
 
+/*!
+  * vue-router v4.4.5
+  * (c) 2024 Eduardo San Martin Morote
+  * @license MIT
+  */
+
+const isBrowser = typeof document !== 'undefined';
+
+/**
+ * Allows differentiating lazy components from functional components and vue-class-component
+ * @internal
+ *
+ * @param component
+ */
+function isRouteComponent(component) {
+    return (typeof component === 'object' ||
+        'displayName' in component ||
+        'props' in component ||
+        '__vccOpts' in component);
+}
+function isESModule(obj) {
+    return (obj.__esModule ||
+        obj[Symbol.toStringTag] === 'Module' ||
+        // support CF with dynamic imports that do not
+        // add the Module string tag
+        (obj.default && isRouteComponent(obj.default)));
+}
+const assign$2 = Object.assign;
+function applyToParams(fn, params) {
+    const newParams = {};
+    for (const key in params) {
+        const value = params[key];
+        newParams[key] = isArray$2(value)
+            ? value.map(fn)
+            : fn(value);
+    }
+    return newParams;
+}
+const noop = () => { };
+/**
+ * Typesafe alternative to Array.isArray
+ * https://github.com/microsoft/TypeScript/pull/48228
+ */
+const isArray$2 = Array.isArray;
+
+/**
+ * Encoding Rules (␣ = Space)
+ * - Path: ␣ " < > # ? { }
+ * - Query: ␣ " < > # & =
+ * - Hash: ␣ " < > `
+ *
+ * On top of that, the RFC3986 (https://tools.ietf.org/html/rfc3986#section-2.2)
+ * defines some extra characters to be encoded. Most browsers do not encode them
+ * in encodeURI https://github.com/whatwg/url/issues/369, so it may be safer to
+ * also encode `!'()*`. Leaving un-encoded only ASCII alphanumeric(`a-zA-Z0-9`)
+ * plus `-._~`. This extra safety should be applied to query by patching the
+ * string returned by encodeURIComponent encodeURI also encodes `[\]^`. `\`
+ * should be encoded to avoid ambiguity. Browsers (IE, FF, C) transform a `\`
+ * into a `/` if directly typed in. The _backtick_ (`````) should also be
+ * encoded everywhere because some browsers like FF encode it when directly
+ * written while others don't. Safari and IE don't encode ``"<>{}``` in hash.
+ */
+// const EXTRA_RESERVED_RE = /[!'()*]/g
+// const encodeReservedReplacer = (c: string) => '%' + c.charCodeAt(0).toString(16)
+const HASH_RE$1 = /#/g; // %23
+const AMPERSAND_RE$1 = /&/g; // %26
+const SLASH_RE$1 = /\//g; // %2F
+const EQUAL_RE$1 = /=/g; // %3D
+const IM_RE$1 = /\?/g; // %3F
+const PLUS_RE$2 = /\+/g; // %2B
+/**
+ * NOTE: It's not clear to me if we should encode the + symbol in queries, it
+ * seems to be less flexible than not doing so and I can't find out the legacy
+ * systems requiring this for regular requests like text/html. In the standard,
+ * the encoding of the plus character is only mentioned for
+ * application/x-www-form-urlencoded
+ * (https://url.spec.whatwg.org/#urlencoded-parsing) and most browsers seems lo
+ * leave the plus character as is in queries. To be more flexible, we allow the
+ * plus character on the query, but it can also be manually encoded by the user.
+ *
+ * Resources:
+ * - https://url.spec.whatwg.org/#urlencoded-parsing
+ * - https://stackoverflow.com/questions/1634271/url-encoding-the-space-character-or-20
+ */
+const ENC_BRACKET_OPEN_RE = /%5B/g; // [
+const ENC_BRACKET_CLOSE_RE = /%5D/g; // ]
+const ENC_CARET_RE$1 = /%5E/g; // ^
+const ENC_BACKTICK_RE$1 = /%60/g; // `
+const ENC_CURLY_OPEN_RE = /%7B/g; // {
+const ENC_PIPE_RE$1 = /%7C/g; // |
+const ENC_CURLY_CLOSE_RE = /%7D/g; // }
+const ENC_SPACE_RE$1 = /%20/g; // }
+/**
+ * Encode characters that need to be encoded on the path, search and hash
+ * sections of the URL.
+ *
+ * @internal
+ * @param text - string to encode
+ * @returns encoded string
+ */
+function commonEncode(text) {
+    return encodeURI('' + text)
+        .replace(ENC_PIPE_RE$1, '|')
+        .replace(ENC_BRACKET_OPEN_RE, '[')
+        .replace(ENC_BRACKET_CLOSE_RE, ']');
+}
+/**
+ * Encode characters that need to be encoded on the hash section of the URL.
+ *
+ * @param text - string to encode
+ * @returns encoded string
+ */
+function encodeHash(text) {
+    return commonEncode(text)
+        .replace(ENC_CURLY_OPEN_RE, '{')
+        .replace(ENC_CURLY_CLOSE_RE, '}')
+        .replace(ENC_CARET_RE$1, '^');
+}
+/**
+ * Encode characters that need to be encoded query values on the query
+ * section of the URL.
+ *
+ * @param text - string to encode
+ * @returns encoded string
+ */
+function encodeQueryValue$1(text) {
+    return (commonEncode(text)
+        // Encode the space as +, encode the + to differentiate it from the space
+        .replace(PLUS_RE$2, '%2B')
+        .replace(ENC_SPACE_RE$1, '+')
+        .replace(HASH_RE$1, '%23')
+        .replace(AMPERSAND_RE$1, '%26')
+        .replace(ENC_BACKTICK_RE$1, '`')
+        .replace(ENC_CURLY_OPEN_RE, '{')
+        .replace(ENC_CURLY_CLOSE_RE, '}')
+        .replace(ENC_CARET_RE$1, '^'));
+}
+/**
+ * Like `encodeQueryValue` but also encodes the `=` character.
+ *
+ * @param text - string to encode
+ */
+function encodeQueryKey$1(text) {
+    return encodeQueryValue$1(text).replace(EQUAL_RE$1, '%3D');
+}
+/**
+ * Encode characters that need to be encoded on the path section of the URL.
+ *
+ * @param text - string to encode
+ * @returns encoded string
+ */
+function encodePath$1(text) {
+    return commonEncode(text).replace(HASH_RE$1, '%23').replace(IM_RE$1, '%3F');
+}
+/**
+ * Encode characters that need to be encoded on the path section of the URL as a
+ * param. This function encodes everything {@link encodePath} does plus the
+ * slash (`/`) character. If `text` is `null` or `undefined`, returns an empty
+ * string instead.
+ *
+ * @param text - string to encode
+ * @returns encoded string
+ */
+function encodeParam$1(text) {
+    return text == null ? '' : encodePath$1(text).replace(SLASH_RE$1, '%2F');
+}
+/**
+ * Decode text using `decodeURIComponent`. Returns the original text if it
+ * fails.
+ *
+ * @param text - string to decode
+ * @returns decoded string
+ */
+function decode$2(text) {
+    try {
+        return decodeURIComponent('' + text);
+    }
+    catch (err) {
+    }
+    return '' + text;
+}
+
+const TRAILING_SLASH_RE$2 = /\/$/;
+const removeTrailingSlash = (path) => path.replace(TRAILING_SLASH_RE$2, '');
+/**
+ * Transforms a URI into a normalized history location
+ *
+ * @param parseQuery
+ * @param location - URI to normalize
+ * @param currentLocation - current absolute location. Allows resolving relative
+ * paths. Must start with `/`. Defaults to `/`
+ * @returns a normalized history location
+ */
+function parseURL$1(parseQuery, location, currentLocation = '/') {
+    let path, query = {}, searchString = '', hash = '';
+    // Could use URL and URLSearchParams but IE 11 doesn't support it
+    // TODO: move to new URL()
+    const hashPos = location.indexOf('#');
+    let searchPos = location.indexOf('?');
+    // the hash appears before the search, so it's not part of the search string
+    if (hashPos < searchPos && hashPos >= 0) {
+        searchPos = -1;
+    }
+    if (searchPos > -1) {
+        path = location.slice(0, searchPos);
+        searchString = location.slice(searchPos + 1, hashPos > -1 ? hashPos : location.length);
+        query = parseQuery(searchString);
+    }
+    if (hashPos > -1) {
+        path = path || location.slice(0, hashPos);
+        // keep the # character
+        hash = location.slice(hashPos, location.length);
+    }
+    // no search and no query
+    path = resolveRelativePath(path != null ? path : location, currentLocation);
+    // empty path means a relative query or hash `?foo=f`, `#thing`
+    return {
+        fullPath: path + (searchString && '?') + searchString + hash,
+        path,
+        query,
+        hash: decode$2(hash),
+    };
+}
+/**
+ * Stringifies a URL object
+ *
+ * @param stringifyQuery
+ * @param location
+ */
+function stringifyURL(stringifyQuery, location) {
+    const query = location.query ? stringifyQuery(location.query) : '';
+    return location.path + (query && '?') + query + (location.hash || '');
+}
+/**
+ * Checks if two RouteLocation are equal. This means that both locations are
+ * pointing towards the same {@link RouteRecord} and that all `params`, `query`
+ * parameters and `hash` are the same
+ *
+ * @param stringifyQuery - A function that takes a query object of type LocationQueryRaw and returns a string representation of it.
+ * @param a - first {@link RouteLocation}
+ * @param b - second {@link RouteLocation}
+ */
+function isSameRouteLocation(stringifyQuery, a, b) {
+    const aLastIndex = a.matched.length - 1;
+    const bLastIndex = b.matched.length - 1;
+    return (aLastIndex > -1 &&
+        aLastIndex === bLastIndex &&
+        isSameRouteRecord(a.matched[aLastIndex], b.matched[bLastIndex]) &&
+        isSameRouteLocationParams(a.params, b.params) &&
+        stringifyQuery(a.query) === stringifyQuery(b.query) &&
+        a.hash === b.hash);
+}
+/**
+ * Check if two `RouteRecords` are equal. Takes into account aliases: they are
+ * considered equal to the `RouteRecord` they are aliasing.
+ *
+ * @param a - first {@link RouteRecord}
+ * @param b - second {@link RouteRecord}
+ */
+function isSameRouteRecord(a, b) {
+    // since the original record has an undefined value for aliasOf
+    // but all aliases point to the original record, this will always compare
+    // the original record
+    return (a.aliasOf || a) === (b.aliasOf || b);
+}
+function isSameRouteLocationParams(a, b) {
+    if (Object.keys(a).length !== Object.keys(b).length)
+        return false;
+    for (const key in a) {
+        if (!isSameRouteLocationParamsValue(a[key], b[key]))
+            return false;
+    }
+    return true;
+}
+function isSameRouteLocationParamsValue(a, b) {
+    return isArray$2(a)
+        ? isEquivalentArray(a, b)
+        : isArray$2(b)
+            ? isEquivalentArray(b, a)
+            : a === b;
+}
+/**
+ * Check if two arrays are the same or if an array with one single entry is the
+ * same as another primitive value. Used to check query and parameters
+ *
+ * @param a - array of values
+ * @param b - array of values or a single value
+ */
+function isEquivalentArray(a, b) {
+    return isArray$2(b)
+        ? a.length === b.length && a.every((value, i) => value === b[i])
+        : a.length === 1 && a[0] === b;
+}
+/**
+ * Resolves a relative path that starts with `.`.
+ *
+ * @param to - path location we are resolving
+ * @param from - currentLocation.path, should start with `/`
+ */
+function resolveRelativePath(to, from) {
+    if (to.startsWith('/'))
+        return to;
+    if (!to)
+        return from;
+    const fromSegments = from.split('/');
+    const toSegments = to.split('/');
+    const lastToSegment = toSegments[toSegments.length - 1];
+    // make . and ./ the same (../ === .., ../../ === ../..)
+    // this is the same behavior as new URL()
+    if (lastToSegment === '..' || lastToSegment === '.') {
+        toSegments.push('');
+    }
+    let position = fromSegments.length - 1;
+    let toPosition;
+    let segment;
+    for (toPosition = 0; toPosition < toSegments.length; toPosition++) {
+        segment = toSegments[toPosition];
+        // we stay on the same position
+        if (segment === '.')
+            continue;
+        // go up in the from array
+        if (segment === '..') {
+            // we can't go below zero, but we still need to increment toPosition
+            if (position > 1)
+                position--;
+            // continue
+        }
+        // we reached a non-relative path, we stop here
+        else
+            break;
+    }
+    return (fromSegments.slice(0, position).join('/') +
+        '/' +
+        toSegments.slice(toPosition).join('/'));
+}
+/**
+ * Initial route location where the router is. Can be used in navigation guards
+ * to differentiate the initial navigation.
+ *
+ * @example
+ * ```js
+ * import { START_LOCATION } from 'vue-router'
+ *
+ * router.beforeEach((to, from) => {
+ *   if (from === START_LOCATION) {
+ *     // initial navigation
+ *   }
+ * })
+ * ```
+ */
+const START_LOCATION_NORMALIZED = {
+    path: '/',
+    // TODO: could we use a symbol in the future?
+    name: undefined,
+    params: {},
+    query: {},
+    hash: '',
+    fullPath: '/',
+    matched: [],
+    meta: {},
+    redirectedFrom: undefined,
+};
+
+var NavigationType;
+(function (NavigationType) {
+    NavigationType["pop"] = "pop";
+    NavigationType["push"] = "push";
+})(NavigationType || (NavigationType = {}));
+var NavigationDirection;
+(function (NavigationDirection) {
+    NavigationDirection["back"] = "back";
+    NavigationDirection["forward"] = "forward";
+    NavigationDirection["unknown"] = "";
+})(NavigationDirection || (NavigationDirection = {}));
+/**
+ * Starting location for Histories
+ */
+const START = '';
+// Generic utils
+/**
+ * Normalizes a base by removing any trailing slash and reading the base tag if
+ * present.
+ *
+ * @param base - base to normalize
+ */
+function normalizeBase(base) {
+    if (!base) {
+        if (isBrowser) {
+            // respect <base> tag
+            const baseEl = document.querySelector('base');
+            base = (baseEl && baseEl.getAttribute('href')) || '/';
+            // strip full URL origin
+            base = base.replace(/^\w+:\/\/[^\/]+/, '');
+        }
+        else {
+            base = '/';
+        }
+    }
+    // ensure leading slash when it was removed by the regex above avoid leading
+    // slash with hash because the file could be read from the disk like file://
+    // and the leading slash would cause problems
+    if (base[0] !== '/' && base[0] !== '#')
+        base = '/' + base;
+    // remove the trailing slash so all other method can just do `base + fullPath`
+    // to build an href
+    return removeTrailingSlash(base);
+}
+// remove any character before the hash
+const BEFORE_HASH_RE = /^[^#]+#/;
+function createHref(base, location) {
+    return base.replace(BEFORE_HASH_RE, '#') + location;
+}
+
+function getElementPosition(el, offset) {
+    const docRect = document.documentElement.getBoundingClientRect();
+    const elRect = el.getBoundingClientRect();
+    return {
+        behavior: offset.behavior,
+        left: elRect.left - docRect.left - (offset.left || 0),
+        top: elRect.top - docRect.top - (offset.top || 0),
+    };
+}
+const computeScrollPosition = () => ({
+    left: window.scrollX,
+    top: window.scrollY,
+});
+function scrollToPosition(position) {
+    let scrollToOptions;
+    if ('el' in position) {
+        const positionEl = position.el;
+        const isIdSelector = typeof positionEl === 'string' && positionEl.startsWith('#');
+        const el = typeof positionEl === 'string'
+            ? isIdSelector
+                ? document.getElementById(positionEl.slice(1))
+                : document.querySelector(positionEl)
+            : positionEl;
+        if (!el) {
+            return;
+        }
+        scrollToOptions = getElementPosition(el, position);
+    }
+    else {
+        scrollToOptions = position;
+    }
+    if ('scrollBehavior' in document.documentElement.style)
+        window.scrollTo(scrollToOptions);
+    else {
+        window.scrollTo(scrollToOptions.left != null ? scrollToOptions.left : window.scrollX, scrollToOptions.top != null ? scrollToOptions.top : window.scrollY);
+    }
+}
+function getScrollKey(path, delta) {
+    const position = history.state ? history.state.position - delta : -1;
+    return position + path;
+}
+const scrollPositions = new Map();
+function saveScrollPosition(key, scrollPosition) {
+    scrollPositions.set(key, scrollPosition);
+}
+function getSavedScrollPosition(key) {
+    const scroll = scrollPositions.get(key);
+    // consume it so it's not used again
+    scrollPositions.delete(key);
+    return scroll;
+}
+
+/**
+ * Creates an in-memory based history. The main purpose of this history is to handle SSR. It starts in a special location that is nowhere.
+ * It's up to the user to replace that location with the starter location by either calling `router.push` or `router.replace`.
+ *
+ * @param base - Base applied to all urls, defaults to '/'
+ * @returns a history object that can be passed to the router constructor
+ */
+function createMemoryHistory(base = '') {
+    let listeners = [];
+    let queue = [START];
+    let position = 0;
+    base = normalizeBase(base);
+    function setLocation(location) {
+        position++;
+        if (position !== queue.length) {
+            // we are in the middle, we remove everything from here in the queue
+            queue.splice(position);
+        }
+        queue.push(location);
+    }
+    function triggerListeners(to, from, { direction, delta }) {
+        const info = {
+            direction,
+            delta,
+            type: NavigationType.pop,
+        };
+        for (const callback of listeners) {
+            callback(to, from, info);
+        }
+    }
+    const routerHistory = {
+        // rewritten by Object.defineProperty
+        location: START,
+        // TODO: should be kept in queue
+        state: {},
+        base,
+        createHref: createHref.bind(null, base),
+        replace(to) {
+            // remove current entry and decrement position
+            queue.splice(position--, 1);
+            setLocation(to);
+        },
+        push(to, data) {
+            setLocation(to);
+        },
+        listen(callback) {
+            listeners.push(callback);
+            return () => {
+                const index = listeners.indexOf(callback);
+                if (index > -1)
+                    listeners.splice(index, 1);
+            };
+        },
+        destroy() {
+            listeners = [];
+            queue = [START];
+            position = 0;
+        },
+        go(delta, shouldTrigger = true) {
+            const from = this.location;
+            const direction = 
+            // we are considering delta === 0 going forward, but in abstract mode
+            // using 0 for the delta doesn't make sense like it does in html5 where
+            // it reloads the page
+            delta < 0 ? NavigationDirection.back : NavigationDirection.forward;
+            position = Math.max(0, Math.min(position + delta, queue.length - 1));
+            if (shouldTrigger) {
+                triggerListeners(this.location, from, {
+                    direction,
+                    delta,
+                });
+            }
+        },
+    };
+    Object.defineProperty(routerHistory, 'location', {
+        enumerable: true,
+        get: () => queue[position],
+    });
+    return routerHistory;
+}
+
+function isRouteLocation(route) {
+    return typeof route === 'string' || (route && typeof route === 'object');
+}
+function isRouteName(name) {
+    return typeof name === 'string' || typeof name === 'symbol';
+}
+
+const NavigationFailureSymbol = Symbol('');
+/**
+ * Enumeration with all possible types for navigation failures. Can be passed to
+ * {@link isNavigationFailure} to check for specific failures.
+ */
+var NavigationFailureType;
+(function (NavigationFailureType) {
+    /**
+     * An aborted navigation is a navigation that failed because a navigation
+     * guard returned `false` or called `next(false)`
+     */
+    NavigationFailureType[NavigationFailureType["aborted"] = 4] = "aborted";
+    /**
+     * A cancelled navigation is a navigation that failed because a more recent
+     * navigation finished started (not necessarily finished).
+     */
+    NavigationFailureType[NavigationFailureType["cancelled"] = 8] = "cancelled";
+    /**
+     * A duplicated navigation is a navigation that failed because it was
+     * initiated while already being at the exact same location.
+     */
+    NavigationFailureType[NavigationFailureType["duplicated"] = 16] = "duplicated";
+})(NavigationFailureType || (NavigationFailureType = {}));
+/**
+ * Creates a typed NavigationFailure object.
+ * @internal
+ * @param type - NavigationFailureType
+ * @param params - { from, to }
+ */
+function createRouterError(type, params) {
+    // keep full error messages in cjs versions
+    {
+        return assign$2(new Error(), {
+            type,
+            [NavigationFailureSymbol]: true,
+        }, params);
+    }
+}
+function isNavigationFailure(error, type) {
+    return (error instanceof Error &&
+        NavigationFailureSymbol in error &&
+        (type == null || !!(error.type & type)));
+}
+
+// default pattern for a param: non-greedy everything but /
+const BASE_PARAM_PATTERN = '[^/]+?';
+const BASE_PATH_PARSER_OPTIONS = {
+    sensitive: false,
+    strict: false,
+    start: true,
+    end: true,
+};
+// Special Regex characters that must be escaped in static tokens
+const REGEX_CHARS_RE = /[.+*?^${}()[\]/\\]/g;
+/**
+ * Creates a path parser from an array of Segments (a segment is an array of Tokens)
+ *
+ * @param segments - array of segments returned by tokenizePath
+ * @param extraOptions - optional options for the regexp
+ * @returns a PathParser
+ */
+function tokensToParser(segments, extraOptions) {
+    const options = assign$2({}, BASE_PATH_PARSER_OPTIONS, extraOptions);
+    // the amount of scores is the same as the length of segments except for the root segment "/"
+    const score = [];
+    // the regexp as a string
+    let pattern = options.start ? '^' : '';
+    // extracted keys
+    const keys = [];
+    for (const segment of segments) {
+        // the root segment needs special treatment
+        const segmentScores = segment.length ? [] : [90 /* PathScore.Root */];
+        // allow trailing slash
+        if (options.strict && !segment.length)
+            pattern += '/';
+        for (let tokenIndex = 0; tokenIndex < segment.length; tokenIndex++) {
+            const token = segment[tokenIndex];
+            // resets the score if we are inside a sub-segment /:a-other-:b
+            let subSegmentScore = 40 /* PathScore.Segment */ +
+                (options.sensitive ? 0.25 /* PathScore.BonusCaseSensitive */ : 0);
+            if (token.type === 0 /* TokenType.Static */) {
+                // prepend the slash if we are starting a new segment
+                if (!tokenIndex)
+                    pattern += '/';
+                pattern += token.value.replace(REGEX_CHARS_RE, '\\$&');
+                subSegmentScore += 40 /* PathScore.Static */;
+            }
+            else if (token.type === 1 /* TokenType.Param */) {
+                const { value, repeatable, optional, regexp } = token;
+                keys.push({
+                    name: value,
+                    repeatable,
+                    optional,
+                });
+                const re = regexp ? regexp : BASE_PARAM_PATTERN;
+                // the user provided a custom regexp /:id(\\d+)
+                if (re !== BASE_PARAM_PATTERN) {
+                    subSegmentScore += 10 /* PathScore.BonusCustomRegExp */;
+                    // make sure the regexp is valid before using it
+                    try {
+                        new RegExp(`(${re})`);
+                    }
+                    catch (err) {
+                        throw new Error(`Invalid custom RegExp for param "${value}" (${re}): ` +
+                            err.message);
+                    }
+                }
+                // when we repeat we must take care of the repeating leading slash
+                let subPattern = repeatable ? `((?:${re})(?:/(?:${re}))*)` : `(${re})`;
+                // prepend the slash if we are starting a new segment
+                if (!tokenIndex)
+                    subPattern =
+                        // avoid an optional / if there are more segments e.g. /:p?-static
+                        // or /:p?-:p2
+                        optional && segment.length < 2
+                            ? `(?:/${subPattern})`
+                            : '/' + subPattern;
+                if (optional)
+                    subPattern += '?';
+                pattern += subPattern;
+                subSegmentScore += 20 /* PathScore.Dynamic */;
+                if (optional)
+                    subSegmentScore += -8 /* PathScore.BonusOptional */;
+                if (repeatable)
+                    subSegmentScore += -20 /* PathScore.BonusRepeatable */;
+                if (re === '.*')
+                    subSegmentScore += -50 /* PathScore.BonusWildcard */;
+            }
+            segmentScores.push(subSegmentScore);
+        }
+        // an empty array like /home/ -> [[{home}], []]
+        // if (!segment.length) pattern += '/'
+        score.push(segmentScores);
+    }
+    // only apply the strict bonus to the last score
+    if (options.strict && options.end) {
+        const i = score.length - 1;
+        score[i][score[i].length - 1] += 0.7000000000000001 /* PathScore.BonusStrict */;
+    }
+    // TODO: dev only warn double trailing slash
+    if (!options.strict)
+        pattern += '/?';
+    if (options.end)
+        pattern += '$';
+    // allow paths like /dynamic to only match dynamic or dynamic/... but not dynamic_something_else
+    else if (options.strict)
+        pattern += '(?:/|$)';
+    const re = new RegExp(pattern, options.sensitive ? '' : 'i');
+    function parse(path) {
+        const match = path.match(re);
+        const params = {};
+        if (!match)
+            return null;
+        for (let i = 1; i < match.length; i++) {
+            const value = match[i] || '';
+            const key = keys[i - 1];
+            params[key.name] = value && key.repeatable ? value.split('/') : value;
+        }
+        return params;
+    }
+    function stringify(params) {
+        let path = '';
+        // for optional parameters to allow to be empty
+        let avoidDuplicatedSlash = false;
+        for (const segment of segments) {
+            if (!avoidDuplicatedSlash || !path.endsWith('/'))
+                path += '/';
+            avoidDuplicatedSlash = false;
+            for (const token of segment) {
+                if (token.type === 0 /* TokenType.Static */) {
+                    path += token.value;
+                }
+                else if (token.type === 1 /* TokenType.Param */) {
+                    const { value, repeatable, optional } = token;
+                    const param = value in params ? params[value] : '';
+                    if (isArray$2(param) && !repeatable) {
+                        throw new Error(`Provided param "${value}" is an array but it is not repeatable (* or + modifiers)`);
+                    }
+                    const text = isArray$2(param)
+                        ? param.join('/')
+                        : param;
+                    if (!text) {
+                        if (optional) {
+                            // if we have more than one optional param like /:a?-static we don't need to care about the optional param
+                            if (segment.length < 2) {
+                                // remove the last slash as we could be at the end
+                                if (path.endsWith('/'))
+                                    path = path.slice(0, -1);
+                                // do not append a slash on the next iteration
+                                else
+                                    avoidDuplicatedSlash = true;
+                            }
+                        }
+                        else
+                            throw new Error(`Missing required param "${value}"`);
+                    }
+                    path += text;
+                }
+            }
+        }
+        // avoid empty path when we have multiple optional params
+        return path || '/';
+    }
+    return {
+        re,
+        score,
+        keys,
+        parse,
+        stringify,
+    };
+}
+/**
+ * Compares an array of numbers as used in PathParser.score and returns a
+ * number. This function can be used to `sort` an array
+ *
+ * @param a - first array of numbers
+ * @param b - second array of numbers
+ * @returns 0 if both are equal, < 0 if a should be sorted first, > 0 if b
+ * should be sorted first
+ */
+function compareScoreArray(a, b) {
+    let i = 0;
+    while (i < a.length && i < b.length) {
+        const diff = b[i] - a[i];
+        // only keep going if diff === 0
+        if (diff)
+            return diff;
+        i++;
+    }
+    // if the last subsegment was Static, the shorter segments should be sorted first
+    // otherwise sort the longest segment first
+    if (a.length < b.length) {
+        return a.length === 1 && a[0] === 40 /* PathScore.Static */ + 40 /* PathScore.Segment */
+            ? -1
+            : 1;
+    }
+    else if (a.length > b.length) {
+        return b.length === 1 && b[0] === 40 /* PathScore.Static */ + 40 /* PathScore.Segment */
+            ? 1
+            : -1;
+    }
+    return 0;
+}
+/**
+ * Compare function that can be used with `sort` to sort an array of PathParser
+ *
+ * @param a - first PathParser
+ * @param b - second PathParser
+ * @returns 0 if both are equal, < 0 if a should be sorted first, > 0 if b
+ */
+function comparePathParserScore(a, b) {
+    let i = 0;
+    const aScore = a.score;
+    const bScore = b.score;
+    while (i < aScore.length && i < bScore.length) {
+        const comp = compareScoreArray(aScore[i], bScore[i]);
+        // do not return if both are equal
+        if (comp)
+            return comp;
+        i++;
+    }
+    if (Math.abs(bScore.length - aScore.length) === 1) {
+        if (isLastScoreNegative(aScore))
+            return 1;
+        if (isLastScoreNegative(bScore))
+            return -1;
+    }
+    // if a and b share the same score entries but b has more, sort b first
+    return bScore.length - aScore.length;
+    // this is the ternary version
+    // return aScore.length < bScore.length
+    //   ? 1
+    //   : aScore.length > bScore.length
+    //   ? -1
+    //   : 0
+}
+/**
+ * This allows detecting splats at the end of a path: /home/:id(.*)*
+ *
+ * @param score - score to check
+ * @returns true if the last entry is negative
+ */
+function isLastScoreNegative(score) {
+    const last = score[score.length - 1];
+    return score.length > 0 && last[last.length - 1] < 0;
+}
+
+const ROOT_TOKEN = {
+    type: 0 /* TokenType.Static */,
+    value: '',
+};
+const VALID_PARAM_RE = /[a-zA-Z0-9_]/;
+// After some profiling, the cache seems to be unnecessary because tokenizePath
+// (the slowest part of adding a route) is very fast
+// const tokenCache = new Map<string, Token[][]>()
+function tokenizePath(path) {
+    if (!path)
+        return [[]];
+    if (path === '/')
+        return [[ROOT_TOKEN]];
+    if (!path.startsWith('/')) {
+        throw new Error(`Invalid path "${path}"`);
+    }
+    // if (tokenCache.has(path)) return tokenCache.get(path)!
+    function crash(message) {
+        throw new Error(`ERR (${state})/"${buffer}": ${message}`);
+    }
+    let state = 0 /* TokenizerState.Static */;
+    let previousState = state;
+    const tokens = [];
+    // the segment will always be valid because we get into the initial state
+    // with the leading /
+    let segment;
+    function finalizeSegment() {
+        if (segment)
+            tokens.push(segment);
+        segment = [];
+    }
+    // index on the path
+    let i = 0;
+    // char at index
+    let char;
+    // buffer of the value read
+    let buffer = '';
+    // custom regexp for a param
+    let customRe = '';
+    function consumeBuffer() {
+        if (!buffer)
+            return;
+        if (state === 0 /* TokenizerState.Static */) {
+            segment.push({
+                type: 0 /* TokenType.Static */,
+                value: buffer,
+            });
+        }
+        else if (state === 1 /* TokenizerState.Param */ ||
+            state === 2 /* TokenizerState.ParamRegExp */ ||
+            state === 3 /* TokenizerState.ParamRegExpEnd */) {
+            if (segment.length > 1 && (char === '*' || char === '+'))
+                crash(`A repeatable param (${buffer}) must be alone in its segment. eg: '/:ids+.`);
+            segment.push({
+                type: 1 /* TokenType.Param */,
+                value: buffer,
+                regexp: customRe,
+                repeatable: char === '*' || char === '+',
+                optional: char === '*' || char === '?',
+            });
+        }
+        else {
+            crash('Invalid state to consume buffer');
+        }
+        buffer = '';
+    }
+    function addCharToBuffer() {
+        buffer += char;
+    }
+    while (i < path.length) {
+        char = path[i++];
+        if (char === '\\' && state !== 2 /* TokenizerState.ParamRegExp */) {
+            previousState = state;
+            state = 4 /* TokenizerState.EscapeNext */;
+            continue;
+        }
+        switch (state) {
+            case 0 /* TokenizerState.Static */:
+                if (char === '/') {
+                    if (buffer) {
+                        consumeBuffer();
+                    }
+                    finalizeSegment();
+                }
+                else if (char === ':') {
+                    consumeBuffer();
+                    state = 1 /* TokenizerState.Param */;
+                }
+                else {
+                    addCharToBuffer();
+                }
+                break;
+            case 4 /* TokenizerState.EscapeNext */:
+                addCharToBuffer();
+                state = previousState;
+                break;
+            case 1 /* TokenizerState.Param */:
+                if (char === '(') {
+                    state = 2 /* TokenizerState.ParamRegExp */;
+                }
+                else if (VALID_PARAM_RE.test(char)) {
+                    addCharToBuffer();
+                }
+                else {
+                    consumeBuffer();
+                    state = 0 /* TokenizerState.Static */;
+                    // go back one character if we were not modifying
+                    if (char !== '*' && char !== '?' && char !== '+')
+                        i--;
+                }
+                break;
+            case 2 /* TokenizerState.ParamRegExp */:
+                // TODO: is it worth handling nested regexp? like :p(?:prefix_([^/]+)_suffix)
+                // it already works by escaping the closing )
+                // https://paths.esm.dev/?p=AAMeJbiAwQEcDKbAoAAkP60PG2R6QAvgNaA6AFACM2ABuQBB#
+                // is this really something people need since you can also write
+                // /prefix_:p()_suffix
+                if (char === ')') {
+                    // handle the escaped )
+                    if (customRe[customRe.length - 1] == '\\')
+                        customRe = customRe.slice(0, -1) + char;
+                    else
+                        state = 3 /* TokenizerState.ParamRegExpEnd */;
+                }
+                else {
+                    customRe += char;
+                }
+                break;
+            case 3 /* TokenizerState.ParamRegExpEnd */:
+                // same as finalizing a param
+                consumeBuffer();
+                state = 0 /* TokenizerState.Static */;
+                // go back one character if we were not modifying
+                if (char !== '*' && char !== '?' && char !== '+')
+                    i--;
+                customRe = '';
+                break;
+            default:
+                crash('Unknown state');
+                break;
+        }
+    }
+    if (state === 2 /* TokenizerState.ParamRegExp */)
+        crash(`Unfinished custom RegExp for param "${buffer}"`);
+    consumeBuffer();
+    finalizeSegment();
+    // tokenCache.set(path, tokens)
+    return tokens;
+}
+
+function createRouteRecordMatcher(record, parent, options) {
+    const parser = tokensToParser(tokenizePath(record.path), options);
+    const matcher = assign$2(parser, {
+        record,
+        parent,
+        // these needs to be populated by the parent
+        children: [],
+        alias: [],
+    });
+    if (parent) {
+        // both are aliases or both are not aliases
+        // we don't want to mix them because the order is used when
+        // passing originalRecord in Matcher.addRoute
+        if (!matcher.record.aliasOf === !parent.record.aliasOf)
+            parent.children.push(matcher);
+    }
+    return matcher;
+}
+
+/**
+ * Creates a Router Matcher.
+ *
+ * @internal
+ * @param routes - array of initial routes
+ * @param globalOptions - global route options
+ */
+function createRouterMatcher(routes, globalOptions) {
+    // normalized ordered array of matchers
+    const matchers = [];
+    const matcherMap = new Map();
+    globalOptions = mergeOptions({ strict: false, end: true, sensitive: false }, globalOptions);
+    function getRecordMatcher(name) {
+        return matcherMap.get(name);
+    }
+    function addRoute(record, parent, originalRecord) {
+        // used later on to remove by name
+        const isRootAdd = !originalRecord;
+        const mainNormalizedRecord = normalizeRouteRecord(record);
+        // we might be the child of an alias
+        mainNormalizedRecord.aliasOf = originalRecord && originalRecord.record;
+        const options = mergeOptions(globalOptions, record);
+        // generate an array of records to correctly handle aliases
+        const normalizedRecords = [mainNormalizedRecord];
+        if ('alias' in record) {
+            const aliases = typeof record.alias === 'string' ? [record.alias] : record.alias;
+            for (const alias of aliases) {
+                normalizedRecords.push(
+                // we need to normalize again to ensure the `mods` property
+                // being non enumerable
+                normalizeRouteRecord(assign$2({}, mainNormalizedRecord, {
+                    // this allows us to hold a copy of the `components` option
+                    // so that async components cache is hold on the original record
+                    components: originalRecord
+                        ? originalRecord.record.components
+                        : mainNormalizedRecord.components,
+                    path: alias,
+                    // we might be the child of an alias
+                    aliasOf: originalRecord
+                        ? originalRecord.record
+                        : mainNormalizedRecord,
+                    // the aliases are always of the same kind as the original since they
+                    // are defined on the same record
+                })));
+            }
+        }
+        let matcher;
+        let originalMatcher;
+        for (const normalizedRecord of normalizedRecords) {
+            const { path } = normalizedRecord;
+            // Build up the path for nested routes if the child isn't an absolute
+            // route. Only add the / delimiter if the child path isn't empty and if the
+            // parent path doesn't have a trailing slash
+            if (parent && path[0] !== '/') {
+                const parentPath = parent.record.path;
+                const connectingSlash = parentPath[parentPath.length - 1] === '/' ? '' : '/';
+                normalizedRecord.path =
+                    parent.record.path + (path && connectingSlash + path);
+            }
+            // create the object beforehand, so it can be passed to children
+            matcher = createRouteRecordMatcher(normalizedRecord, parent, options);
+            // if we are an alias we must tell the original record that we exist,
+            // so we can be removed
+            if (originalRecord) {
+                originalRecord.alias.push(matcher);
+            }
+            else {
+                // otherwise, the first record is the original and others are aliases
+                originalMatcher = originalMatcher || matcher;
+                if (originalMatcher !== matcher)
+                    originalMatcher.alias.push(matcher);
+                // remove the route if named and only for the top record (avoid in nested calls)
+                // this works because the original record is the first one
+                if (isRootAdd && record.name && !isAliasRecord(matcher))
+                    removeRoute(record.name);
+            }
+            // Avoid adding a record that doesn't display anything. This allows passing through records without a component to
+            // not be reached and pass through the catch all route
+            if (isMatchable(matcher)) {
+                insertMatcher(matcher);
+            }
+            if (mainNormalizedRecord.children) {
+                const children = mainNormalizedRecord.children;
+                for (let i = 0; i < children.length; i++) {
+                    addRoute(children[i], matcher, originalRecord && originalRecord.children[i]);
+                }
+            }
+            // if there was no original record, then the first one was not an alias and all
+            // other aliases (if any) need to reference this record when adding children
+            originalRecord = originalRecord || matcher;
+            // TODO: add normalized records for more flexibility
+            // if (parent && isAliasRecord(originalRecord)) {
+            //   parent.children.push(originalRecord)
+            // }
+        }
+        return originalMatcher
+            ? () => {
+                // since other matchers are aliases, they should be removed by the original matcher
+                removeRoute(originalMatcher);
+            }
+            : noop;
+    }
+    function removeRoute(matcherRef) {
+        if (isRouteName(matcherRef)) {
+            const matcher = matcherMap.get(matcherRef);
+            if (matcher) {
+                matcherMap.delete(matcherRef);
+                matchers.splice(matchers.indexOf(matcher), 1);
+                matcher.children.forEach(removeRoute);
+                matcher.alias.forEach(removeRoute);
+            }
+        }
+        else {
+            const index = matchers.indexOf(matcherRef);
+            if (index > -1) {
+                matchers.splice(index, 1);
+                if (matcherRef.record.name)
+                    matcherMap.delete(matcherRef.record.name);
+                matcherRef.children.forEach(removeRoute);
+                matcherRef.alias.forEach(removeRoute);
+            }
+        }
+    }
+    function getRoutes() {
+        return matchers;
+    }
+    function insertMatcher(matcher) {
+        const index = findInsertionIndex(matcher, matchers);
+        matchers.splice(index, 0, matcher);
+        // only add the original record to the name map
+        if (matcher.record.name && !isAliasRecord(matcher))
+            matcherMap.set(matcher.record.name, matcher);
+    }
+    function resolve(location, currentLocation) {
+        let matcher;
+        let params = {};
+        let path;
+        let name;
+        if ('name' in location && location.name) {
+            matcher = matcherMap.get(location.name);
+            if (!matcher)
+                throw createRouterError(1 /* ErrorTypes.MATCHER_NOT_FOUND */, {
+                    location,
+                });
+            name = matcher.record.name;
+            params = assign$2(
+            // paramsFromLocation is a new object
+            paramsFromLocation(currentLocation.params, 
+            // only keep params that exist in the resolved location
+            // only keep optional params coming from a parent record
+            matcher.keys
+                .filter(k => !k.optional)
+                .concat(matcher.parent ? matcher.parent.keys.filter(k => k.optional) : [])
+                .map(k => k.name)), 
+            // discard any existing params in the current location that do not exist here
+            // #1497 this ensures better active/exact matching
+            location.params &&
+                paramsFromLocation(location.params, matcher.keys.map(k => k.name)));
+            // throws if cannot be stringified
+            path = matcher.stringify(params);
+        }
+        else if (location.path != null) {
+            // no need to resolve the path with the matcher as it was provided
+            // this also allows the user to control the encoding
+            path = location.path;
+            matcher = matchers.find(m => m.re.test(path));
+            // matcher should have a value after the loop
+            if (matcher) {
+                // we know the matcher works because we tested the regexp
+                params = matcher.parse(path);
+                name = matcher.record.name;
+            }
+            // location is a relative path
+        }
+        else {
+            // match by name or path of current route
+            matcher = currentLocation.name
+                ? matcherMap.get(currentLocation.name)
+                : matchers.find(m => m.re.test(currentLocation.path));
+            if (!matcher)
+                throw createRouterError(1 /* ErrorTypes.MATCHER_NOT_FOUND */, {
+                    location,
+                    currentLocation,
+                });
+            name = matcher.record.name;
+            // since we are navigating to the same location, we don't need to pick the
+            // params like when `name` is provided
+            params = assign$2({}, currentLocation.params, location.params);
+            path = matcher.stringify(params);
+        }
+        const matched = [];
+        let parentMatcher = matcher;
+        while (parentMatcher) {
+            // reversed order so parents are at the beginning
+            matched.unshift(parentMatcher.record);
+            parentMatcher = parentMatcher.parent;
+        }
+        return {
+            name,
+            path,
+            params,
+            matched,
+            meta: mergeMetaFields(matched),
+        };
+    }
+    // add initial routes
+    routes.forEach(route => addRoute(route));
+    function clearRoutes() {
+        matchers.length = 0;
+        matcherMap.clear();
+    }
+    return {
+        addRoute,
+        resolve,
+        removeRoute,
+        clearRoutes,
+        getRoutes,
+        getRecordMatcher,
+    };
+}
+function paramsFromLocation(params, keys) {
+    const newParams = {};
+    for (const key of keys) {
+        if (key in params)
+            newParams[key] = params[key];
+    }
+    return newParams;
+}
+/**
+ * Normalizes a RouteRecordRaw. Creates a copy
+ *
+ * @param record
+ * @returns the normalized version
+ */
+function normalizeRouteRecord(record) {
+    const normalized = {
+        path: record.path,
+        redirect: record.redirect,
+        name: record.name,
+        meta: record.meta || {},
+        aliasOf: record.aliasOf,
+        beforeEnter: record.beforeEnter,
+        props: normalizeRecordProps(record),
+        children: record.children || [],
+        instances: {},
+        leaveGuards: new Set(),
+        updateGuards: new Set(),
+        enterCallbacks: {},
+        // must be declared afterwards
+        // mods: {},
+        components: 'components' in record
+            ? record.components || null
+            : record.component && { default: record.component },
+    };
+    // mods contain modules and shouldn't be copied,
+    // logged or anything. It's just used for internal
+    // advanced use cases like data loaders
+    Object.defineProperty(normalized, 'mods', {
+        value: {},
+    });
+    return normalized;
+}
+/**
+ * Normalize the optional `props` in a record to always be an object similar to
+ * components. Also accept a boolean for components.
+ * @param record
+ */
+function normalizeRecordProps(record) {
+    const propsObject = {};
+    // props does not exist on redirect records, but we can set false directly
+    const props = record.props || false;
+    if ('component' in record) {
+        propsObject.default = props;
+    }
+    else {
+        // NOTE: we could also allow a function to be applied to every component.
+        // Would need user feedback for use cases
+        for (const name in record.components)
+            propsObject[name] = typeof props === 'object' ? props[name] : props;
+    }
+    return propsObject;
+}
+/**
+ * Checks if a record or any of its parent is an alias
+ * @param record
+ */
+function isAliasRecord(record) {
+    while (record) {
+        if (record.record.aliasOf)
+            return true;
+        record = record.parent;
+    }
+    return false;
+}
+/**
+ * Merge meta fields of an array of records
+ *
+ * @param matched - array of matched records
+ */
+function mergeMetaFields(matched) {
+    return matched.reduce((meta, record) => assign$2(meta, record.meta), {});
+}
+function mergeOptions(defaults, partialOptions) {
+    const options = {};
+    for (const key in defaults) {
+        options[key] = key in partialOptions ? partialOptions[key] : defaults[key];
+    }
+    return options;
+}
+/**
+ * Performs a binary search to find the correct insertion index for a new matcher.
+ *
+ * Matchers are primarily sorted by their score. If scores are tied then we also consider parent/child relationships,
+ * with descendants coming before ancestors. If there's still a tie, new routes are inserted after existing routes.
+ *
+ * @param matcher - new matcher to be inserted
+ * @param matchers - existing matchers
+ */
+function findInsertionIndex(matcher, matchers) {
+    // First phase: binary search based on score
+    let lower = 0;
+    let upper = matchers.length;
+    while (lower !== upper) {
+        const mid = (lower + upper) >> 1;
+        const sortOrder = comparePathParserScore(matcher, matchers[mid]);
+        if (sortOrder < 0) {
+            upper = mid;
+        }
+        else {
+            lower = mid + 1;
+        }
+    }
+    // Second phase: check for an ancestor with the same score
+    const insertionAncestor = getInsertionAncestor(matcher);
+    if (insertionAncestor) {
+        upper = matchers.lastIndexOf(insertionAncestor, upper - 1);
+    }
+    return upper;
+}
+function getInsertionAncestor(matcher) {
+    let ancestor = matcher;
+    while ((ancestor = ancestor.parent)) {
+        if (isMatchable(ancestor) &&
+            comparePathParserScore(matcher, ancestor) === 0) {
+            return ancestor;
+        }
+    }
+    return;
+}
+/**
+ * Checks if a matcher can be reachable. This means if it's possible to reach it as a route. For example, routes without
+ * a component, or name, or redirect, are just used to group other routes.
+ * @param matcher
+ * @param matcher.record record of the matcher
+ * @returns
+ */
+function isMatchable({ record }) {
+    return !!(record.name ||
+        (record.components && Object.keys(record.components).length) ||
+        record.redirect);
+}
+
+/**
+ * Transforms a queryString into a {@link LocationQuery} object. Accept both, a
+ * version with the leading `?` and without Should work as URLSearchParams
+
+ * @internal
+ *
+ * @param search - search string to parse
+ * @returns a query object
+ */
+function parseQuery$2(search) {
+    const query = {};
+    // avoid creating an object with an empty key and empty value
+    // because of split('&')
+    if (search === '' || search === '?')
+        return query;
+    const hasLeadingIM = search[0] === '?';
+    const searchParams = (hasLeadingIM ? search.slice(1) : search).split('&');
+    for (let i = 0; i < searchParams.length; ++i) {
+        // pre decode the + into space
+        const searchParam = searchParams[i].replace(PLUS_RE$2, ' ');
+        // allow the = character
+        const eqPos = searchParam.indexOf('=');
+        const key = decode$2(eqPos < 0 ? searchParam : searchParam.slice(0, eqPos));
+        const value = eqPos < 0 ? null : decode$2(searchParam.slice(eqPos + 1));
+        if (key in query) {
+            // an extra variable for ts types
+            let currentValue = query[key];
+            if (!isArray$2(currentValue)) {
+                currentValue = query[key] = [currentValue];
+            }
+            currentValue.push(value);
+        }
+        else {
+            query[key] = value;
+        }
+    }
+    return query;
+}
+/**
+ * Stringifies a {@link LocationQueryRaw} object. Like `URLSearchParams`, it
+ * doesn't prepend a `?`
+ *
+ * @internal
+ *
+ * @param query - query object to stringify
+ * @returns string version of the query without the leading `?`
+ */
+function stringifyQuery$1(query) {
+    let search = '';
+    for (let key in query) {
+        const value = query[key];
+        key = encodeQueryKey$1(key);
+        if (value == null) {
+            // only null adds the value
+            if (value !== undefined) {
+                search += (search.length ? '&' : '') + key;
+            }
+            continue;
+        }
+        // keep null values
+        const values = isArray$2(value)
+            ? value.map(v => v && encodeQueryValue$1(v))
+            : [value && encodeQueryValue$1(value)];
+        values.forEach(value => {
+            // skip undefined values in arrays as if they were not present
+            // smaller code than using filter
+            if (value !== undefined) {
+                // only append & with non-empty search
+                search += (search.length ? '&' : '') + key;
+                if (value != null)
+                    search += '=' + value;
+            }
+        });
+    }
+    return search;
+}
+/**
+ * Transforms a {@link LocationQueryRaw} into a {@link LocationQuery} by casting
+ * numbers into strings, removing keys with an undefined value and replacing
+ * undefined with null in arrays
+ *
+ * @param query - query object to normalize
+ * @returns a normalized query object
+ */
+function normalizeQuery(query) {
+    const normalizedQuery = {};
+    for (const key in query) {
+        const value = query[key];
+        if (value !== undefined) {
+            normalizedQuery[key] = isArray$2(value)
+                ? value.map(v => (v == null ? null : '' + v))
+                : value == null
+                    ? value
+                    : '' + value;
+        }
+    }
+    return normalizedQuery;
+}
+
+/**
+ * RouteRecord being rendered by the closest ancestor Router View. Used for
+ * `onBeforeRouteUpdate` and `onBeforeRouteLeave`. rvlm stands for Router View
+ * Location Matched
+ *
+ * @internal
+ */
+const matchedRouteKey = Symbol('');
+/**
+ * Allows overriding the router view depth to control which component in
+ * `matched` is rendered. rvd stands for Router View Depth
+ *
+ * @internal
+ */
+const viewDepthKey = Symbol('');
+/**
+ * Allows overriding the router instance returned by `useRouter` in tests. r
+ * stands for router
+ *
+ * @internal
+ */
+const routerKey = Symbol('');
+/**
+ * Allows overriding the current route returned by `useRoute` in tests. rl
+ * stands for route location
+ *
+ * @internal
+ */
+const routeLocationKey = Symbol('');
+/**
+ * Allows overriding the current route used by router-view. Internally this is
+ * used when the `route` prop is passed.
+ *
+ * @internal
+ */
+const routerViewLocationKey = Symbol('');
+
+/**
+ * Create a list of callbacks that can be reset. Used to create before and after navigation guards list
+ */
+function useCallbacks() {
+    let handlers = [];
+    function add(handler) {
+        handlers.push(handler);
+        return () => {
+            const i = handlers.indexOf(handler);
+            if (i > -1)
+                handlers.splice(i, 1);
+        };
+    }
+    function reset() {
+        handlers = [];
+    }
+    return {
+        add,
+        list: () => handlers.slice(),
+        reset,
+    };
+}
+function guardToPromiseFn(guard, to, from, record, name, runWithContext = fn => fn()) {
+    // keep a reference to the enterCallbackArray to prevent pushing callbacks if a new navigation took place
+    const enterCallbackArray = record &&
+        // name is defined if record is because of the function overload
+        (record.enterCallbacks[name] = record.enterCallbacks[name] || []);
+    return () => new Promise((resolve, reject) => {
+        const next = (valid) => {
+            if (valid === false) {
+                reject(createRouterError(4 /* ErrorTypes.NAVIGATION_ABORTED */, {
+                    from,
+                    to,
+                }));
+            }
+            else if (valid instanceof Error) {
+                reject(valid);
+            }
+            else if (isRouteLocation(valid)) {
+                reject(createRouterError(2 /* ErrorTypes.NAVIGATION_GUARD_REDIRECT */, {
+                    from: to,
+                    to: valid,
+                }));
+            }
+            else {
+                if (enterCallbackArray &&
+                    // since enterCallbackArray is truthy, both record and name also are
+                    record.enterCallbacks[name] === enterCallbackArray &&
+                    typeof valid === 'function') {
+                    enterCallbackArray.push(valid);
+                }
+                resolve();
+            }
+        };
+        // wrapping with Promise.resolve allows it to work with both async and sync guards
+        const guardReturn = runWithContext(() => guard.call(record && record.instances[name], to, from, next));
+        let guardCall = Promise.resolve(guardReturn);
+        if (guard.length < 3)
+            guardCall = guardCall.then(next);
+        guardCall.catch(err => reject(err));
+    });
+}
+function extractComponentsGuards(matched, guardType, to, from, runWithContext = fn => fn()) {
+    const guards = [];
+    for (const record of matched) {
+        for (const name in record.components) {
+            let rawComponent = record.components[name];
+            // skip update and leave guards if the route component is not mounted
+            if (guardType !== 'beforeRouteEnter' && !record.instances[name])
+                continue;
+            if (isRouteComponent(rawComponent)) {
+                // __vccOpts is added by vue-class-component and contain the regular options
+                const options = rawComponent.__vccOpts || rawComponent;
+                const guard = options[guardType];
+                guard &&
+                    guards.push(guardToPromiseFn(guard, to, from, record, name, runWithContext));
+            }
+            else {
+                // start requesting the chunk already
+                let componentPromise = rawComponent();
+                guards.push(() => componentPromise.then(resolved => {
+                    if (!resolved)
+                        throw new Error(`Couldn't resolve component "${name}" at "${record.path}"`);
+                    const resolvedComponent = isESModule(resolved)
+                        ? resolved.default
+                        : resolved;
+                    // keep the resolved module for plugins like data loaders
+                    record.mods[name] = resolved;
+                    // replace the function with the resolved component
+                    // cannot be null or undefined because we went into the for loop
+                    record.components[name] = resolvedComponent;
+                    // __vccOpts is added by vue-class-component and contain the regular options
+                    const options = resolvedComponent.__vccOpts || resolvedComponent;
+                    const guard = options[guardType];
+                    return (guard &&
+                        guardToPromiseFn(guard, to, from, record, name, runWithContext)());
+                }));
+            }
+        }
+    }
+    return guards;
+}
+
+// TODO: we could allow currentRoute as a prop to expose `isActive` and
+// `isExactActive` behavior should go through an RFC
+/**
+ * Returns the internal behavior of a {@link RouterLink} without the rendering part.
+ *
+ * @param props - a `to` location and an optional `replace` flag
+ */
+function useLink(props) {
+    const router = vueExports.inject(routerKey);
+    const currentRoute = vueExports.inject(routeLocationKey);
+    const route = vueExports.computed(() => {
+        const to = vueExports.unref(props.to);
+        return router.resolve(to);
+    });
+    const activeRecordIndex = vueExports.computed(() => {
+        const { matched } = route.value;
+        const { length } = matched;
+        const routeMatched = matched[length - 1];
+        const currentMatched = currentRoute.matched;
+        if (!routeMatched || !currentMatched.length)
+            return -1;
+        const index = currentMatched.findIndex(isSameRouteRecord.bind(null, routeMatched));
+        if (index > -1)
+            return index;
+        // possible parent record
+        const parentRecordPath = getOriginalPath(matched[length - 2]);
+        return (
+        // we are dealing with nested routes
+        length > 1 &&
+            // if the parent and matched route have the same path, this link is
+            // referring to the empty child. Or we currently are on a different
+            // child of the same parent
+            getOriginalPath(routeMatched) === parentRecordPath &&
+            // avoid comparing the child with its parent
+            currentMatched[currentMatched.length - 1].path !== parentRecordPath
+            ? currentMatched.findIndex(isSameRouteRecord.bind(null, matched[length - 2]))
+            : index);
+    });
+    const isActive = vueExports.computed(() => activeRecordIndex.value > -1 &&
+        includesParams(currentRoute.params, route.value.params));
+    const isExactActive = vueExports.computed(() => activeRecordIndex.value > -1 &&
+        activeRecordIndex.value === currentRoute.matched.length - 1 &&
+        isSameRouteLocationParams(currentRoute.params, route.value.params));
+    function navigate(e = {}) {
+        if (guardEvent(e)) {
+            return router[vueExports.unref(props.replace) ? 'replace' : 'push'](vueExports.unref(props.to)
+            // avoid uncaught errors are they are logged anyway
+            ).catch(noop);
+        }
+        return Promise.resolve();
+    }
+    /**
+     * NOTE: update {@link _RouterLinkI}'s `$slots` type when updating this
+     */
+    return {
+        route,
+        href: vueExports.computed(() => route.value.href),
+        isActive,
+        isExactActive,
+        navigate,
+    };
+}
+const RouterLinkImpl = /*#__PURE__*/ vueExports.defineComponent({
+    name: 'RouterLink',
+    compatConfig: { MODE: 3 },
+    props: {
+        to: {
+            type: [String, Object],
+            required: true,
+        },
+        replace: Boolean,
+        activeClass: String,
+        // inactiveClass: String,
+        exactActiveClass: String,
+        custom: Boolean,
+        ariaCurrentValue: {
+            type: String,
+            default: 'page',
+        },
+    },
+    useLink,
+    setup(props, { slots }) {
+        const link = vueExports.reactive(useLink(props));
+        const { options } = vueExports.inject(routerKey);
+        const elClass = vueExports.computed(() => ({
+            [getLinkClass(props.activeClass, options.linkActiveClass, 'router-link-active')]: link.isActive,
+            // [getLinkClass(
+            //   props.inactiveClass,
+            //   options.linkInactiveClass,
+            //   'router-link-inactive'
+            // )]: !link.isExactActive,
+            [getLinkClass(props.exactActiveClass, options.linkExactActiveClass, 'router-link-exact-active')]: link.isExactActive,
+        }));
+        return () => {
+            const children = slots.default && slots.default(link);
+            return props.custom
+                ? children
+                : vueExports.h('a', {
+                    'aria-current': link.isExactActive
+                        ? props.ariaCurrentValue
+                        : null,
+                    href: link.href,
+                    // this would override user added attrs but Vue will still add
+                    // the listener, so we end up triggering both
+                    onClick: link.navigate,
+                    class: elClass.value,
+                }, children);
+        };
+    },
+});
+// export the public type for h/tsx inference
+// also to avoid inline import() in generated d.ts files
+/**
+ * Component to render a link that triggers a navigation on click.
+ */
+const RouterLink = RouterLinkImpl;
+function guardEvent(e) {
+    // don't redirect with control keys
+    if (e.metaKey || e.altKey || e.ctrlKey || e.shiftKey)
+        return;
+    // don't redirect when preventDefault called
+    if (e.defaultPrevented)
+        return;
+    // don't redirect on right click
+    if (e.button !== undefined && e.button !== 0)
+        return;
+    // don't redirect if `target="_blank"`
+    // @ts-expect-error getAttribute does exist
+    if (e.currentTarget && e.currentTarget.getAttribute) {
+        // @ts-expect-error getAttribute exists
+        const target = e.currentTarget.getAttribute('target');
+        if (/\b_blank\b/i.test(target))
+            return;
+    }
+    // this may be a Weex event which doesn't have this method
+    if (e.preventDefault)
+        e.preventDefault();
+    return true;
+}
+function includesParams(outer, inner) {
+    for (const key in inner) {
+        const innerValue = inner[key];
+        const outerValue = outer[key];
+        if (typeof innerValue === 'string') {
+            if (innerValue !== outerValue)
+                return false;
+        }
+        else {
+            if (!isArray$2(outerValue) ||
+                outerValue.length !== innerValue.length ||
+                innerValue.some((value, i) => value !== outerValue[i]))
+                return false;
+        }
+    }
+    return true;
+}
+/**
+ * Get the original path value of a record by following its aliasOf
+ * @param record
+ */
+function getOriginalPath(record) {
+    return record ? (record.aliasOf ? record.aliasOf.path : record.path) : '';
+}
+/**
+ * Utility class to get the active class based on defaults.
+ * @param propClass
+ * @param globalClass
+ * @param defaultClass
+ */
+const getLinkClass = (propClass, globalClass, defaultClass) => propClass != null
+    ? propClass
+    : globalClass != null
+        ? globalClass
+        : defaultClass;
+
+const RouterViewImpl = /*#__PURE__*/ vueExports.defineComponent({
+    name: 'RouterView',
+    // #674 we manually inherit them
+    inheritAttrs: false,
+    props: {
+        name: {
+            type: String,
+            default: 'default',
+        },
+        route: Object,
+    },
+    // Better compat for @vue/compat users
+    // https://github.com/vuejs/router/issues/1315
+    compatConfig: { MODE: 3 },
+    setup(props, { attrs, slots }) {
+        const injectedRoute = vueExports.inject(routerViewLocationKey);
+        const routeToDisplay = vueExports.computed(() => props.route || injectedRoute.value);
+        const injectedDepth = vueExports.inject(viewDepthKey, 0);
+        // The depth changes based on empty components option, which allows passthrough routes e.g. routes with children
+        // that are used to reuse the `path` property
+        const depth = vueExports.computed(() => {
+            let initialDepth = vueExports.unref(injectedDepth);
+            const { matched } = routeToDisplay.value;
+            let matchedRoute;
+            while ((matchedRoute = matched[initialDepth]) &&
+                !matchedRoute.components) {
+                initialDepth++;
+            }
+            return initialDepth;
+        });
+        const matchedRouteRef = vueExports.computed(() => routeToDisplay.value.matched[depth.value]);
+        vueExports.provide(viewDepthKey, vueExports.computed(() => depth.value + 1));
+        vueExports.provide(matchedRouteKey, matchedRouteRef);
+        vueExports.provide(routerViewLocationKey, routeToDisplay);
+        const viewRef = vueExports.ref();
+        // watch at the same time the component instance, the route record we are
+        // rendering, and the name
+        vueExports.watch(() => [viewRef.value, matchedRouteRef.value, props.name], ([instance, to, name], [oldInstance, from, oldName]) => {
+            // copy reused instances
+            if (to) {
+                // this will update the instance for new instances as well as reused
+                // instances when navigating to a new route
+                to.instances[name] = instance;
+                // the component instance is reused for a different route or name, so
+                // we copy any saved update or leave guards. With async setup, the
+                // mounting component will mount before the matchedRoute changes,
+                // making instance === oldInstance, so we check if guards have been
+                // added before. This works because we remove guards when
+                // unmounting/deactivating components
+                if (from && from !== to && instance && instance === oldInstance) {
+                    if (!to.leaveGuards.size) {
+                        to.leaveGuards = from.leaveGuards;
+                    }
+                    if (!to.updateGuards.size) {
+                        to.updateGuards = from.updateGuards;
+                    }
+                }
+            }
+            // trigger beforeRouteEnter next callbacks
+            if (instance &&
+                to &&
+                // if there is no instance but to and from are the same this might be
+                // the first visit
+                (!from || !isSameRouteRecord(to, from) || !oldInstance)) {
+                (to.enterCallbacks[name] || []).forEach(callback => callback(instance));
+            }
+        }, { flush: 'post' });
+        return () => {
+            const route = routeToDisplay.value;
+            // we need the value at the time we render because when we unmount, we
+            // navigated to a different location so the value is different
+            const currentName = props.name;
+            const matchedRoute = matchedRouteRef.value;
+            const ViewComponent = matchedRoute && matchedRoute.components[currentName];
+            if (!ViewComponent) {
+                return normalizeSlot(slots.default, { Component: ViewComponent, route });
+            }
+            // props from route configuration
+            const routePropsOption = matchedRoute.props[currentName];
+            const routeProps = routePropsOption
+                ? routePropsOption === true
+                    ? route.params
+                    : typeof routePropsOption === 'function'
+                        ? routePropsOption(route)
+                        : routePropsOption
+                : null;
+            const onVnodeUnmounted = vnode => {
+                // remove the instance reference to prevent leak
+                if (vnode.component.isUnmounted) {
+                    matchedRoute.instances[currentName] = null;
+                }
+            };
+            const component = vueExports.h(ViewComponent, assign$2({}, routeProps, attrs, {
+                onVnodeUnmounted,
+                ref: viewRef,
+            }));
+            return (
+            // pass the vnode to the slot as a prop.
+            // h and <component :is="..."> both accept vnodes
+            normalizeSlot(slots.default, { Component: component, route }) ||
+                component);
+        };
+    },
+});
+function normalizeSlot(slot, data) {
+    if (!slot)
+        return null;
+    const slotContent = slot(data);
+    return slotContent.length === 1 ? slotContent[0] : slotContent;
+}
+// export the public type for h/tsx inference
+// also to avoid inline import() in generated d.ts files
+/**
+ * Component to display the current route the user is at.
+ */
+const RouterView = RouterViewImpl;
+
+/**
+ * Creates a Router instance that can be used by a Vue app.
+ *
+ * @param options - {@link RouterOptions}
+ */
+function createRouter(options) {
+    const matcher = createRouterMatcher(options.routes, options);
+    const parseQuery$1 = options.parseQuery || parseQuery$2;
+    const stringifyQuery$1$1 = options.stringifyQuery || stringifyQuery$1;
+    const routerHistory = options.history;
+    const beforeGuards = useCallbacks();
+    const beforeResolveGuards = useCallbacks();
+    const afterGuards = useCallbacks();
+    const currentRoute = vueExports.shallowRef(START_LOCATION_NORMALIZED);
+    let pendingLocation = START_LOCATION_NORMALIZED;
+    // leave the scrollRestoration if no scrollBehavior is provided
+    if (isBrowser && options.scrollBehavior && 'scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+    const normalizeParams = applyToParams.bind(null, paramValue => '' + paramValue);
+    const encodeParams = applyToParams.bind(null, encodeParam$1);
+    const decodeParams = 
+    // @ts-expect-error: intentionally avoid the type check
+    applyToParams.bind(null, decode$2);
+    function addRoute(parentOrRoute, route) {
+        let parent;
+        let record;
+        if (isRouteName(parentOrRoute)) {
+            parent = matcher.getRecordMatcher(parentOrRoute);
+            record = route;
+        }
+        else {
+            record = parentOrRoute;
+        }
+        return matcher.addRoute(record, parent);
+    }
+    function removeRoute(name) {
+        const recordMatcher = matcher.getRecordMatcher(name);
+        if (recordMatcher) {
+            matcher.removeRoute(recordMatcher);
+        }
+    }
+    function getRoutes() {
+        return matcher.getRoutes().map(routeMatcher => routeMatcher.record);
+    }
+    function hasRoute(name) {
+        return !!matcher.getRecordMatcher(name);
+    }
+    function resolve(rawLocation, currentLocation) {
+        // const resolve: Router['resolve'] = (rawLocation: RouteLocationRaw, currentLocation) => {
+        // const objectLocation = routerLocationAsObject(rawLocation)
+        // we create a copy to modify it later
+        currentLocation = assign$2({}, currentLocation || currentRoute.value);
+        if (typeof rawLocation === 'string') {
+            const locationNormalized = parseURL$1(parseQuery$1, rawLocation, currentLocation.path);
+            const matchedRoute = matcher.resolve({ path: locationNormalized.path }, currentLocation);
+            const href = routerHistory.createHref(locationNormalized.fullPath);
+            // locationNormalized is always a new object
+            return assign$2(locationNormalized, matchedRoute, {
+                params: decodeParams(matchedRoute.params),
+                hash: decode$2(locationNormalized.hash),
+                redirectedFrom: undefined,
+                href,
+            });
+        }
+        let matcherLocation;
+        // path could be relative in object as well
+        if (rawLocation.path != null) {
+            matcherLocation = assign$2({}, rawLocation, {
+                path: parseURL$1(parseQuery$1, rawLocation.path, currentLocation.path).path,
+            });
+        }
+        else {
+            // remove any nullish param
+            const targetParams = assign$2({}, rawLocation.params);
+            for (const key in targetParams) {
+                if (targetParams[key] == null) {
+                    delete targetParams[key];
+                }
+            }
+            // pass encoded values to the matcher, so it can produce encoded path and fullPath
+            matcherLocation = assign$2({}, rawLocation, {
+                params: encodeParams(targetParams),
+            });
+            // current location params are decoded, we need to encode them in case the
+            // matcher merges the params
+            currentLocation.params = encodeParams(currentLocation.params);
+        }
+        const matchedRoute = matcher.resolve(matcherLocation, currentLocation);
+        const hash = rawLocation.hash || '';
+        // the matcher might have merged current location params, so
+        // we need to run the decoding again
+        matchedRoute.params = normalizeParams(decodeParams(matchedRoute.params));
+        const fullPath = stringifyURL(stringifyQuery$1$1, assign$2({}, rawLocation, {
+            hash: encodeHash(hash),
+            path: matchedRoute.path,
+        }));
+        const href = routerHistory.createHref(fullPath);
+        return assign$2({
+            fullPath,
+            // keep the hash encoded so fullPath is effectively path + encodedQuery +
+            // hash
+            hash,
+            query: 
+            // if the user is using a custom query lib like qs, we might have
+            // nested objects, so we keep the query as is, meaning it can contain
+            // numbers at `$route.query`, but at the point, the user will have to
+            // use their own type anyway.
+            // https://github.com/vuejs/router/issues/328#issuecomment-649481567
+            stringifyQuery$1$1 === stringifyQuery$1
+                ? normalizeQuery(rawLocation.query)
+                : (rawLocation.query || {}),
+        }, matchedRoute, {
+            redirectedFrom: undefined,
+            href,
+        });
+    }
+    function locationAsObject(to) {
+        return typeof to === 'string'
+            ? parseURL$1(parseQuery$1, to, currentRoute.value.path)
+            : assign$2({}, to);
+    }
+    function checkCanceledNavigation(to, from) {
+        if (pendingLocation !== to) {
+            return createRouterError(8 /* ErrorTypes.NAVIGATION_CANCELLED */, {
+                from,
+                to,
+            });
+        }
+    }
+    function push(to) {
+        return pushWithRedirect(to);
+    }
+    function replace(to) {
+        return push(assign$2(locationAsObject(to), { replace: true }));
+    }
+    function handleRedirectRecord(to) {
+        const lastMatched = to.matched[to.matched.length - 1];
+        if (lastMatched && lastMatched.redirect) {
+            const { redirect } = lastMatched;
+            let newTargetLocation = typeof redirect === 'function' ? redirect(to) : redirect;
+            if (typeof newTargetLocation === 'string') {
+                newTargetLocation =
+                    newTargetLocation.includes('?') || newTargetLocation.includes('#')
+                        ? (newTargetLocation = locationAsObject(newTargetLocation))
+                        : // force empty params
+                            { path: newTargetLocation };
+                // @ts-expect-error: force empty params when a string is passed to let
+                // the router parse them again
+                newTargetLocation.params = {};
+            }
+            return assign$2({
+                query: to.query,
+                hash: to.hash,
+                // avoid transferring params if the redirect has a path
+                params: newTargetLocation.path != null ? {} : to.params,
+            }, newTargetLocation);
+        }
+    }
+    function pushWithRedirect(to, redirectedFrom) {
+        const targetLocation = (pendingLocation = resolve(to));
+        const from = currentRoute.value;
+        const data = to.state;
+        const force = to.force;
+        // to could be a string where `replace` is a function
+        const replace = to.replace === true;
+        const shouldRedirect = handleRedirectRecord(targetLocation);
+        if (shouldRedirect)
+            return pushWithRedirect(assign$2(locationAsObject(shouldRedirect), {
+                state: typeof shouldRedirect === 'object'
+                    ? assign$2({}, data, shouldRedirect.state)
+                    : data,
+                force,
+                replace,
+            }), 
+            // keep original redirectedFrom if it exists
+            redirectedFrom || targetLocation);
+        // if it was a redirect we already called `pushWithRedirect` above
+        const toLocation = targetLocation;
+        toLocation.redirectedFrom = redirectedFrom;
+        let failure;
+        if (!force && isSameRouteLocation(stringifyQuery$1$1, from, targetLocation)) {
+            failure = createRouterError(16 /* ErrorTypes.NAVIGATION_DUPLICATED */, { to: toLocation, from });
+            // trigger scroll to allow scrolling to the same anchor
+            handleScroll(from, from, 
+            // this is a push, the only way for it to be triggered from a
+            // history.listen is with a redirect, which makes it become a push
+            true, 
+            // This cannot be the first navigation because the initial location
+            // cannot be manually navigated to
+            false);
+        }
+        return (failure ? Promise.resolve(failure) : navigate(toLocation, from))
+            .catch((error) => isNavigationFailure(error)
+            ? // navigation redirects still mark the router as ready
+                isNavigationFailure(error, 2 /* ErrorTypes.NAVIGATION_GUARD_REDIRECT */)
+                    ? error
+                    : markAsReady(error) // also returns the error
+            : // reject any unknown error
+                triggerError(error, toLocation, from))
+            .then((failure) => {
+            if (failure) {
+                if (isNavigationFailure(failure, 2 /* ErrorTypes.NAVIGATION_GUARD_REDIRECT */)) {
+                    return pushWithRedirect(
+                    // keep options
+                    assign$2({
+                        // preserve an existing replacement but allow the redirect to override it
+                        replace,
+                    }, locationAsObject(failure.to), {
+                        state: typeof failure.to === 'object'
+                            ? assign$2({}, data, failure.to.state)
+                            : data,
+                        force,
+                    }), 
+                    // preserve the original redirectedFrom if any
+                    redirectedFrom || toLocation);
+                }
+            }
+            else {
+                // if we fail we don't finalize the navigation
+                failure = finalizeNavigation(toLocation, from, true, replace, data);
+            }
+            triggerAfterEach(toLocation, from, failure);
+            return failure;
+        });
+    }
+    /**
+     * Helper to reject and skip all navigation guards if a new navigation happened
+     * @param to
+     * @param from
+     */
+    function checkCanceledNavigationAndReject(to, from) {
+        const error = checkCanceledNavigation(to, from);
+        return error ? Promise.reject(error) : Promise.resolve();
+    }
+    function runWithContext(fn) {
+        const app = installedApps.values().next().value;
+        // support Vue < 3.3
+        return app && typeof app.runWithContext === 'function'
+            ? app.runWithContext(fn)
+            : fn();
+    }
+    // TODO: refactor the whole before guards by internally using router.beforeEach
+    function navigate(to, from) {
+        let guards;
+        const [leavingRecords, updatingRecords, enteringRecords] = extractChangingRecords(to, from);
+        // all components here have been resolved once because we are leaving
+        guards = extractComponentsGuards(leavingRecords.reverse(), 'beforeRouteLeave', to, from);
+        // leavingRecords is already reversed
+        for (const record of leavingRecords) {
+            record.leaveGuards.forEach(guard => {
+                guards.push(guardToPromiseFn(guard, to, from));
+            });
+        }
+        const canceledNavigationCheck = checkCanceledNavigationAndReject.bind(null, to, from);
+        guards.push(canceledNavigationCheck);
+        // run the queue of per route beforeRouteLeave guards
+        return (runGuardQueue(guards)
+            .then(() => {
+            // check global guards beforeEach
+            guards = [];
+            for (const guard of beforeGuards.list()) {
+                guards.push(guardToPromiseFn(guard, to, from));
+            }
+            guards.push(canceledNavigationCheck);
+            return runGuardQueue(guards);
+        })
+            .then(() => {
+            // check in components beforeRouteUpdate
+            guards = extractComponentsGuards(updatingRecords, 'beforeRouteUpdate', to, from);
+            for (const record of updatingRecords) {
+                record.updateGuards.forEach(guard => {
+                    guards.push(guardToPromiseFn(guard, to, from));
+                });
+            }
+            guards.push(canceledNavigationCheck);
+            // run the queue of per route beforeEnter guards
+            return runGuardQueue(guards);
+        })
+            .then(() => {
+            // check the route beforeEnter
+            guards = [];
+            for (const record of enteringRecords) {
+                // do not trigger beforeEnter on reused views
+                if (record.beforeEnter) {
+                    if (isArray$2(record.beforeEnter)) {
+                        for (const beforeEnter of record.beforeEnter)
+                            guards.push(guardToPromiseFn(beforeEnter, to, from));
+                    }
+                    else {
+                        guards.push(guardToPromiseFn(record.beforeEnter, to, from));
+                    }
+                }
+            }
+            guards.push(canceledNavigationCheck);
+            // run the queue of per route beforeEnter guards
+            return runGuardQueue(guards);
+        })
+            .then(() => {
+            // NOTE: at this point to.matched is normalized and does not contain any () => Promise<Component>
+            // clear existing enterCallbacks, these are added by extractComponentsGuards
+            to.matched.forEach(record => (record.enterCallbacks = {}));
+            // check in-component beforeRouteEnter
+            guards = extractComponentsGuards(enteringRecords, 'beforeRouteEnter', to, from, runWithContext);
+            guards.push(canceledNavigationCheck);
+            // run the queue of per route beforeEnter guards
+            return runGuardQueue(guards);
+        })
+            .then(() => {
+            // check global guards beforeResolve
+            guards = [];
+            for (const guard of beforeResolveGuards.list()) {
+                guards.push(guardToPromiseFn(guard, to, from));
+            }
+            guards.push(canceledNavigationCheck);
+            return runGuardQueue(guards);
+        })
+            // catch any navigation canceled
+            .catch(err => isNavigationFailure(err, 8 /* ErrorTypes.NAVIGATION_CANCELLED */)
+            ? err
+            : Promise.reject(err)));
+    }
+    function triggerAfterEach(to, from, failure) {
+        // navigation is confirmed, call afterGuards
+        // TODO: wrap with error handlers
+        afterGuards
+            .list()
+            .forEach(guard => runWithContext(() => guard(to, from, failure)));
+    }
+    /**
+     * - Cleans up any navigation guards
+     * - Changes the url if necessary
+     * - Calls the scrollBehavior
+     */
+    function finalizeNavigation(toLocation, from, isPush, replace, data) {
+        // a more recent navigation took place
+        const error = checkCanceledNavigation(toLocation, from);
+        if (error)
+            return error;
+        // only consider as push if it's not the first navigation
+        const isFirstNavigation = from === START_LOCATION_NORMALIZED;
+        const state = !isBrowser ? {} : history.state;
+        // change URL only if the user did a push/replace and if it's not the initial navigation because
+        // it's just reflecting the url
+        if (isPush) {
+            // on the initial navigation, we want to reuse the scroll position from
+            // history state if it exists
+            if (replace || isFirstNavigation)
+                routerHistory.replace(toLocation.fullPath, assign$2({
+                    scroll: isFirstNavigation && state && state.scroll,
+                }, data));
+            else
+                routerHistory.push(toLocation.fullPath, data);
+        }
+        // accept current navigation
+        currentRoute.value = toLocation;
+        handleScroll(toLocation, from, isPush, isFirstNavigation);
+        markAsReady();
+    }
+    let removeHistoryListener;
+    // attach listener to history to trigger navigations
+    function setupListeners() {
+        // avoid setting up listeners twice due to an invalid first navigation
+        if (removeHistoryListener)
+            return;
+        removeHistoryListener = routerHistory.listen((to, _from, info) => {
+            if (!router.listening)
+                return;
+            // cannot be a redirect route because it was in history
+            const toLocation = resolve(to);
+            // due to dynamic routing, and to hash history with manual navigation
+            // (manually changing the url or calling history.hash = '#/somewhere'),
+            // there could be a redirect record in history
+            const shouldRedirect = handleRedirectRecord(toLocation);
+            if (shouldRedirect) {
+                pushWithRedirect(assign$2(shouldRedirect, { replace: true }), toLocation).catch(noop);
+                return;
+            }
+            pendingLocation = toLocation;
+            const from = currentRoute.value;
+            // TODO: should be moved to web history?
+            if (isBrowser) {
+                saveScrollPosition(getScrollKey(from.fullPath, info.delta), computeScrollPosition());
+            }
+            navigate(toLocation, from)
+                .catch((error) => {
+                if (isNavigationFailure(error, 4 /* ErrorTypes.NAVIGATION_ABORTED */ | 8 /* ErrorTypes.NAVIGATION_CANCELLED */)) {
+                    return error;
+                }
+                if (isNavigationFailure(error, 2 /* ErrorTypes.NAVIGATION_GUARD_REDIRECT */)) {
+                    // Here we could call if (info.delta) routerHistory.go(-info.delta,
+                    // false) but this is bug prone as we have no way to wait the
+                    // navigation to be finished before calling pushWithRedirect. Using
+                    // a setTimeout of 16ms seems to work but there is no guarantee for
+                    // it to work on every browser. So instead we do not restore the
+                    // history entry and trigger a new navigation as requested by the
+                    // navigation guard.
+                    // the error is already handled by router.push we just want to avoid
+                    // logging the error
+                    pushWithRedirect(error.to, toLocation
+                    // avoid an uncaught rejection, let push call triggerError
+                    )
+                        .then(failure => {
+                        // manual change in hash history #916 ending up in the URL not
+                        // changing, but it was changed by the manual url change, so we
+                        // need to manually change it ourselves
+                        if (isNavigationFailure(failure, 4 /* ErrorTypes.NAVIGATION_ABORTED */ |
+                            16 /* ErrorTypes.NAVIGATION_DUPLICATED */) &&
+                            !info.delta &&
+                            info.type === NavigationType.pop) {
+                            routerHistory.go(-1, false);
+                        }
+                    })
+                        .catch(noop);
+                    // avoid the then branch
+                    return Promise.reject();
+                }
+                // do not restore history on unknown direction
+                if (info.delta) {
+                    routerHistory.go(-info.delta, false);
+                }
+                // unrecognized error, transfer to the global handler
+                return triggerError(error, toLocation, from);
+            })
+                .then((failure) => {
+                failure =
+                    failure ||
+                        finalizeNavigation(
+                        // after navigation, all matched components are resolved
+                        toLocation, from, false);
+                // revert the navigation
+                if (failure) {
+                    if (info.delta &&
+                        // a new navigation has been triggered, so we do not want to revert, that will change the current history
+                        // entry while a different route is displayed
+                        !isNavigationFailure(failure, 8 /* ErrorTypes.NAVIGATION_CANCELLED */)) {
+                        routerHistory.go(-info.delta, false);
+                    }
+                    else if (info.type === NavigationType.pop &&
+                        isNavigationFailure(failure, 4 /* ErrorTypes.NAVIGATION_ABORTED */ | 16 /* ErrorTypes.NAVIGATION_DUPLICATED */)) {
+                        // manual change in hash history #916
+                        // it's like a push but lacks the information of the direction
+                        routerHistory.go(-1, false);
+                    }
+                }
+                triggerAfterEach(toLocation, from, failure);
+            })
+                // avoid warnings in the console about uncaught rejections, they are logged by triggerErrors
+                .catch(noop);
+        });
+    }
+    // Initialization and Errors
+    let readyHandlers = useCallbacks();
+    let errorListeners = useCallbacks();
+    let ready;
+    /**
+     * Trigger errorListeners added via onError and throws the error as well
+     *
+     * @param error - error to throw
+     * @param to - location we were navigating to when the error happened
+     * @param from - location we were navigating from when the error happened
+     * @returns the error as a rejected promise
+     */
+    function triggerError(error, to, from) {
+        markAsReady(error);
+        const list = errorListeners.list();
+        if (list.length) {
+            list.forEach(handler => handler(error, to, from));
+        }
+        else {
+            console.error(error);
+        }
+        // reject the error no matter there were error listeners or not
+        return Promise.reject(error);
+    }
+    function isReady() {
+        if (ready && currentRoute.value !== START_LOCATION_NORMALIZED)
+            return Promise.resolve();
+        return new Promise((resolve, reject) => {
+            readyHandlers.add([resolve, reject]);
+        });
+    }
+    function markAsReady(err) {
+        if (!ready) {
+            // still not ready if an error happened
+            ready = !err;
+            setupListeners();
+            readyHandlers
+                .list()
+                .forEach(([resolve, reject]) => (err ? reject(err) : resolve()));
+            readyHandlers.reset();
+        }
+        return err;
+    }
+    // Scroll behavior
+    function handleScroll(to, from, isPush, isFirstNavigation) {
+        const { scrollBehavior } = options;
+        if (!isBrowser || !scrollBehavior)
+            return Promise.resolve();
+        const scrollPosition = (!isPush && getSavedScrollPosition(getScrollKey(to.fullPath, 0))) ||
+            ((isFirstNavigation || !isPush) &&
+                history.state &&
+                history.state.scroll) ||
+            null;
+        return vueExports.nextTick()
+            .then(() => scrollBehavior(to, from, scrollPosition))
+            .then(position => position && scrollToPosition(position))
+            .catch(err => triggerError(err, to, from));
+    }
+    const go = (delta) => routerHistory.go(delta);
+    let started;
+    const installedApps = new Set();
+    const router = {
+        currentRoute,
+        listening: true,
+        addRoute,
+        removeRoute,
+        clearRoutes: matcher.clearRoutes,
+        hasRoute,
+        getRoutes,
+        resolve,
+        options,
+        push,
+        replace,
+        go,
+        back: () => go(-1),
+        forward: () => go(1),
+        beforeEach: beforeGuards.add,
+        beforeResolve: beforeResolveGuards.add,
+        afterEach: afterGuards.add,
+        onError: errorListeners.add,
+        isReady,
+        install(app) {
+            const router = this;
+            app.component('RouterLink', RouterLink);
+            app.component('RouterView', RouterView);
+            app.config.globalProperties.$router = router;
+            Object.defineProperty(app.config.globalProperties, '$route', {
+                enumerable: true,
+                get: () => vueExports.unref(currentRoute),
+            });
+            // this initial navigation is only necessary on client, on server it doesn't
+            // make sense because it will create an extra unnecessary navigation and could
+            // lead to problems
+            if (isBrowser &&
+                // used for the initial navigation client side to avoid pushing
+                // multiple times when the router is used in multiple apps
+                !started &&
+                currentRoute.value === START_LOCATION_NORMALIZED) {
+                // see above
+                started = true;
+                push(routerHistory.location).catch(err => {
+                });
+            }
+            const reactiveRoute = {};
+            for (const key in START_LOCATION_NORMALIZED) {
+                Object.defineProperty(reactiveRoute, key, {
+                    get: () => currentRoute.value[key],
+                    enumerable: true,
+                });
+            }
+            app.provide(routerKey, router);
+            app.provide(routeLocationKey, vueExports.shallowReactive(reactiveRoute));
+            app.provide(routerViewLocationKey, currentRoute);
+            const unmountApp = app.unmount;
+            installedApps.add(app);
+            app.unmount = function () {
+                installedApps.delete(app);
+                // the router is not attached to an app anymore
+                if (installedApps.size < 1) {
+                    // invalidate the current navigation
+                    pendingLocation = START_LOCATION_NORMALIZED;
+                    removeHistoryListener && removeHistoryListener();
+                    removeHistoryListener = null;
+                    currentRoute.value = START_LOCATION_NORMALIZED;
+                    started = false;
+                    ready = false;
+                }
+                unmountApp();
+            };
+        },
+    };
+    // TODO: type this as NavigationGuardReturn or similar instead of any
+    function runGuardQueue(guards) {
+        return guards.reduce((promise, guard) => promise.then(() => runWithContext(guard)), Promise.resolve());
+    }
+    return router;
+}
+function extractChangingRecords(to, from) {
+    const leavingRecords = [];
+    const updatingRecords = [];
+    const enteringRecords = [];
+    const len = Math.max(from.matched.length, to.matched.length);
+    for (let i = 0; i < len; i++) {
+        const recordFrom = from.matched[i];
+        if (recordFrom) {
+            if (to.matched.find(record => isSameRouteRecord(record, recordFrom)))
+                updatingRecords.push(recordFrom);
+            else
+                leavingRecords.push(recordFrom);
+        }
+        const recordTo = to.matched[i];
+        if (recordTo) {
+            // the type doesn't matter because we are comparing per reference
+            if (!from.matched.find(record => isSameRouteRecord(record, recordTo))) {
+                enteringRecords.push(recordTo);
+            }
+        }
+    }
+    return [leavingRecords, updatingRecords, enteringRecords];
+}
+
+/**
+ * Returns the router instance. Equivalent to using `$router` inside
+ * templates.
+ */
+function useRouter$1() {
+    return vueExports.inject(routerKey);
+}
+/**
+ * Returns the current route location. Equivalent to using `$route` inside
+ * templates.
+ */
+function useRoute$1(_name) {
+    return vueExports.inject(routeLocationKey);
+}
+
 if (!globalThis.$fetch) {
   globalThis.$fetch = $fetch.create({
     baseURL: baseURL()
@@ -157,7 +2651,7 @@ function createNuxtApp(options) {
   let hydratingCount = 0;
   const nuxtApp = {
     _id: options.id || appId || "nuxt-app",
-    _scope: effectScope(),
+    _scope: vueExports.effectScope(),
     provide: void 0,
     globalName: "nuxt",
     versions: {
@@ -168,18 +2662,18 @@ function createNuxtApp(options) {
         return nuxtApp.vueApp.version;
       }
     },
-    payload: shallowReactive({
+    payload: vueExports.shallowReactive({
       ...((_a = options.ssrContext) == null ? void 0 : _a.payload) || {},
-      data: shallowReactive({}),
-      state: reactive({}),
+      data: vueExports.shallowReactive({}),
+      state: vueExports.reactive({}),
       once: /* @__PURE__ */ new Set(),
-      _errors: shallowReactive({})
+      _errors: vueExports.shallowReactive({})
     }),
     static: {
       data: {}
     },
     runWithContext(fn) {
-      if (nuxtApp._scope.active && !getCurrentScope()) {
+      if (nuxtApp._scope.active && !vueExports.getCurrentScope()) {
         return nuxtApp._scope.run(() => callWithNuxt(nuxtApp, fn));
       }
       return callWithNuxt(nuxtApp, fn);
@@ -205,7 +2699,7 @@ function createNuxtApp(options) {
       };
     },
     _asyncDataPromises: {},
-    _asyncData: shallowReactive({}),
+    _asyncData: vueExports.shallowReactive({}),
     _payloadRevivers: {},
     ...options
   };
@@ -334,8 +2828,8 @@ function callWithNuxt(nuxt, setup, args) {
 function tryUseNuxtApp(id) {
   var _a;
   let nuxtAppInstance;
-  if (hasInjectionContext()) {
-    nuxtAppInstance = (_a = getCurrentInstance()) == null ? void 0 : _a.appContext.app.$nuxt;
+  if (vueExports.hasInjectionContext()) {
+    nuxtAppInstance = (_a = vueExports.getCurrentInstance()) == null ? void 0 : _a.appContext.app.$nuxt;
   }
   nuxtAppInstance = nuxtAppInstance || getNuxtAppCtx(id).tryUse();
   return nuxtAppInstance || null;
@@ -612,8 +3106,8 @@ const useRouter = () => {
   return (_a = useNuxtApp()) == null ? void 0 : _a.$router;
 };
 const useRoute = () => {
-  if (hasInjectionContext()) {
-    return inject(PageRouteSymbol, useNuxtApp()._route);
+  if (vueExports.hasInjectionContext()) {
+    return vueExports.inject(PageRouteSymbol, useNuxtApp()._route);
   }
   return useNuxtApp()._route;
 };
@@ -721,7 +3215,7 @@ function encodeURL(location2, isExternalHost = false) {
   return url.toString();
 }
 const NUXT_ERROR_SIGNATURE = "__nuxt_error";
-const useError = () => toRef(useNuxtApp().payload, "error");
+const useError = () => vueExports.toRef(useNuxtApp().payload, "error");
 const showError = (error) => {
   const nuxtError = createError(error);
   try {
@@ -744,9 +3238,9 @@ const createError = (error) => {
   });
   return nuxtError;
 };
-version[0] === "3";
+vueExports.version[0] === "3";
 function resolveUnref$1(r) {
-  return typeof r === "function" ? r() : unref(r);
+  return typeof r === "function" ? r() : vueExports.unref(r);
 }
 function resolveUnrefHeadInput$1(ref2) {
   if (ref2 instanceof Promise || ref2 instanceof Date || ref2 instanceof RegExp)
@@ -763,7 +3257,7 @@ function resolveUnrefHeadInput$1(ref2) {
         continue;
       }
       if (k === "titleTemplate" || k[0] === "o" && k[1] === "n") {
-        resolved[k] = unref(root[k]);
+        resolved[k] = vueExports.unref(root[k]);
         continue;
       }
       resolved[k] = resolveUnrefHeadInput$1(root[k]);
@@ -790,13 +3284,13 @@ function injectHead$1() {
   if (globalKey$1 in _global) {
     return _global[globalKey$1]();
   }
-  const head = inject(headSymbol$1);
+  const head = vueExports.inject(headSymbol$1);
   if (!head && "production" !== "production")
     console.warn("Unhead is missing Vue context, falling back to shared context. This may have unexpected results.");
   return head || getActiveHead$1();
 }
 [CapoPlugin({ track: true })];
-const unhead_d7IevCimk6 = /* @__PURE__ */ defineNuxtPlugin({
+const unhead_dC0AjRORjB = /* @__PURE__ */ defineNuxtPlugin({
   name: "nuxt:head",
   enforce: "pre",
   setup(nuxtApp) {
@@ -957,69 +3451,69 @@ const _routes = [
   {
     name: "about___en",
     path: "/about",
-    component: () => import('./about-DjCVw9jz.mjs')
+    component: () => import('./about-VzNWQFRK.mjs')
   },
   {
     name: "about___fr",
     path: "/fr/about",
-    component: () => import('./about-DjCVw9jz.mjs')
+    component: () => import('./about-VzNWQFRK.mjs')
   },
   {
     name: "blog-slug___en",
     path: "/blog/:slug(.*)*",
-    component: () => import('./_...slug_-sVTZvtg2.mjs')
+    component: () => import('./_...slug_-DDBxr27U.mjs')
   },
   {
     name: "blog-slug___fr",
     path: "/fr/blog/:slug(.*)*",
-    component: () => import('./_...slug_-sVTZvtg2.mjs')
+    component: () => import('./_...slug_-DDBxr27U.mjs')
   },
   {
     name: "blog___en",
     path: "/blog",
-    component: () => import('./index-DNVxbVLZ.mjs')
+    component: () => import('./index-C40cag1N.mjs')
   },
   {
     name: "blog___fr",
     path: "/fr/blog",
-    component: () => import('./index-DNVxbVLZ.mjs')
+    component: () => import('./index-C40cag1N.mjs')
   },
   {
     name: "contact___en",
     path: "/contact",
-    component: () => import('./contact-BWfuVYBD.mjs')
+    component: () => import('./contact-D7Iowph_.mjs')
   },
   {
     name: "contact___fr",
     path: "/fr/contact",
-    component: () => import('./contact-BWfuVYBD.mjs')
+    component: () => import('./contact-D7Iowph_.mjs')
   },
   {
     name: "index___en",
     path: "/",
-    component: () => import('./index-BSPGvKAT.mjs')
+    component: () => import('./index-Bsfhtegk.mjs')
   },
   {
     name: "index___fr",
     path: "/fr",
-    component: () => import('./index-BSPGvKAT.mjs')
+    component: () => import('./index-Bsfhtegk.mjs')
   },
   {
     name: "portfolio___en",
     path: "/portfolio",
-    component: () => import('./portfolio-DNy-P6bF.mjs')
+    component: () => import('./portfolio-7Wwrh1m6.mjs')
   },
   {
     name: "portfolio___fr",
     path: "/fr/portfolio",
-    component: () => import('./portfolio-DNy-P6bF.mjs')
+    component: () => import('./portfolio-7Wwrh1m6.mjs')
   }
 ];
 const _wrapIf = (component, props, slots) => {
   props = props === true ? {} : props;
   return { default: () => {
     var _a;
-    return props ? h(component, props, slots) : (_a = slots.default) == null ? void 0 : _a.call(slots);
+    return props ? vueExports.h(component, props, slots) : (_a = slots.default) == null ? void 0 : _a.call(slots);
   } };
 };
 function generateRouteKey(route) {
@@ -1030,7 +3524,7 @@ function generateRouteKey(route) {
   return typeof source === "function" ? source(route) : source;
 }
 function isChangingPage(to, from) {
-  if (to === from || from === START_LOCATION) {
+  if (to === from || from === START_LOCATION_NORMALIZED) {
     return false;
   }
   if (generateRouteKey(to) !== generateRouteKey(from)) {
@@ -1153,7 +3647,7 @@ const plugin = /* @__PURE__ */ defineNuxtPlugin({
     const router = createRouter({
       ...routerOptions,
       scrollBehavior: (to, from, savedPosition) => {
-        if (from === START_LOCATION) {
+        if (from === START_LOCATION_NORMALIZED) {
           startPosition = savedPosition;
           return;
         }
@@ -1165,14 +3659,14 @@ const plugin = /* @__PURE__ */ defineNuxtPlugin({
               (void 0).history.scrollRestoration = "manual";
             });
           }
-          return routerOptions.scrollBehavior(to, START_LOCATION, startPosition || savedPosition);
+          return routerOptions.scrollBehavior(to, START_LOCATION_NORMALIZED, startPosition || savedPosition);
         }
       },
       history,
       routes
     });
     nuxtApp.vueApp.use(router);
-    const previousRoute = shallowRef(router.currentRoute.value);
+    const previousRoute = vueExports.shallowRef(router.currentRoute.value);
     router.afterEach((_to, from) => {
       previousRoute.value = from;
     });
@@ -1180,7 +3674,7 @@ const plugin = /* @__PURE__ */ defineNuxtPlugin({
       get: () => previousRoute.value
     });
     const initialURL = nuxtApp.ssrContext.url;
-    const _route = shallowRef(router.currentRoute.value);
+    const _route = vueExports.shallowRef(router.currentRoute.value);
     const syncCurrentRoute = () => {
       _route.value = router.currentRoute.value;
     };
@@ -1198,7 +3692,7 @@ const plugin = /* @__PURE__ */ defineNuxtPlugin({
         enumerable: true
       });
     }
-    nuxtApp._route = shallowReactive(route);
+    nuxtApp._route = vueExports.shallowReactive(route);
     nuxtApp._middleware = nuxtApp._middleware || {
       global: [],
       named: {}
@@ -1248,8 +3742,8 @@ const plugin = /* @__PURE__ */ defineNuxtPlugin({
     router.beforeEach(async (to, from) => {
       var _a2, _b2;
       await nuxtApp.callHook("page:loading:start");
-      to.meta = reactive(to.meta);
-      if (nuxtApp.isHydrating && initialLayout && !isReadonly(to.meta.layout)) {
+      to.meta = vueExports.reactive(to.meta);
+      if (nuxtApp.isHydrating && initialLayout && !vueExports.isReadonly(to.meta.layout)) {
         to.meta.layout = initialLayout;
       }
       nuxtApp._processingMiddleware = true;
@@ -1337,10 +3831,10 @@ function useState(...args) {
   }
   const key = useStateKeyPrefix + _key;
   const nuxtApp = useNuxtApp();
-  const state = toRef(nuxtApp.payload.state, key);
+  const state = vueExports.toRef(nuxtApp.payload.state, key);
   if (state.value === void 0 && init) {
     const initialValue = init();
-    if (isRef(initialValue)) {
+    if (vueExports.isRef(initialValue)) {
       nuxtApp.payload.state[key] = initialValue;
       return initialValue;
     }
@@ -1387,7 +3881,7 @@ function useCookie(name, _opts) {
   }
   const hasExpired = delay !== void 0 && delay <= 0;
   const cookieValue = klona(hasExpired ? void 0 : cookies[name] ?? ((_a = opts.default) == null ? void 0 : _a.call(opts)));
-  const cookie = ref(cookieValue);
+  const cookie = vueExports.ref(cookieValue);
   {
     const nuxtApp = useNuxtApp();
     const writeFinalCookieValue = () => {
@@ -1431,7 +3925,7 @@ function definePayloadReducer(name, reduce) {
     useNuxtApp().ssrContext._payloadReducers[name] = reduce;
   }
 }
-const _0_siteConfig_G8egReoImf = /* @__PURE__ */ defineNuxtPlugin({
+const _0_siteConfig_c4CscEEMMB = /* @__PURE__ */ defineNuxtPlugin({
   name: "nuxt-site-config:init",
   enforce: "pre",
   async setup(nuxtApp) {
@@ -1456,14 +3950,14 @@ const _0_siteConfig_G8egReoImf = /* @__PURE__ */ defineNuxtPlugin({
 });
 const reducers = [
   ["NuxtError", (data) => isNuxtError(data) && data.toJSON()],
-  ["EmptyShallowRef", (data) => isRef(data) && isShallow(data) && !data.value && (typeof data.value === "bigint" ? "0n" : JSON.stringify(data.value) || "_")],
-  ["EmptyRef", (data) => isRef(data) && !data.value && (typeof data.value === "bigint" ? "0n" : JSON.stringify(data.value) || "_")],
-  ["ShallowRef", (data) => isRef(data) && isShallow(data) && data.value],
-  ["ShallowReactive", (data) => isReactive(data) && isShallow(data) && toRaw(data)],
-  ["Ref", (data) => isRef(data) && data.value],
-  ["Reactive", (data) => isReactive(data) && toRaw(data)]
+  ["EmptyShallowRef", (data) => vueExports.isRef(data) && vueExports.isShallow(data) && !data.value && (typeof data.value === "bigint" ? "0n" : JSON.stringify(data.value) || "_")],
+  ["EmptyRef", (data) => vueExports.isRef(data) && !data.value && (typeof data.value === "bigint" ? "0n" : JSON.stringify(data.value) || "_")],
+  ["ShallowRef", (data) => vueExports.isRef(data) && vueExports.isShallow(data) && data.value],
+  ["ShallowReactive", (data) => vueExports.isReactive(data) && vueExports.isShallow(data) && vueExports.toRaw(data)],
+  ["Ref", (data) => vueExports.isRef(data) && data.value],
+  ["Reactive", (data) => vueExports.isReactive(data) && vueExports.toRaw(data)]
 ];
-const revive_payload_server_Rca1T7Ls2B = /* @__PURE__ */ defineNuxtPlugin({
+const revive_payload_server_XpwUNKQIZE = /* @__PURE__ */ defineNuxtPlugin({
   name: "nuxt:revive-payload:server",
   setup() {
     for (const [reducer, fn] of reducers) {
@@ -1471,42 +3965,42 @@ const revive_payload_server_Rca1T7Ls2B = /* @__PURE__ */ defineNuxtPlugin({
     }
   }
 });
-const LazyContentDoc = defineAsyncComponent(() => import('./ContentDoc-GCuBtnje.mjs').then((r) => r["default"] || r.default || r));
-const LazyContentList = defineAsyncComponent(() => import('./ContentList-B2ESwq8I.mjs').then((r) => r["default"] || r.default || r));
-const LazyContentNavigation = defineAsyncComponent(() => import('./ContentNavigation-B2oMCHTr.mjs').then((r) => r["default"] || r.default || r));
-const LazyContentQuery = defineAsyncComponent(() => import('./ContentQuery-COeyAYwK.mjs').then((r) => r["default"] || r.default || r));
-const LazyContentRenderer = defineAsyncComponent(() => import('./ContentRenderer-ByeK65gK.mjs').then((r) => r["default"] || r.default || r));
-const LazyContentRendererMarkdown = defineAsyncComponent(() => import('./ContentRendererMarkdown-BN7a97ly.mjs').then((r) => r["default"] || r.default || r));
-const LazyContentSlot = defineAsyncComponent(() => import('./ContentSlot-D6D_amAP.mjs').then((r) => r["default"] || r.default || r));
-const LazyDocumentDrivenEmpty = defineAsyncComponent(() => import('./DocumentDrivenEmpty-jJwjEHk4.mjs').then((r) => r["default"] || r.default || r));
-const LazyDocumentDrivenNotFound = defineAsyncComponent(() => import('./DocumentDrivenNotFound-BlCrArm7.mjs').then((r) => r["default"] || r.default || r));
-const LazyMarkdown = defineAsyncComponent(() => import('./Markdown-DEFECrAv.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseCode = defineAsyncComponent(() => import('./ProseCode-S_24c_qD.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseCodeInline = defineAsyncComponent(() => import('./ProseCodeInline-BFe0Ru3v.mjs').then((r) => r["default"] || r.default || r));
-const LazyProsePre = defineAsyncComponent(() => import('./ProsePre-av6dulK5.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseA = defineAsyncComponent(() => import('./ProseA-DdcE2Gkw.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseBlockquote = defineAsyncComponent(() => import('./ProseBlockquote-B3pqXo62.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseEm = defineAsyncComponent(() => import('./ProseEm-4r8Vtfrg.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseH1 = defineAsyncComponent(() => import('./ProseH1-BZ1KDmP6.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseH2 = defineAsyncComponent(() => import('./ProseH2-DPPohes9.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseH3 = defineAsyncComponent(() => import('./ProseH3-LyLZm-7H.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseH4 = defineAsyncComponent(() => import('./ProseH4-2dmKv9It.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseH5 = defineAsyncComponent(() => import('./ProseH5-CUJZG4Nv.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseH6 = defineAsyncComponent(() => import('./ProseH6-BVQsfyGP.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseHr = defineAsyncComponent(() => import('./ProseHr-BRcRi4ci.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseImg = defineAsyncComponent(() => import('./ProseImg-CGbWoKDO.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseLi = defineAsyncComponent(() => import('./ProseLi-B4M7r6SL.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseOl = defineAsyncComponent(() => import('./ProseOl-Bdbvvjea.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseP = defineAsyncComponent(() => import('./ProseP-CqPsYnWF.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseScript = defineAsyncComponent(() => import('./ProseScript-DccqmZLF.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseStrong = defineAsyncComponent(() => import('./ProseStrong-2Xs9PiUW.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseTable = defineAsyncComponent(() => import('./ProseTable-DW4Eetyw.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseTbody = defineAsyncComponent(() => import('./ProseTbody-FPgugOlc.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseTd = defineAsyncComponent(() => import('./ProseTd-Pa0rrRSN.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseTh = defineAsyncComponent(() => import('./ProseTh-CYPpKRAb.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseThead = defineAsyncComponent(() => import('./ProseThead-Dkkbt8Y4.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseTr = defineAsyncComponent(() => import('./ProseTr-ByIZy6pR.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseUl = defineAsyncComponent(() => import('./ProseUl-BdzI-BsS.mjs').then((r) => r["default"] || r.default || r));
+const LazyContentDoc = vueExports.defineAsyncComponent(() => import('./ContentDoc-BqVoNmRe.mjs').then((r) => r["default"] || r.default || r));
+const LazyContentList = vueExports.defineAsyncComponent(() => import('./ContentList-DeIdvYiD.mjs').then((r) => r["default"] || r.default || r));
+const LazyContentNavigation = vueExports.defineAsyncComponent(() => import('./ContentNavigation-CFuLWxEQ.mjs').then((r) => r["default"] || r.default || r));
+const LazyContentQuery = vueExports.defineAsyncComponent(() => import('./ContentQuery-CEpm73sx.mjs').then((r) => r["default"] || r.default || r));
+const LazyContentRenderer = vueExports.defineAsyncComponent(() => import('./ContentRenderer-BTgdTKf_.mjs').then((r) => r["default"] || r.default || r));
+const LazyContentRendererMarkdown = vueExports.defineAsyncComponent(() => import('./ContentRendererMarkdown-BeVlYKYK.mjs').then((r) => r["default"] || r.default || r));
+const LazyContentSlot = vueExports.defineAsyncComponent(() => import('./ContentSlot-BB6-fGlw.mjs').then((r) => r["default"] || r.default || r));
+const LazyDocumentDrivenEmpty = vueExports.defineAsyncComponent(() => import('./DocumentDrivenEmpty-DJ_S_qfQ.mjs').then((r) => r["default"] || r.default || r));
+const LazyDocumentDrivenNotFound = vueExports.defineAsyncComponent(() => import('./DocumentDrivenNotFound-CjBooQjv.mjs').then((r) => r["default"] || r.default || r));
+const LazyMarkdown = vueExports.defineAsyncComponent(() => import('./Markdown-DVFR2zbE.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseCode = vueExports.defineAsyncComponent(() => import('./ProseCode-BSjafNOw.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseCodeInline = vueExports.defineAsyncComponent(() => import('./ProseCodeInline-U4XuNm6e.mjs').then((r) => r["default"] || r.default || r));
+const LazyProsePre = vueExports.defineAsyncComponent(() => import('./ProsePre-DRfkkggY.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseA = vueExports.defineAsyncComponent(() => import('./ProseA-D9EGwv_3.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseBlockquote = vueExports.defineAsyncComponent(() => import('./ProseBlockquote-B3pqXo62.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseEm = vueExports.defineAsyncComponent(() => import('./ProseEm-4r8Vtfrg.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseH1 = vueExports.defineAsyncComponent(() => import('./ProseH1-CjwO6ERL.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseH2 = vueExports.defineAsyncComponent(() => import('./ProseH2-BTCOunxR.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseH3 = vueExports.defineAsyncComponent(() => import('./ProseH3-Ce0XH0Tt.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseH4 = vueExports.defineAsyncComponent(() => import('./ProseH4-DU2tsV8a.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseH5 = vueExports.defineAsyncComponent(() => import('./ProseH5-CzYhRLGt.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseH6 = vueExports.defineAsyncComponent(() => import('./ProseH6-qjDTJ2O3.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseHr = vueExports.defineAsyncComponent(() => import('./ProseHr-BRcRi4ci.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseImg = vueExports.defineAsyncComponent(() => import('./ProseImg-ua0T-8mw.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseLi = vueExports.defineAsyncComponent(() => import('./ProseLi-B4M7r6SL.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseOl = vueExports.defineAsyncComponent(() => import('./ProseOl-Bdbvvjea.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseP = vueExports.defineAsyncComponent(() => import('./ProseP-CqPsYnWF.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseScript = vueExports.defineAsyncComponent(() => import('./ProseScript-DccqmZLF.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseStrong = vueExports.defineAsyncComponent(() => import('./ProseStrong-2Xs9PiUW.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseTable = vueExports.defineAsyncComponent(() => import('./ProseTable-DW4Eetyw.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseTbody = vueExports.defineAsyncComponent(() => import('./ProseTbody-FPgugOlc.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseTd = vueExports.defineAsyncComponent(() => import('./ProseTd-Pa0rrRSN.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseTh = vueExports.defineAsyncComponent(() => import('./ProseTh-CYPpKRAb.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseThead = vueExports.defineAsyncComponent(() => import('./ProseThead-Dkkbt8Y4.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseTr = vueExports.defineAsyncComponent(() => import('./ProseTr-ByIZy6pR.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseUl = vueExports.defineAsyncComponent(() => import('./ProseUl-BdzI-BsS.mjs').then((r) => r["default"] || r.default || r));
 const lazyGlobalComponents = [
   ["ContentDoc", LazyContentDoc],
   ["ContentList", LazyContentList],
@@ -1566,7 +4060,7 @@ function useSiteConfig(options) {
   stack = useRequestEvent().context.siteConfig.get(defu({ resolveRefs: true }, options));
   return stack || {};
 }
-const i18n_server_6JGWNQ2CGf = /* @__PURE__ */ defineNuxtPlugin({
+const i18n_server_Qw0e84ChGy = /* @__PURE__ */ defineNuxtPlugin({
   name: "nuxt-site-config:i18n",
   // @ts-expect-error untyped
   dependsOn: ["i18n:plugin"],
@@ -1587,18 +4081,18 @@ const i18n_server_6JGWNQ2CGf = /* @__PURE__ */ defineNuxtPlugin({
       // @ts-expect-error untyped
       currentLocale: i18n.locale,
       // @ts-expect-error untyped
-      description: computed(() => i18n.te("nuxtSiteConfig.description") ? i18n.t("nuxtSiteConfig.description") : void 0),
+      description: vueExports.computed(() => i18n.te("nuxtSiteConfig.description") ? i18n.t("nuxtSiteConfig.description") : void 0),
       // @ts-expect-error untyped
-      name: computed(() => i18n.te("nuxtSiteConfig.name") ? i18n.t("nuxtSiteConfig.name") : void 0)
+      name: vueExports.computed(() => i18n.te("nuxtSiteConfig.name") ? i18n.t("nuxtSiteConfig.name") : void 0)
     });
   }
 });
-const plugin_hyvyX8Jk6w = /* @__PURE__ */ defineNuxtPlugin((nuxt) => {
+const plugin_yFSxs7Lrdv = /* @__PURE__ */ defineNuxtPlugin((nuxt) => {
 });
 var activeHead;
 var getActiveHead = () => activeHead;
 function resolveUnref(r) {
-  return typeof r === "function" ? r() : unref(r);
+  return typeof r === "function" ? r() : vueExports.unref(r);
 }
 function resolveUnrefHeadInput(ref3, lastKey = "") {
   if (ref3 instanceof Promise)
@@ -1612,30 +4106,30 @@ function resolveUnrefHeadInput(ref3, lastKey = "") {
     return Object.fromEntries(
       Object.entries(root).map(([k, v]) => {
         if (k === "titleTemplate" || k.startsWith("on"))
-          return [k, unref(v)];
+          return [k, vueExports.unref(v)];
         return [k, resolveUnrefHeadInput(v, k)];
       })
     );
   }
   return root;
 }
-version.startsWith("3");
+vueExports.version.startsWith("3");
 var headSymbol = "usehead";
 function injectHead() {
-  return getCurrentInstance() && inject(headSymbol) || getActiveHead();
+  return vueExports.getCurrentInstance() && vueExports.inject(headSymbol) || getActiveHead();
 }
 function clientUseHead(input, options = {}) {
   const head = injectHead();
-  const deactivated = ref(false);
-  const resolvedInput = ref({});
-  watchEffect(() => {
+  const deactivated = vueExports.ref(false);
+  const resolvedInput = vueExports.ref({});
+  vueExports.watchEffect(() => {
     resolvedInput.value = deactivated.value ? {} : resolveUnrefHeadInput(input);
   });
   const entry2 = head.push(resolvedInput.value, options);
-  watch(resolvedInput, (e) => {
+  vueExports.watch(resolvedInput, (e) => {
     entry2.patch(e);
   });
-  getCurrentInstance();
+  vueExports.getCurrentInstance();
   return entry2;
 }
 function serverUseHead(input, options = {}) {
@@ -1659,7 +4153,7 @@ var plugin_impl_default = (nuxtApp) => {
       if (typeof ((_a = this.$options) == null ? void 0 : _a.jsonld) !== "function") {
         return;
       }
-      const jsonComputed = computed(() => this.$options.jsonld.call(this));
+      const jsonComputed = vueExports.computed(() => this.$options.jsonld.call(this));
       useHead(() => ({
         script: [
           {
@@ -1678,7 +4172,7 @@ var plugin_impl_default = (nuxtApp) => {
   nuxtApp.vueApp.use(plugin2);
 };
 var plugin_default = /* @__PURE__ */ defineNuxtPlugin(plugin_impl_default);
-const composition_em0Q55SRZp = /* @__PURE__ */ defineNuxtPlugin(() => {
+const composition_wzUv6ZlNnr = /* @__PURE__ */ defineNuxtPlugin(() => {
 });
 /*!
   * shared v9.14.5
@@ -4896,7 +7390,7 @@ function adjustI18nResources(gl, options, componentOptions) {
   }
 }
 function createTextNode(key) {
-  return createVNode(Text, null, key, 0);
+  return vueExports.createVNode(vueExports.Text, null, key, 0);
 }
 const DEVTOOLS_META = "__INTLIFY_META__";
 const NOOP_RETURN_ARRAY = () => [];
@@ -4904,11 +7398,11 @@ const NOOP_RETURN_FALSE = () => false;
 let composerID = 0;
 function defineCoreMissingHandler(missing) {
   return (ctx, locale, key, type) => {
-    return missing(locale, key, getCurrentInstance() || void 0, type);
+    return missing(locale, key, vueExports.getCurrentInstance() || void 0, type);
   };
 }
 const getMetaInfo = /* @__NO_SIDE_EFFECTS__ */ () => {
-  const instance = getCurrentInstance();
+  const instance = vueExports.getCurrentInstance();
   let meta = null;
   return instance && (meta = getComponentOptions(instance)[DEVTOOLS_META]) ? { [DEVTOOLS_META]: meta } : null;
 };
@@ -4916,7 +7410,7 @@ function createComposer(options = {}, VueI18nLegacy) {
   const { __root, __injectWithOption } = options;
   const _isGlobal = __root === void 0;
   const flatJson = options.flatJson;
-  const _ref = shallowRef;
+  const _ref = vueExports.shallowRef;
   const translateExistCompatible = !!options.translateExistCompatible;
   let _inheritLocale = isBoolean(options.inheritLocale) ? options.inheritLocale : true;
   const _locale = _ref(
@@ -4984,14 +7478,14 @@ function createComposer(options = {}, VueI18nLegacy) {
       _numberFormats.value
     ];
   }
-  const locale = computed({
+  const locale = vueExports.computed({
     get: () => _locale.value,
     set: (val) => {
       _locale.value = val;
       _context.locale = _locale.value;
     }
   });
-  const fallbackLocale = computed({
+  const fallbackLocale = vueExports.computed({
     get: () => _fallbackLocale.value,
     set: (val) => {
       _fallbackLocale.value = val;
@@ -4999,9 +7493,9 @@ function createComposer(options = {}, VueI18nLegacy) {
       updateFallbackLocale(_context, _locale.value, val);
     }
   });
-  const messages = computed(() => _messages.value);
-  const datetimeFormats = /* @__PURE__ */ computed(() => _datetimeFormats.value);
-  const numberFormats = /* @__PURE__ */ computed(() => _numberFormats.value);
+  const messages = vueExports.computed(() => _messages.value);
+  const datetimeFormats = /* @__PURE__ */ vueExports.computed(() => _datetimeFormats.value);
+  const numberFormats = /* @__PURE__ */ vueExports.computed(() => _numberFormats.value);
   function getPostTranslationHandler() {
     return isFunction$1(_postTranslation) ? _postTranslation : null;
   }
@@ -5203,14 +7697,14 @@ function createComposer(options = {}, VueI18nLegacy) {
   }
   composerID++;
   if (__root && inBrowser) {
-    watch(__root.locale, (val) => {
+    vueExports.watch(__root.locale, (val) => {
       if (_inheritLocale) {
         _locale.value = val;
         _context.locale = val;
         updateFallbackLocale(_context, _locale.value, _fallbackLocale.value);
       }
     });
-    watch(__root.fallbackLocale, (val) => {
+    vueExports.watch(__root.fallbackLocale, (val) => {
       if (_inheritLocale) {
         _fallbackLocale.value = val;
         _context.fallbackLocale = val;
@@ -5343,7 +7837,7 @@ function getInterpolateArg({ slots }, keys) {
       return [
         ...slot,
         // prettier-ignore
-        ...current.type === Fragment ? current.children : [current]
+        ...current.type === vueExports.Fragment ? current.children : [current]
       ];
     }, []);
   } else {
@@ -5357,9 +7851,9 @@ function getInterpolateArg({ slots }, keys) {
   }
 }
 function getFragmentableTag(tag) {
-  return Fragment;
+  return vueExports.Fragment;
 }
-const TranslationImpl = /* @__PURE__ */ defineComponent({
+const TranslationImpl = /* @__PURE__ */ vueExports.defineComponent({
   /* eslint-disable */
   name: "i18n-t",
   props: assign$1({
@@ -5394,7 +7888,7 @@ const TranslationImpl = /* @__PURE__ */ defineComponent({
       const children = i18n[TranslateVNodeSymbol](props.keypath, arg, options);
       const assignedAttrs = assign$1(create(), attrs);
       const tag = isString$1(props.tag) || isObject$1(props.tag) ? props.tag : getFragmentableTag();
-      return h(tag, assignedAttrs, children);
+      return vueExports.h(tag, assignedAttrs, children);
     };
   }
 });
@@ -5436,10 +7930,10 @@ function renderFormatter(props, context, slotKeys, partFormatter) {
     }
     const assignedAttrs = assign$1(create(), attrs);
     const tag = isString$1(props.tag) || isObject$1(props.tag) ? props.tag : getFragmentableTag();
-    return h(tag, assignedAttrs, children);
+    return vueExports.h(tag, assignedAttrs, children);
   };
 }
-const NumberFormatImpl = /* @__PURE__ */ defineComponent({
+const NumberFormatImpl = /* @__PURE__ */ vueExports.defineComponent({
   /* eslint-disable */
   name: "i18n-n",
   props: assign$1({
@@ -5465,7 +7959,7 @@ const NumberFormatImpl = /* @__PURE__ */ defineComponent({
   }
 });
 const NumberFormat = NumberFormatImpl;
-const DatetimeFormatImpl = /* @__PURE__ */ defineComponent({
+const DatetimeFormatImpl = /* @__PURE__ */ vueExports.defineComponent({
   /* eslint-disable */
   name: "i18n-d",
   props: assign$1({
@@ -5653,7 +8147,7 @@ function createI18n(options = {}, VueI18nLegacy) {
   }
 }
 function useI18n(options = {}) {
-  const instance = getCurrentInstance();
+  const instance = vueExports.getCurrentInstance();
   if (instance == null) {
     throw createI18nError(I18nErrorCodes.MUST_BE_CALL_SETUP_TOP);
   }
@@ -5694,7 +8188,7 @@ function useI18n(options = {}) {
   return composer;
 }
 function createGlobal(options, legacyMode, VueI18nLegacy) {
-  const scope = effectScope();
+  const scope = vueExports.effectScope();
   {
     const obj = scope.run(() => createComposer(options));
     if (obj == null) {
@@ -5705,7 +8199,7 @@ function createGlobal(options, legacyMode, VueI18nLegacy) {
 }
 function getI18nInstance(instance) {
   {
-    const i18n = inject(!instance.isCE ? instance.appContext.app.__VUE_I18N_SYMBOL__ : I18nInjectionKey);
+    const i18n = vueExports.inject(!instance.isCE ? instance.appContext.app.__VUE_I18N_SYMBOL__ : I18nInjectionKey);
     if (!i18n) {
       throw createI18nError(!instance.isCE ? I18nErrorCodes.UNEXPECTED_ERROR : I18nErrorCodes.NOT_INSTALLED_WITH_PROVIDE);
     }
@@ -5758,7 +8252,7 @@ function injectGlobalFields(app, composer) {
     if (!desc) {
       throw createI18nError(I18nErrorCodes.UNEXPECTED_ERROR);
     }
-    const wrap = isRef(desc.value) ? {
+    const wrap = vueExports.isRef(desc.value) ? {
       get() {
         return desc.value.value;
       },
@@ -5916,13 +8410,13 @@ function isI18nInstance(i18n) {
   return i18n != null && "global" in i18n && "mode" in i18n;
 }
 function isComposer(target) {
-  return target != null && !("__composer" in target) && isRef(target.locale);
+  return target != null && !("__composer" in target) && vueExports.isRef(target.locale);
 }
 function isVueI18n(target) {
   return target != null && "__composer" in target;
 }
 function isExportedGlobalComposer(target) {
-  return target != null && !("__composer" in target) && !isRef(target.locale);
+  return target != null && !("__composer" in target) && !vueExports.isRef(target.locale);
 }
 function isLegacyVueI18n$1(target) {
   return target != null && ("__VUE_I18N_BRIDGE__" in target || "_sync" in target);
@@ -6043,7 +8537,7 @@ function extendI18n(i18n, {
   hooks = {},
   context = {}
 } = {}) {
-  const scope = effectScope();
+  const scope = vueExports.effectScope();
   const orgInstall = i18n.install;
   i18n.install = (vue, ...options) => {
     const pluginOptions = isPluginOptions(options[0]) ? assign({}, options[0]) : { inject: true };
@@ -6053,9 +8547,9 @@ function extendI18n(i18n, {
     const orgComposerExtend = pluginOptions.__composerExtend;
     pluginOptions.__composerExtend = (localComposer) => {
       const globalComposer2 = getComposer(i18n);
-      localComposer.locales = computed(() => globalComposer2.locales.value);
-      localComposer.localeCodes = computed(() => globalComposer2.localeCodes.value);
-      localComposer.baseUrl = computed(() => globalComposer2.baseUrl.value);
+      localComposer.locales = vueExports.computed(() => globalComposer2.locales.value);
+      localComposer.localeCodes = vueExports.computed(() => globalComposer2.localeCodes.value);
+      localComposer.baseUrl = vueExports.computed(() => globalComposer2.baseUrl.value);
       let orgComposerDispose;
       if (isFunction(orgComposerExtend)) {
         orgComposerDispose = Reflect.apply(orgComposerExtend, pluginOptions, [localComposer]);
@@ -6116,12 +8610,12 @@ function extendI18n(i18n, {
 }
 function extendComposer(composer, options) {
   const { locales, localeCodes: localeCodes2, baseUrl, context } = options;
-  const _locales = ref(locales);
-  const _localeCodes = ref(localeCodes2);
-  const _baseUrl = ref("");
-  composer.locales = computed(() => _locales.value);
-  composer.localeCodes = computed(() => _localeCodes.value);
-  composer.baseUrl = computed(() => _baseUrl.value);
+  const _locales = vueExports.ref(locales);
+  const _localeCodes = vueExports.ref(localeCodes2);
+  const _baseUrl = vueExports.ref("");
+  composer.locales = vueExports.computed(() => _locales.value);
+  composer.localeCodes = vueExports.computed(() => _localeCodes.value);
+  composer.baseUrl = vueExports.computed(() => _baseUrl.value);
   {
     _baseUrl.value = resolveBaseUrl(baseUrl, context);
   }
@@ -6284,7 +8778,7 @@ const DefaultPrefixable = prefixable;
 function getRouteBaseName(givenRoute) {
   const router = this.router;
   const { routesNameSeparator } = getI18nRoutingOptions(router, this);
-  const route = givenRoute != null ? isRef(givenRoute) ? unref(givenRoute) : givenRoute : this.route;
+  const route = givenRoute != null ? vueExports.isRef(givenRoute) ? vueExports.unref(givenRoute) : givenRoute : this.route;
   if (route == null || !route.name) {
     return;
   }
@@ -6382,7 +8876,7 @@ function getLocalizableMetaFromDynamicParams(route, key) {
     return metaDefault;
   }
   const meta = route.meta;
-  if (isRef(meta)) {
+  if (vueExports.isRef(meta)) {
     return meta.value[key] || metaDefault;
   } else {
     return meta[key] || metaDefault;
@@ -6442,10 +8936,10 @@ function localeHead({ addDirAttribute = false, addSeoAttributes = false, identif
     if (currentLocaleIso) {
       metaObject.htmlAttrs.lang = currentLocaleIso;
     }
-    addHreflangLinks.call(this, locales, unref(i18n.baseUrl), metaObject.link, identifierAttribute);
+    addHreflangLinks.call(this, locales, vueExports.unref(i18n.baseUrl), metaObject.link, identifierAttribute);
     addCanonicalLinksAndOgUrl.call(
       this,
-      unref(i18n.baseUrl),
+      vueExports.unref(i18n.baseUrl),
       metaObject.link,
       metaObject.meta,
       identifierAttribute,
@@ -6646,12 +9140,12 @@ const localeCodes = [
 ];
 const localeMessages = {
   "en": [{ key: "../locales/en.json", load: () => import(
-    './en-CF-v7EaC.mjs'
-    /* webpackChunkName: "locale__workspace_locales_en_json" */
+    './en-DESEctCE.mjs'
+    /* webpackChunkName: "locale_C_58_C_58_Users_merou_meouaneamqor_locales_en_json" */
   ), cache: true }],
   "fr": [{ key: "../locales/fr.json", load: () => import(
-    './fr-C1yGktJe.mjs'
-    /* webpackChunkName: "locale__workspace_locales_fr_json" */
+    './fr-1qubifjw.mjs'
+    /* webpackChunkName: "locale_C_58_C_58_Users_merou_meouaneamqor_locales_fr_json" */
   ), cache: true }]
 };
 const vueI18nConfigs = [];
@@ -7355,7 +9849,7 @@ function extendBaseUrl(baseUrl, options) {
   };
 }
 const cacheMessages = /* @__PURE__ */ new Map();
-const i18n_sXU2gKQHSc = /* @__PURE__ */ defineNuxtPlugin({
+const i18n_j4YK1qQzAW = /* @__PURE__ */ defineNuxtPlugin({
   name: "i18n:plugin",
   parallel: parallelPlugin,
   async setup(nuxt) {
@@ -7429,7 +9923,7 @@ const i18n_sXU2gKQHSc = /* @__PURE__ */ defineNuxtPlugin({
       hooks: {
         onExtendComposer(composer) {
           composer.strategy = strategy;
-          composer.localeProperties = computed(() => {
+          composer.localeProperties = vueExports.computed(() => {
             return normalizedLocales.find((l) => l.code === composer.locale.value) || {
               code: composer.locale.value
             };
@@ -7630,7 +10124,7 @@ const i18n_sXU2gKQHSc = /* @__PURE__ */ defineNuxtPlugin({
       __composerExtend: (c) => {
         const g = getComposer(i18n);
         c.strategy = g.strategy;
-        c.localeProperties = computed(() => g.localeProperties.value);
+        c.localeProperties = vueExports.computed(() => g.localeProperties.value);
         c.setLocale = g.setLocale;
         c.differentDomains = g.differentDomains;
         c.getBrowserLocale = g.getBrowserLocale;
@@ -7707,21 +10201,21 @@ const i18n_sXU2gKQHSc = /* @__PURE__ */ defineNuxtPlugin({
   }
 });
 const plugins = [
-  unhead_d7IevCimk6,
+  unhead_dC0AjRORjB,
   plugin,
-  _0_siteConfig_G8egReoImf,
-  revive_payload_server_Rca1T7Ls2B,
+  _0_siteConfig_c4CscEEMMB,
+  revive_payload_server_XpwUNKQIZE,
   components_plugin_KR1HBZs4kY,
-  i18n_server_6JGWNQ2CGf,
-  plugin_hyvyX8Jk6w,
+  i18n_server_Qw0e84ChGy,
+  plugin_yFSxs7Lrdv,
   plugin_default,
-  composition_em0Q55SRZp,
-  i18n_sXU2gKQHSc
+  composition_wzUv6ZlNnr,
+  i18n_j4YK1qQzAW
 ];
 const layouts = {
-  default: () => import('./default-Cje76LcW.mjs')
+  default: () => import('./default-Cp5mqewz.mjs')
 };
-const LayoutLoader = defineComponent({
+const LayoutLoader = vueExports.defineComponent({
   name: "LayoutLoader",
   inheritAttrs: false,
   props: {
@@ -7730,10 +10224,10 @@ const LayoutLoader = defineComponent({
   },
   async setup(props, context) {
     const LayoutComponent = await layouts[props.name]().then((r) => r.default || r);
-    return () => h(LayoutComponent, props.layoutProps, context.slots);
+    return () => vueExports.h(LayoutComponent, props.layoutProps, context.slots);
   }
 });
-const __nuxt_component_0 = defineComponent({
+const __nuxt_component_0 = vueExports.defineComponent({
   name: "NuxtLayout",
   inheritAttrs: false,
   props: {
@@ -7748,31 +10242,31 @@ const __nuxt_component_0 = defineComponent({
   },
   setup(props, context) {
     const nuxtApp = useNuxtApp();
-    const injectedRoute = inject(PageRouteSymbol);
+    const injectedRoute = vueExports.inject(PageRouteSymbol);
     const route = injectedRoute === useRoute() ? useRoute$1() : injectedRoute;
-    const layout = computed(() => {
-      let layout2 = unref(props.name) ?? route.meta.layout ?? "default";
+    const layout = vueExports.computed(() => {
+      let layout2 = vueExports.unref(props.name) ?? route.meta.layout ?? "default";
       if (layout2 && !(layout2 in layouts)) {
         if (props.fallback) {
-          layout2 = unref(props.fallback);
+          layout2 = vueExports.unref(props.fallback);
         }
       }
       return layout2;
     });
-    const layoutRef = ref();
+    const layoutRef = vueExports.ref();
     context.expose({ layoutRef });
     const done = nuxtApp.deferHydration();
     return () => {
       const hasLayout = layout.value && layout.value in layouts;
       const transitionProps = route.meta.layoutTransition ?? appLayoutTransition;
-      return _wrapIf(Transition, hasLayout && transitionProps, {
-        default: () => h(Suspense, { suspensible: true, onResolve: () => {
-          nextTick(done);
+      return _wrapIf(vueExports.Transition, hasLayout && transitionProps, {
+        default: () => vueExports.h(vueExports.Suspense, { suspensible: true, onResolve: () => {
+          vueExports.nextTick(done);
         } }, {
-          default: () => h(
+          default: () => vueExports.h(
             LayoutProvider,
             {
-              layoutProps: mergeProps(context.attrs, { ref: layoutRef }),
+              layoutProps: vueExports.mergeProps(context.attrs, { ref: layoutRef }),
               key: layout.value || void 0,
               name: layout.value,
               shouldProvide: !props.name,
@@ -7785,7 +10279,7 @@ const __nuxt_component_0 = defineComponent({
     };
   }
 });
-const LayoutProvider = defineComponent({
+const LayoutProvider = vueExports.defineComponent({
   name: "NuxtLayoutProvider",
   inheritAttrs: false,
   props: {
@@ -7805,7 +10299,7 @@ const LayoutProvider = defineComponent({
   setup(props, context) {
     const name = props.name;
     if (props.shouldProvide) {
-      provide(LayoutMetaSymbol, {
+      vueExports.provide(LayoutMetaSymbol, {
         isCurrent: (route) => name === (route.meta.layout ?? "default")
       });
     }
@@ -7814,7 +10308,7 @@ const LayoutProvider = defineComponent({
       if (!name || typeof name === "string" && !(name in layouts)) {
         return (_b = (_a = context.slots).default) == null ? void 0 : _b.call(_a);
       }
-      return h(
+      return vueExports.h(
         LayoutLoader,
         { key: name, layoutProps: props.layoutProps, name },
         context.slots
@@ -7822,7 +10316,7 @@ const LayoutProvider = defineComponent({
     };
   }
 });
-const RouteProvider = defineComponent({
+const RouteProvider = vueExports.defineComponent({
   props: {
     vnode: {
       type: Object,
@@ -7846,13 +10340,13 @@ const RouteProvider = defineComponent({
         enumerable: true
       });
     }
-    provide(PageRouteSymbol, shallowReactive(route));
+    vueExports.provide(PageRouteSymbol, vueExports.shallowReactive(route));
     return () => {
-      return h(props.vnode, { ref: props.vnodeRef });
+      return vueExports.h(props.vnode, { ref: props.vnodeRef });
     };
   }
 });
-const __nuxt_component_1 = defineComponent({
+const __nuxt_component_1 = vueExports.defineComponent({
   name: "NuxtPage",
   inheritAttrs: false,
   props: {
@@ -7877,22 +10371,22 @@ const __nuxt_component_1 = defineComponent({
   },
   setup(props, { attrs, slots, expose }) {
     const nuxtApp = useNuxtApp();
-    const pageRef = ref();
-    const forkRoute = inject(PageRouteSymbol, null);
+    const pageRef = vueExports.ref();
+    const forkRoute = vueExports.inject(PageRouteSymbol, null);
     let previousPageKey;
     expose({ pageRef });
-    inject(LayoutMetaSymbol, null);
+    vueExports.inject(LayoutMetaSymbol, null);
     let vnode;
     const done = nuxtApp.deferHydration();
     if (props.pageKey) {
-      watch(() => props.pageKey, (next, prev) => {
+      vueExports.watch(() => props.pageKey, (next, prev) => {
         if (next !== prev) {
           nuxtApp.callHook("page:loading:start");
         }
       });
     }
     return () => {
-      return h(RouterView, { name: props.name, route: props.route, ...attrs }, {
+      return vueExports.h(RouterView, { name: props.name, route: props.route, ...attrs }, {
         default: (routeProps) => {
           if (!routeProps.Component) {
             done();
@@ -7914,21 +10408,21 @@ const __nuxt_component_1 = defineComponent({
           ].filter(Boolean));
           const keepaliveConfig = props.keepalive ?? routeProps.route.meta.keepalive ?? appKeepalive;
           vnode = _wrapIf(
-            Transition,
+            vueExports.Transition,
             hasTransition && transitionProps,
             wrapInKeepAlive(
               keepaliveConfig,
-              h(Suspense, {
+              vueExports.h(vueExports.Suspense, {
                 suspensible: true,
                 onPending: () => nuxtApp.callHook("page:start", routeProps.Component),
                 onResolve: () => {
-                  nextTick(() => nuxtApp.callHook("page:finish", routeProps.Component).then(() => nuxtApp.callHook("page:loading:end")).finally(done));
+                  vueExports.nextTick(() => nuxtApp.callHook("page:finish", routeProps.Component).then(() => nuxtApp.callHook("page:loading:end")).finally(done));
                 }
               }, {
                 default: () => {
-                  const providerVNode = h(RouteProvider, {
+                  const providerVNode = vueExports.h(RouteProvider, {
                     key: key || void 0,
-                    vnode: slots.default ? h(Fragment, void 0, slots.default(routeProps)) : routeProps.Component,
+                    vnode: slots.default ? vueExports.h(vueExports.Fragment, void 0, slots.default(routeProps)) : routeProps.Component,
                     route: routeProps.route,
                     renderKey: key || void 0,
                     trackRootNodes: hasTransition,
@@ -7973,13 +10467,13 @@ const _sfc_main$2 = {};
 function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
   const _component_NuxtLayout = __nuxt_component_0;
   const _component_NuxtPage = __nuxt_component_1;
-  _push(ssrRenderComponent(_component_NuxtLayout, _attrs, {
-    default: withCtx((_, _push2, _parent2, _scopeId) => {
+  _push(ssrRenderComponent_1(_component_NuxtLayout, _attrs, {
+    default: vueExports.withCtx((_, _push2, _parent2, _scopeId) => {
       if (_push2) {
-        _push2(ssrRenderComponent(_component_NuxtPage, null, null, _parent2, _scopeId));
+        _push2(ssrRenderComponent_1(_component_NuxtPage, null, null, _parent2, _scopeId));
       } else {
         return [
-          createVNode(_component_NuxtPage)
+          vueExports.createVNode(_component_NuxtPage)
         ];
       }
     }),
@@ -7988,7 +10482,7 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
 }
 const _sfc_setup$2 = _sfc_main$2.setup;
 _sfc_main$2.setup = (props, ctx) => {
-  const ssrContext = useSSRContext();
+  const ssrContext = vueExports.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("app.vue");
   return _sfc_setup$2 ? _sfc_setup$2(props, ctx) : void 0;
 };
@@ -8014,18 +10508,18 @@ const _sfc_main$1 = {
     const statusMessage = _error.statusMessage ?? (is404 ? "Page Not Found" : "Internal Server Error");
     const description = _error.message || _error.toString();
     const stack = void 0;
-    const _Error404 = defineAsyncComponent(() => import('./error-404-13ftIJnu.mjs'));
-    const _Error = defineAsyncComponent(() => import('./error-500-DBkrgIQv.mjs'));
+    const _Error404 = vueExports.defineAsyncComponent(() => import('./error-404-Ddm8zXp-.mjs'));
+    const _Error = vueExports.defineAsyncComponent(() => import('./error-500-fKSYWjlc.mjs'));
     const ErrorTemplate = is404 ? _Error404 : _Error;
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(unref(ErrorTemplate), mergeProps({ statusCode: unref(statusCode), statusMessage: unref(statusMessage), description: unref(description), stack: unref(stack) }, _attrs), null, _parent));
+      _push(ssrRenderComponent_1(vueExports.unref(ErrorTemplate), vueExports.mergeProps({ statusCode: vueExports.unref(statusCode), statusMessage: vueExports.unref(statusMessage), description: vueExports.unref(description), stack: vueExports.unref(stack) }, _attrs), null, _parent));
     };
   }
 };
 const _sfc_setup$1 = _sfc_main$1.setup;
 _sfc_main$1.setup = (props, ctx) => {
-  const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("node_modules/.pnpm/nuxt@3.13.2_@parcel+watcher@2.4.1_@types+node@22.7.4_encoding@0.1.13_eslint@9.31.0_jiti_dc3ed3e1697b89b27c6277ea5c9fddd7/node_modules/nuxt/dist/app/components/nuxt-error-page.vue");
+  const ssrContext = vueExports.useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("node_modules/.pnpm/nuxt@3.13.2_@parcel+watcher@2.4.1_@types+node@22.7.4_encoding@0.1.13_eslint@9.31.0_jiti@2.4.2_gbq6fsmpsuumene4ltsi23tonm/node_modules/nuxt/dist/app/components/nuxt-error-page.vue");
   return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
 };
 const _sfc_main = {
@@ -8037,32 +10531,32 @@ const _sfc_main = {
     nuxtApp.deferHydration();
     nuxtApp.ssrContext.url;
     const SingleRenderer = false;
-    provide(PageRouteSymbol, useRoute());
+    vueExports.provide(PageRouteSymbol, useRoute());
     nuxtApp.hooks.callHookWith((hooks) => hooks.map((hook) => hook()), "vue:setup");
     const error = useError();
     const abortRender = error.value && !nuxtApp.ssrContext.error;
-    onErrorCaptured((err, target, info) => {
+    vueExports.onErrorCaptured((err, target, info) => {
       nuxtApp.hooks.callHook("vue:error", err, target, info).catch((hookError) => console.error("[nuxt] Error in `vue:error` hook", hookError));
       {
         const p = nuxtApp.runWithContext(() => showError(err));
-        onServerPrefetch(() => p);
+        vueExports.onServerPrefetch(() => p);
         return false;
       }
     });
     const islandContext = nuxtApp.ssrContext.islandContext;
     return (_ctx, _push, _parent, _attrs) => {
-      ssrRenderSuspense(_push, {
+      ssrRenderSuspense_1(_push, {
         default: () => {
-          if (unref(abortRender)) {
+          if (vueExports.unref(abortRender)) {
             _push(`<div></div>`);
-          } else if (unref(error)) {
-            _push(ssrRenderComponent(unref(_sfc_main$1), { error: unref(error) }, null, _parent));
-          } else if (unref(islandContext)) {
-            _push(ssrRenderComponent(unref(IslandRenderer), { context: unref(islandContext) }, null, _parent));
-          } else if (unref(SingleRenderer)) {
-            ssrRenderVNode(_push, createVNode(resolveDynamicComponent(unref(SingleRenderer)), null, null), _parent);
+          } else if (vueExports.unref(error)) {
+            _push(ssrRenderComponent_1(vueExports.unref(_sfc_main$1), { error: vueExports.unref(error) }, null, _parent));
+          } else if (vueExports.unref(islandContext)) {
+            _push(ssrRenderComponent_1(vueExports.unref(IslandRenderer), { context: vueExports.unref(islandContext) }, null, _parent));
+          } else if (vueExports.unref(SingleRenderer)) {
+            ssrRenderVNode(_push, vueExports.createVNode(vueExports.resolveDynamicComponent(vueExports.unref(SingleRenderer)), null, null), _parent);
           } else {
-            _push(ssrRenderComponent(unref(AppComponent), null, null, _parent));
+            _push(ssrRenderComponent_1(vueExports.unref(AppComponent), null, null, _parent));
           }
         },
         _: 1
@@ -8072,14 +10566,14 @@ const _sfc_main = {
 };
 const _sfc_setup = _sfc_main.setup;
 _sfc_main.setup = (props, ctx) => {
-  const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("node_modules/.pnpm/nuxt@3.13.2_@parcel+watcher@2.4.1_@types+node@22.7.4_encoding@0.1.13_eslint@9.31.0_jiti_dc3ed3e1697b89b27c6277ea5c9fddd7/node_modules/nuxt/dist/app/components/nuxt-root.vue");
+  const ssrContext = vueExports.useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("node_modules/.pnpm/nuxt@3.13.2_@parcel+watcher@2.4.1_@types+node@22.7.4_encoding@0.1.13_eslint@9.31.0_jiti@2.4.2_gbq6fsmpsuumene4ltsi23tonm/node_modules/nuxt/dist/app/components/nuxt-root.vue");
   return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
 };
 let entry;
 {
   entry = async function createNuxtAppServer(ssrContext) {
-    const vueApp = createApp(_sfc_main);
+    const vueApp = vueExports.createApp(_sfc_main);
     const nuxt = createNuxtApp({ vueApp, ssrContext });
     try {
       await applyPlugins(nuxt, plugins);
@@ -8096,5 +10590,38 @@ let entry;
 }
 const entry$1 = (ssrContext) => entry(ssrContext);
 
-export { useSwitchLocalePath as A, _export_sfc as _, useLocalePath as a, useRoute as b, withoutTrailingSlash$1 as c, useRuntimeConfig as d, entry$1 as default, useRouter as e, navigateTo as f, useNuxtApp as g, hasProtocol as h, injectHead$1 as i, joinURL as j, resolveUnrefHeadInput$1 as k, useRequestEvent as l, withLeadingSlash as m, nuxtLinkDefaults as n, parseURL as o, parseQuery$1 as p, encodeParam as q, resolveRouteObject as r, encodePath as s, asyncDataDefaults as t, useI18n as u, createError as v, withTrailingSlash$1 as w, withBase as x, useCookie as y, useState as z };
+const server = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  A: useSwitchLocalePath,
+  _: _export_sfc,
+  a: useLocalePath,
+  b: useRoute,
+  c: useRouter,
+  d: navigateTo,
+  default: entry$1,
+  e: useNuxtApp,
+  f: useRuntimeConfig,
+  g: withoutTrailingSlash$1,
+  h: hasProtocol,
+  i: injectHead$1,
+  j: joinURL,
+  k: resolveUnrefHeadInput$1,
+  l: useRequestEvent,
+  m: withLeadingSlash,
+  n: nuxtLinkDefaults,
+  o: parseURL,
+  p: parseQuery$1,
+  q: encodeParam,
+  r: resolveRouteObject,
+  s: encodePath,
+  t: asyncDataDefaults,
+  u: useI18n,
+  v: createError,
+  w: withTrailingSlash$1,
+  x: withBase,
+  y: useCookie,
+  z: useState
+});
+
+export { useRoute$1 as A, useRouter$1 as B, useSwitchLocalePath as C, server as D, _export_sfc as _, useLocalePath as a, useRoute as b, useRuntimeConfig as c, withoutTrailingSlash$1 as d, useNuxtApp as e, encodeParam as f, withLeadingSlash as g, hasProtocol as h, encodePath as i, joinURL as j, useRouter as k, parseQuery$1 as l, navigateTo as m, nuxtLinkDefaults as n, asyncDataDefaults as o, parseURL as p, createError as q, resolveRouteObject as r, withBase as s, useRequestEvent as t, useI18n as u, injectHead$1 as v, withTrailingSlash$1 as w, resolveUnrefHeadInput$1 as x, useCookie as y, useState as z };
 //# sourceMappingURL=server.mjs.map

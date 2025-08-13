@@ -1,9 +1,12 @@
-import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};export { H as default } from './chunks/runtime.mjs';
+import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};export { L as default } from './chunks/runtime.mjs';
 import 'node:http';
 import 'node:https';
 import 'node:fs';
 import 'node:path';
-import 'vue';
+import '@vue/compiler-dom';
+import '@vue/runtime-dom';
+import '@vue/shared';
+import 'nitropack/dist/runtime/plugin';
 import 'unified';
 import 'mdast-util-to-string';
 import 'micromark';

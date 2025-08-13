@@ -2,7 +2,10 @@ import process from 'node:process';globalThis._importMeta_=globalThis._importMet
 import https from 'node:https';
 import { promises, existsSync } from 'node:fs';
 import { dirname, resolve as resolve$1, join } from 'node:path';
-import { toValue } from 'vue';
+import * as compilerDom from '@vue/compiler-dom';
+import * as runtimeDom from '@vue/runtime-dom';
+import * as shared from '@vue/shared';
+import { defineNitroPlugin as defineNitroPlugin$1 } from 'nitropack/dist/runtime/plugin';
 import { unified } from 'unified';
 import { toString as toString$1 } from 'mdast-util-to-string';
 import { postprocess, preprocess } from 'micromark';
@@ -4191,7 +4194,7 @@ const appConfig = defuFn(inlineAppConfig);
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "c4bf602b-1c67-416c-9bfa-1772539a6a9d",
+    "buildId": "6d1fb160-1b1e-4011-bdfb-cb3e01c67ea5",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -4337,7 +4340,7 @@ const _inlineRuntimeConfig = {
     "content": {
       "locales": [],
       "defaultLocale": "",
-      "integrity": 1754622151857,
+      "integrity": 1755125765953,
       "experimental": {
         "stripQueryParameters": false,
         "advanceQuery": false,
@@ -4591,7 +4594,7 @@ const _inlineRuntimeConfig = {
       {
         "_context": "system",
         "_priority": -15,
-        "name": "workspace",
+        "name": "meouaneamqor",
         "env": "production"
       },
       {
@@ -5219,51 +5222,51 @@ async function dispose(driver) {
 const _assets = {
   ["nitro:bundled:cache:content:content-index.json"]: {
     import: () => import('./raw/content-index.mjs').then(r => r.default || r),
-    meta: {"type":"application/json","etag":"\"38d-Zo899zsGqXBcSCJ+oyZCQhoyGL8\"","mtime":"2025-08-08T03:02:43.012Z"}
+    meta: {"type":"application/json","etag":"\"38d-Zo899zsGqXBcSCJ+oyZCQhoyGL8\"","mtime":"2025-08-13T22:56:48.657Z"}
   },
   ["nitro:bundled:cache:content:content-navigation.json"]: {
     import: () => import('./raw/content-navigation.mjs').then(r => r.default || r),
-    meta: {"type":"application/json","etag":"\"502-pOEN5yHO3dRThqfF9OMxgJlF3PY\"","mtime":"2025-08-08T03:02:43.012Z"}
+    meta: {"type":"application/json","etag":"\"502-pOEN5yHO3dRThqfF9OMxgJlF3PY\"","mtime":"2025-08-13T22:56:48.657Z"}
   },
   ["nitro:bundled:cache:content:parsed:content:blog:ai-in-healthcare.md"]: {
     import: () => import('./raw/ai-in-healthcare.mjs').then(r => r.default || r),
-    meta: {"type":"text/markdown; charset=utf-8","etag":"\"1991-jwgspqd5SSe4ariOSdIOcKcZ1v0\"","mtime":"2025-08-08T03:02:43.012Z"}
+    meta: {"type":"text/markdown; charset=utf-8","etag":"\"1991-yTDRX4Y+2K9ehDeAfEuRSDtU44g\"","mtime":"2025-08-13T22:56:48.662Z"}
   },
   ["nitro:bundled:cache:content:parsed:content:blog:discover-douq-ma-your-ultimate-guide-to-dining-in-morocco.md"]: {
     import: () => import('./raw/discover-douq-ma-your-ultimate-guide-to-dining-in-morocco.mjs').then(r => r.default || r),
-    meta: {"type":"text/markdown; charset=utf-8","etag":"\"29a8-TqL0ENNzC5IFyoesn4pcbqGpnr4\"","mtime":"2025-08-08T03:02:43.012Z"}
+    meta: {"type":"text/markdown; charset=utf-8","etag":"\"29a8-9Ugb09dEjnT3Da1k0yvOpuTQsmU\"","mtime":"2025-08-13T22:56:48.662Z"}
   },
   ["nitro:bundled:cache:content:parsed:content:blog:edge-computing.md"]: {
     import: () => import('./raw/edge-computing.mjs').then(r => r.default || r),
-    meta: {"type":"text/markdown; charset=utf-8","etag":"\"2655-hVzBZBn1gp338mhJtov+PK4SFxk\"","mtime":"2025-08-08T03:02:43.012Z"}
+    meta: {"type":"text/markdown; charset=utf-8","etag":"\"2655-/fk5sznUw8xvwglyI/Ki+uH+GD0\"","mtime":"2025-08-13T22:56:48.662Z"}
   },
   ["nitro:bundled:cache:content:parsed:content:blog:full-stack-to-team-lead-lessons-learned.md"]: {
     import: () => import('./raw/full-stack-to-team-lead-lessons-learned.mjs').then(r => r.default || r),
-    meta: {"type":"text/markdown; charset=utf-8","etag":"\"2f65-8PyNMKE4MWEbvpznx7ad87kAZOA\"","mtime":"2025-08-08T03:02:43.012Z"}
+    meta: {"type":"text/markdown; charset=utf-8","etag":"\"2f65-X8eaX8mJz6jXb5qSBf9GzFqRqRQ\"","mtime":"2025-08-13T22:56:48.662Z"}
   },
   ["nitro:bundled:cache:content:parsed:content:blog:future-of-web-development.md"]: {
     import: () => import('./raw/future-of-web-development.mjs').then(r => r.default || r),
-    meta: {"type":"text/markdown; charset=utf-8","etag":"\"1a62-Acg51dg4OQ02rgQOTQtXxO471gk\"","mtime":"2025-08-08T03:02:43.012Z"}
+    meta: {"type":"text/markdown; charset=utf-8","etag":"\"1a62-HKHbFV3xYhqXZo2l3zmBLqI39fI\"","mtime":"2025-08-13T22:56:48.663Z"}
   },
   ["nitro:bundled:cache:content:parsed:content:blog:how-companies-ship-code-to-production.md"]: {
     import: () => import('./raw/how-companies-ship-code-to-production.mjs').then(r => r.default || r),
-    meta: {"type":"text/markdown; charset=utf-8","etag":"\"2331-canOVufipxiTGNmZuTACTGMFWEI\"","mtime":"2025-08-08T03:02:43.012Z"}
+    meta: {"type":"text/markdown; charset=utf-8","etag":"\"2331-SyK4jsmNICAZLWYwyewWXLNHYNM\"","mtime":"2025-08-13T22:56:48.662Z"}
   },
   ["nitro:bundled:cache:content:parsed:content:blog:introducing-dabadoc-revolutionizing-healthcare-management-in-morocco.md"]: {
     import: () => import('./raw/introducing-dabadoc-revolutionizing-healthcare-management-in-morocco.mjs').then(r => r.default || r),
-    meta: {"type":"text/markdown; charset=utf-8","etag":"\"30a4-a8yWmYM4LUupjqA0PaG9+z3I4+4\"","mtime":"2025-08-08T03:02:43.012Z"}
+    meta: {"type":"text/markdown; charset=utf-8","etag":"\"30a4-VyyZxOzYl0+2pUGcX+r7s8y8GmU\"","mtime":"2025-08-13T22:56:48.657Z"}
   },
   ["nitro:bundled:cache:content:parsed:content:blog:morocco-social.md"]: {
     import: () => import('./raw/morocco-social.mjs').then(r => r.default || r),
-    meta: {"type":"text/markdown; charset=utf-8","etag":"\"1c04-eotGpY0s41G1o9nNtpjFQfX6OM4\"","mtime":"2025-08-08T03:02:43.012Z"}
+    meta: {"type":"text/markdown; charset=utf-8","etag":"\"1c04-ux93qEReuf/T3/dxqz5wdcymPiM\"","mtime":"2025-08-13T22:56:48.663Z"}
   },
   ["nitro:bundled:cache:content:parsed:content:blog:quantum-computing-impact.md"]: {
     import: () => import('./raw/quantum-computing-impact.mjs').then(r => r.default || r),
-    meta: {"type":"text/markdown; charset=utf-8","etag":"\"2176-s00fwdRGdmil/NFAuIV03frFGVk\"","mtime":"2025-08-08T03:02:43.012Z"}
+    meta: {"type":"text/markdown; charset=utf-8","etag":"\"2176-RlHQIeB8cLpYfk8mtLI3Hf7Os1Q\"","mtime":"2025-08-13T22:56:48.663Z"}
   },
   ["nitro:bundled:cache:content:parsed:content:blog:ruby-clamp.md"]: {
     import: () => import('./raw/ruby-clamp.mjs').then(r => r.default || r),
-    meta: {"type":"text/markdown; charset=utf-8","etag":"\"2db4-f3AgAYxNO4VJJIB8RYDpTK/u6jI\"","mtime":"2025-08-08T03:02:43.012Z"}
+    meta: {"type":"text/markdown; charset=utf-8","etag":"\"2db4-Oe3ud9537lmuI4v4n5n0libbklk\"","mtime":"2025-08-13T22:56:48.659Z"}
   }
 };
 
@@ -5546,7 +5549,7 @@ const storage = createStorage({});
 
 storage.mount('/assets', assets);
 
-storage.mount('data', unstorage_47drivers_47fs_45lite({"driver":"fsLite","base":"/workspace/.data/kv"}));
+storage.mount('data', unstorage_47drivers_47fs_45lite({"driver":"fsLite","base":"C:\\Users\\merou\\meouaneamqor\\.data\\kv"}));
 
 const bundledStorage = ["/cache/content"];
 for (const base of bundledStorage) {
@@ -5983,6 +5986,95 @@ function getRouteRulesForPath(path) {
   return defu({}, ..._routeRulesMatcher.matchAll(path).reverse());
 }
 
+function getDefaultExportFromNamespaceIfNotNamed (n) {
+	return n && Object.prototype.hasOwnProperty.call(n, 'default') && Object.keys(n).length === 1 ? n['default'] : n;
+}
+
+var vue = {exports: {}};
+
+var vue_cjs_prod = {};
+
+const require$$0 = /*@__PURE__*/getDefaultExportFromNamespaceIfNotNamed(compilerDom);
+
+const require$$1$1 = /*@__PURE__*/getDefaultExportFromNamespaceIfNotNamed(runtimeDom);
+
+const require$$1 = /*@__PURE__*/getDefaultExportFromNamespaceIfNotNamed(shared);
+
+/**
+* vue v3.5.10
+* (c) 2018-present Yuxi (Evan) You and Vue contributors
+* @license MIT
+**/
+
+(function (exports) {
+
+	Object.defineProperty(exports, '__esModule', { value: true });
+
+	var compilerDom = require$$0;
+	var runtimeDom = require$$1$1;
+	var shared = require$$1;
+
+	function _interopNamespaceDefault(e) {
+	  var n = Object.create(null);
+	  if (e) {
+	    for (var k in e) {
+	      n[k] = e[k];
+	    }
+	  }
+	  n.default = e;
+	  return Object.freeze(n);
+	}
+
+	var runtimeDom__namespace = /*#__PURE__*/_interopNamespaceDefault(runtimeDom);
+
+	const compileCache = /* @__PURE__ */ Object.create(null);
+	function compileToFunction(template, options) {
+	  if (!shared.isString(template)) {
+	    if (template.nodeType) {
+	      template = template.innerHTML;
+	    } else {
+	      return shared.NOOP;
+	    }
+	  }
+	  const key = shared.genCacheKey(template, options);
+	  const cached = compileCache[key];
+	  if (cached) {
+	    return cached;
+	  }
+	  if (template[0] === "#") {
+	    const el = document.querySelector(template);
+	    template = el ? el.innerHTML : ``;
+	  }
+	  const opts = shared.extend(
+	    {
+	      hoistStatic: true,
+	      onError: void 0,
+	      onWarn: shared.NOOP
+	    },
+	    options
+	  );
+	  if (!opts.isCustomElement && typeof customElements !== "undefined") {
+	    opts.isCustomElement = (tag) => !!customElements.get(tag);
+	  }
+	  const { code } = compilerDom.compile(template, opts);
+	  const render = new Function("Vue", code)(runtimeDom__namespace);
+	  render._rc = true;
+	  return compileCache[key] = render;
+	}
+	runtimeDom.registerRuntimeCompiler(compileToFunction);
+
+	exports.compile = compileToFunction;
+	Object.keys(runtimeDom).forEach(function (k) {
+	  if (k !== 'default' && !Object.prototype.hasOwnProperty.call(exports, k)) exports[k] = runtimeDom[k];
+	}); 
+} (vue_cjs_prod));
+
+{
+  vue.exports = vue_cjs_prod;
+}
+
+var vueExports = vue.exports;
+
 function normalizeSiteConfig(config) {
   if (typeof config.indexable !== "undefined")
     config.indexable = String(config.indexable) !== "false";
@@ -6024,7 +6116,7 @@ function createSiteConfigStack(options) {
     for (const o in stack.sort((a, b) => (a._priority || 0) - (b._priority || 0))) {
       for (const k in stack[o]) {
         const key = k;
-        const val = options2?.resolveRefs ? toValue(stack[o][k]) : stack[o][k];
+        const val = options2?.resolveRefs ? vueExports.toValue(stack[o][k]) : stack[o][k];
         if (!k.startsWith("_") && typeof val !== "undefined") {
           siteConfig[k] = val;
           if (options2?.debug)
@@ -7101,7 +7193,7 @@ function stringifyString(str) {
   return result;
 }
 
-const _H9rzG4VhjF = defineNitroPlugin(async (nitroApp) => {
+const _m1r4ISgZUB = defineNitroPlugin(async (nitroApp) => {
   nitroApp.hooks.hook("render:html", async (ctx, { event }) => {
     const routeOptions = getRouteRules(event);
     const isIsland = process.env.NUXT_COMPONENT_ISLANDS && event.path.startsWith("/__nuxt_island");
@@ -7109,7 +7201,7 @@ const _H9rzG4VhjF = defineNitroPlugin(async (nitroApp) => {
     const noSSR = event.context.nuxt?.noSSR || routeOptions.ssr === false && !isIsland || (false);
     if (noSSR) {
       const siteConfig = Object.fromEntries(
-        Object.entries(useSiteConfig(event)).map(([k, v]) => [k, toValue(v)])
+        Object.entries(useSiteConfig(event)).map(([k, v]) => [k, vueExports.toValue(v)])
       );
       ctx.body.push(`<script>window.__NUXT_SITE_CONFIG__=${devalue(siteConfig)}<\/script>`);
     }
@@ -7158,7 +7250,7 @@ function useSimpleSitemapRuntimeConfig() {
   return Object.freeze(clone);
 }
 
-const _jxmt9TJp61 = defineNitroPlugin((nitroApp) => {
+const _tM5ZDPQLvO = defineNitroPlugin$1((nitroApp) => {
   const { discoverImages, isNuxtContentDocumentDriven } = useSimpleSitemapRuntimeConfig();
   nitroApp.hooks.hook("content:file:afterParse", async (content) => {
     if (content.sitemap === false || content._draft || content._extension !== "md" || content._partial || content.indexable === false || content.index === false)
@@ -7195,8 +7287,8 @@ const _jxmt9TJp61 = defineNitroPlugin((nitroApp) => {
 });
 
 const plugins = [
-  _H9rzG4VhjF,
-_jxmt9TJp61
+  _m1r4ISgZUB,
+_tM5ZDPQLvO
 ];
 
 const errorHandler = (async function errorhandler(error, event) {
@@ -7256,7 +7348,7 @@ const errorHandler = (async function errorhandler(error, event) {
   return send(event, html);
 });
 
-const _ZqV4Yj = defineEventHandler(async (e) => {
+const _joG9xp = defineEventHandler(async (e) => {
   if (e.context.siteConfig)
     return;
   const runtimeConfig = useRuntimeConfig(e);
@@ -8869,7 +8961,7 @@ function serverQueryContent$1(event, query, ...pathParts) {
 
 const serverQueryContent = serverQueryContent$1;
 
-const _2LBxrJ = defineEventHandler(async (e) => {
+const _2KLqab = defineEventHandler(async (e) => {
   const contentList = await serverQueryContent(e).find();
   return contentList.map((c) => c.sitemap).filter(Boolean);
 });
@@ -9381,7 +9473,7 @@ async function buildSitemapIndex(resolvers) {
   ], resolvers, { version, xsl, credits });
 }
 
-const _0dGsJ7 = defineEventHandler(async (e) => {
+const _AGKvq9 = defineEventHandler(async (e) => {
   const canonicalQuery = getQuery(e).canonical;
   const isShowingCanonical = typeof canonicalQuery !== "undefined" && canonicalQuery !== "false";
   let sitemap = await buildSitemapIndex({
@@ -9541,7 +9633,7 @@ async function createSitemap(e, definition) {
   return sitemap;
 }
 
-const _nj1IIE = defineEventHandler(async (e) => {
+const _HxzK1x = defineEventHandler(async (e) => {
   const path = parseURL(e.path).pathname;
   if (!path.endsWith("-sitemap.xml"))
     return;
@@ -9560,7 +9652,7 @@ const _nj1IIE = defineEventHandler(async (e) => {
   } : sitemaps[sitemapName]);
 });
 
-const _MBiN4a = defineEventHandler(async (e) => {
+const _IrhGN0 = defineEventHandler(async (e) => {
   setHeader(e, "Content-Type", "application/xslt+xml");
   setHeader(e, "Cache-Control", "max-age=600, must-revalidate");
   const fixPath = createSitePathResolver(e, { absolute: false, withBase: true });
@@ -9779,7 +9871,7 @@ const _MBiN4a = defineEventHandler(async (e) => {
 `;
 });
 
-const _5UkbhY = defineEventHandler(async (e) => {
+const _ns3uZC = defineEventHandler(async (e) => {
   const { sitemaps } = useSimpleSitemapRuntimeConfig();
   if ("index" in sitemaps) {
     return sendRedirect(e, withBase("/sitemap_index.xml", useRuntimeConfig().app.baseURL), 301);
@@ -9992,7 +10084,7 @@ const mdcHighlighter = /*#__PURE__*/Object.freeze({
   default: highlighter
 });
 
-const _8XNNHK = eventHandler(async (event) => {
+const _3XUDxc = eventHandler(async (event) => {
   const { code, lang, theme: themeString, options: optionsStr } = getQuery(event);
   const theme = JSON.parse(themeString);
   const options = optionsStr ? JSON.parse(optionsStr) : {};
@@ -10080,7 +10172,7 @@ const getContentQuery = (event) => {
   return query;
 };
 
-const _VndJD7 = defineEventHandler(async (event) => {
+const _c1kiI9 = defineEventHandler(async (event) => {
   const query = getContentQuery(event);
   const { advanceQuery } = useRuntimeConfig().public.content.experimental;
   if (query.first) {
@@ -10109,7 +10201,7 @@ const _VndJD7 = defineEventHandler(async (event) => {
   return serverQueryContent$1(event, query).find();
 });
 
-const _Bpa0Yv = defineEventHandler(async (event) => {
+const _7KQb4v = defineEventHandler(async (event) => {
   const { content } = useRuntimeConfig();
   const now = Date.now();
   const contents = await serverQueryContent$1(event).find();
@@ -10219,7 +10311,7 @@ function isObject(obj) {
   return Object.prototype.toString.call(obj) === "[object Object]";
 }
 
-const _RvheaV = defineEventHandler(async (event) => {
+const _bfIDJf = defineEventHandler(async (event) => {
   const query = getContentQuery(event);
   if (!isPreview(event) && Object.keys(query).length === 0) {
     const cache = await cacheStorage().getItem("content-navigation.json");
@@ -10256,7 +10348,7 @@ const _RvheaV = defineEventHandler(async (event) => {
   return createNav(contents?.result || contents, configs);
 });
 
-const _SlMtpA = lazyEventHandler(() => {
+const _wHzePt = lazyEventHandler(() => {
   const opts = useRuntimeConfig().ipx || {};
   const fsDir = opts?.fs?.dir ? (Array.isArray(opts.fs.dir) ? opts.fs.dir : [opts.fs.dir]).map((dir) => isAbsolute(dir) ? dir : fileURLToPath(new URL(dir, globalThis._importMeta_.url))) : void 0;
   const fsStorage = opts.fs?.dir ? ipxFSStorage({ ...opts.fs, dir: fsDir }) : void 0;
@@ -10274,28 +10366,28 @@ const _SlMtpA = lazyEventHandler(() => {
   return useBase(opts.baseURL, ipxHandler);
 });
 
-const _lazy_ebOiXx = () => import('./routes/renderer.mjs').then(function (n) { return n.r; });
+const _lazy_lrrSFk = () => import('./routes/renderer.mjs').then(function (n) { return n.r; });
 
 const handlers = [
-  { route: '/__nuxt_error', handler: _lazy_ebOiXx, lazy: true, middleware: false, method: undefined },
-  { route: '', handler: _ZqV4Yj, lazy: false, middleware: true, method: undefined },
-  { route: '/__sitemap__/nuxt-content-urls.json', handler: _2LBxrJ, lazy: false, middleware: false, method: undefined },
-  { route: '/sitemap_index.xml', handler: _0dGsJ7, lazy: false, middleware: false, method: undefined },
-  { route: '/en-sitemap.xml', handler: _nj1IIE, lazy: false, middleware: false, method: undefined },
-  { route: '/fr-sitemap.xml', handler: _nj1IIE, lazy: false, middleware: false, method: undefined },
-  { route: '/__sitemap__/style.xsl', handler: _MBiN4a, lazy: false, middleware: false, method: undefined },
-  { route: '/sitemap.xml', handler: _5UkbhY, lazy: false, middleware: false, method: undefined },
-  { route: '/api/_mdc/highlight', handler: _8XNNHK, lazy: false, middleware: false, method: undefined },
-  { route: '/api/_content/query/:qid/**:params', handler: _VndJD7, lazy: false, middleware: false, method: "get" },
-  { route: '/api/_content/query/:qid', handler: _VndJD7, lazy: false, middleware: false, method: "get" },
-  { route: '/api/_content/query', handler: _VndJD7, lazy: false, middleware: false, method: "get" },
-  { route: '/api/_content/cache.1754622151857.json', handler: _Bpa0Yv, lazy: false, middleware: false, method: "get" },
-  { route: '/api/_content/navigation/:qid/**:params', handler: _RvheaV, lazy: false, middleware: false, method: "get" },
-  { route: '/api/_content/navigation/:qid', handler: _RvheaV, lazy: false, middleware: false, method: "get" },
-  { route: '/api/_content/navigation', handler: _RvheaV, lazy: false, middleware: false, method: "get" },
-  { route: '/_ipx/**', handler: _SlMtpA, lazy: false, middleware: false, method: undefined },
-  { route: '/index-sitemap.xml', handler: _lazy_ebOiXx, lazy: true, middleware: false, method: undefined },
-  { route: '/**', handler: _lazy_ebOiXx, lazy: true, middleware: false, method: undefined }
+  { route: '/__nuxt_error', handler: _lazy_lrrSFk, lazy: true, middleware: false, method: undefined },
+  { route: '', handler: _joG9xp, lazy: false, middleware: true, method: undefined },
+  { route: '/__sitemap__/nuxt-content-urls.json', handler: _2KLqab, lazy: false, middleware: false, method: undefined },
+  { route: '/sitemap_index.xml', handler: _AGKvq9, lazy: false, middleware: false, method: undefined },
+  { route: '/en-sitemap.xml', handler: _HxzK1x, lazy: false, middleware: false, method: undefined },
+  { route: '/fr-sitemap.xml', handler: _HxzK1x, lazy: false, middleware: false, method: undefined },
+  { route: '/__sitemap__/style.xsl', handler: _IrhGN0, lazy: false, middleware: false, method: undefined },
+  { route: '/sitemap.xml', handler: _ns3uZC, lazy: false, middleware: false, method: undefined },
+  { route: '/api/_mdc/highlight', handler: _3XUDxc, lazy: false, middleware: false, method: undefined },
+  { route: '/api/_content/query/:qid/**:params', handler: _c1kiI9, lazy: false, middleware: false, method: "get" },
+  { route: '/api/_content/query/:qid', handler: _c1kiI9, lazy: false, middleware: false, method: "get" },
+  { route: '/api/_content/query', handler: _c1kiI9, lazy: false, middleware: false, method: "get" },
+  { route: '/api/_content/cache.1755125765953.json', handler: _7KQb4v, lazy: false, middleware: false, method: "get" },
+  { route: '/api/_content/navigation/:qid/**:params', handler: _bfIDJf, lazy: false, middleware: false, method: "get" },
+  { route: '/api/_content/navigation/:qid', handler: _bfIDJf, lazy: false, middleware: false, method: "get" },
+  { route: '/api/_content/navigation', handler: _bfIDJf, lazy: false, middleware: false, method: "get" },
+  { route: '/_ipx/**', handler: _wHzePt, lazy: false, middleware: false, method: undefined },
+  { route: '/index-sitemap.xml', handler: _lazy_lrrSFk, lazy: true, middleware: false, method: undefined },
+  { route: '/**', handler: _lazy_lrrSFk, lazy: true, middleware: false, method: undefined }
 ];
 
 function createNitroApp() {
@@ -10432,5 +10524,5 @@ const vercel = (function(req, res) {
   return handler(req, res);
 });
 
-export { $fetch$1 as $, getRequestHeaders as A, hash as B, pascalCase as C, kebabCase as D, prefixStorage as E, createStorage as F, memoryDriver as G, vercel as H, mdcHighlighter as I, send as a, setResponseStatus as b, setResponseHeaders as c, useNitroApp as d, eventHandler as e, getQuery as f, getResponseStatus as g, createError$1 as h, getRouteRules as i, joinRelativeURL as j, getResponseStatusText as k, klona as l, getRequestHeader as m, defu as n, sanitizeStatusCode as o, parse$1 as p, destr as q, isEqual as r, setResponseHeader as s, setCookie as t, useRuntimeConfig as u, getCookie as v, deleteCookie as w, createHooks as x, toRouteMatcher as y, createRouter$1 as z };
+export { $fetch$1 as $, deleteCookie as A, createHooks as B, toRouteMatcher as C, createRouter$1 as D, getRequestHeaders as E, hash as F, pascalCase as G, kebabCase as H, prefixStorage as I, createStorage as J, memoryDriver as K, vercel as L, mdcHighlighter as M, send as a, setResponseStatus as b, setResponseHeaders as c, useNitroApp as d, eventHandler as e, getDefaultExportFromNamespaceIfNotNamed as f, getResponseStatus as g, getQuery as h, createError$1 as i, joinRelativeURL as j, getRouteRules as k, getResponseStatusText as l, klona as m, getRequestHeader as n, defu as o, parse$1 as p, sanitizeStatusCode as q, require$$1 as r, setResponseHeader as s, destr as t, useRuntimeConfig as u, vueExports as v, withLeadingSlash as w, isEqual as x, setCookie as y, getCookie as z };
 //# sourceMappingURL=runtime.mjs.map
