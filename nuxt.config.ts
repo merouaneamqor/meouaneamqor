@@ -61,12 +61,9 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'vercel-edge',
+    preset: 'vercel',
     externals: {
       inline: ['vue', '@vue/server-renderer', /^@vue\//]
-    },
-    output: {
-      dir: '.vercel/output'
     }
   },
 
