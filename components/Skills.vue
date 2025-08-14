@@ -1,11 +1,11 @@
 <template>
-  <section class="py-24 bg-transparent font-myriad">
+  <section class="py-12 sm:py-24 bg-transparent font-myriad">
     <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-ios-label mb-6 tracking-tight">{{ t('skills.title') }}</h2>
-      <p class="text-xl sm:text-2xl text-ios-label-secondary mb-8 max-w-3xl mx-auto leading-relaxed font-light">
+      <h2 class="text-3xl sm:text-5xl lg:text-6xl font-semibold text-ios-label mb-4 sm:mb-6 tracking-tight">{{ t('skills.title') }}</h2>
+      <p class="text-lg sm:text-2xl text-ios-label-secondary mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed font-light">
         {{ t('skills.subtitle') }}
       </p>
-      <p class="text-base sm:text-lg text-ios-label-tertiary mb-16 max-w-2xl mx-auto leading-relaxed">
+      <p class="text-sm sm:text-lg text-ios-label-tertiary mb-10 sm:mb-16 max-w-2xl mx-auto leading-relaxed">
         {{ t('skills.description') }}
       </p>
     </div>

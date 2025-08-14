@@ -1,7 +1,7 @@
 <template>
   <footer class="bg-transparent text-slate-700 border-t border-slate-200 relative">
 
-    <div class="container mx-auto px-4 sm:px-6 py-12 sm:py-16 relative z-10">
+  <div class="container mx-auto px-4 sm:px-6 py-8 sm:py-16 relative z-10">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
         
         <!-- Enhanced about section -->

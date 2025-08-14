@@ -1,9 +1,9 @@
 <template>
-  <section class="py-20 bg-transparent border-b border-slate-200 relative min-h-screen flex items-center justify-center">
+  <section class="py-12 sm:py-20 bg-transparent border-b border-slate-200 relative min-h-screen flex items-center justify-center">
     
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
       <!-- Professional section header -->
-      <div class="text-center mb-16">
+      <div class="text-center mb-10 sm:mb-16">
         <div class="inline-flex items-center gap-3 mb-6">
           <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center">
             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -11,7 +11,7 @@
             </svg>
           </div>
           <div class="text-left">
-            <h2 class="text-4xl lg:text-5xl font-bold text-white professional-glow">
+            <h2 class="text-3xl lg:text-5xl font-bold text-white professional-glow">
               {{ t('projects.title') }}
             </h2>
             <p class="text-slate-400 text-sm">{{ t('projects.caption') }}</p>
@@ -25,7 +25,7 @@
       
       <!-- Strategic Projects Grid -->
       <div class="max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16 items-stretch">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-8 mb-10 sm:mb-16 items-stretch">
           <div 
             v-for="(project, index) in projects"
             :key="project.name"

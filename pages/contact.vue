@@ -1,5 +1,5 @@
 <template>
-  <section id="contact" class="py-20 bg-ios-background font-myriad relative overflow-hidden min-h-screen">
+  <section id="contact" class="py-12 sm:py-20 bg-ios-background font-myriad relative overflow-hidden min-h-screen">
     <!-- Subtle Background Pattern -->
     <div class="absolute inset-0 opacity-5">
       <div class="contact-grid-pattern"></div>
@@ -14,8 +14,8 @@
 
     <div class="max-w-6xl mx-auto px-6 lg:px-8 relative z-10">
       <!-- Section Header -->
-      <div class="text-center mb-16">
-        <h2 class="text-4xl lg:text-5xl font-semibold text-ios-label mb-4 tracking-tight">
+      <div class="text-center mb-10 sm:mb-16">
+        <h2 class="text-3xl lg:text-5xl font-semibold text-ios-label mb-3 sm:mb-4 tracking-tight">
           {{ t('contact.title') }}
         </h2>
         <div class="w-24 h-1 bg-gradient-to-r from-ios-system-blue via-ios-system-purple to-ios-system-blue rounded-full mx-auto mb-6"></div>

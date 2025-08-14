@@ -1,5 +1,5 @@
 <template>
-  <section class="relative overflow-hidden py-14 sm:py-20">
+<section class="relative overflow-hidden py-8 sm:py-20">
     <div class="absolute inset-0 pointer-events-none">
       <div class="promo-grid opacity-[0.04]"></div>
       <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-white/60"></div>
@@ -7,8 +7,8 @@
 
     <div class="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 items-center">
       <!-- Left: Copy -->
-      <div class="z-10 bg-white/70 backdrop-blur-xl border border-slate-200 rounded-2xl p-8 shadow-sm">
-        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.05] text-slate-900">
+  <div class="z-10 bg-white/70 backdrop-blur-xl border border-slate-200 rounded-2xl p-5 sm:p-8 shadow-sm">
+    <h1 class="text-2xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.15] sm:leading-[1.05] text-slate-900">
           {{ title }}
         </h1>
 

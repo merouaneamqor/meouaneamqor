@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-50 py-16">
+  <div class="min-h-screen bg-gray-50 py-10 sm:py-16">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <article v-if="post" class="prose prose-lg max-w-none">
         <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-4">{{ post.title }}</h1>
@@ -11,7 +11,7 @@
           loading="eager" class="w-full h-64 object-cover rounded-lg mb-8" />
         <ContentRenderer :value="post" />
       </article>
-      <div v-else class="text-center py-16">
+      <div v-else class="text-center py-12 sm:py-16">
         <h2 class="text-2xl font-semibold text-gray-900">{{ t('blog.post_not_found') }}</h2>
         <p class="mt-2 text-gray-600">{{ t('blog.post_not_found_desc') }}</p>
         <NuxtLink :to="localePath('/blog')"

@@ -2,51 +2,51 @@
   <section class="bg-transparent font-myriad relative">
     
     <!-- Hero Section with massive white space like Apple -->
-    <div class="pt-16 sm:pt-24 pb-16 sm:pb-24 px-4 sm:px-6 max-w-6xl mx-auto text-center relative z-20">
+    <div class="pt-10 sm:pt-24 pb-10 sm:pb-24 px-4 sm:px-6 max-w-6xl mx-auto text-center relative z-20">
       
       <!-- Clean minimal title -->
-      <h1 class="text-5xl sm:text-7xl lg:text-8xl font-semibold text-slate-900 mb-6 tracking-tight leading-none">
+      <h1 class="text-3xl sm:text-7xl lg:text-8xl font-semibold text-slate-900 mb-4 sm:mb-6 tracking-tight leading-none">
         {{ t('intro.title') }}
       </h1>
       
       <!-- Main value proposition -->
-      <p class="text-2xl sm:text-3xl lg:text-4xl font-light text-slate-800 mb-8 tracking-tight leading-relaxed max-w-4xl mx-auto">
+      <p class="text-xl sm:text-3xl lg:text-4xl font-light text-slate-800 mb-6 sm:mb-8 tracking-tight leading-relaxed max-w-4xl mx-auto">
         {{ t('intro.value') }}
       </p>
       
       <!-- Supporting statement -->
-      <p class="text-lg sm:text-xl text-slate-700 max-w-3xl mx-auto mb-8 leading-relaxed">
+      <p class="text-base sm:text-xl text-slate-700 max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed">
         {{ t('intro.supporting') }}
       </p>
       
       <!-- Philosophy statement -->
-      <p class="text-base sm:text-lg text-slate-700 max-w-2xl mx-auto mb-16 leading-relaxed font-light">
+      <p class="text-sm sm:text-lg text-slate-700 max-w-2xl mx-auto mb-10 sm:mb-16 leading-relaxed font-light">
         {{ t('intro.philosophy') }}
       </p>
       
       <!-- Clean Stats Section -->
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 lg:gap-16 mb-16 sm:mb-20">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-12 lg:gap-16 mb-10 sm:mb-20">
         <div class="text-center">
-          <div class="text-4xl lg:text-5xl font-semibold text-slate-900 mb-2">8</div>
-          <div class="text-lg text-slate-700">{{ t('intro.stats.developers_led') }}</div>
+          <div class="text-3xl lg:text-5xl font-semibold text-slate-900 mb-1 sm:mb-2">8</div>
+          <div class="text-base sm:text-lg text-slate-700">{{ t('intro.stats.developers_led') }}</div>
         </div>
         <div class="text-center">
-          <div class="text-4xl lg:text-5xl font-semibold text-slate-900 mb-2">10 000+</div>
-          <div class="text-lg text-slate-700">{{ t('intro.stats.monthly_users') }}</div>
+          <div class="text-3xl lg:text-5xl font-semibold text-slate-900 mb-1 sm:mb-2">10 000+</div>
+          <div class="text-base sm:text-lg text-slate-700">{{ t('intro.stats.monthly_users') }}</div>
         </div>
         <div class="text-center">
-          <div class="text-4xl lg:text-5xl font-semibold text-slate-900 mb-2">30 %</div>
-          <div class="text-lg text-slate-700">{{ t('intro.stats.cycle_reduction') }}</div>
+          <div class="text-3xl lg:text-5xl font-semibold text-slate-900 mb-1 sm:mb-2">30 %</div>
+          <div class="text-base sm:text-lg text-slate-700">{{ t('intro.stats.cycle_reduction') }}</div>
         </div>
         <div class="text-center">
-          <div class="text-4xl lg:text-5xl font-semibold text-slate-900 mb-2">93 %</div>
-          <div class="text-lg text-slate-700">{{ t('intro.stats.sprint_success') }}</div>
+          <div class="text-3xl lg:text-5xl font-semibold text-slate-900 mb-1 sm:mb-2">93 %</div>
+          <div class="text-base sm:text-lg text-slate-700">{{ t('intro.stats.sprint_success') }}</div>
         </div>
       </div>
 
       <!-- Clean Technologies List -->
-      <div class="mb-20">
-        <h3 class="text-2xl font-semibold text-slate-900 mb-8">{{ t('common.core_technologies') }}</h3>
+      <div class="mb-12 sm:mb-20">
+        <h3 class="text-xl sm:text-2xl font-semibold text-slate-900 mb-4 sm:mb-8">{{ t('common.core_technologies') }}</h3>
         <div class="flex flex-wrap justify-center gap-2.5 sm:gap-3">
           <span
             v-for="tech in technologies"

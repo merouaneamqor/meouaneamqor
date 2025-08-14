@@ -1,10 +1,10 @@
 <template>
-  <section class="py-12 sm:py-16 md:py-20 bg-transparent font-myriad border-b border-slate-200 relative min-h-screen flex items-center justify-center">
+  <section class="py-8 sm:py-16 md:py-20 bg-transparent font-myriad border-b border-slate-200 relative min-h-screen flex items-center justify-center">
         
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
       <!-- Professional section header -->
-      <div class="text-center mb-10 sm:mb-14 md:mb-16 px-4 sm:px-0">
-        <div class="inline-flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+      <div class="text-center mb-8 sm:mb-14 md:mb-16 px-4 sm:px-0">
+        <div class="inline-flex items-center gap-2 sm:gap-3 mb-3 sm:mb-6">
           <div class="w-10 h-10 sm:w-12 sm:h-12 bg-slate-100 rounded-lg sm:rounded-xl flex items-center justify-center">
             <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/>
@@ -12,7 +12,7 @@
             </svg>
           </div>
           <div class="text-left">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-slate-900 tracking-tight">
+            <h2 class="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-slate-900 tracking-tight">
               {{ t('education.title') }}
             </h2>
             <p class="text-slate-700 text-xs sm:text-sm">{{ t('education.subtitle') }}</p>

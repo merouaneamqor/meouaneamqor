@@ -4,15 +4,15 @@
     <!-- Clean iOS Navigation -->
     
     <!-- Hero Section with massive white space like Apple -->
-    <div class="pt-40 sm:pt-56 lg:pt-64 pb-16 sm:pb-24 px-4 sm:px-6 max-w-6xl mx-auto text-center relative z-40 min-h-[85vh] sm:min-h-[92vh] flex flex-col justify-center pointer-events-auto">
+    <div class="pt-20 sm:pt-56 lg:pt-64 pb-10 sm:pb-24 px-4 sm:px-6 max-w-6xl mx-auto text-center relative z-40 min-h-[75vh] sm:min-h-[92vh] flex flex-col justify-center pointer-events-auto">
       
       <!-- Clean minimal title -->
-      <h1 class="text-5xl sm:text-7xl lg:text-8xl font-semibold text-slate-900 mb-4 tracking-tight leading-none">
+      <h1 class="text-3xl sm:text-7xl lg:text-8xl font-semibold text-slate-900 mb-2 sm:mb-4 tracking-tight leading-none">
       Merouane Amqor
       </h1>
       
       <!-- Subtitle -->
-      <p class="text-2xl sm:text-3xl lg:text-4xl font-light text-slate-800 mb-8 tracking-tight">
+      <p class="text-xl sm:text-3xl lg:text-4xl font-light text-slate-800 mb-6 sm:mb-8 tracking-tight">
         {{ t('header.subtitle') }}
       </p>
       <span class="text-sm sm:text-base lg:text-lg font-light text-slate-800 mb-8 tracking-tight">
@@ -20,15 +20,15 @@
       </span>
       
       <!-- Clean description -->
-      <p class="text-sm sm:text-base text-slate-600 max-w-3xl mx-auto mb-16 leading-relaxed">
+      <p class="text-sm sm:text-base text-slate-600 max-w-3xl mx-auto mb-10 sm:mb-16 leading-relaxed">
         {{ t('header.description_1') }}
         {{ t('header.description_2') }}
       </p>
      
 
       <!-- Clean Technologies List -->
-      <div class="mb-20">
-        <h3 class="text-2xl font-semibold text-slate-900 mb-8">{{ t('common.core_technologies') }}</h3>
+      <div class="mb-12 sm:mb-20">
+        <h3 class="text-xl sm:text-2xl font-semibold text-slate-900 mb-4 sm:mb-8">{{ t('common.core_technologies') }}</h3>
         <div class="flex flex-wrap justify-center gap-2.5 sm:gap-3">
           <span
             v-for="tech in technologies"

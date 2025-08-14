@@ -32,8 +32,8 @@
     </nav>
 
     <!-- Large Title Header -->
-    <header class="px-6 pt-8 pb-4 max-w-4xl mx-auto">
-      <h1 class="text-4xl sm:text-5xl font-bold text-slate-900 mb-2 tracking-tight">
+    <header class="px-4 sm:px-6 pt-6 pb-3 sm:pt-8 sm:pb-4 max-w-4xl mx-auto">
+      <h1 class="text-3xl sm:text-5xl font-bold text-slate-900 mb-1 sm:mb-2 tracking-tight">
         {{ t('nav.portfolio') }}
       </h1>
       <p class="text-lg text-slate-700 leading-relaxed max-w-2xl">
@@ -42,7 +42,7 @@
     </header>
 
     <!-- Project List -->
-    <main class="px-6 pb-8 max-w-4xl mx-auto">
+      <main class="px-4 sm:px-6 pb-6 sm:pb-8 max-w-4xl mx-auto">
       <div v-if="viewMode === 'list'" class="space-y-4">
         <div 
           v-for="project in projects" 
@@ -102,7 +102,7 @@
       </div>
 
       <!-- Grid View -->
-      <div v-else class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div v-else class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
         <div 
           v-for="project in projects" 
           :key="project.id"

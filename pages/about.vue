@@ -1,10 +1,10 @@
 <template>
-  <section class="py-20 bg-white font-myriad relative overflow-hidden min-h-screen">
+  <section class="py-12 sm:py-20 bg-white font-myriad relative overflow-hidden min-h-screen">
 
     <div class="container mx-auto px-6 lg:px-8 max-w-4xl relative z-10">
       
       <!-- Profile Header -->
-      <div class="flex flex-col items-center text-center mb-16">
+      <div class="flex flex-col items-center text-center mb-10 sm:mb-16">
         <!-- Avatar -->
         <div class="relative mb-8">
           <div class="relative w-32 h-32 rounded-full overflow-hidden ring-2 ring-slate-200 shadow-md">
@@ -17,7 +17,7 @@
         </div>
 
         <!-- Name and Title -->
-        <h1 class="text-4xl lg:text-5xl font-semibold text-slate-900 mb-4 tracking-tight">
+        <h1 class="text-3xl lg:text-5xl font-semibold text-slate-900 mb-3 sm:mb-4 tracking-tight">
           Merouane Amqor
         </h1>
         <div class="text-lg lg:text-xl text-slate-700 font-medium mb-4 tracking-wide">
@@ -47,7 +47,7 @@
       </div>
 
       <!-- Professional Journey Sections -->
-      <div class="space-y-12 mb-16">
+      <div class="space-y-8 sm:space-y-12 mb-10 sm:mb-16">
         
         <!-- Professional Journey -->
         <div class="journey-section">

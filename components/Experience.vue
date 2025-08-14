@@ -1,16 +1,16 @@
 <template>
-  <section class="py-12 sm:py-16 md:py-24 lg:py-32 bg-transparent relative min-h-screen flex items-center justify-center">
+  <section class="py-8 sm:py-16 md:py-24 lg:py-32 bg-transparent relative min-h-screen flex items-center justify-center">
         
     <div class="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10 w-full max-w-4xl">
       <!-- iOS-style section header -->
-      <div class="text-center mb-16 sm:mb-20 md:mb-24">
-        <div class="mb-8">
+      <div class="text-center mb-10 sm:mb-20 md:mb-24">
+        <div class="mb-6 sm:mb-8">
           <div class="w-16 h-16 sm:w-20 sm:h-20 bg-blue-500 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg">
             <svg class="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
             </svg>
           </div>
-          <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-slate-900 mb-4 tracking-tight leading-tight">
+          <h2 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-slate-900 mb-3 sm:mb-4 tracking-tight leading-tight">
             {{ t('experience.title') }}
           </h2>
           <p class="text-lg sm:text-xl text-slate-700 font-light">{{ t('experience.subtitle') }}</p>
@@ -115,8 +115,8 @@
       </div>
       
       <!-- iOS-style Challenges Section -->
-      <div class="mt-20 sm:mt-24 md:mt-32">
-        <div class="text-center mb-12 sm:mb-16">
+      <div class="mt-12 sm:mt-24 md:mt-32">
+        <div class="text-center mb-8 sm:mb-16">
           <div class="w-12 h-12 sm:w-16 sm:h-16 bg-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
             <svg class="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 7.478a12.06 12.06 0 004.5 0m-3.75 7.478V21a2.25 2.25 0 003.75 0V8.197a2.25 2.25 0 00-1.5-2.122L12 5.25a2.25 2.25 0 00-3 2.122v8.197a2.25 2.25 0 001.5 2.122z"/>
