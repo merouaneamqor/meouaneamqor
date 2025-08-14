@@ -45,6 +45,8 @@
     "email": "Email",
     "phone": "Téléphone",
     "location": "Localisation",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
     "back": "Retour",
     "view_project": "Voir le projet",
     "full_name": "Nom complet",
@@ -223,5 +225,49 @@
     "post_not_found": "Article introuvable",
     "post_not_found_desc": "L'article que vous recherchez n'existe pas ou a été supprimé.",
     "back_to_blog": "Retour au blog"
+  },
+  "about": {
+    "role_title": "Ingénieur Logiciel • Certified ScrumMaster®",
+    "intro_p1": "En tant que Certified ScrumMaster®, j’aide les équipes à créer de la valeur en assurant la clarté des priorités, la fluidité du flux et une cadence de livraison durable.",
+    "intro_p2": "Je relie la stratégie métier à l’exécution produit pour générer des résultats mesurables et durables, notamment dans des environnements exigeants.",
+    "intro_p3": "Reconnu pour une communication claire, une facilitation efficace, la résolution de conflits et une livraison pragmatique orientée résultats.",
+    "quick": {
+      "devs": "Développeurs accompagnés",
+      "users": "Utilisateurs mensuels servis",
+      "cycle": "Réduction du cycle",
+      "sprints": "Sprints réussis"
+    },
+    "journey": {
+      "title": "Parcours professionnel",
+      "subtitle": "De développeur à leader technique",
+      "current_role": {
+        "title": "Rôle actuel",
+        "desc": "Facilitation de la livraison Agile chez DabaDoc : alignement des parties prenantes, levée d’obstacles et cadence de livraison saine sur des produits santé."
+      },
+      "entrepreneurship": {
+        "title": "Entrepreneuriat",
+        "desc": "Co‑fondateur (Meram/Texam, Douq.ma), facilitation d’une livraison itérative de la découverte au lancement, en équilibrant besoins utilisateurs et résultats business."
+      }
+    },
+    "mentoring": {
+      "title": "Mentorat & Partage",
+      "subtitle": "Accompagner la nouvelle génération",
+      "intro": "De grands logiciels naissent de grandes équipes. J’accompagne développeurs et entrepreneurs avec une approche pragmatique et centrée sur la dynamique d’équipe. Ma démarche s’articule autour de :",
+      "point1": { "title": "Coaching Agile", "desc": "Cérémonies Scrum, efficience du flux et métriques d’impact" },
+      "point2": { "title": "Compétences de leadership", "desc": "Facilitation, gestion de conflits et santé d’équipe" },
+      "point3": { "title": "Pensée produit", "desc": "Résultats utilisateurs, priorisation et alignement de la valeur" }
+    },
+    "aspirations": {
+      "title": "Vision & Aspirations",
+      "subtitle": "Construire le futur de la technologie",
+      "card1": {
+        "title": "Leadership d’innovation",
+        "desc": "Accélérer l’innovation dans les marchés émergents, notamment en santé et e‑commerce en Afrique et au Moyen‑Orient."
+      },
+      "card2": {
+        "title": "Impact social",
+        "desc": "Créer des solutions qui résolvent de vrais problèmes, avec un focus accessibilité et développement durable."
+      }
+    }
   }
 } 

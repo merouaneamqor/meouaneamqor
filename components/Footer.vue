@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-transparent text-slate-700 border-t border-slate-200 relative">
+  <footer class="bg-white/50 backdrop-blur-xl text-slate-700 border-top border-slate-200 relative">
 
   <div class="container mx-auto px-4 sm:px-6 py-8 sm:py-16 relative z-10">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
@@ -11,7 +11,7 @@
             <div class="w-16 h-1 bg-slate-300 rounded-full"></div>
           </div>
           
-          <p class="text-slate-300 mb-8 leading-relaxed max-w-md text-lg">
+          <p class="text-slate-600 mb-8 leading-relaxed max-w-md text-lg">
             {{ t('footer.about_line1') }}
             {{ t('footer.about_line2') }}
           </p>
@@ -19,22 +19,22 @@
           <!-- Enhanced status indicator -->
           <div class="flex items-center gap-4 mb-10">
             <div class="w-4 h-4 bg-emerald-400 rounded-full animate-pulse"></div>
-            <span class="text-base font-medium text-slate-400">{{ t('footer.available') }}</span>
+            <span class="text-base font-medium text-slate-600">{{ t('footer.available') }}</span>
           </div>
 
           <!-- Enhanced newsletter signup -->
-          <div class="bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl p-6 group/newsletter">
-            <h3 class="text-lg font-bold text-slate-200 mb-3">
+          <div class="bg-white border border-slate-200 rounded-xl p-6 group/newsletter">
+            <h3 class="text-lg font-bold text-slate-900 mb-3">
               {{ t('footer.stay_connected') }}
             </h3>
-            <p class="text-sm text-slate-400 mb-5">
+            <p class="text-sm text-slate-600 mb-5">
               {{ t('footer.newsletter_cta') }}
             </p>
             <div class="flex flex-col sm:flex-row gap-3">
               <input 
                 type="email" 
                 :placeholder="t('common.email_placeholder')"
-                class="flex-1 px-5 py-3 bg-slate-700/50 border border-slate-600/50 rounded-lg text-base text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-400 transition-colors"
+                class="flex-1 px-5 py-3 bg-white border border-slate-300 rounded-lg text-base text-slate-900 placeholder-slate-400 focus:outline-none focus:border-emerald-400 transition-colors"
               >
               <button class="px-6 py-3 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white text-base font-semibold rounded-lg hover:from-emerald-600 hover:to-cyan-600 transition-all shadow-lg hover:shadow-emerald-500/20">
                 {{ t('common.subscribe') }}
@@ -56,7 +56,7 @@
                 class="footer-link group flex items-center gap-3 py-2"
               >
                 <div class="w-2 h-2 bg-slate-500 rounded-full group-hover:bg-emerald-400 transition-colors"></div>
-                <span class="text-base group-hover:text-emerald-300 transition-colors">{{ t(link.textKey) }}</span>
+                <span class="text-base text-slate-700 group-hover:text-emerald-600 transition-colors">{{ t(link.textKey) }}</span>
 
               </NuxtLink>
             </li>
@@ -107,7 +107,7 @@
 
           <!-- Enhanced social media -->
           <div>
-            <h4 class="text-lg font-bold text-slate-200 mb-5">
+            <h4 class="text-lg font-bold text-slate-900 mb-5">
               {{ t('footer.connect') }}
             </h4>
             <div class="flex gap-4">
@@ -141,7 +141,7 @@
           <!-- Enhanced back to top -->
           <button 
             @click="scrollToTop"
-            class="back-to-top-btn group"
+            class="group inline-flex items-center gap-2 px-4 py-2 bg-slate-100 border border-slate-200 rounded-lg text-slate-700 hover:bg-emerald-50 hover:border-emerald-200 hover:text-emerald-700 transition-all"
             :title="t('footer.back_to_top')"
           >
             <svg class="w-5 h-5 transition-transform group-hover:-translate-y-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -157,8 +157,11 @@
 
 <script setup lang="ts">
 import { Mail, Phone, MapPin, Linkedin, Github, Globe } from 'lucide-vue-next'
+import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 const localePath = useLocalePath()
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+declare const useLocalePath: () => (path: string) => string
 
 const quickLinks = [
   { textKey: 'nav.home', url: '/' },
@@ -220,7 +223,7 @@ const scrollToTop = () => {
 
 /* Enhanced footer links */
 .footer-link {
-  color: rgb(203, 213, 225);
+  color: rgb(71, 85, 105);
   transition: all 0.3s;
   font-weight: 500;
   position: relative;

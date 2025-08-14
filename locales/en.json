@@ -45,6 +45,8 @@
     "email": "Email",
     "phone": "Phone",
     "location": "Location",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
     "back": "Back",
     "view_project": "View Project",
     "full_name": "Full Name",
@@ -223,5 +225,50 @@
     "post_not_found": "Post not found",
     "post_not_found_desc": "The blog post you're looking for doesn't exist or has been removed.",
     "back_to_blog": "Back to Blog"
+  }
+  ,
+  "about": {
+    "role_title": "Software Engineer • Certified ScrumMaster®",
+    "intro_p1": "As a Certified ScrumMaster®, I help teams create value by ensuring clarity of priorities, smooth flow, and a sustainable delivery cadence.",
+    "intro_p2": "I bridge business strategy and product execution to generate measurable, durable outcomes—especially in fast-moving environments.",
+    "intro_p3": "Known for clear communication, effective facilitation, conflict resolution, and pragmatic, outcome‑oriented delivery.",
+    "quick": {
+      "devs": "Developers Coached",
+      "users": "Monthly Users Served",
+      "cycle": "Cycle Time Reduction",
+      "sprints": "Sprint Success"
+    },
+    "journey": {
+      "title": "Professional Journey",
+      "subtitle": "From developer to tech leader",
+      "current_role": {
+        "title": "Current Role",
+        "desc": "Facilitating Agile delivery at DabaDoc: aligning stakeholders, unblocking teams, and sustaining a healthy delivery cadence across healthcare products."
+      },
+      "entrepreneurship": {
+        "title": "Entrepreneurship",
+        "desc": "Co‑founded ventures (Meram/Texam, Douq.ma), facilitating iterative delivery from discovery to launch, balancing user needs and business outcomes."
+      }
+    },
+    "mentoring": {
+      "title": "Mentoring & Knowledge Sharing",
+      "subtitle": "Empowering the next generation",
+      "intro": "Great software comes from great teams. I mentor developers and entrepreneurs, focusing on practical growth and healthy team dynamics. My approach centers on:",
+      "point1": { "title": "Agile Coaching", "desc": "Scrum events, flow efficiency, and outcome metrics" },
+      "point2": { "title": "Leadership Skills", "desc": "Facilitation, conflict resolution, and team health" },
+      "point3": { "title": "Product Thinking", "desc": "User outcomes, prioritization, and value alignment" }
+    },
+    "aspirations": {
+      "title": "Vision & Aspirations",
+      "subtitle": "Building the future of technology",
+      "card1": {
+        "title": "Innovation Leadership",
+        "desc": "Driving technological advancement in emerging markets, particularly in healthcare and e‑commerce across Africa and the Middle East."
+      },
+      "card2": {
+        "title": "Social Impact",
+        "desc": "Creating technology that solves real problems with a focus on accessibility and sustainable development."
+      }
+    }
   }
 } 

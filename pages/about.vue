@@ -21,7 +21,7 @@
           Merouane Amqor
         </h1>
         <div class="text-lg lg:text-xl text-slate-700 font-medium mb-4 tracking-wide">
-          Software Engineer • Certified ScrumMaster®
+          {{ t('about.role_title') }}
         </div>
         
         <!-- Location Badge -->
@@ -35,13 +35,13 @@
         <!-- Introduction -->
         <div class="bg-white/70 backdrop-blur-xl border border-slate-200 rounded-2xl p-6 sm:p-8 max-w-3xl shadow-sm">
           <p class="text-slate-700 leading-relaxed text-base sm:text-lg mb-3 sm:mb-4">
-            As a Certified ScrumMaster®, I help teams create value by ensuring clarity of priorities, smooth flow, and a sustainable delivery cadence.
+            {{ t('about.intro_p1') }}
           </p>
           <p class="text-slate-700 leading-relaxed text-base sm:text-lg mb-3 sm:mb-4">
-            I bridge business strategy and product execution to generate measurable, durable outcomes—especially in fast-moving environments.
+            {{ t('about.intro_p2') }}
           </p>
           <p class="text-slate-700 leading-relaxed text-base sm:text-lg">
-            Known for clear communication, effective facilitation, conflict resolution, and pragmatic, outcome-oriented delivery.
+            {{ t('about.intro_p3') }}
           </p>
         </div>
 
@@ -49,19 +49,19 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-6 w-full max-w-3xl">
           <div class="text-center bg-white/70 border border-slate-200 rounded-xl p-3">
             <div class="text-2xl font-semibold text-slate-900">8</div>
-            <div class="text-xs text-slate-600">Developers Coached</div>
+            <div class="text-xs text-slate-600">{{ t('about.quick.devs') }}</div>
           </div>
           <div class="text-center bg-white/70 border border-slate-200 rounded-xl p-3">
             <div class="text-2xl font-semibold text-slate-900">10 000+</div>
-            <div class="text-xs text-slate-600">Monthly Users Served</div>
+            <div class="text-xs text-slate-600">{{ t('about.quick.users') }}</div>
           </div>
           <div class="text-center bg-white/70 border border-slate-200 rounded-xl p-3">
             <div class="text-2xl font-semibold text-slate-900">30 %</div>
-            <div class="text-xs text-slate-600">Cycle Time Reduction</div>
+            <div class="text-xs text-slate-600">{{ t('about.quick.cycle') }}</div>
           </div>
           <div class="text-center bg-white/70 border border-slate-200 rounded-xl p-3">
             <div class="text-2xl font-semibold text-slate-900">93 %</div>
-            <div class="text-xs text-slate-600">Sprint Success</div>
+            <div class="text-xs text-slate-600">{{ t('about.quick.sprints') }}</div>
           </div>
         </div>
       </div>
@@ -79,8 +79,8 @@
                 </svg>
               </div>
               <div>
-                <h3 class="text-2xl font-semibold text-slate-900">Professional Journey</h3>
-                <p class="text-slate-500 text-sm">From developer to tech leader</p>
+                <h3 class="text-2xl font-semibold text-slate-900">{{ t('about.journey.title') }}</h3>
+                <p class="text-slate-500 text-sm">{{ t('about.journey.subtitle') }}</p>
               </div>
             </div>
             
@@ -89,10 +89,10 @@
                 <div class="bg-white/60 backdrop-blur-md border border-slate-200 rounded-xl p-6">
                   <h4 class="font-semibold text-slate-900 mb-2 sm:mb-3 flex items-center gap-2">
                     <div class="w-2 h-2 bg-ios-system-green rounded-full"></div>
-                    Current Role
+                    {{ t('about.journey.current_role.title') }}
                   </h4>
                   <p class="text-slate-700 text-sm leading-relaxed">
-                    Facilitating Agile delivery at DabaDoc: aligning stakeholders, unblocking teams, and sustaining a healthy delivery cadence across healthcare products.
+                    {{ t('about.journey.current_role.desc') }}
                   </p>
                 </div>
               </div>
@@ -101,10 +101,10 @@
                 <div class="bg-white/60 backdrop-blur-md border border-slate-200 rounded-xl p-6">
                   <h4 class="font-semibold text-slate-900 mb-2 sm:mb-3 flex items-center gap-2">
                     <div class="w-2 h-2 bg-ios-system-blue rounded-full"></div>
-                    Entrepreneurship
+                    {{ t('about.journey.entrepreneurship.title') }}
                   </h4>
                   <p class="text-slate-700 text-sm leading-relaxed">
-                    Co-founded ventures (Meram/Texam, Douq.ma), facilitating iterative delivery from discovery to launch, balancing user needs and business outcomes.
+                    {{ t('about.journey.entrepreneurship.desc') }}
                   </p>
                 </div>
               </div>
@@ -122,39 +122,39 @@
                 </svg>
               </div>
               <div>
-                <h3 class="text-2xl font-semibold text-slate-900">Mentoring & Knowledge Sharing</h3>
-                <p class="text-slate-500 text-sm">Empowering the next generation</p>
+                <h3 class="text-2xl font-semibold text-slate-900">{{ t('about.mentoring.title') }}</h3>
+                <p class="text-slate-500 text-sm">{{ t('about.mentoring.subtitle') }}</p>
               </div>
             </div>
             
             <div class="space-y-4">
               <p class="text-slate-700 leading-relaxed">
-                Great software comes from great teams. I mentor developers and entrepreneurs, focusing on practical growth and healthy team dynamics. My approach centers on:
+                {{ t('about.mentoring.intro') }}
               </p>
               
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="mentoring-point">
                   <div class="flex items-center gap-2 mb-2">
                     <div class="w-1.5 h-1.5 bg-ios-system-green rounded-full"></div>
-                    <span class="text-slate-900 font-medium text-sm">Agile Coaching</span>
+                    <span class="text-slate-900 font-medium text-sm">{{ t('about.mentoring.point1.title') }}</span>
                   </div>
-                  <p class="text-slate-500 text-xs">Scrum events, flow efficiency, and outcome metrics</p>
+                  <p class="text-slate-500 text-xs">{{ t('about.mentoring.point1.desc') }}</p>
                 </div>
                 
                 <div class="mentoring-point">
                   <div class="flex items-center gap-2 mb-2">
                     <div class="w-1.5 h-1.5 bg-ios-system-blue rounded-full"></div>
-                    <span class="text-slate-900 font-medium text-sm">Leadership Skills</span>
+                    <span class="text-slate-900 font-medium text-sm">{{ t('about.mentoring.point2.title') }}</span>
                   </div>
-                  <p class="text-slate-500 text-xs">Facilitation, conflict resolution, and team health</p>
+                  <p class="text-slate-500 text-xs">{{ t('about.mentoring.point2.desc') }}</p>
                 </div>
                 
                 <div class="mentoring-point">
                   <div class="flex items-center gap-2 mb-2">
                     <div class="w-1.5 h-1.5 bg-ios-system-purple rounded-full"></div>
-                    <span class="text-slate-900 font-medium text-sm">Product Thinking</span>
+                    <span class="text-slate-900 font-medium text-sm">{{ t('about.mentoring.point3.title') }}</span>
                   </div>
-                  <p class="text-slate-500 text-xs">User outcomes, prioritization, and value alignment</p>
+                  <p class="text-slate-500 text-xs">{{ t('about.mentoring.point3.desc') }}</p>
                 </div>
               </div>
             </div>
@@ -171,8 +171,8 @@
                 </svg>
               </div>
               <div>
-                <h3 class="text-2xl font-semibold text-slate-900">Vision & Aspirations</h3>
-                <p class="text-slate-500 text-sm">Building the future of technology</p>
+                <h3 class="text-2xl font-semibold text-slate-900">{{ t('about.aspirations.title') }}</h3>
+                <p class="text-slate-500 text-sm">{{ t('about.aspirations.subtitle') }}</p>
               </div>
             </div>
             
@@ -185,21 +185,15 @@
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="aspiration-card">
                   <div class="bg-white/60 backdrop-blur-md border border-slate-200 rounded-xl p-6">
-                    <h4 class="font-semibold text-slate-900 mb-3">Innovation Leadership</h4>
-                    <p class="text-slate-700 text-sm leading-relaxed">
-                      Driving technological advancement in emerging markets, particularly in healthcare 
-                      and e-commerce sectors across Africa and the Middle East.
-                    </p>
+                    <h4 class="font-semibold text-slate-900 mb-3">{{ t('about.aspirations.card1.title') }}</h4>
+                    <p class="text-slate-700 text-sm leading-relaxed">{{ t('about.aspirations.card1.desc') }}</p>
                   </div>
                 </div>
                 
                 <div class="aspiration-card">
                   <div class="bg-white/60 backdrop-blur-md border border-slate-200 rounded-xl p-6">
-                    <h4 class="font-semibold text-slate-900 mb-3">Social Impact</h4>
-                    <p class="text-slate-700 text-sm leading-relaxed">
-                      Creating technology solutions that solve real problems and improve lives, 
-                      with a focus on accessibility and sustainable development.
-                    </p>
+                    <h4 class="font-semibold text-slate-900 mb-3">{{ t('about.aspirations.card2.title') }}</h4>
+                    <p class="text-slate-700 text-sm leading-relaxed">{{ t('about.aspirations.card2.desc') }}</p>
                   </div>
                 </div>
               </div>
@@ -210,7 +204,7 @@
 
       <!-- Contact Actions -->
       <div class="text-center">
-        <h3 class="text-2xl font-semibold text-slate-900 mb-8">Let's Connect</h3>
+        <h3 class="text-2xl font-semibold text-slate-900 mb-8">{{ t('contact.title') }}</h3>
         <div class="flex flex-wrap justify-center gap-4">
           <a 
             href="mailto:marouane.amqor@gmail.com" 
@@ -219,7 +213,7 @@
             <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
             </svg>
-            <span>Email</span>
+            <span>{{ t('common.email') }}</span>
           </a>
           
           <a 
@@ -229,7 +223,7 @@
             <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
             </svg>
-            <span>Phone</span>
+            <span>{{ t('common.phone') }}</span>
           </a>
           
           <a 
@@ -241,7 +235,7 @@
             <svg class="w-5 h-5 text-slate-600" fill="currentColor" viewBox="0 0 24 24">
               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
             </svg>
-            <span>LinkedIn</span>
+            <span>{{ t('common.linkedin') }}</span>
           </a>
           
           <a 
@@ -253,7 +247,7 @@
             <svg class="w-5 h-5 text-slate-600" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
             </svg>
-            <span>GitHub</span>
+            <span>{{ t('common.github') }}</span>
           </a>
         </div>
       </div>
@@ -262,7 +256,8 @@
 </template>
 
 <script setup lang="ts">
-// No additional logic needed for this component
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 </script>
 
 <style scoped>
