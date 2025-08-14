@@ -31,15 +31,15 @@
           <div class="text-lg text-slate-700">{{ t('intro.stats.developers_led') }}</div>
         </div>
         <div class="text-center">
-          <div class="text-4xl lg:text-5xl font-semibold text-slate-900 mb-2">10K+</div>
+          <div class="text-4xl lg:text-5xl font-semibold text-slate-900 mb-2">10 000+</div>
           <div class="text-lg text-slate-700">{{ t('intro.stats.monthly_users') }}</div>
         </div>
         <div class="text-center">
-          <div class="text-4xl lg:text-5xl font-semibold text-slate-900 mb-2">30%</div>
+          <div class="text-4xl lg:text-5xl font-semibold text-slate-900 mb-2">30 %</div>
           <div class="text-lg text-slate-700">{{ t('intro.stats.cycle_reduction') }}</div>
         </div>
         <div class="text-center">
-          <div class="text-4xl lg:text-5xl font-semibold text-slate-900 mb-2">93%</div>
+          <div class="text-4xl lg:text-5xl font-semibold text-slate-900 mb-2">93 %</div>
           <div class="text-lg text-slate-700">{{ t('intro.stats.sprint_success') }}</div>
         </div>
       </div>
