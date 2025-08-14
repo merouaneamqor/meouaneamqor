@@ -158,6 +158,8 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
 interface ExecutiveExperience {
@@ -182,12 +184,12 @@ const executiveExperiences = ref<ExecutiveExperience[]>([
     teamSize: '15+',
     achievements: [
       'Leading cross-functional engineering teams across Africa and Middle East healthcare markets',
-      'Architected microservices infrastructure reducing system latency by 40% and improving user satisfaction',
-      'Implemented Agile/Scrum methodologies resulting in 30% faster delivery cycles',
-      'Mentored junior developers and established code review processes that improved code quality by 50%',
-      'Spearheaded cloud migration to AWS, reducing operational costs by 25% while improving scalability'
+      'Improved system latency by 40% through flow optimization and clear prioritization',
+      'Implemented Agile/Scrum practices resulting in 30% faster delivery cycles',
+      'Mentored team members and established code review practices that improved quality by 50%',
+      'Reduced operational costs by 25% through continuous improvement and release discipline'
     ],
-    skills: ['Team Leadership', 'AWS Architecture', 'Agile/Scrum', 'Performance Optimization', 'Microservices'],
+    skills: ['Scrum Mastery', 'Agile Coaching', 'Stakeholder Facilitation', 'Team Health Checks', 'Continuous Improvement'],
     metrics: [
       { value: '40%', label: 'Performance Gain' },
       { value: '25%', label: 'Cost Reduction' },
@@ -202,12 +204,12 @@ const executiveExperiences = ref<ExecutiveExperience[]>([
     endDate: 'Dec 2023',
     teamSize: '8',
     achievements: [
-      'Led development of patient-doctor matching platform serving 100K+ users across multiple countries',
-      'Collaborated with product teams to translate business requirements into scalable technical solutions',
-      'Designed and implemented RESTful APIs handling 1M+ requests daily with 99.9% uptime',
-      'Mentored 3 junior developers and established best practices for code quality and testing'
+      'Led delivery of patient-doctor matching capabilities serving 100K+ users across multiple countries',
+      'Facilitated product discovery and aligned stakeholders for incremental delivery',
+      'Maintained high availability (99.9%) and reliability via disciplined planning and retrospectives',
+      'Mentored 3 junior team members and established quality gates and testing practices'
     ],
-    skills: ['Ruby on Rails', 'React', 'MongoDB', 'API Design', 'Mentoring', 'Product Development'],
+    skills: ['Sprint Planning', 'Backlog Refinement', 'Definition of Done', 'Release Planning', 'Mentoring', 'Product Collaboration'],
     metrics: [
       { value: '400K+', label: 'Active Users monthly' },
       { value: '99.9%', label: 'System Uptime' },
@@ -222,12 +224,12 @@ const executiveExperiences = ref<ExecutiveExperience[]>([
     endDate: 'Apr 2022',
     teamSize: '12',
     achievements: [
-      'Contributed to multi-client projects serving international markets with diverse technical requirements',
-      'Developed responsive web applications using modern JavaScript frameworks and backend technologies',
-      'Participated in agile development processes and cross-team collaboration initiatives',
-      'Gained expertise in client communication and project management in international context'
+      'Contributed to multi-client projects serving international markets with diverse requirements',
+      'Supported delivery using Agile practices with cross-team collaboration initiatives',
+      'Improved clarity with user stories and acceptance criteria',
+      'Gained expertise in client communication and project coordination in an international context'
     ],
-    skills: ['Full-stack Development', 'JavaScript', 'Agile Methodologies', 'Client Relations', 'Project Management']
+    skills: ['Agile Methodologies', 'Scrum Events', 'Client Relations', 'Cross-team Collaboration', 'Project Coordination']
   },
   {
     role: 'Junior Developer',
@@ -237,12 +239,12 @@ const executiveExperiences = ref<ExecutiveExperience[]>([
     endDate: 'Apr 2020',
     teamSize: '6',
     achievements: [
-      'Developed websites for French clients while working remotely, gaining international project experience',
-      'Learned foundational web development technologies and professional development practices',
+      'Contributed to delivery for French clients while working remotely, gaining international project experience',
+      'Learned foundational Agile practices and professional collaboration',
       'Built communication skills working with distributed teams across different time zones',
-      'Established strong foundation in software development lifecycle and client requirements analysis'
+      'Established strong foundation in delivery processes and client requirements analysis'
     ],
-    skills: ['Web Development', 'Remote Collaboration', 'HTML/CSS/JavaScript', 'PHP', 'Client Communication']
+    skills: ['Scrum Foundations', 'Remote Collaboration', 'Client Communication', 'Teamwork', 'Continuous Learning']
   }
 ])
 

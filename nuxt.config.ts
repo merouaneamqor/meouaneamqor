@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
   ],
 
+  // @ts-expect-error: Provided by @nuxtjs/i18n module at runtime
   i18n: {
     locales: [
       { code: 'en', name: 'English', file: 'en.json' },
@@ -108,11 +109,11 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'en'
       },
-      title: 'Merouane Amqor - Full-Stack Developer & Certified ScrumMaster®',
+      title: 'Merouane Amqor - Certified ScrumMaster® & Engineering Leader',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { hid: 'description', name: 'description', content: 'AMQOR Merouane, an experienced Full-Stack Developer and Certified ScrumMaster® based in Casablanca, Morocco, specializing in innovative web development solutions.' },
+        { hid: 'description', name: 'description', content: 'AMQOR Merouane, an experienced Certified ScrumMaster® and engineering leader based in Casablanca, Morocco, specializing in Agile delivery and high-performing teams.' },
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
