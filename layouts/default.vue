@@ -54,44 +54,46 @@ useHead({
 <script>
 export default {
   jsonld() {
-    return {
-      "@context": "https://schema.org",
-      "@type": "ProfilePage",
-      "mainEntity": {
-        "@type": "Person",
-        "name": "Merouane AMQOR",
-        "jobTitle": "Software Engineer | Certified ScrumMaster®",
-        "url": "https://merouaneamqor.com",
-        "email": "marouane.amqor@gmail.com",
-        "telephone": "+212701086726",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Casablanca, Morocco"
-        },
-        "image": "https://merouaneamqor.com/merouane_amqor.jpg",
-        "sameAs": [
-          "https://linkedin.com/in/merouane-amqor",
-          "https://instagram.com/merouaneamqor",
-          "https://rubygems.org/profiles/merouaneamqor",
-          "https://github.com/merouaneamqor",
-          "https://www.crunchbase.com/person/amqor-merouane",
-          "https://en.wikipedia.org/wiki/AMQOR_Merouane",
-        ],
-        "interactionStatistic": [
-          {
-            "@type": "InteractionCounter",
-            "interactionType": "https://schema.org/FollowAction",
-            "userInteractionCount": 0 
-          },
-          {
-            "@type": "InteractionCounter",
-            "interactionType": "https://schema.org/LikeAction",
-            "userInteractionCount": 0
-          }
-        ],
-        "description": "Merouane AMQOR, an experienced Software Engineer and Certified ScrumMaster® based in Casablanca, Morocco, specializes in innovative web development solutions. Skilled in a variety of platforms and languages, with a particular proficiency in back-end development, Merouane is known for his strong leadership skills and experience in leading teams to achieve their goals."
-      }
-    }
+		return [
+			{
+				"@context": "https://schema.org",
+				"@type": "WebSite",
+				"name": "Merouane Amqor",
+				"url": "https://merouaneamqor.com",
+				"inLanguage": "en",
+				"description": "Certified ScrumMaster® & Engineering Leader. Agile delivery, facilitation, and high-performing teams.",
+				"publisher": {
+					"@type": "Person",
+					"name": "Merouane Amqor",
+					"url": "https://merouaneamqor.com"
+				}
+			},
+			{
+				"@context": "https://schema.org",
+				"@type": "ProfilePage",
+				"mainEntity": {
+					"@type": "Person",
+					"name": "Merouane AMQOR",
+					"jobTitle": "Certified ScrumMaster® | Engineering Leader",
+					"url": "https://merouaneamqor.com",
+					"email": "marouaneamqor@gmail.com",
+					"telephone": "+212701086726",
+					"address": {
+						"@type": "PostalAddress",
+						"addressLocality": "Casablanca, Morocco"
+					},
+					"image": "https://merouaneamqor.com/merouane_amqor.jpg",
+					"sameAs": [
+						"https://linkedin.com/in/merouane-amqor",
+						"https://instagram.com/merouaneamqor",
+						"https://rubygems.org/profiles/merouaneamqor",
+						"https://github.com/merouaneamqor",
+						"https://www.crunchbase.com/person/amqor-merouane"
+					],
+					"description": "Certified ScrumMaster® and engineering leader focused on Agile delivery and continuous improvement."
+				}
+			}
+		]
   }
 }
 </script>

@@ -275,6 +275,8 @@ const localePath = useLocalePath()
 declare const useLocalePath: () => (path: string) => string
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 declare const useSeoMeta: (meta: Record<string, any>) => void
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+declare const useJsonld: (schema: any) => void
 
 interface Project {
   id: number;
@@ -367,6 +369,43 @@ useSeoMeta({
   ogDescription: 'Explore my portfolio of innovative projects combining engineering excellence, great design, and real-world impact.',
   ogImage: '/merouane_amqor.jpg',
   twitterCard: 'summary_large_image'
+})
+
+// JSON-LD: Breadcrumbs + ItemList of projects (Scrum-focused)
+useJsonld({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://merouaneamqor.com/'
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Portfolio',
+      item: 'https://merouaneamqor.com/portfolio'
+    }
+  ]
+})
+
+useJsonld({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Project Portfolio',
+  itemListElement: projects.map((p, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'CreativeWork',
+      name: p.name,
+      url: p.link !== '#' ? p.link : 'https://merouaneamqor.com/portfolio',
+      description: p.description,
+      keywords: p.technologies.join(', ')
+    }
+  }))
 })
 </script>
 
