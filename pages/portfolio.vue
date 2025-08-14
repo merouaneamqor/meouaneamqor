@@ -70,7 +70,7 @@
                 </svg>
               </div>
               
-              <!-- Tech Stack Pills -->
+              <!-- Practices Pills -->
               <div class="flex flex-wrap gap-1.5 mb-3">
                 <span 
                   v-for="tech in project.technologies.slice(0, 3)" 
@@ -122,7 +122,7 @@
               {{ project.name }}
             </h3>
             
-            <!-- Tech Stack Pills -->
+            <!-- Practices Pills -->
             <div class="flex flex-wrap gap-1.5 mb-3">
               <span 
                 v-for="tech in project.technologies.slice(0, 2)" 
@@ -206,7 +206,7 @@
             </div>
           </div>
 
-          <!-- Technologies Used -->
+          <!-- Practices Used -->
           <div class="mb-6">
             <h4 class="text-lg font-semibold text-slate-900 mb-3">{{ t('portfolio.technologies_used') }}</h4>
             <div class="flex flex-wrap gap-2">
@@ -265,9 +265,16 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 const localePath = useLocalePath()
+// Nuxt auto-imports: add TS declarations for type safety
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+declare const useLocalePath: () => (path: string) => string
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+declare const useSeoMeta: (meta: Record<string, any>) => void
 
 interface Project {
   id: number;
@@ -287,55 +294,55 @@ const projects: Project[] = [
     name: 'DabaDoc Healthcare Platform',
     duration: 'Sep 2018 - Present',
     description: 'Led the development of a comprehensive healthcare platform, improving patient care delivery by 30% and boosting operational efficiency by 25%. Implemented Agile methodologies, resulting in a 20% reduction in project delivery times.',
-    technologies: ['Ruby on Rails', 'React', 'MongoDB', 'AWS', 'RESTful API', 'Agile'],
+    technologies: ['Scrum Mastery', 'Agile Coaching', 'Sprint Planning', 'Backlog Refinement'],
     link: 'https://dabadoc.com'
   },
   {
     id: 2,
     name: 'Douq.ma Discovery Platform',
     duration: '2021 - Present',
-    description: 'Co-founded Morocco\'s premier location discovery platform. Led product development and technical architecture for a comprehensive venue discovery and review system.',
-    technologies: ['React', 'Ruby on Rails', 'MongoDB', 'AI/ML', 'Geolocation APIs'],
+    description: 'Co-founded Morocco\'s premier location discovery platform. Led product development and facilitated delivery across teams to build a valuable venue discovery and review system.',
+    technologies: ['Scrum Events', 'Stakeholder Facilitation', 'Continuous Improvement'],
     link: 'https://www.douq.ma'
   },
   {
     id: 3,
     name: 'Meram / Texam E-commerce Solution',
     duration: '2018 - 2019',
-    description: 'Engineered an innovative e-commerce platform with a robust JSON API for seamless mobile integration. This solution significantly enhanced the digital shopping experience for users.',
-    technologies: ['Ruby on Rails', 'Next.js', 'PostgreSQL', 'RESTful API'],
+    description: 'Delivered an e-commerce platform through iterative delivery and clear scrum ceremonies, improving time-to-market and quality.',
+    technologies: ['Sprint Review', 'Retrospective', 'Definition of Done'],
     link: 'https://texam-app-git-master-douq-ma.vercel.app/'
   },
   {
     id: 4,
     name: 'Riad Raha Real Estate Management System',
     duration: '1 month, 2021',
-    description: 'Developed a sophisticated real estate sales management system that streamlined operations and improved client service efficiency, resulting in increased sales and customer satisfaction.',
-    technologies: ['Laravel', 'Vue.js', 'PostgreSQL'],
+    description: 'Facilitated rapid delivery with a focused scrum cadence to streamline operations and improve client service efficiency.',
+    technologies: ['Sprint Planning', 'Kanban for Ops', 'Risk Management'],
     link: '#'
   },
   {
     id: 5,
     name: 'DabaDoc Corporate Healthcare Platform',
     duration: 'Apr 2022 - Jan 2024',
-    description: 'Spearheaded the development of a corporate healthcare management platform, enhancing employee access to health services and improving overall healthcare delivery for businesses.',
-    technologies: ['Ruby on Rails', 'Docker', 'MongoDB', 'RESTful API', 'Angular'],
+    description: 'Spearheaded the delivery of a corporate healthcare platform using Scrum to align stakeholders and accelerate outcomes.',
+    technologies: ['Scrum Mastery', 'Value Stream Mapping', 'Release Planning'],
     link: 'https://info.dabadoc.com/corporate'
   },
   {
     id: 6,
     name: 'DabaDoc Mind - Mental Health',
     duration: 'Apr 2022 - Jan 2024',
-    description: 'Created a secure and user-friendly platform for online mental health consultations, significantly improving accessibility and confidentiality for patients seeking mental health support.',
-    technologies: ['React', 'Ruby On Rails', 'MongoDB', 'RESTful API', 'Angular'],
+    description: 'Delivered a privacy-focused telehealth experience with strong scrum facilitation and continuous feedback loops.',
+    technologies: ['Team Health Checks', 'User Feedback Loops', 'Outcome Metrics'],
     link: 'https://info.dabadoc.com/mind'
   },
   {
     id: 7,
     name: 'DabaDoc Live - Interactive Health',
     duration: 'Apr 2022 - Jan 2024',
-    description: 'Engineered an interactive live-streaming platform for health education and real-time consultations, featuring cutting-edge real-time communication tools and user engagement features.',
-    technologies: ['React', 'Ruby On Rails', 'Elasticsearch', 'MongoDB', 'RESTful API', 'Angular'],
+    description: 'Enabled real-time health education features via iterative delivery and cross-team collaboration.',
+    technologies: ['Cross-team Collaboration', 'Scrum of Scrums', 'Incremental Delivery'],
     link: 'https://info.dabadoc.com/live'
   }
 ]

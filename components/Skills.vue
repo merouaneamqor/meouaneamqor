@@ -160,29 +160,29 @@ const strategicSkills = [
 // Technical Architecture
 const technicalSkills = [
   { 
-    name: "Full-Stack Development", 
+    name: "Delivery Orchestration", 
     icon: "💻", 
-    description: "Ruby on Rails, React, Angular, Vue.js - end-to-end solutions"
+    description: "End-to-end flow: discovery → delivery → feedback"
   },
   { 
     name: "System Architecture", 
     icon: "🏗️", 
-    description: "Clean architecture patterns that scale effortlessly"
+    description: "Lightweight architecture aligned with team flow and outcomes"
   },
   { 
-    name: "Cloud Infrastructure", 
+    name: "Cloud & Environments", 
     icon: "☁️", 
-    description: "AWS deployment and optimization for high availability"
+    description: "High availability, environment reliability, and release cadence"
   },
   { 
-    name: "Database Design", 
+    name: "Data Foundations", 
     icon: "🗃️", 
-    description: "MongoDB, SQL - data models that perform beautifully"
+    description: "Effective data modeling, performance, and observability"
   },
   { 
-    name: "Modern Toolchain", 
+    name: "Modern Dev Tooling", 
     icon: "🛠️", 
-    description: "Next.js, Nuxt.js, Tailwind CSS - cutting-edge development"
+    description: "CI/CD, automated testing, code review, and quality gates"
   }
 ]
 

@@ -76,26 +76,26 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 const localePath = useLocalePath()
-// Updated technologies based on resume
+// Nuxt auto-imports: add TS declarations for type safety
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+declare const useLocalePath: () => (path: string) => string
+// Scrum-focused core practices
 const technologies = [
-  'Ruby on Rails',
-  'Angular',
-  'React',
-  'Vue.js',
-  'JavaScript',
-  'PHP',
-  'MongoDB',
-  'SQL',
-  'AWS',
-  'Heroku',
-  'Laravel',
-  'Nuxt.js',
-  'Next.js',
-  'Tailwind CSS',
-  'Figma',
-  'Scrum & Agile'
+  'Scrum Mastery',
+  'Agile Coaching',
+  'Sprint Planning',
+  'Daily Scrum',
+  'Backlog Refinement',
+  'Sprint Review',
+  'Sprint Retrospective',
+  'Stakeholder Facilitation',
+  'Team Empowerment',
+  'Impediment Removal',
+  'Velocity & Burndown',
+  'Continuous Improvement'
 ]
 </script>
 

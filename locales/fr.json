@@ -18,7 +18,7 @@
   },
   "footer": {
     "rights": "Tous droits réservés",
-    "about_line1": "Développeur Ruby on Rails | Tech Lead | Certified ScrumMaster® basé à Casablanca, Maroc.",
+    "about_line1": "Ingénieur Logiciel | Tech Lead | Certified ScrumMaster® basé à Casablanca, Maroc.",
     "about_line2": " Création de solutions innovantes et direction d'équipes performantes.",
     "available": "Disponible pour de nouvelles opportunités",
     "stay_connected": "Rester informé",
@@ -26,7 +26,7 @@
     "quick_links": "Liens rapides",
     "get_in_touch": "Contact",
     "connect": "Réseaux",
-    "built_with": "Créé avec Vue.js & Nuxt.js",
+    "built_with": "Créé avec des technologies web modernes",
     "back_to_top": "Haut de page"
   },
   "nav": {
@@ -39,7 +39,7 @@
   "common": {
     "get_in_touch": "Me contacter",
     "download_resume": "Télécharger le CV",
-    "core_technologies": "Technologies clés",
+    "core_technologies": "Pratiques clés",
     "email_placeholder": "votre email",
     "subscribe": "S'abonner",
     "email": "Email",
@@ -64,8 +64,8 @@
       "subtitle": "Conduire des équipes vers des résultats mesurables."
     },
     "rails": {
-      "title": "Maîtrise de Ruby on Rails",
-      "subtitle": "Backends robustes avec une architecture claire."
+      "title": "Maîtrise Scrum",
+      "subtitle": "Facilitation de la livraison et amélioration continue."
     },
     "product": {
       "title": "Produit & Delivery",
@@ -84,7 +84,7 @@
   },
   "intro": {
     "title": "Ingénieur Logiciel & Certified ScrumMaster®",
-    "value": "Compétences techniques (Rails, JS, Cloud) + leadership & coaching.",
+    "value": "Certified ScrumMaster® — mener des équipes agiles, favoriser le focus, le flux et la livraison.",
     "supporting": "Je relie objectifs business et exécution technique, avec des résultats mesurables en contexte corporate.",
     "philosophy": "Reconnu pour une communication claire, la gestion de conflits et une livraison pragmatique.",
     "view_portfolio": "Voir le portfolio",
@@ -201,7 +201,7 @@
   },
   "blog": {
     "title": "Blog Tech",
-    "subtitle": "Découvrez des articles sur le développement web, Ruby on Rails, le leadership d'équipe et les bonnes pratiques d'ingénierie.",
+    "subtitle": "Découvrez des articles sur l'Agile, Scrum, le leadership d'équipe et les bonnes pratiques d'ingénierie.",
     "articles": "Articles",
     "categories": "Catégories",
     "min_read": "Min de lecture",
@@ -216,7 +216,7 @@
     "stay_updated_desc": "Soyez alerté de mes nouvelles publications sur le web et le leadership tech.",
     "subscribing": "Abonnement...",
     "subscribe_success": "Inscription réussie ! Merci de votre intérêt.",
-    "seo_description": "Explorez des articles sur le développement web, Ruby on Rails, le leadership d'équipe et les bonnes pratiques d'ingénierie.",
+    "seo_description": "Explorez des articles sur l'Agile, Scrum, le leadership d'équipe et les bonnes pratiques d'ingénierie.",
     "recent": "Récent",
     "read_more_prompt": "Cliquez pour lire la suite...",
     "read_article": "Lire l'article",

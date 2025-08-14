@@ -18,7 +18,7 @@
   },
   "footer": {
     "rights": "All rights reserved",
-    "about_line1": "Ruby on Rails Developer | Tech Lead | Certified ScrumMaster® based in Casablanca, Morocco.",
+    "about_line1": "Software Engineer | Tech Lead | Certified ScrumMaster® based in Casablanca, Morocco.",
     "about_line2": " Building innovative solutions and leading high-performing teams.",
     "available": "Available for new opportunities",
     "stay_connected": "Stay Connected",
@@ -26,7 +26,7 @@
     "quick_links": "Quick Links",
     "get_in_touch": "Get In Touch",
     "connect": "Connect",
-    "built_with": "Built with Vue.js & Nuxt.js",
+    "built_with": "Built with modern web technologies",
     "back_to_top": "Back to Top"
   },
   "nav": {
@@ -39,7 +39,7 @@
   "common": {
     "get_in_touch": "Get in touch",
     "download_resume": "Download resume",
-    "core_technologies": "Core Technologies",
+    "core_technologies": "Core Practices",
     "email_placeholder": "your email",
     "subscribe": "Subscribe",
     "email": "Email",
@@ -64,8 +64,8 @@
       "subtitle": "Leading teams to deliver measurable outcomes."
     },
     "rails": {
-      "title": "Ruby on Rails Craft",
-      "subtitle": "Building robust backends with clean architecture."
+      "title": "Scrum Mastery",
+      "subtitle": "Facilitating delivery and continuous improvement."
     },
     "product": {
       "title": "Product & Delivery",
@@ -84,7 +84,7 @@
   },
   "intro": {
     "title": "Software Engineer & Certified ScrumMaster®",
-    "value": "Combining Ruby on Rails, JavaScript frameworks, and cloud architecture with leadership and coaching skills.",
+    "value": "Leading Agile teams as a Certified ScrumMaster® — enabling focus, flow, and delivery.",
     "supporting": "I bridge business goals and technical execution, driving measurable outcomes in fast-paced corporate environments.",
     "philosophy": "Recognized for clear communication, conflict resolution, and pragmatic delivery.",
     "view_portfolio": "View Portfolio",
@@ -201,7 +201,7 @@
   },
   "blog": {
     "title": "Tech Blog",
-    "subtitle": "Explore insightful articles on web development, Ruby on Rails, team leadership, and software engineering best practices. Sharing knowledge from real-world experience.",
+    "subtitle": "Explore insights on Agile, Scrum, team leadership, and software engineering best practices.",
     "articles": "Articles",
     "categories": "Categories",
     "min_read": "Min Read",
@@ -216,7 +216,7 @@
     "stay_updated_desc": "Get notified when I publish new articles about web development and tech leadership.",
     "subscribing": "Subscribing...",
     "subscribe_success": "Successfully subscribed! Thank you for joining.",
-    "seo_description": "Explore insightful articles on web development, Ruby on Rails, team leadership, and software engineering best practices.",
+    "seo_description": "Explore insightful articles on Agile, Scrum, team leadership, and software engineering best practices.",
     "recent": "Recent",
     "read_more_prompt": "Click to read more...",
     "read_article": "Read Article",

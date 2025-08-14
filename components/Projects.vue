@@ -84,7 +84,7 @@
                   </div>
                 </div>
 
-                <!-- Technical Stack -->
+                <!-- Practices / Ways of Working -->
                 <div class="mb-6">
                    <h4 class="text-sm font-semibold text-slate-800 uppercase tracking-wider mb-3">{{ t('projects.technology_leadership') }}</h4>
                   <div class="flex flex-wrap gap-2">
@@ -165,7 +165,7 @@ const projects = ref<Project[]>([
     status: 'Leading Production',
     duration: '2022 - Present',
     leadershipImpact: 'Led engineering teams of 15+ developers across multiple countries. Architected scalable healthcare infrastructure serving 100K+ users. Implemented Agile methodologies resulting in 40% faster delivery cycles and improved team performance.',
-    technologies: ['Ruby on Rails', 'Angular', 'MongoDB', 'AWS', 'Microservices'],
+    technologies: ['Scrum Mastery', 'Agile Coaching', 'Cross-team Collaboration'],
     metrics: [
       { value: '100K+', label: 'Active Users' },
       { value: '40%', label: 'Performance Gain' },
@@ -180,7 +180,7 @@ const projects = ref<Project[]>([
     status: 'Co-Founded',
     duration: '2021 - Present',
     leadershipImpact: 'Co-founded and led product development for Morocco\'s premier location discovery platform. Established technical vision, built founding team, and secured initial user base. Integrated AI-powered recommendations with community-driven content strategy.',
-    technologies: ['React', 'Ruby on Rails', 'MongoDB', 'AI/ML', 'Geolocation APIs'],
+    technologies: ['Stakeholder Facilitation', 'User Feedback Loops', 'Continuous Improvement'],
     metrics: [
       { value: '10K+', label: 'Venues Listed' },
       { value: '2', label: 'Co-Founded' },
@@ -195,7 +195,7 @@ const projects = ref<Project[]>([
     status: 'Co-Founded',
     duration: '2018 - 2019',
     leadershipImpact: 'Co-founded innovative e-commerce platform with focus on mobile-first experience. Led technical team of 6 developers, established development processes, and delivered cross-platform solution with complex inventory and payment integrations.',
-    technologies: ['Ruby on Rails', 'React Native', 'PostgreSQL', 'Payment Gateways'],
+    technologies: ['Sprint Planning', 'Definition of Done', 'Release Planning'],
     metrics: [
       { value: '5K+', label: 'Products' },
       { value: '6', label: 'Team Size' },
@@ -210,7 +210,7 @@ const projects = ref<Project[]>([
     status: 'Client Delivery',
     duration: '2021',
     leadershipImpact: 'Delivered comprehensive real estate management solution for Riad Raha. Managed client relationships, defined technical requirements, and led development team to deliver on-time, on-budget solution that improved operational efficiency by 60%.',
-    technologies: ['Laravel', 'Vue.js', 'MySQL', 'RESTful APIs'],
+    technologies: ['Kanban for Ops', 'Risk Management', 'Outcome Metrics'],
     metrics: [
       { value: '60%', label: 'Efficiency Gain' },
       { value: '100%', label: 'On-Time Delivery' },

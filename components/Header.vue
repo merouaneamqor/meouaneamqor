@@ -59,24 +59,22 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
-// Clean iOS-style technologies list
+// Clean iOS-style "core practices" list (Scrum-focused)
 const technologies = [
-  'Swift',
-  'Ruby',
-  'iOS Development', 
-  'Engineering Leadership',
-  'AWS Solutions',
-  'Agile & Scrum',
-  'Team Management',
-  'Ruby on Rails',
-  'Vue.js',
-  'React',
-  'Next.js',
-  'Nuxt.js',
-  'Node.js',
-  'Docker',
-  'System Design'
+  'Scrum Mastery',
+  'Agile Coaching',
+  'Sprint Planning',
+  'Daily Scrum',
+  'Backlog Refinement',
+  'Sprint Review',
+  'Sprint Retrospective',
+  'Stakeholder Facilitation',
+  'Velocity & Burndown',
+  'Impediment Removal',
+  'Team Health & Morale',
+  'Continuous Improvement'
 ]
 </script>
 
