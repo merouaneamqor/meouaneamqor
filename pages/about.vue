@@ -33,16 +33,36 @@
         </div>
 
         <!-- Introduction -->
-        <div class="bg-white/70 backdrop-blur-xl border border-slate-200 rounded-2xl p-8 max-w-3xl shadow-sm">
-          <p class="text-slate-700 leading-relaxed text-lg mb-4">
-            I build software that works beautifully and scales effortlessly.
+        <div class="bg-white/70 backdrop-blur-xl border border-slate-200 rounded-2xl p-6 sm:p-8 max-w-3xl shadow-sm">
+          <p class="text-slate-700 leading-relaxed text-base sm:text-lg mb-3 sm:mb-4">
+            As a Certified ScrumMaster®, I help teams create value by ensuring clarity of priorities, smooth flow, and a sustainable delivery cadence.
           </p>
-          <p class="text-slate-700 leading-relaxed text-lg mb-4">
-            From healthcare platforms to e-commerce systems, I lead teams and write code that deliver measurable impact.
+          <p class="text-slate-700 leading-relaxed text-base sm:text-lg mb-3 sm:mb-4">
+            I bridge business strategy and product execution to generate measurable, durable outcomes—especially in fast-moving environments.
           </p>
-          <p class="text-slate-700 leading-relaxed text-lg">
-            With a focus on clean architecture, human-centered interfaces, and Agile processes, I craft experiences that feel simple — because they are.
+          <p class="text-slate-700 leading-relaxed text-base sm:text-lg">
+            Known for clear communication, effective facilitation, conflict resolution, and pragmatic, outcome-oriented delivery.
           </p>
+        </div>
+
+        <!-- Quick Facts (compact on mobile) -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-6 w-full max-w-3xl">
+          <div class="text-center bg-white/70 border border-slate-200 rounded-xl p-3">
+            <div class="text-2xl font-semibold text-slate-900">8</div>
+            <div class="text-xs text-slate-600">Developers Coached</div>
+          </div>
+          <div class="text-center bg-white/70 border border-slate-200 rounded-xl p-3">
+            <div class="text-2xl font-semibold text-slate-900">10 000+</div>
+            <div class="text-xs text-slate-600">Monthly Users Served</div>
+          </div>
+          <div class="text-center bg-white/70 border border-slate-200 rounded-xl p-3">
+            <div class="text-2xl font-semibold text-slate-900">30 %</div>
+            <div class="text-xs text-slate-600">Cycle Time Reduction</div>
+          </div>
+          <div class="text-center bg-white/70 border border-slate-200 rounded-xl p-3">
+            <div class="text-2xl font-semibold text-slate-900">93 %</div>
+            <div class="text-xs text-slate-600">Sprint Success</div>
+          </div>
         </div>
       </div>
 
@@ -67,26 +87,24 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="journey-card">
                 <div class="bg-white/60 backdrop-blur-md border border-slate-200 rounded-xl p-6">
-                  <h4 class="font-semibold text-slate-900 mb-3 flex items-center gap-2">
+                  <h4 class="font-semibold text-slate-900 mb-2 sm:mb-3 flex items-center gap-2">
                     <div class="w-2 h-2 bg-ios-system-green rounded-full"></div>
                     Current Role
                   </h4>
                   <p class="text-slate-700 text-sm leading-relaxed">
-                    Leading engineering teams at DabaDoc, architecting healthcare solutions that serve 
-                    millions across Africa and the Middle East. Building systems that scale while keeping human impact at the center.
+                    Facilitating Agile delivery at DabaDoc: aligning stakeholders, unblocking teams, and sustaining a healthy delivery cadence across healthcare products.
                   </p>
                 </div>
               </div>
               
               <div class="journey-card">
                 <div class="bg-white/60 backdrop-blur-md border border-slate-200 rounded-xl p-6">
-                  <h4 class="font-semibold text-slate-900 mb-3 flex items-center gap-2">
+                  <h4 class="font-semibold text-slate-900 mb-2 sm:mb-3 flex items-center gap-2">
                     <div class="w-2 h-2 bg-ios-system-blue rounded-full"></div>
                     Entrepreneurship
                   </h4>
                   <p class="text-slate-700 text-sm leading-relaxed">
-                    Co-founded multiple startups including Meram/Texam and Douq.ma, transforming ideas into 
-                    products that solve real problems. Balancing technical excellence with user needs and business outcomes.
+                    Co-founded ventures (Meram/Texam, Douq.ma), facilitating iterative delivery from discovery to launch, balancing user needs and business outcomes.
                   </p>
                 </div>
               </div>
@@ -111,17 +129,16 @@
             
             <div class="space-y-4">
               <p class="text-slate-700 leading-relaxed">
-                I believe great software comes from great teams. I mentor developers and entrepreneurs, 
-                sharing hard-earned insights on building technology that truly matters. My approach centers on:
+                Great software comes from great teams. I mentor developers and entrepreneurs, focusing on practical growth and healthy team dynamics. My approach centers on:
               </p>
               
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="mentoring-point">
                   <div class="flex items-center gap-2 mb-2">
                     <div class="w-1.5 h-1.5 bg-ios-system-green rounded-full"></div>
-                    <span class="text-slate-900 font-medium text-sm">Technical Growth</span>
+                    <span class="text-slate-900 font-medium text-sm">Agile Coaching</span>
                   </div>
-                  <p class="text-slate-500 text-xs">Code quality, architecture, and best practices</p>
+                  <p class="text-slate-500 text-xs">Scrum events, flow efficiency, and outcome metrics</p>
                 </div>
                 
                 <div class="mentoring-point">
@@ -129,7 +146,7 @@
                     <div class="w-1.5 h-1.5 bg-ios-system-blue rounded-full"></div>
                     <span class="text-slate-900 font-medium text-sm">Leadership Skills</span>
                   </div>
-                  <p class="text-slate-500 text-xs">Team management and agile methodologies</p>
+                  <p class="text-slate-500 text-xs">Facilitation, conflict resolution, and team health</p>
                 </div>
                 
                 <div class="mentoring-point">
@@ -137,7 +154,7 @@
                     <div class="w-1.5 h-1.5 bg-ios-system-purple rounded-full"></div>
                     <span class="text-slate-900 font-medium text-sm">Product Thinking</span>
                   </div>
-                  <p class="text-slate-500 text-xs">Business strategy and user-focused development</p>
+                  <p class="text-slate-500 text-xs">User outcomes, prioritization, and value alignment</p>
                 </div>
               </div>
             </div>
