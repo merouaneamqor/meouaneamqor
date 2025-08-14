@@ -31,6 +31,8 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
 type Theme = 'light' | 'dark'
@@ -45,10 +47,10 @@ interface TileItem {
 const props = defineProps<{ tiles?: TileItem[] }>()
 
 const defaultTiles: TileItem[] = [
-  { titleKey: 'showcase.ipad.title', subtitleKey: 'showcase.ipad.subtitle', theme: 'light' },
-  { titleKey: 'showcase.macbook.title', subtitleKey: 'showcase.macbook.subtitle', theme: 'dark' },
-  { titleKey: 'showcase.ipadPro.title', subtitleKey: 'showcase.ipadPro.subtitle', theme: 'dark' },
-  { titleKey: 'showcase.macStudio.title', subtitleKey: 'showcase.macStudio.subtitle', theme: 'light' }
+  { titleKey: 'showcase.leadership.title', subtitleKey: 'showcase.leadership.subtitle', href: '/portfolio', theme: 'light' },
+  { titleKey: 'showcase.rails.title', subtitleKey: 'showcase.rails.subtitle', href: '/portfolio', theme: 'dark' },
+  { titleKey: 'showcase.product.title', subtitleKey: 'showcase.product.subtitle', href: '/about', theme: 'dark' },
+  { titleKey: 'showcase.mentoring.title', subtitleKey: 'showcase.mentoring.subtitle', href: '/about', theme: 'light' }
 ]
 
 const tiles = computed(() => props.tiles && props.tiles.length ? props.tiles : defaultTiles)

@@ -59,21 +59,21 @@
   },
   "showcase": {
     "learn_more": "Learn more",
-    "ipad": {
-      "title": "iPad",
-      "subtitle": "Now with A16 speed and doubled base storage."
+    "leadership": {
+      "title": "Engineering Leadership",
+      "subtitle": "Leading teams to deliver measurable outcomes."
     },
-    "macbook": {
-      "title": "MacBook Pro",
-      "subtitle": "Prodigious at everything."
+    "rails": {
+      "title": "Ruby on Rails Craft",
+      "subtitle": "Building robust backends with clean architecture."
     },
-    "ipadPro": {
-      "title": "iPad Pro",
-      "subtitle": "Impossibly thin. Incredibly powerful."
+    "product": {
+      "title": "Product & Delivery",
+      "subtitle": "Aligning business goals with technical execution."
     },
-    "macStudio": {
-      "title": "Mac Studio",
-      "subtitle": "M4 Max and M3 Ultra. Choose your superpower."
+    "mentoring": {
+      "title": "Mentoring & Coaching",
+      "subtitle": "Helping developers grow into leaders."
     }
   },
   "header": {

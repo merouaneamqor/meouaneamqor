@@ -59,21 +59,21 @@
   },
   "showcase": {
     "learn_more": "En savoir plus",
-    "ipad": {
-      "title": "iPad",
-      "subtitle": "Maintenant avec la vitesse de la puce A16 et un stockage de base doublé."
+    "leadership": {
+      "title": "Leadership d'ingénierie",
+      "subtitle": "Conduire des équipes vers des résultats mesurables."
     },
-    "macbook": {
-      "title": "MacBook Pro",
-      "subtitle": "Prodigieux en tout."
+    "rails": {
+      "title": "Maîtrise de Ruby on Rails",
+      "subtitle": "Backends robustes avec une architecture claire."
     },
-    "ipadPro": {
-      "title": "iPad Pro",
-      "subtitle": "Impossiblement fin. Incroyablement puissant."
+    "product": {
+      "title": "Produit & Delivery",
+      "subtitle": "Alignement objectifs métiers et exécution technique."
     },
-    "macStudio": {
-      "title": "Mac Studio",
-      "subtitle": "M4 Max et M3 Ultra. Choisissez votre superpouvoir."
+    "mentoring": {
+      "title": "Mentorat & Coaching",
+      "subtitle": "Aider les développeurs à devenir leaders."
     }
   },
   "header": {
