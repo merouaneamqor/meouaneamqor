@@ -28,15 +28,22 @@
 
       <!-- Clean Technologies List -->
       <div class="mb-12 sm:mb-20">
-        <h3 class="text-xl sm:text-2xl font-semibold text-slate-900 mb-4 sm:mb-8">{{ t('common.core_technologies') }}</h3>
-        <div class="flex flex-wrap justify-center gap-2.5 sm:gap-3">
-          <span
-            v-for="tech in technologies"
-            :key="tech"
-            class="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-sm sm:text-base font-medium text-slate-800 bg-white/70 border border-slate-200 backdrop-blur-xl hover:bg-white transition-colors"
+        <h3 class="text-xl sm:text-2xl font-semibold text-slate-900 mb-3 sm:mb-8">{{ t('common.core_technologies') }}</h3>
+        <div class="relative">
+          <div 
+            class="chips-scroll flex gap-2 sm:gap-3 -mx-4 px-4 overflow-x-auto sm:overflow-visible flex-nowrap sm:flex-wrap justify-start sm:justify-center snap-x snap-mandatory"
+            aria-label="Core practices"
           >
-            {{ tech }}
-          </span>
+            <span
+              v-for="tech in technologies"
+              :key="tech"
+              class="px-2.5 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-base font-medium text-slate-800 bg-white/70 border border-slate-200 backdrop-blur-xl hover:bg-white transition-colors whitespace-nowrap snap-start"
+            >
+              {{ tech }}
+            </span>
+          </div>
+          <div class="sm:hidden pointer-events-none absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-white to-transparent"></div>
+          <div class="sm:hidden pointer-events-none absolute right-0 top-0 bottom-0 w-6 bg-gradient-to-l from-white to-transparent"></div>
         </div>
       </div>
 
@@ -65,19 +72,21 @@ const { t } = useI18n()
 const technologies = [
   'Scrum Mastery',
   'Agile Coaching',
-  'Sprint Planning',
+  'Planning',
   'Daily Scrum',
-  'Backlog Refinement',
-  'Sprint Review',
-  'Sprint Retrospective',
+  'Refinement',
+  'Review',
+  'Retro',
   'Stakeholder Facilitation',
   'Velocity & Burndown',
   'Impediment Removal',
-  'Team Health & Morale',
+  'Team Health',
   'Continuous Improvement'
 ]
 </script>
 
 <style scoped>
 /* Minimal iOS-style: no extra background ornaments */
+.chips-scroll { scrollbar-width: none; -ms-overflow-style: none; }
+.chips-scroll::-webkit-scrollbar { display: none; }
 </style>
